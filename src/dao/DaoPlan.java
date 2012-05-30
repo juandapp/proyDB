@@ -65,7 +65,7 @@ public class DaoPlan {
                 e.setTarifa_msj_texto(tabla.getInt("tarifa_msj_texto"));
             }
             conn.close();
-            System.out.println("Conexion cerrada");
+            System.out.println("Conexion cerrada"); 
             return e;
         } catch (SQLException ex) {
             System.out.println(ex);
