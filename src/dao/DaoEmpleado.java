@@ -43,10 +43,10 @@ public class DaoEmpleado {
             conn.close();
 
             return numFilas;
-        } catch (SQLException e) {
-            System.out.println(e);
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
         return -1;
     }
