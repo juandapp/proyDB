@@ -12,6 +12,9 @@ public class Postpago {
     Plan cod_plan;
     int total_minutos, costo_min_adicional;
 
+    public Postpago() {
+    }
+
     public Plan getCod_plan() {
         return cod_plan;
     }

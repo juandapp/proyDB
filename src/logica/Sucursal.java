@@ -12,6 +12,9 @@ public class Sucursal {
     
     String cod_sucursal, nombre, ciudad, direccion, telefono;
 
+    public Sucursal() {
+    }
+
     public String getCod_sucursal() {
         return cod_sucursal;
     }
