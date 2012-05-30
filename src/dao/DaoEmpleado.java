@@ -74,7 +74,7 @@ public class DaoEmpleado {
             }
             conn.close();
             System.out.println("Conexion cerrada");
-            return e;
+            return e; 
         } catch (SQLException ex) {
             System.out.println(ex);
         } catch (Exception ex) {
