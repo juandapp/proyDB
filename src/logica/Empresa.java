@@ -13,6 +13,9 @@ public class Empresa {
     String nombre, telefono, direccion;
     Postpago cod_plan;
 
+    public Empresa() {
+    }
+
     public Postpago getCod_plan() {
         return cod_plan;
     }

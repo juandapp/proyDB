@@ -12,6 +12,9 @@ public class Correos {
     String email;
     Abonado id_abonado;
 
+    public Correos() {
+    }
+    
     public String getEmail() {
         return email;
     }

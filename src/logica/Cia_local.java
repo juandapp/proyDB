@@ -11,6 +11,9 @@ package logica;
 public class Cia_local {
     String id, nombre;
 
+    public Cia_local() {
+    }
+
     public String getId() {
         return id;
     }
