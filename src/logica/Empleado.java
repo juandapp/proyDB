@@ -11,8 +11,10 @@ import java.util.Date;
  * @author juandapp
  */
 public class Empleado {
-    String id_empleado, nombre, genero, estado_civil,  tipo_contrato, cargo;
+
+    String id_empleado, nombre, genero, estado_civil, tipo_contrato, cargo;
     Date fecha_nacimiento, fecha_ingreso;
+    Sucursal cod_sucursal;
 
     public Date getFecha_nacimiento() {
         return fecha_nacimiento;
@@ -20,6 +22,10 @@ public class Empleado {
 
     public String getGenero() {
         return genero;
+    }
+
+    public Sucursal getCod_sucursal() {
+        return cod_sucursal;
     }
 
     public String getId_empleado() {
@@ -32,12 +38,12 @@ public class Empleado {
 
     public String getTipo_contrato() {
         return tipo_contrato;
-    }    
-    
+    }
+
     public Date getFecha_ingreso() {
         return fecha_ingreso;
     }
-    
+
     public String getEstado_civil() {
         return estado_civil;
     }
@@ -52,6 +58,10 @@ public class Empleado {
 
     public void setEstado_civil(String estado_civil) {
         this.estado_civil = estado_civil;
+    }
+
+    public void setCod_sucursal(Sucursal cod_sucursal) {
+        this.cod_sucursal = cod_sucursal;
     }
 
     public void setFecha_ingreso(Date fecha_ingreso) {
@@ -77,7 +87,4 @@ public class Empleado {
     public void setTipo_contrato(String tipo_contrato) {
         this.tipo_contrato = tipo_contrato;
     }
-      
-
- 
 }
