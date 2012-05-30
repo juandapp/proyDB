@@ -9,44 +9,45 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import logica.Postpago;
+import logica.Empresa;
 
 /**
  *
  * @author juandrd
  */
-public class DaoPostpago {
+public class DaoEmpresa {
     
- FachadaBD fachada;
+FachadaBD fachada;
 
-    DaoPostpago() {
+    DaoEmpresa() {
         fachada = new FachadaBD();
     }//
 
-    public int guardar(Postpago post) {
+    public int guardar(Empresa e) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO postpago VALUES ('"
-                + post.getCod_plan().getCod_plan() + "', '"
-                + post.getTotal_minutos() + "', '"
-                + post.getCosto_min_adicional() + "')";
+        sql_guardar = "INSERT INTO empresa VALUES ('"
+                + e.getNombre() + "', '"
+                + e.getTelefono() + "', '"
+                + e.getDireccion() + "', '"
+                + e.getCod_plan().getCod_plan().getCod_plan() + "')";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             int numFilas = sentencia.executeUpdate(sql_guardar);
             conn.close();
             return numFilas;
-        } catch (SQLException e) {
-            System.out.println(e);
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
         return -1;
     }//fin guardar
 
-    public Postpago consultar(String cod_plan) {
-        Postpago post = new Postpago();
+    public Empresa consultar(String nombre) {
+        Empresa em = new Empresa();
         String sql_select;
-        sql_select = "SELECT * FROM postpago WHERE cod_plan='" + cod_plan + "'";
+        sql_select = "SELECT * FROM empresa WHERE nombre='" + nombre + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -54,16 +55,19 @@ public class DaoPostpago {
 
             //
             if (tabla.next()) {
-
-                post.setCod_plan(new DaoPlan.consultar(tabla.getString("cod_plan")));
-                post.setTotal_minutos(tabla.getInt("total_minutos"));
-                post.setCosto_min_adicional(tabla.getInt("costo_min_adicional"));
+                
+                em.setNombre(tabla.getString("nombre"));
+                em.setTelefono(tabla.getString("telefono"));
+                em.setDireccion(tabla.getString("direccion"));
+                em.setCod_plan(new DaoPlan.consultar(new DaoPostpago().consultar(tabla.getString("cod_plan"))));
+                
+                
                
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
-            return post;
+            return em;
             
         } catch (SQLException e) {
             System.out.println(e);
@@ -74,13 +78,14 @@ public class DaoPostpago {
         return null;
     }
 
-    public int editar(Postpago post) {
+    public int editar(Empresa em) {
 
         String sql_update;
-        sql_update = "UPDATE postpago  SET"
-                + "total_minutos=" + post.getTotal_minutos() + ""
-                + "costo_min_adicional=" + post.getCosto_min_adicional() + ""                
-                + "WHERE cod_plan='" + post.getCod_plan() + "'";
+        sql_update = "UPDATE empresa  SET"
+                + "telefono='" + em.getTelefono() + "'"
+                + "direccion='" + em.getDireccion() + "'"
+                + "cod_plan='" + em.getCod_plan() + "'"   
+                + "WHERE nombre='" + em.getNombre() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
