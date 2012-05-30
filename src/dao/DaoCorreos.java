@@ -9,45 +9,43 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import logica.Empresa;
+import logica.Correos;
 
 /**
  *
  * @author juandrd
  */
-public class DaoEmpresa {
+public class DaoCorreos {
     
 FachadaBD fachada;
 
-    DaoEmpresa() {
+    DaoCorreos() {
         fachada = new FachadaBD();
     }//
 
-    public int guardar(Empresa e) {
+    public int guardar(Correos c) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO empresa VALUES ('"
-                + e.getNombre() + "', '"
-                + e.getTelefono() + "', '"
-                + e.getDireccion() + "', '"
-                + e.getCod_plan().getCod_plan().getCod_plan() + "')";
+        sql_guardar = "INSERT INTO correos VALUES ('"
+                + c.getEmail() + "', '"
+                + c.getId_abonado().getId() + "')";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             int numFilas = sentencia.executeUpdate(sql_guardar);
             conn.close();
             return numFilas;
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return -1;
     }//fin guardar
 
-    public Empresa consultar(String nombre) {
-        Empresa em = new Empresa();
+    public Correos consultar(String email) {
+        Correos c = new Correos();
         String sql_select;
-        sql_select = "SELECT * FROM empresa WHERE nombre='" + nombre + "'";
+        sql_select = "SELECT * FROM correos WHERE email='" + email + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -55,19 +53,16 @@ FachadaBD fachada;
 
             //
             if (tabla.next()) {
-                
-                em.setNombre(tabla.getString("nombre"));
-                em.setTelefono(tabla.getString("telefono"));
-                em.setDireccion(tabla.getString("direccion"));
-                em.setCod_plan(new DaoPostpago().consultar(tabla.getString("cod_plan")));
-                
-                
-               
+
+                c.setEmail(tabla.getString("email"));
+                c.setId_abonado(new DaoAbonado().consultar(tabla.getString("id_abonado")));
+           
+
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
-            return em;
+            return c;
             
         } catch (SQLException e) {
             System.out.println(e);
@@ -78,21 +73,20 @@ FachadaBD fachada;
         return null;
     }
 
-    public int editar(Empresa em) {
+    public int editar(Correos c) {
 
         String sql_update;
-        sql_update = "UPDATE empresa  SET"
-                + "telefono='" + em.getTelefono() + "'"
-                + "direccion='" + em.getDireccion() + "'"
-                + "cod_plan='" + em.getCod_plan() + "'"   
-                + "WHERE nombre='" + em.getNombre() + "'";
+        sql_update = "UPDATE correos  SET"
+                + "id_abonado='" + c.getId_abonado() + "'"
+                + "WHERE email='" + c.getEmail() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
            
 
-            conn.close();             
+            conn.close();
+             
             System.out.println("Conexion cerrada");
             return 0;
 
