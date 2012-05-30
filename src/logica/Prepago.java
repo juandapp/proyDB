@@ -12,7 +12,7 @@ public class Prepago {
     Plan cod_plan;
 
     public Prepago() {
-    }
+    } 
  
     public Plan getCod_plan() {
         return cod_plan;
