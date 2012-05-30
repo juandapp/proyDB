@@ -4,7 +4,7 @@
  */
 package logica;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Empleado {
     String id_empleado, nombre, genero, estado_civil, tipo_contrato, cargo;
     Date fecha_nacimiento, fecha_ingreso;
     Sucursal cod_sucursal;
-
+    
     public Empleado() {
     }    
 
@@ -90,4 +90,5 @@ public class Empleado {
     public void setTipo_contrato(String tipo_contrato) {
         this.tipo_contrato = tipo_contrato;
     }
+    
 }

@@ -65,21 +65,53 @@ public class DaoEmpleado {
                 e.setId_empleado(tabla.getString("id_empleado"));
                 e.setNombre(tabla.getString("nombre"));
                 e.setGenero(tabla.getString("genero"));
-                e.setEstado_civil(tabla.getString("estado_civil"));                
+                e.setEstado_civil(tabla.getString("estado_civil"));
                 e.setFecha_nacimiento(tabla.getDate("fecha_nacimiento"));
                 e.setFecha_ingreso(tabla.getDate("fecha_ingreso"));
-                
+                e.setTipo_contrato(tabla.getString("tipo_contrato"));
+                e.setCargo(tabla.getString("cargo"));
+                e.setCod_sucursal(new DaoSucursal().consultar(tabla.getString("cod_sucursal")));
             }
-
             conn.close();
             System.out.println("Conexion cerrada");
+            return e;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
+    public int editar(Empleado e) {
+
+        String sql_update;
+        sql_update = "UPDATE empleado  SET"
+                + "nombre='" + e.getNombre() + "'"
+                + "genero='" + e.getGenero() + "'"
+                + "estado_civil='" + e.getEstado_civil() + "'"
+                + "fecha_nacimiento='" + e.getFecha_nacimiento() + "'"
+                + "fecha_ingreso='" + e.getFecha_ingreso() + "'"
+                + "tipo_contrato='" + e.getTipo_contrato() + "'"
+                + "cargo='" + e.getCargo() + "'"
+                + "cod_sucursal='" + e.getCod_sucursal().getCod_sucursal() + "'"
+                + "WHERE cod_sucursal='" + e.getId_empleado() + "'";
+        try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_update);
+
+
+            conn.close();
+
+            System.out.println("Conexion cerrada");
+            return 0;
 
         } catch (SQLException ex) {
             System.out.println(ex);
         } catch (Exception ex) {
             System.out.println(ex);
         }
-
-        return e;
+        return -1;
     }
 }
