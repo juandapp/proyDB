@@ -8,7 +8,7 @@ import accesoDatos.FachadaBD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement; 
+import java.sql.Statement;
 import logica.Postpago;
 
 /**
@@ -16,12 +16,12 @@ import logica.Postpago;
  * @author juandrd
  */
 public class DaoPostpago {
-    
- FachadaBD fachada;
+
+    FachadaBD fachada;
 
     DaoPostpago() {
         fachada = new FachadaBD();
-    }//
+    }
 
     public int guardar(Postpago post) {
         String sql_guardar;
@@ -51,20 +51,18 @@ public class DaoPostpago {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
-
-            //
             if (tabla.next()) {
 
                 post.setCod_plan(new DaoPlan().consultar(tabla.getString("cod_plan")));
                 post.setTotal_minutos(tabla.getInt("total_minutos"));
                 post.setCosto_min_adicional(tabla.getInt("costo_min_adicional"));
-               
+
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
             return post;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
@@ -79,15 +77,15 @@ public class DaoPostpago {
         String sql_update;
         sql_update = "UPDATE postpago  SET"
                 + "total_minutos=" + post.getTotal_minutos() + ""
-                + "costo_min_adicional=" + post.getCosto_min_adicional() + ""                
+                + "costo_min_adicional=" + post.getCosto_min_adicional() + ""
                 + "WHERE cod_plan='" + post.getCod_plan() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
 
-            conn.close();             
+
+            conn.close();
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -96,6 +94,6 @@ public class DaoPostpago {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return -1;        
+        return -1;
     }
 }

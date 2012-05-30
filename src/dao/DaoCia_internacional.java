@@ -91,14 +91,14 @@ public class DaoCia_internacional {
                 + "tar_llamada_sale_nal=" + ci.getTar_llamada_sale_nal() + ""
                 + "tar_datos_recibidos=" + ci.getTar_datos_recibidos() + ""
                 + "tar_datos_enviados=" + ci.getTar_datos_enviados() + ""
-                + "WHERE id='" +ci.getId()+"'";
-        
+                + "WHERE id='" + ci.getId() + "'";
+
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_editar);
-            return 0;            
-        } catch (SQLException ex) { 
+            return 0;
+        } catch (SQLException ex) {
             System.out.println(ex);
         } catch (Exception ex) {
             System.out.println(ex);
