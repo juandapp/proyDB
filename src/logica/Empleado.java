@@ -37,7 +37,7 @@ public class Empleado {
     public Date getFecha_ingreso() {
         return fecha_ingreso;
     }
-
+    
     public String getEstado_civil() {
         return estado_civil;
     }
