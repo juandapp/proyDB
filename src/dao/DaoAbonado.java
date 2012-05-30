@@ -108,7 +108,7 @@ public class DaoAbonado {
                 + "ciudad='" + a.getCiudad() + "'"              
                 + "tipo='" + a.getTipo() + "'"
                 + "imei='" + a.getImei().getImei() + "'"
-                + "WHERE cod_sucursal='" + a.getId() + "'";
+                + "WHERE id='" + a.getId() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
