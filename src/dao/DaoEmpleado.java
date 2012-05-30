@@ -8,7 +8,6 @@ import accesoDatos.FachadaBD;
 
 import java.sql.*;
 import logica.Empleado;
-import logica.Sucursal;
 
 /**
  *
