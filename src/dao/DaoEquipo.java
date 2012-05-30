@@ -61,6 +61,7 @@ public class DaoEquipo {
 
             conn.close();
             System.out.println("Conexion cerrada");
+            return e;
             
 
         } catch (SQLException ex) {
@@ -69,7 +70,7 @@ public class DaoEquipo {
             System.out.println(ex);
         }
 
-        return e;
+        return null;
     }
 
     public int editar(Equipo e) {

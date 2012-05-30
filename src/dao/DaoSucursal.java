@@ -64,14 +64,15 @@ public class DaoSucursal {
 
             conn.close();
             System.out.println("Conexion cerrada");
-
+            return s;
+            
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
             System.out.println(e);
         }
 
-        return s;
+        return null;
     }
 
     public int editar(Sucursal s) {
