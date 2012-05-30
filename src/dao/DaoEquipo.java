@@ -24,7 +24,7 @@ public class DaoEquipo {
 
     public int guardar(Equipo equipo) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO sucursal VALUES ('"
+        sql_guardar = "INSERT INTO equipo VALUES ('"
                 + equipo.getImei() + "', '"
                 + equipo.getModelo() + "', '"                
                 + equipo.getMarca() + "')";
