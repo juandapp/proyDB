@@ -8,7 +8,6 @@ import accesoDatos.FachadaBD;
 
 import java.sql.*;
 import logica.Empleado;
-import logica.Sucursal;
 
 /**
  *
@@ -22,7 +21,7 @@ public class DaoEmpleado {
         fachada = new FachadaBD();
     }
 
-    public int guardarPrograma(Empleado em) {
+    public int guardar(Empleado em) {
         String sql_guardar;
         int numFilas = 0;
 

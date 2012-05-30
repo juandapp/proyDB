@@ -8,7 +8,7 @@ import accesoDatos.FachadaBD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Statement; 
 import logica.Postpago;
 
 /**
@@ -55,7 +55,7 @@ public class DaoPostpago {
             //
             if (tabla.next()) {
 
-                post.setCod_plan(new DaoPlan.consultar(tabla.getString("cod_plan")));
+                post.setCod_plan(new DaoPlan().consultar(tabla.getString("cod_plan")));
                 post.setTotal_minutos(tabla.getInt("total_minutos"));
                 post.setCosto_min_adicional(tabla.getInt("costo_min_adicional"));
                
