@@ -34,8 +34,5 @@ public class Postpago {
 
     public void setTotal_minutos(int total_minutos) {
         this.total_minutos = total_minutos;
-    }
-    
-    
-    
+    }        
 }
