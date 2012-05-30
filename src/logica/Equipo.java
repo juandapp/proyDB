@@ -12,6 +12,9 @@ public class Equipo {
 
     String imei, modelo, marca;
 
+    public Equipo() {
+    }
+
     public String getImei() {
         return imei;
     }

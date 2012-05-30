@@ -13,6 +13,9 @@ public class Plan {
     String cod_plan;
     int tarifa_otro_operador, tarifa_msj_multimedia, tarifa_msj_texto;
 
+    public Plan() {
+    }
+
     public String getCod_plan() {
         return cod_plan;
     }

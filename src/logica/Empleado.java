@@ -16,6 +16,9 @@ public class Empleado {
     Date fecha_nacimiento, fecha_ingreso;
     Sucursal cod_sucursal;
 
+    public Empleado() {
+    }    
+
     public Date getFecha_nacimiento() {
         return fecha_nacimiento;
     }

@@ -16,6 +16,9 @@ public class Abonado {
     Equipo imei;
     Date fecha_nacimiento;
 
+    public Abonado() {
+    }     
+
     public String getId() {
         return id;
     }
