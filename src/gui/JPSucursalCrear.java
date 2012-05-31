@@ -16,6 +16,7 @@ public class JPSucursalCrear extends javax.swing.JPanel {
      * Creates new form JPSucursalCrear
      */
     ControladorSucursal cs;
+
     public JPSucursalCrear() {
         initComponents();
         cs = new ControladorSucursal();
@@ -110,11 +111,13 @@ public class JPSucursalCrear extends javax.swing.JPanel {
 
     private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
         String cod_sucursal = jTFCodigo.getText();
-        String nombre= jTFNombre.getText();
-     String ciudad, String direccion, String telefono;
-        
-    }//GEN-LAST:event_jBCrearActionPerformed
+        String nombre = jTFNombre.getText();
+        String ciudad = jTFCiudad.getText();
+        String direccion = jTFDireccion.getText();
+        String telefono = jTFTelefono.getText();
+        cs.guardar(cod_sucursal, nombre, ciudad, direccion, telefono);
 
+    }//GEN-LAST:event_jBCrearActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCrear;
     private javax.swing.JButton jBLimpiar;
