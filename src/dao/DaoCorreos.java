@@ -16,10 +16,10 @@ import logica.Correos;
  * @author juandrd
  */
 public class DaoCorreos {
-    
-FachadaBD fachada;
 
-    DaoCorreos() {
+    FachadaBD fachada;
+
+    public DaoCorreos() {
         fachada = new FachadaBD();
     }//
 
@@ -56,14 +56,14 @@ FachadaBD fachada;
 
                 c.setEmail(tabla.getString("email"));
                 c.setId_abonado(new DaoAbonado().consultar(tabla.getString("id_abonado")));
-           
+
 
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
             return c;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
@@ -83,10 +83,10 @@ FachadaBD fachada;
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
+
 
             conn.close();
-             
+
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -95,6 +95,6 @@ FachadaBD fachada;
         } catch (Exception e) {
             System.out.println(e);
         }
-        return -1;        
+        return -1;
     }
 }

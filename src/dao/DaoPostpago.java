@@ -19,7 +19,7 @@ public class DaoPostpago {
 
     FachadaBD fachada;
 
-    DaoPostpago() {
+    public DaoPostpago() {
         fachada = new FachadaBD();
     }
 

@@ -16,17 +16,17 @@ import logica.Prepago;
  * @author juandrd
  */
 public class DaoPrepago {
-    
-FachadaBD fachada;
 
-    DaoPrepago() {
+    FachadaBD fachada;
+
+    public DaoPrepago() {
         fachada = new FachadaBD();
     }//
 
     public int guardar(Prepago pre) {
         String sql_guardar;
         sql_guardar = "INSERT INTO prepago VALUES ('"
-                + pre.getCod_plan() +  "')";
+                + pre.getCod_plan() + "')";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -54,14 +54,14 @@ FachadaBD fachada;
             if (tabla.next()) {
 
                 c.setCod_plan(new DaoPlan().consultar(tabla.getString("cod_plan")));
-                          
+
 
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
             return c;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
@@ -81,10 +81,10 @@ FachadaBD fachada;
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
+
 
             conn.close();
-             
+
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -93,6 +93,6 @@ FachadaBD fachada;
         } catch (Exception e) {
             System.out.println(e);
         }
-        return -1;        
+        return -1;
     }
 }

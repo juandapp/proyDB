@@ -15,6 +15,15 @@ public class Sucursal {
     public Sucursal() {
     }
 
+    public Sucursal(String cod_sucursal, String nombre, String ciudad, String direccion, String telefono) {
+        this.cod_sucursal = cod_sucursal;
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+    
+
     public String getCod_sucursal() {
         return cod_sucursal;
     }

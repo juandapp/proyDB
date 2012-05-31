@@ -16,10 +16,10 @@ import logica.Empresa;
  * @author juandrd
  */
 public class DaoEmpresa {
-    
-FachadaBD fachada;
 
-    DaoEmpresa() {
+    FachadaBD fachada;
+
+    public DaoEmpresa() {
         fachada = new FachadaBD();
     }//
 
@@ -55,20 +55,20 @@ FachadaBD fachada;
 
             //
             if (tabla.next()) {
-                
+
                 em.setNombre(tabla.getString("nombre"));
                 em.setTelefono(tabla.getString("telefono"));
                 em.setDireccion(tabla.getString("direccion"));
                 em.setCod_plan(new DaoPostpago().consultar(tabla.getString("cod_plan")));
-                
-                
-               
+
+
+
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
             return em;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
@@ -84,15 +84,15 @@ FachadaBD fachada;
         sql_update = "UPDATE empresa  SET"
                 + "telefono='" + em.getTelefono() + "'"
                 + "direccion='" + em.getDireccion() + "'"
-                + "cod_plan='" + em.getCod_plan() + "'"   
+                + "cod_plan='" + em.getCod_plan() + "'"
                 + "WHERE nombre='" + em.getNombre() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
 
-            conn.close();             
+
+            conn.close();
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -101,6 +101,6 @@ FachadaBD fachada;
         } catch (Exception e) {
             System.out.println(e);
         }
-        return -1;        
+        return -1;
     }
 }

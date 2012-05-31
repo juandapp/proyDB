@@ -16,10 +16,10 @@ import logica.Cia_local;
  * @author juandrd
  */
 public class DaoCia_local {
-    
-FachadaBD fachada;
 
-    DaoCia_local() {
+    FachadaBD fachada;
+
+    public DaoCia_local() {
         fachada = new FachadaBD();
     }//
 
@@ -56,14 +56,14 @@ FachadaBD fachada;
 
                 c.setId(tabla.getString("id"));
                 c.setNombre(tabla.getString("nombre"));
-           
+
 
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
             return c;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
@@ -83,10 +83,10 @@ FachadaBD fachada;
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
+
 
             conn.close();
-             
+
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -95,6 +95,6 @@ FachadaBD fachada;
         } catch (Exception e) {
             System.out.println(e);
         }
-        return -1;        
+        return -1;
     }
 }

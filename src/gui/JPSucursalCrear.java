@@ -4,6 +4,8 @@
  */
 package gui;
 
+import controlador.ControladorSucursal;
+
 /**
  *
  * @author juandapp
@@ -13,8 +15,10 @@ public class JPSucursalCrear extends javax.swing.JPanel {
     /**
      * Creates new form JPSucursalCrear
      */
+    ControladorSucursal cs;
     public JPSucursalCrear() {
         initComponents();
+        cs = new ControladorSucursal();
     }
 
     /**
@@ -37,8 +41,8 @@ public class JPSucursalCrear extends javax.swing.JPanel {
         jTFCiudad = new javax.swing.JTextField();
         jTFDireccion = new javax.swing.JTextField();
         jTFTelefono = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
+        jBCrear = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Sucursal"));
         jPanel1.setLayout(null);
@@ -73,9 +77,14 @@ public class JPSucursalCrear extends javax.swing.JPanel {
         jPanel1.add(jTFTelefono);
         jTFTelefono.setBounds(80, 140, 190, 28);
 
-        jButton1.setText("Limpiar");
+        jBLimpiar.setText("Limpiar");
 
-        jButton2.setText("Crear");
+        jBCrear.setText("Crear");
+        jBCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,9 +93,9 @@ public class JPSucursalCrear extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jBCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,14 +103,21 @@ public class JPSucursalCrear extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBCrear)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
+        String cod_sucursal = jTFCodigo.getText();
+        String nombre= jTFNombre.getText();
+     String ciudad, String direccion, String telefono;
+        
+    }//GEN-LAST:event_jBCrearActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBCrear;
+    private javax.swing.JButton jBLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

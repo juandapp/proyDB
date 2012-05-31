@@ -16,9 +16,9 @@ public class DaoSucursal {
 
     FachadaBD fachada;
 
-    DaoSucursal() {
+    public DaoSucursal() {
         fachada = new FachadaBD();
-    }//
+    }
 
     public int guardar(Sucursal sucursal) {
         String sql_guardar;
@@ -65,7 +65,7 @@ public class DaoSucursal {
             conn.close();
             System.out.println("Conexion cerrada");
             return s;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         } catch (Exception e) {
@@ -88,10 +88,10 @@ public class DaoSucursal {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
+
 
             conn.close();
-             
+
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -100,6 +100,6 @@ public class DaoSucursal {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return -1;        
+        return -1;
     }
 }

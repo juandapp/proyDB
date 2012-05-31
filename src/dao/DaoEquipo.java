@@ -16,9 +16,10 @@ import logica.Equipo;
  * @author juandrd
  */
 public class DaoEquipo {
+
     FachadaBD fachada;
 
-    DaoEquipo() {
+    public DaoEquipo() {
         fachada = new FachadaBD();
     }//
 
@@ -26,7 +27,7 @@ public class DaoEquipo {
         String sql_guardar;
         sql_guardar = "INSERT INTO equipo VALUES ('"
                 + equipo.getImei() + "', '"
-                + equipo.getModelo() + "', '"                
+                + equipo.getModelo() + "', '"
                 + equipo.getMarca() + "')";
         try {
             Connection conn = fachada.conectar();
@@ -56,13 +57,13 @@ public class DaoEquipo {
 
                 e.setImei(tabla.getString("imei"));
                 e.setModelo(tabla.getString("modelo"));
-                e.setMarca(tabla.getString("marca"));             
+                e.setMarca(tabla.getString("marca"));
             }
 
             conn.close();
             System.out.println("Conexion cerrada");
             return e;
-            
+
 
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -84,10 +85,10 @@ public class DaoEquipo {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_update);
-           
+
 
             conn.close();
-             
+
             System.out.println("Conexion cerrada");
             return 0;
 
@@ -96,6 +97,6 @@ public class DaoEquipo {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        return -1;        
+        return -1;
     }
 }
