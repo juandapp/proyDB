@@ -9,14 +9,18 @@ package accesoDatos;
  *
  * @author Oswaldo
  */
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class FachadaBD {
         String url, usuario, password;
         Connection conexion;
         Statement instruccion;
         ResultSet tabla;
         public FachadaBD(){
-            url="jdbc:postgresql://localhost:5432/pruebas";
+            url="jdbc:postgresql://pgsql:5432/juandapp";
             usuario="juandapp";
             password="juandapp";
         }
@@ -45,9 +49,16 @@ public class FachadaBD {
 
         public void cerrarConexion(Connection c){
             try{
-                 c.close();
+                 c.close();                 
+                System.out.println( "Conexion cerrada" );
             } catch( Exception e ) {
                 System.out.println( "No se pudo cerrar." );
             }
+        }
+        
+        public static void main(String[] arg){
+            FachadaBD f = new FachadaBD();
+            f.conectar();
+            f.cerrarConexion(f.conexion);
         }
 }

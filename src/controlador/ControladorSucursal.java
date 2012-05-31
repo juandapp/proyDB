@@ -12,17 +12,23 @@ import logica.Sucursal;
  * @author juandapp
  */
 public class ControladorSucursal {
+
     DaoSucursal daoSucursal;
+
     public ControladorSucursal() {
         daoSucursal = new DaoSucursal();
-                
+
     }
-    
-    public int guardar(String cod_sucursal, String nombre, String ciudad, String direccion, String telefono){
+
+    public int guardar(String cod_sucursal, String nombre, String ciudad, String direccion, String telefono) {
         Sucursal s = new Sucursal(cod_sucursal, nombre, ciudad, direccion, telefono);
         int retorno = daoSucursal.guardar(s);
         return retorno;
     }
-    
-    
+
+    public Sucursal consultar(String cod_sucursal) {
+        Sucursal s;
+        s = daoSucursal.consultar(cod_sucursal);
+        return s;
+    }
 }

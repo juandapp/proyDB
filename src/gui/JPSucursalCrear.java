@@ -5,6 +5,8 @@
 package gui;
 
 import controlador.ControladorSucursal;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -115,8 +117,12 @@ public class JPSucursalCrear extends javax.swing.JPanel {
         String ciudad = jTFCiudad.getText();
         String direccion = jTFDireccion.getText();
         String telefono = jTFTelefono.getText();
-        cs.guardar(cod_sucursal, nombre, ciudad, direccion, telefono);
-
+        int guardar = cs.guardar(cod_sucursal, nombre, ciudad, direccion, telefono);
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear la sucursal", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sucursal Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jBCrearActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCrear;
