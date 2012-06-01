@@ -90,13 +90,7 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Codigo", "Nombre", "Ciudad", "Direccion", "Telefono"
@@ -113,7 +107,7 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 160, 452, 125);
+        jScrollPane1.setBounds(10, 160, 450, 125);
 
         jBConsultar.setText("Consultar");
         jBConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -149,26 +143,61 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
+
         String cod_sucursal = jTFCodigo.getText();
-        Object[] s = {cs.consultar(cod_sucursal)};
-        TableModel myModel = new javax.swing.table.DefaultTableModel(
-                s,
-                new String[]{
-                    "Codigo", "Nombre", "Sexo", "Programa"
-                }) {
-                    
-                    boolean[] canEdit = new boolean[]{
-                        false, false, false, false
-                    };
-                    
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit[columnIndex];
-                    }
-                };
-        
+        Sucursal consultar =
+                cs.consultar(cod_sucursal);
+        /*
+         * Object[][] s = {{consultar.getCod_sucursal()},
+         * {consultar.getNombre()}, {consultar.getCiudad()},
+         * {consultar.getDireccion()},
+          {consultar.getTelefono()}};
+         */
+
+        Object[][] s = new Object[1][5];
+        s[0][0] =
+                consultar.getCod_sucursal();
+        s[0][1] = consultar.getNombre();
+        s[0][2] = consultar.getCiudad();
+        s[0][3] = consultar.getDireccion();
+        s[0][4] = consultar.getTelefono();
+
+
+
+        TableModel myModel = new javax.swing.table.DefaultTableModel(s, new String[]{"Codigo", "Nombre", "Ciudad", "Direccion", "Telefono"}) {
+
+            boolean[] canEdit = new boolean[]{false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        };
+
         jTResultados.setModel(myModel);
         jTResultados.setRowSorter(new TableRowSorter(myModel));
-        
+
+
+
+
+
+        /*
+         *
+         * DefaultTableModel modelo = new DefaultTableModel();
+         * modelo.addColumn("Codigo"); modelo.addColumn("Nombre");
+         * modelo.addColumn("Ciudad"); modelo.addColumn("Direccion");
+         * modelo.addColumn("Telefono"); Object[] s = new Object[1]; s[0] =
+         * cs.consultar(jTFCodigo.getText()); for (int i = 0; i < s.length; i++)
+         * { Object[] fila = new Object[5]; fila[0]=s[0]; fila[1]=s[0];
+         * fila[2]=s[0]; fila[3]=s[0]; fila[4]=s[0];
+         *
+         * modelo.addRow(fila); }
+         */
+
+
+
+
+
     }//GEN-LAST:event_jBConsultarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar;
