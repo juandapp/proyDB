@@ -5,6 +5,7 @@
 package gui;
 
 import controlador.ControladorSucursal;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -14,14 +15,14 @@ import logica.Sucursal;
  *
  * @author juandapp
  */
-public class JPSucursalBuscar extends javax.swing.JPanel {
+public class JPSucursal extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPSucursalBuscar
+     * Creates new form JPSucursal
      */
     ControladorSucursal cs;
 
-    public JPSucursalBuscar() {
+    public JPSucursal() {
         initComponents();
         cs = new ControladorSucursal();
     }
@@ -52,6 +53,20 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
         jTResultados = new javax.swing.JTable();
         jBConsultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTFCodigo1 = new javax.swing.JTextField();
+        jTFNombre1 = new javax.swing.JTextField();
+        jTFCiudad1 = new javax.swing.JTextField();
+        jTFDireccion1 = new javax.swing.JTextField();
+        jTFTelefono1 = new javax.swing.JTextField();
+        jBLimpiar = new javax.swing.JButton();
+        jBCrear = new javax.swing.JButton();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Sucursal"));
         jPanel3.setLayout(null);
@@ -107,7 +122,7 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 160, 450, 125);
+        jScrollPane1.setBounds(10, 160, 452, 125);
 
         jBConsultar.setText("Consultar");
         jBConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +137,74 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
 
         jPanel2.setLayout(null);
         jTabbedPane1.addTab("Editar", jPanel2);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Sucursal"));
+        jPanel5.setLayout(null);
+
+        jLabel6.setText("Codigo");
+        jPanel5.add(jLabel6);
+        jLabel6.setBounds(10, 30, 49, 18);
+
+        jLabel7.setText("Nombre");
+        jPanel5.add(jLabel7);
+        jLabel7.setBounds(10, 60, 60, 20);
+
+        jLabel8.setText("Ciudad");
+        jPanel5.add(jLabel8);
+        jLabel8.setBounds(10, 90, 48, 18);
+
+        jLabel9.setText("Direccion");
+        jPanel5.add(jLabel9);
+        jLabel9.setBounds(10, 120, 70, 18);
+
+        jLabel10.setText("Telefono");
+        jPanel5.add(jLabel10);
+        jLabel10.setBounds(10, 150, 64, 18);
+        jPanel5.add(jTFCodigo1);
+        jTFCodigo1.setBounds(80, 20, 100, 28);
+        jPanel5.add(jTFNombre1);
+        jTFNombre1.setBounds(80, 50, 190, 28);
+        jPanel5.add(jTFCiudad1);
+        jTFCiudad1.setBounds(80, 80, 190, 28);
+        jPanel5.add(jTFDireccion1);
+        jTFDireccion1.setBounds(80, 110, 190, 28);
+        jPanel5.add(jTFTelefono1);
+        jTFTelefono1.setBounds(80, 140, 190, 28);
+
+        jBLimpiar.setText("Limpiar");
+
+        jBCrear.setText("Crear");
+        jBCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 315, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBCrear))
+                .addGap(0, 175, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Crear", jPanel4);
 
         jPanel3.add(jTabbedPane1);
         jTabbedPane1.setBounds(10, 20, 610, 430);
@@ -199,22 +282,51 @@ public class JPSucursalBuscar extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jBConsultarActionPerformed
+
+    private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
+        String cod_sucursal = jTFCodigo.getText();
+        String nombre = jTFNombre.getText();
+        String ciudad = jTFCiudad.getText();
+        String direccion = jTFDireccion.getText();
+        String telefono = jTFTelefono.getText();
+        int guardar = cs.guardar(cod_sucursal, nombre, ciudad, direccion, telefono);
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear la sucursal", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sucursal Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jBCrearActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar;
+    private javax.swing.JButton jBCrear;
+    private javax.swing.JButton jBLimpiar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFCiudad;
+    private javax.swing.JTextField jTFCiudad1;
     private javax.swing.JTextField jTFCodigo;
+    private javax.swing.JTextField jTFCodigo1;
     private javax.swing.JTextField jTFDireccion;
+    private javax.swing.JTextField jTFDireccion1;
     private javax.swing.JTextField jTFNombre;
+    private javax.swing.JTextField jTFNombre1;
     private javax.swing.JTextField jTFTelefono;
+    private javax.swing.JTextField jTFTelefono1;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables

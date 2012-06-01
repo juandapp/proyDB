@@ -33,51 +33,28 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jPPrincipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMIAbonadoCrear = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMISucursalCrear = new javax.swing.JMenuItem();
-        jMISucursalModificar = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         jMISucursalBuscar = new javax.swing.JMenuItem();
+        jMIAbonadoCrear = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPPrincipal.setLayout(null);
 
-        jMenu1.setText("Abonado");
+        jMenu3.setText("Opciones");
 
-        jMIAbonadoCrear.setText("Crear Abonado");
-        jMenu1.add(jMIAbonadoCrear);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Sucursal");
-
-        jMISucursalCrear.setText("Crear Sucursal");
-        jMISucursalCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMISucursalCrearActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMISucursalCrear);
-
-        jMISucursalModificar.setText("Modificar Sucursal");
-        jMISucursalModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMISucursalModificarActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMISucursalModificar);
-
-        jMISucursalBuscar.setText("Buscar Sucursal");
+        jMISucursalBuscar.setText("Sucursal");
         jMISucursalBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMISucursalBuscarActionPerformed(evt);
             }
         });
-        jMenu2.add(jMISucursalBuscar);
+        jMenu3.add(jMISucursalBuscar);
 
-        jMenuBar1.add(jMenu2);
+        jMIAbonadoCrear.setText(" Abonado");
+        jMenu3.add(jMIAbonadoCrear);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -95,30 +72,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMISucursalCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISucursalCrearActionPerformed
-        try {
-            jPPrincipal.removeAll();
-            jPPrincipal.add(new JPSucursalCrear(), BorderLayout.CENTER);
-            jPPrincipal.updateUI();
-            this.pack();
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_jMISucursalCrearActionPerformed
-
-    private void jMISucursalModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISucursalModificarActionPerformed
-       try {
-            jPPrincipal.removeAll();
-            jPPrincipal.add(new JPSucursalModificar(), BorderLayout.CENTER);
-            jPPrincipal.updateUI();
-            this.pack();
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_jMISucursalModificarActionPerformed
-
     private void jMISucursalBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISucursalBuscarActionPerformed
         try {
             jPPrincipal.removeAll();
-            jPPrincipal.add(new JPSucursalBuscar(), BorderLayout.CENTER);
+            jPPrincipal.add(new JPSucursal(), BorderLayout.CENTER);
             jPPrincipal.updateUI();
             this.pack();
         } catch (Exception e) {
@@ -169,10 +126,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMIAbonadoCrear;
     private javax.swing.JMenuItem jMISucursalBuscar;
-    private javax.swing.JMenuItem jMISucursalCrear;
-    private javax.swing.JMenuItem jMISucursalModificar;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPPrincipal;
     // End of variables declaration//GEN-END:variables

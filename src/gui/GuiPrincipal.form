@@ -4,46 +4,23 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Abonado"/>
+            <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMIAbonadoCrear">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Crear Abonado"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sucursal"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMISucursalCrear">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Crear Sucursal"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMISucursalCrearActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMISucursalModificar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Modificar Sucursal"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMISucursalModificarActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMISucursalBuscar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar Sucursal"/>
+                <Property name="text" type="java.lang.String" value="Sucursal"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMISucursalBuscarActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIAbonadoCrear">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Abonado"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

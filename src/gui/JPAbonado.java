@@ -8,12 +8,12 @@ package gui;
  *
  * @author juandapp
  */
-public class JPAbonadoCrear extends javax.swing.JPanel {
+public class JPAbonado extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPAbonadoCrear
+     * Creates new form JPAbonado
      */
-    public JPAbonadoCrear() {
+    public JPAbonado() {
         initComponents();
     }
 
