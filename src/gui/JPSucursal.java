@@ -233,13 +233,11 @@ public class JPSucursal extends javax.swing.JPanel {
         /*
          * Object[][] s = {{consultar.getCod_sucursal()},
          * {consultar.getNombre()}, {consultar.getCiudad()},
-         * {consultar.getDireccion()},
-          {consultar.getTelefono()}};
+         * {consultar.getDireccion()}, {consultar.getTelefono()}};
          */
-
+if(consultar != null){
         Object[][] s = new Object[1][5];
-        s[0][0] =
-                consultar.getCod_sucursal();
+        s[0][0] = consultar.getCod_sucursal();
         s[0][1] = consultar.getNombre();
         s[0][2] = consultar.getCiudad();
         s[0][3] = consultar.getDireccion();
@@ -260,7 +258,7 @@ public class JPSucursal extends javax.swing.JPanel {
         jTResultados.setModel(myModel);
         jTResultados.setRowSorter(new TableRowSorter(myModel));
 
-
+}
 
 
 
@@ -296,7 +294,6 @@ public class JPSucursal extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Sucursal Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jBCrearActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBCrear;
