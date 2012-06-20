@@ -5,6 +5,7 @@
 package controlador;
 
 import dao.DaoSucursal;
+import java.util.LinkedList;
 import logica.Sucursal;
 
 /**
@@ -17,18 +18,42 @@ public class ControladorSucursal {
 
     public ControladorSucursal() {
         daoSucursal = new DaoSucursal();
-
     }
 
-    public int guardar(String cod_sucursal, String nombre, String ciudad, String direccion, String telefono) {
-        Sucursal s = new Sucursal(cod_sucursal, nombre, ciudad, direccion, telefono);
-        int retorno = daoSucursal.guardar(s);
-        return retorno;
+    public int guardar(String cod_s, String nombre_s, String ciudad_s, String direccion_s,
+            String telefono_s) {
+        if (!cod_s.isEmpty() && !nombre_s.isEmpty() && !ciudad_s.isEmpty()
+                && !direccion_s.isEmpty() && !telefono_s.isEmpty()) {
+            Sucursal suc = new Sucursal(cod_s, nombre_s, ciudad_s, direccion_s, telefono_s);
+            int retorno = daoSucursal.guardar(suc);
+            return retorno;
+        } else {
+            return -1;
+        }
     }
 
-    public Sucursal consultar(String cod_sucursal) {
-        Sucursal s;
-        s = daoSucursal.consultar(cod_sucursal);
+    public Sucursal consultar(String cod_s) {
+        Sucursal s = new Sucursal();
+        s = daoSucursal.consultar(cod_s);
         return s;
+    }
+
+    public LinkedList consultar(String cod_s, String nombre_s, String ciudad_s, String direccion_s,
+                                String telefono_s) {
+        LinkedList sucursalConsultar = new LinkedList();
+        sucursalConsultar = daoSucursal.consultar(cod_s, nombre_s, ciudad_s, direccion_s, telefono_s);
+        return sucursalConsultar;
+    }
+
+    public int editar(String cod_s, String nombre_s, String ciudad_s, String direccion_s,
+                      String telefono_s) {
+        if (!cod_s.isEmpty() && !nombre_s.isEmpty() && !ciudad_s.isEmpty()
+                && !direccion_s.isEmpty() && !telefono_s.isEmpty()) {
+            Sucursal suc = new Sucursal(cod_s, nombre_s, ciudad_s, direccion_s, telefono_s);
+            int retorno = daoSucursal.editar(suc);
+            return retorno;
+        } else {
+            return -1;
+        }
     }
 }

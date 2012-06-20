@@ -5,6 +5,7 @@
 package gui;
 
 import controlador.ControladorSucursal;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -85,6 +86,11 @@ public class JPSucursal extends javax.swing.JPanel {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 72, -1));
 
         jBCrear1.setText("Crear");
@@ -155,6 +161,11 @@ public class JPSucursal extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 125));
@@ -176,6 +187,8 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel11.setText("Codigo");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jTFCodigo2.setEditable(false);
         jPanel2.add(jTFCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
         jPanel2.add(jTFNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
         jPanel2.add(jTFCiudad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
@@ -221,77 +234,131 @@ public class JPSucursal extends javax.swing.JPanel {
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
 
-        String cod_sucursal = jTFCodigo.getText();
-        Sucursal consultar =
-                cs.consultar(cod_sucursal);
-        /*
-         * Object[][] s = {{consultar.getCod_sucursal()},
-         * {consultar.getNombre()}, {consultar.getCiudad()},
-         * {consultar.getDireccion()}, {consultar.getTelefono()}};
-         */
-if(consultar != null){
-        Object[][] s = new Object[1][5];
-        s[0][0] = consultar.getCod_sucursal();
-        s[0][1] = consultar.getNombre();
-        s[0][2] = consultar.getCiudad();
-        s[0][3] = consultar.getDireccion();
-        s[0][4] = consultar.getTelefono();
+        LinkedList consulta = new LinkedList();
+        try {
+            consulta = cs.consultar(  
+                    jTFCodigo.getText(),
+                    jTFNombre.getText(),
+                    jTFCiudad.getText(),
+                    jTFDireccion.getText(),
+                    jTFTelefono.getText());
+            
+                Object[][] s = new Object[consulta.size()][5];
+                for (int i = 0; i < consulta.size(); i++) {
+                   Sucursal suc = (Sucursal) consulta.get(i);
+                    if (suc.getNombre() != null) {
+                        s[i][0] = suc.getCod_sucursal();
+                        s[i][1] = suc.getNombre();
+                        s[i][2] = suc.getCiudad();
+                        s[i][3] = suc.getDireccion();
+                        s[i][4] = suc.getTelefono();
+                    } else {
+                        s = null;
+                    }
+                }
+                TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo", "Nombre", "Ciudad", "Direccion", "Telefono"}) {
+                    boolean[] canEdit = new boolean[]{false, false, false, false, false
+                    };
 
-
-
-        TableModel myModel = new javax.swing.table.DefaultTableModel(s, new String[]{"Codigo", "Nombre", "Ciudad", "Direccion", "Telefono"}) {
-
-            boolean[] canEdit = new boolean[]{false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
-        };
-
-        jTResultados.setModel(myModel);
-        jTResultados.setRowSorter(new TableRowSorter(myModel));
-
-}
-
-
-
-        /*
-         *
-         * DefaultTableModel modelo = new DefaultTableModel();
-         * modelo.addColumn("Codigo"); modelo.addColumn("Nombre");
-         * modelo.addColumn("Ciudad"); modelo.addColumn("Direccion");
-         * modelo.addColumn("Telefono"); Object[] s = new Object[1]; s[0] =
-         * cs.consultar(jTFCodigo.getText()); for (int i = 0; i < s.length; i++)
-         * { Object[] fila = new Object[5]; fila[0]=s[0]; fila[1]=s[0];
-         * fila[2]=s[0]; fila[3]=s[0]; fila[4]=s[0];
-         *
-         * modelo.addRow(fila); }
-         */
-
-
-
-
-
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                };
+                ///remover filas
+                jTResultados.setModel(myModel);
+                jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
-        String cod_sucursal = jTFCodigo.getText();
-        String nombre = jTFNombre.getText();
-        String ciudad = jTFCiudad.getText();
-        String direccion = jTFDireccion.getText();
-        String telefono = jTFTelefono.getText();
-        int guardar = cs.guardar(cod_sucursal, nombre, ciudad, direccion, telefono);
+     int guardar = -1;
+        try {
+            guardar = cs.guardar(
+                    jTFCodigo1.getText(),
+                    jTFNombre1.getText(),
+                    jTFCiudad1.getText(),
+                    jTFDireccion1.getText(),
+                    jTFTelefono1.getText());
+        } catch (Exception e) {
+        }
+
         if (guardar == -1) {
-            JOptionPane.showMessageDialog(this, "No su pudo crear la sucursal", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No su pudo crear la Sucursal", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Sucursal Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo.setText(jTFCodigo1.getText());
+            jBConsultar.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
         }
+
     }//GEN-LAST:event_jBCrear1ActionPerformed
+    private void limpiarCamposModificar() {
+        jTFCodigo2.setText("");
+        jTFNombre2.setText("");
+        jTFCiudad2.setText("");
+        jTFDireccion2.setText("");
+        jTFTelefono2.setText("");
+    }
+
+    private void limpiarCamposCrear() {
+        jTFCodigo1.setText("");
+        jTFNombre1.setText("");
+        jTFCiudad1.setText("");
+        jTFDireccion1.setText("");
+        jTFTelefono1.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFCodigo.setText("");
+        jTFNombre.setText("");
+        jTFCiudad.setText("");
+        jTFDireccion.setText("");
+        jTFTelefono.setText("");
+    }
 
     private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
-        // TODO add your handling code here:
+        int editar = -1;
+        try {
+            editar = cs.editar(
+                    jTFCodigo2.getText(),
+                    jTFNombre2.getText(),
+                    jTFCiudad2.getText(),
+                    jTFDireccion2.getText(),
+                    jTFTelefono2.getText());
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar la Sucursal", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sucursal modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo.setText(jTFCodigo2.getText());
+            jBConsultar.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }
     }//GEN-LAST:event_jBModificar3ActionPerformed
+
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+        limpiarCamposCrear();
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo2.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFNombre2.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFCiudad2.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTFDireccion2.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTFTelefono2.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_jTResultadosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar;

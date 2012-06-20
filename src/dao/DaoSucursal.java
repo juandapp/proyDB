@@ -7,6 +7,7 @@ package dao;
 import accesoDatos.FachadaBD;
 import java.sql.*;
 import logica.Sucursal;
+import java.util.LinkedList;
 
 /**
  *
@@ -74,15 +75,67 @@ public class DaoSucursal {
 
         return null;
     }
+    
+    
+    public LinkedList consultar(String cod_s, String nombre_s, String ciudad_s, String direccion_s,
+                                 String telefono_s) {
+        LinkedList sucursalConsulta = new LinkedList();
+        String sql_select = "SELECT * FROM sucursal      ";
+        if (!cod_s.equals("") || !nombre_s.equals("") || !ciudad_s.equals("")
+            || !direccion_s.equals("") || !telefono_s.equals("")) {
+            sql_select += "WHERE ";
+        }
+        if (!cod_s.equals("")) {
+            sql_select += "cod_sucursal ='" + cod_s + "' AND ";
+        }
+        if(!nombre_s.equals("")){
+            sql_select += "nombre LIKE '%"+nombre_s+"%'"+" AND ";
+        }
+        if(!ciudad_s.equals("")){
+            sql_select += "ciudad LIKE '%"+ciudad_s+"%'"+" AND ";
+        }
+        if(!direccion_s.equals("")){
+            sql_select += "direccion LIKE '%"+direccion_s+"%'"+" AND ";
+        }
+        if(!telefono_s.equals("")){
+            sql_select += "telefono LIKE '%"+telefono_s+"%'"+" AND ";
+        }
+        
+        sql_select = sql_select.substring(0, sql_select.length() - 5);
+        try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                Sucursal suc = new Sucursal();
+                suc.setCod_sucursal(tabla.getString("cod_sucursal"));
+                suc.setNombre(tabla.getString("nombre"));
+                suc.setCiudad(tabla.getString("ciudad"));
+                suc.setDireccion(tabla.getString("direccion"));
+                suc.setTelefono(tabla.getString("telefono"));
+                sucursalConsulta.add(suc);
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return sucursalConsulta;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
 
     public int editar(Sucursal s) {
 
         String sql_update;
         sql_update = "UPDATE sucursal  SET"
-                + "nombre='" + s.getNombre() + "'"
-                + "ciudad='" + s.getCiudad() + "'"
-                + "direccion='" + s.getDireccion() + "'"
-                + "telefono='" + s.getTelefono() + "'"
+                + "nombre='" + s.getNombre() + "', "
+                + "ciudad='" + s.getCiudad() + "', "
+                + "direccion='" + s.getDireccion() + "', "
+                + "telefono='" + s.getTelefono() + "' "
                 + "WHERE cod_sucursal='" + s.getCod_sucursal() + "'";
         try {
             Connection conn = fachada.conectar();
