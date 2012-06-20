@@ -7,6 +7,7 @@ package gui;
 import controlador.ControladorSucursal;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import logica.Sucursal;
