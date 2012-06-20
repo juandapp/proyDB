@@ -42,7 +42,6 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         jCBEstadoCivil1 = new javax.swing.JComboBox();
         jLabel28 = new javax.swing.JLabel();
-        jTFFechaNacimiento1 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jTFFechaIngreso1 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
@@ -53,6 +52,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBSucursal1 = new javax.swing.JComboBox();
         jBLimpiar1 = new javax.swing.JButton();
         jBCrear1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jTFCodigo2 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
@@ -135,8 +135,6 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel28.setText("F. de Nacimiento");
         jPanel1.add(jLabel28);
         jLabel28.setBounds(10, 130, 130, 18);
-        jPanel1.add(jTFFechaNacimiento1);
-        jTFFechaNacimiento1.setBounds(130, 130, 200, 28);
 
         jLabel29.setText("F. de Ingreso");
         jPanel1.add(jLabel29);
@@ -187,6 +185,8 @@ public class JPEmpleado extends javax.swing.JPanel {
         jBCrear1.setText("Crear");
         jPanel1.add(jBCrear1);
         jBCrear1.setBounds(220, 280, 90, 30);
+        jPanel1.add(jDateChooser1);
+        jDateChooser1.setBounds(130, 130, 200, 28);
 
         jTabbedPane1.addTab("Crear", jPanel1);
 
@@ -412,6 +412,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JComboBox jCBTipoContrato1;
     private javax.swing.JComboBox jCBTipoContrato2;
     private javax.swing.JComboBox jCBTipoContrato3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -450,7 +451,6 @@ public class JPEmpleado extends javax.swing.JPanel {
     private javax.swing.JTextField jTFFechaIngreso1;
     private javax.swing.JTextField jTFFechaIngreso2;
     private javax.swing.JTextField jTFFechaIngreso3;
-    private javax.swing.JTextField jTFFechaNacimiento1;
     private javax.swing.JTextField jTFFechaNacimiento2;
     private javax.swing.JTextField jTFFechaNacimiento3;
     private javax.swing.JTextField jTFNombre1;
