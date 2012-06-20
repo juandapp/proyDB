@@ -4,6 +4,8 @@
  */
 package gui;
 
+import controlador.ControladorSucursal;
+
 /**
  *
  * @author JUANPAULO
@@ -13,8 +15,10 @@ public class JPEmpleado extends javax.swing.JPanel {
     /**
      * Creates new form JPEmpleado
      */
+    ControladorSucursal controladorSucursal;
     public JPEmpleado() {
         initComponents();
+        controladorSucursal = new ControladorSucursal();
     }
 
     /**
@@ -102,13 +106,13 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel1.add(jLabel24);
         jLabel24.setBounds(10, 10, 12, 18);
         jPanel1.add(jTFCodigo1);
-        jTFCodigo1.setBounds(130, 10, 100, 28);
+        jTFCodigo1.setBounds(130, 10, 130, 28);
 
         jLabel25.setText("Nombre");
         jPanel1.add(jLabel25);
         jLabel25.setBounds(10, 40, 80, 18);
         jPanel1.add(jTFNombre1);
-        jTFNombre1.setBounds(130, 40, 140, 28);
+        jTFNombre1.setBounds(130, 40, 200, 28);
 
         jLabel26.setText("Genero");
         jPanel1.add(jLabel26);
@@ -117,7 +121,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBGenero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Femenino", "Masculino" }));
         jCBGenero1.setName(""); // NOI18N
         jPanel1.add(jCBGenero1);
-        jCBGenero1.setBounds(130, 70, 140, 28);
+        jCBGenero1.setBounds(130, 70, 200, 28);
 
         jLabel27.setText("Estado Civil");
         jPanel1.add(jLabel27);
@@ -125,25 +129,20 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado", "Union Libre" }));
         jCBEstadoCivil1.setName(""); // NOI18N
-        jCBEstadoCivil1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBEstadoCivil1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jCBEstadoCivil1);
-        jCBEstadoCivil1.setBounds(130, 100, 140, 28);
+        jCBEstadoCivil1.setBounds(130, 100, 200, 28);
 
         jLabel28.setText("F. de Nacimiento");
         jPanel1.add(jLabel28);
         jLabel28.setBounds(10, 130, 130, 18);
         jPanel1.add(jTFFechaNacimiento1);
-        jTFFechaNacimiento1.setBounds(130, 130, 140, 28);
+        jTFFechaNacimiento1.setBounds(130, 130, 200, 28);
 
         jLabel29.setText("F. de Ingreso");
         jPanel1.add(jLabel29);
         jLabel29.setBounds(10, 160, 110, 20);
         jPanel1.add(jTFFechaIngreso1);
-        jTFFechaIngreso1.setBounds(130, 160, 140, 28);
+        jTFFechaIngreso1.setBounds(130, 160, 200, 28);
 
         jLabel30.setText("Tipo de Contrato");
         jPanel1.add(jLabel30);
@@ -152,7 +151,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBTipoContrato1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado" }));
         jCBTipoContrato1.setName(""); // NOI18N
         jPanel1.add(jCBTipoContrato1);
-        jCBTipoContrato1.setBounds(130, 190, 140, 28);
+        jCBTipoContrato1.setBounds(130, 190, 200, 28);
 
         jLabel31.setText("Cargo");
         jPanel1.add(jLabel31);
@@ -161,7 +160,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBCargo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Vendedor", "Gerente" }));
         jCBCargo1.setName(""); // NOI18N
         jPanel1.add(jCBCargo1);
-        jCBCargo1.setBounds(130, 220, 140, 28);
+        jCBCargo1.setBounds(130, 220, 200, 28);
 
         jLabel32.setText("Sucursal");
         jPanel1.add(jLabel32);
@@ -169,19 +168,23 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBSucursal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Sucursales" }));
         jCBSucursal1.setName(""); // NOI18N
+        jCBSucursal1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBSucursal1PopupMenuWillBecomeVisible(evt);
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
         jPanel1.add(jCBSucursal1);
-        jCBSucursal1.setBounds(130, 250, 140, 28);
+        jCBSucursal1.setBounds(130, 250, 200, 28);
 
         jBLimpiar1.setText("Limpiar");
         jPanel1.add(jBLimpiar1);
         jBLimpiar1.setBounds(130, 280, 80, 30);
 
         jBCrear1.setText("Crear");
-        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCrear1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jBCrear1);
         jBCrear1.setBounds(220, 280, 90, 30);
 
@@ -220,7 +223,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBGenero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Femenino", "Masculino" }));
         jCBGenero2.setName(""); // NOI18N
         jPanel2.add(jCBGenero2);
-        jCBGenero2.setBounds(390, 10, 119, 28);
+        jCBGenero2.setBounds(390, 10, 170, 28);
 
         jLabel36.setText("Estado Civil");
         jPanel2.add(jLabel36);
@@ -229,7 +232,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBEstadoCivil2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado", "Union Libre" }));
         jCBEstadoCivil2.setName(""); // NOI18N
         jPanel2.add(jCBEstadoCivil2);
-        jCBEstadoCivil2.setBounds(390, 40, 119, 28);
+        jCBEstadoCivil2.setBounds(390, 40, 170, 28);
 
         jLabel40.setText("Cargo");
         jPanel2.add(jLabel40);
@@ -238,7 +241,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBCargo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Vendedor", "Gerente" }));
         jCBCargo2.setName(""); // NOI18N
         jPanel2.add(jCBCargo2);
-        jCBCargo2.setBounds(390, 70, 119, 28);
+        jCBCargo2.setBounds(390, 70, 170, 28);
 
         jLabel39.setText("Tipo de Contrato");
         jPanel2.add(jLabel39);
@@ -255,20 +258,10 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBSucursal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Sucursales" }));
         jCBSucursal2.setName(""); // NOI18N
-        jCBSucursal2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBSucursal2ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jCBSucursal2);
-        jCBSucursal2.setBounds(390, 100, 119, 28);
+        jCBSucursal2.setBounds(390, 100, 170, 28);
 
         jBLimpiar2.setText("Limpiar");
-        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBLimpiar2ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jBLimpiar2);
         jBLimpiar2.setBounds(500, 140, 90, 30);
 
@@ -294,13 +287,8 @@ public class JPEmpleado extends javax.swing.JPanel {
         jScrollPane1.setBounds(10, 210, 640, 140);
 
         jBConsultar1.setText("Consultar");
-        jBConsultar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBConsultar1ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jBConsultar1);
-        jBConsultar1.setBounds(310, 140, 150, 40);
+        jBConsultar1.setBounds(370, 140, 120, 30);
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
@@ -335,11 +323,6 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBEstadoCivil3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado", "Union Libre" }));
         jCBEstadoCivil3.setName(""); // NOI18N
-        jCBEstadoCivil3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBEstadoCivil3ActionPerformed(evt);
-            }
-        });
         jPanel4.add(jCBEstadoCivil3);
         jCBEstadoCivil3.setBounds(140, 100, 140, 28);
 
@@ -383,11 +366,6 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBSucursal3.setBounds(140, 250, 140, 28);
 
         jBCrear2.setText("Crear");
-        jBCrear2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCrear2ActionPerformed(evt);
-            }
-        });
         jPanel4.add(jBCrear2);
         jBCrear2.setBounds(220, 280, 90, 30);
 
@@ -408,33 +386,10 @@ public class JPEmpleado extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-
-   }//GEN-LAST:event_jBLimpiar2ActionPerformed
-
-    private void jCBSucursal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSucursal2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBSucursal2ActionPerformed
-
-    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
-
-   }//GEN-LAST:event_jBCrear1ActionPerformed
-
-    private void jCBEstadoCivil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstadoCivil1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBEstadoCivil1ActionPerformed
-
-    private void jCBEstadoCivil3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstadoCivil3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBEstadoCivil3ActionPerformed
-
-    private void jBCrear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBCrear2ActionPerformed
-
-    private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBConsultar1ActionPerformed
+    private void jCBSucursal1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSucursal1PopupMenuWillBecomeVisible
+        jCBSucursal1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSucursal.listar()));
+    }//GEN-LAST:event_jCBSucursal1PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
