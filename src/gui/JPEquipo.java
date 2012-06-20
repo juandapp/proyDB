@@ -63,16 +63,16 @@ public class JPEquipo extends javax.swing.JPanel {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setText("Imei");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        jPanel4.add(jTFImei1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, -1));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, -1));
+        jPanel4.add(jTFImei1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 100, -1));
 
         jLabel6.setText("Modelo");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, -1));
-        jPanel4.add(jTFModelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 190, -1));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
+        jPanel4.add(jTFModelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 190, -1));
 
         jLabel8.setText("Marca");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, -1));
-        jPanel4.add(jTFMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 190, -1));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
+        jPanel4.add(jTFMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 190, -1));
 
         jBLimpiar1.setText("Limpiar");
         jPanel4.add(jBLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 72, -1));
@@ -91,15 +91,15 @@ public class JPEquipo extends javax.swing.JPanel {
 
         jLabel4.setText("Imei");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        jPanel1.add(jTFImei2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, -1));
+        jPanel1.add(jTFImei2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
 
         jLabel1.setText("Modelo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, -1));
-        jPanel1.add(jTFModelo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 160, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 60, -1));
+        jPanel1.add(jTFModelo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 160, -1));
 
         jLabel3.setText("Marca");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-        jPanel1.add(jTFMarca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 160, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
+        jPanel1.add(jTFMarca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 160, -1));
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,7 +127,7 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBConsultar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jBConsultar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 90, -1));
+        jPanel1.add(jBConsultar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 90, -1));
 
         jBLimpiar2.setText("Limpiar");
         jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
@@ -135,25 +135,25 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBLimpiar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jBLimpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 90, -1));
+        jPanel1.add(jBLimpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 90, -1));
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setText("Imei");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, -1));
 
         jTFCodigo3.setEnabled(false);
-        jPanel2.add(jTFCodigo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, -1));
+        jPanel2.add(jTFCodigo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
 
         jLabel11.setText("Modelo");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, -1));
-        jPanel2.add(jTFModelo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 190, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 60, -1));
+        jPanel2.add(jTFModelo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
 
         jLabel12.setText("Marca");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-        jPanel2.add(jTFMarca3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 190, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
+        jPanel2.add(jTFMarca3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
 
         jBModificar3.setText("Modificar");
         jBModificar3.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBModificar3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jBModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 90, -1));
+        jPanel2.add(jBModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 90, -1));
 
         jTabbedPane1.addTab("Editar", jPanel2);
 

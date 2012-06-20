@@ -68,17 +68,17 @@ public class JPSucursal extends javax.swing.JPanel {
         jBConsultar = new javax.swing.JButton();
         jBLimpiar2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         jTFCodigo2 = new javax.swing.JTextField();
         jTFNombre2 = new javax.swing.JTextField();
         jTFCiudad2 = new javax.swing.JTextField();
         jTFDireccion2 = new javax.swing.JTextField();
         jTFTelefono2 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jBModificar3 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Sucursal"));
         jPanel3.setLayout(null);
@@ -91,7 +91,8 @@ public class JPSucursal extends javax.swing.JPanel {
                 jBLimpiar1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jBLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 72, -1));
+        jPanel4.add(jBLimpiar1);
+        jBLimpiar1.setBounds(130, 170, 72, 30);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,37 +101,37 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBCrear1);
-        jBCrear1.setBounds(210, 170, 70, 23);
+        jBCrear1.setBounds(210, 170, 70, 30);
 
         jLabel6.setText("Codigo");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(20, 20, 33, 14);
+        jLabel6.setBounds(20, 20, 60, 18);
         jPanel4.add(jTFCodigo1);
-        jTFCodigo1.setBounds(90, 10, 100, 20);
+        jTFCodigo1.setBounds(90, 10, 100, 28);
 
         jLabel7.setText("Nombre");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(20, 50, 60, 20);
+        jLabel7.setBounds(20, 50, 70, 20);
         jPanel4.add(jTFNombre1);
-        jTFNombre1.setBounds(90, 40, 190, 20);
+        jTFNombre1.setBounds(90, 40, 190, 28);
         jPanel4.add(jTFCiudad1);
-        jTFCiudad1.setBounds(90, 70, 190, 20);
+        jTFCiudad1.setBounds(90, 70, 190, 28);
         jPanel4.add(jTFDireccion1);
-        jTFDireccion1.setBounds(90, 100, 190, 20);
+        jTFDireccion1.setBounds(90, 100, 190, 28);
 
         jLabel8.setText("Ciudad");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(20, 80, 33, 14);
+        jLabel8.setBounds(20, 80, 60, 18);
 
         jLabel9.setText("Direccion");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(20, 110, 70, 14);
+        jLabel9.setBounds(20, 110, 90, 18);
 
         jLabel10.setText("Telefono");
         jPanel4.add(jLabel10);
-        jLabel10.setBounds(20, 140, 42, 14);
+        jLabel10.setBounds(20, 140, 90, 18);
         jPanel4.add(jTFTelefono1);
-        jTFTelefono1.setBounds(90, 130, 190, 20);
+        jTFTelefono1.setBounds(90, 130, 190, 28);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -138,33 +139,33 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel1.setText("Codigo");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 20, 33, 14);
+        jLabel1.setBounds(10, 20, 70, 18);
         jPanel1.add(jTFCodigo);
-        jTFCodigo.setBounds(80, 10, 120, 20);
+        jTFCodigo.setBounds(80, 10, 120, 28);
 
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 50, 60, 20);
+        jLabel2.setBounds(10, 50, 70, 20);
         jPanel1.add(jTFNombre);
-        jTFNombre.setBounds(80, 40, 190, 20);
+        jTFNombre.setBounds(80, 40, 190, 28);
 
         jLabel3.setText("Ciudad");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 80, 33, 14);
+        jLabel3.setBounds(10, 80, 70, 18);
         jPanel1.add(jTFCiudad);
-        jTFCiudad.setBounds(80, 70, 190, 20);
+        jTFCiudad.setBounds(80, 70, 190, 28);
 
         jLabel4.setText("Direccion");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 110, 70, 14);
+        jLabel4.setBounds(10, 110, 90, 18);
         jPanel1.add(jTFDireccion);
-        jTFDireccion.setBounds(80, 100, 190, 20);
+        jTFDireccion.setBounds(80, 100, 190, 28);
 
         jLabel5.setText("Telefono");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 140, 42, 14);
+        jLabel5.setBounds(10, 140, 90, 18);
         jPanel1.add(jTFTelefono);
-        jTFTelefono.setBounds(80, 130, 190, 20);
+        jTFTelefono.setBounds(80, 130, 190, 28);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,18 +200,15 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBConsultar);
-        jBConsultar.setBounds(280, 10, 90, 23);
+        jBConsultar.setBounds(280, 10, 90, 30);
 
         jBLimpiar2.setText("Limpiar");
         jPanel1.add(jBLimpiar2);
-        jBLimpiar2.setBounds(280, 40, 90, 23);
+        jBLimpiar2.setBounds(280, 40, 90, 30);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel11.setText("Codigo");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         jTFCodigo2.setEditable(false);
         jPanel2.add(jTFCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
@@ -219,18 +217,6 @@ public class JPSucursal extends javax.swing.JPanel {
         jPanel2.add(jTFDireccion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 190, -1));
         jPanel2.add(jTFTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 190, -1));
 
-        jLabel12.setText("Telefono");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
-
-        jLabel13.setText("Direccion");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, -1));
-
-        jLabel14.setText("Ciudad");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-        jLabel15.setText("Nombre");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 60, 20));
-
         jBModificar3.setText("Modificar");
         jBModificar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,6 +224,21 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jBModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 90, -1));
+
+        jLabel16.setText("Telefono");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, -1));
+
+        jLabel17.setText("Direccion");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, -1));
+
+        jLabel18.setText("Ciudad");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabel19.setText("Nombre");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+
+        jLabel20.setText("Codigo");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, -1));
 
         jTabbedPane1.addTab("Editar", jPanel2);
 
@@ -392,12 +393,12 @@ public class JPSucursal extends javax.swing.JPanel {
     private javax.swing.JButton jBModificar3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -9,11 +9,12 @@ package gui;
  * @author JUANPAULO
  */
 public class Main {
-
-    public static void main(String[] args) {
-
-        GuiPrincipal g = new GuiPrincipal();
-        g.setVisible(true);
-
-    }
+//
+//    public static void main(String[] args) {
+//
+//        GuiPrincipal g = new GuiPrincipal();
+//        g.setVisible(true);
+//
+//        
+//    }
 }
