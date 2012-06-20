@@ -61,7 +61,6 @@ public class ControladorSucursal {
     public String[] listar() {
         LinkedList sucursalesConsultar = daoSucursal.consultar("", "", "", "", "");
         String[] sucursales = new String[sucursalesConsultar.size()+1];
-        //System.out.println("size"+sucursalesConsultar.size());
         sucursales[0] = " ";
         for (int i = 0; i < sucursalesConsultar.size(); i++) {
             sucursales[i+1] = ((Sucursal) sucursalesConsultar.get(i)).getCod_sucursal() + " - " + ((Sucursal) sucursalesConsultar.get(i)).getNombre();
