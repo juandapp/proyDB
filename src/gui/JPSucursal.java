@@ -208,14 +208,19 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         jTFCodigo2.setEditable(false);
-        jPanel2.add(jTFCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
-        jPanel2.add(jTFNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
-        jPanel2.add(jTFCiudad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
-        jPanel2.add(jTFDireccion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 190, -1));
-        jPanel2.add(jTFTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 190, -1));
+        jPanel2.add(jTFCodigo2);
+        jTFCodigo2.setBounds(80, 10, 100, 28);
+        jPanel2.add(jTFNombre2);
+        jTFNombre2.setBounds(80, 40, 190, 28);
+        jPanel2.add(jTFCiudad2);
+        jTFCiudad2.setBounds(80, 70, 190, 28);
+        jPanel2.add(jTFDireccion2);
+        jTFDireccion2.setBounds(80, 100, 190, 28);
+        jPanel2.add(jTFTelefono2);
+        jTFTelefono2.setBounds(80, 130, 190, 28);
 
         jBModificar3.setText("Modificar");
         jBModificar3.addActionListener(new java.awt.event.ActionListener() {
@@ -223,22 +228,28 @@ public class JPSucursal extends javax.swing.JPanel {
                 jBModificar3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jBModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 90, -1));
+        jPanel2.add(jBModificar3);
+        jBModificar3.setBounds(180, 160, 90, 30);
 
         jLabel16.setText("Telefono");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, -1));
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(10, 140, 90, 18);
 
         jLabel17.setText("Direccion");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, -1));
+        jPanel2.add(jLabel17);
+        jLabel17.setBounds(10, 110, 100, 18);
 
         jLabel18.setText("Ciudad");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        jPanel2.add(jLabel18);
+        jLabel18.setBounds(10, 80, 48, 18);
 
         jLabel19.setText("Nombre");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+        jPanel2.add(jLabel19);
+        jLabel19.setBounds(10, 40, 80, 18);
 
         jLabel20.setText("Codigo");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, -1));
+        jPanel2.add(jLabel20);
+        jLabel20.setBounds(10, 10, 60, 18);
 
         jTabbedPane1.addTab("Editar", jPanel2);
 

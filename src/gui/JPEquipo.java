@@ -60,22 +60,29 @@ public class JPEquipo extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Equipo"));
         jPanel3.setLayout(null);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.setLayout(null);
 
         jLabel9.setText("Imei");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, -1));
-        jPanel4.add(jTFImei1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 100, -1));
+        jPanel4.add(jLabel9);
+        jLabel9.setBounds(10, 10, 40, 18);
+        jPanel4.add(jTFImei1);
+        jTFImei1.setBounds(90, 10, 100, 28);
 
         jLabel6.setText("Modelo");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-        jPanel4.add(jTFModelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 190, -1));
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(10, 40, 70, 18);
+        jPanel4.add(jTFModelo1);
+        jTFModelo1.setBounds(90, 40, 190, 28);
 
         jLabel8.setText("Marca");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
-        jPanel4.add(jTFMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 190, -1));
+        jPanel4.add(jLabel8);
+        jLabel8.setBounds(10, 70, 60, 18);
+        jPanel4.add(jTFMarca1);
+        jTFMarca1.setBounds(90, 70, 190, 28);
 
         jBLimpiar1.setText("Limpiar");
-        jPanel4.add(jBLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 72, -1));
+        jPanel4.add(jBLimpiar1);
+        jBLimpiar1.setBounds(90, 100, 72, 30);
 
         jBCrear.setText("Crear");
         jBCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -83,23 +90,30 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBCrearActionPerformed(evt);
             }
         });
-        jPanel4.add(jBCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 70, -1));
+        jPanel4.add(jBCrear);
+        jBCrear.setBounds(180, 100, 70, 30);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jLabel4.setText("Imei");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        jPanel1.add(jTFImei2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 10, 40, 18);
+        jPanel1.add(jTFImei2);
+        jTFImei2.setBounds(80, 10, 100, 28);
 
         jLabel1.setText("Modelo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 60, -1));
-        jPanel1.add(jTFModelo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 160, -1));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(10, 40, 60, 18);
+        jPanel1.add(jTFModelo2);
+        jTFModelo2.setBounds(80, 40, 160, 28);
 
         jLabel3.setText("Marca");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
-        jPanel1.add(jTFMarca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 160, -1));
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 70, 60, 18);
+        jPanel1.add(jTFMarca2);
+        jTFMarca2.setBounds(80, 70, 160, 28);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,7 +133,8 @@ public class JPEquipo extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTResultados);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 390, 125));
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 110, 390, 125);
 
         jBConsultar2.setText("Consultar");
         jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +142,8 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBConsultar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jBConsultar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 90, -1));
+        jPanel1.add(jBConsultar2);
+        jBConsultar2.setBounds(250, 10, 90, 30);
 
         jBLimpiar2.setText("Limpiar");
         jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
@@ -135,25 +151,32 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBLimpiar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jBLimpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 90, -1));
+        jPanel1.add(jBLimpiar2);
+        jBLimpiar2.setBounds(250, 40, 90, 30);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         jLabel10.setText("Imei");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, -1));
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(10, 10, 40, 18);
 
         jTFCodigo3.setEnabled(false);
-        jPanel2.add(jTFCodigo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
+        jPanel2.add(jTFCodigo3);
+        jTFCodigo3.setBounds(80, 10, 100, 28);
 
         jLabel11.setText("Modelo");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 60, -1));
-        jPanel2.add(jTFModelo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
+        jPanel2.add(jLabel11);
+        jLabel11.setBounds(10, 40, 60, 18);
+        jPanel2.add(jTFModelo3);
+        jTFModelo3.setBounds(80, 40, 190, 28);
 
         jLabel12.setText("Marca");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
-        jPanel2.add(jTFMarca3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(10, 70, 60, 18);
+        jPanel2.add(jTFMarca3);
+        jTFMarca3.setBounds(80, 70, 190, 28);
 
         jBModificar3.setText("Modificar");
         jBModificar3.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +184,8 @@ public class JPEquipo extends javax.swing.JPanel {
                 jBModificar3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jBModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 90, -1));
+        jPanel2.add(jBModificar3);
+        jBModificar3.setBounds(180, 100, 90, 30);
 
         jTabbedPane1.addTab("Editar", jPanel2);
 
