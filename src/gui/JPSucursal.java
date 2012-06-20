@@ -38,6 +38,19 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jBLimpiar1 = new javax.swing.JButton();
+        jBCrear1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTFCodigo1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTFNombre1 = new javax.swing.JTextField();
+        jTFCiudad1 = new javax.swing.JTextField();
+        jTFDireccion1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTFTelefono1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTFCodigo = new javax.swing.JTextField();
@@ -52,56 +65,79 @@ public class JPSucursal extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
         jBConsultar = new javax.swing.JButton();
+        jBLimpiar2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTFCodigo1 = new javax.swing.JTextField();
-        jTFNombre1 = new javax.swing.JTextField();
-        jTFCiudad1 = new javax.swing.JTextField();
-        jTFDireccion1 = new javax.swing.JTextField();
-        jTFTelefono1 = new javax.swing.JTextField();
-        jBLimpiar = new javax.swing.JButton();
-        jBCrear = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTFCodigo2 = new javax.swing.JTextField();
+        jTFNombre2 = new javax.swing.JTextField();
+        jTFCiudad2 = new javax.swing.JTextField();
+        jTFDireccion2 = new javax.swing.JTextField();
+        jTFTelefono2 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jBModificar3 = new javax.swing.JButton();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Sucursal"));
         jPanel3.setLayout(null);
 
-        jPanel1.setLayout(null);
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jBLimpiar1.setText("Limpiar");
+        jPanel4.add(jBLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 72, -1));
+
+        jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jBCrear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 70, -1));
+
+        jLabel6.setText("Codigo");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel4.add(jTFCodigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 100, -1));
+
+        jLabel7.setText("Nombre");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 60, 20));
+        jPanel4.add(jTFNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 190, -1));
+        jPanel4.add(jTFCiudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 190, -1));
+        jPanel4.add(jTFDireccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 190, -1));
+
+        jLabel8.setText("Ciudad");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        jLabel9.setText("Direccion");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 70, -1));
+
+        jLabel10.setText("Telefono");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jPanel4.add(jTFTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 190, -1));
+
+        jTabbedPane1.addTab("Crear", jPanel4);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Codigo");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 20, 49, 18);
-        jPanel1.add(jTFCodigo);
-        jTFCodigo.setBounds(80, 10, 100, 28);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jPanel1.add(jTFCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 120, -1));
 
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 50, 60, 20);
-        jPanel1.add(jTFNombre);
-        jTFNombre.setBounds(80, 40, 190, 28);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 60, 20));
+        jPanel1.add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
 
         jLabel3.setText("Ciudad");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 80, 48, 18);
-        jPanel1.add(jTFCiudad);
-        jTFCiudad.setBounds(80, 70, 190, 28);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        jPanel1.add(jTFCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
 
         jLabel4.setText("Direccion");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 110, 70, 18);
-        jPanel1.add(jTFDireccion);
-        jTFDireccion.setBounds(80, 100, 190, 28);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, -1));
+        jPanel1.add(jTFDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 190, -1));
 
         jLabel5.setText("Telefono");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 140, 64, 18);
-        jPanel1.add(jTFTelefono);
-        jTFTelefono.setBounds(80, 130, 190, 28);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(jTFTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 190, -1));
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,8 +157,7 @@ public class JPSucursal extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTResultados);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 160, 452, 125);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 125));
 
         jBConsultar.setText("Consultar");
         jBConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,98 +165,57 @@ public class JPSucursal extends javax.swing.JPanel {
                 jBConsultarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBConsultar);
-        jBConsultar.setBounds(270, 10, 90, 30);
+        jPanel1.add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 90, -1));
+
+        jBLimpiar2.setText("Limpiar");
+        jPanel1.add(jBLimpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 90, -1));
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
-        jPanel2.setLayout(null);
-        jTabbedPane1.addTab("Editar", jPanel2);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Sucursal"));
-        jPanel5.setLayout(null);
+        jLabel11.setText("Codigo");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jPanel2.add(jTFCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
+        jPanel2.add(jTFNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
+        jPanel2.add(jTFCiudad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
+        jPanel2.add(jTFDireccion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 190, -1));
+        jPanel2.add(jTFTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 190, -1));
 
-        jLabel6.setText("Codigo");
-        jPanel5.add(jLabel6);
-        jLabel6.setBounds(10, 30, 49, 18);
+        jLabel12.setText("Telefono");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        jLabel7.setText("Nombre");
-        jPanel5.add(jLabel7);
-        jLabel7.setBounds(10, 60, 60, 20);
+        jLabel13.setText("Direccion");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, -1));
 
-        jLabel8.setText("Ciudad");
-        jPanel5.add(jLabel8);
-        jLabel8.setBounds(10, 90, 48, 18);
+        jLabel14.setText("Ciudad");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        jLabel9.setText("Direccion");
-        jPanel5.add(jLabel9);
-        jLabel9.setBounds(10, 120, 70, 18);
+        jLabel15.setText("Nombre");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 60, 20));
 
-        jLabel10.setText("Telefono");
-        jPanel5.add(jLabel10);
-        jLabel10.setBounds(10, 150, 64, 18);
-        jPanel5.add(jTFCodigo1);
-        jTFCodigo1.setBounds(80, 20, 100, 28);
-        jPanel5.add(jTFNombre1);
-        jTFNombre1.setBounds(80, 50, 190, 28);
-        jPanel5.add(jTFCiudad1);
-        jTFCiudad1.setBounds(80, 80, 190, 28);
-        jPanel5.add(jTFDireccion1);
-        jTFDireccion1.setBounds(80, 110, 190, 28);
-        jPanel5.add(jTFTelefono1);
-        jTFTelefono1.setBounds(80, 140, 190, 28);
-
-        jBLimpiar.setText("Limpiar");
-
-        jBCrear.setText("Crear");
-        jBCrear.addActionListener(new java.awt.event.ActionListener() {
+        jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCrearActionPerformed(evt);
+                jBModificar3ActionPerformed(evt);
             }
         });
+        jPanel2.add(jBModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 90, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 315, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBLimpiar)
-                    .addComponent(jBCrear))
-                .addGap(0, 175, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Crear", jPanel4);
+        jTabbedPane1.addTab("Editar", jPanel2);
 
         jPanel3.add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 20, 610, 430);
+        jTabbedPane1.setBounds(10, 10, 470, 320);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -281,7 +275,7 @@ if(consultar != null){
 
     }//GEN-LAST:event_jBConsultarActionPerformed
 
-    private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
         String cod_sucursal = jTFCodigo.getText();
         String nombre = jTFNombre.getText();
         String ciudad = jTFCiudad.getText();
@@ -293,13 +287,25 @@ if(consultar != null){
         } else {
             JOptionPane.showMessageDialog(this, "Sucursal Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_jBCrearActionPerformed
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar;
-    private javax.swing.JButton jBCrear;
-    private javax.swing.JButton jBLimpiar;
+    private javax.swing.JButton jBCrear1;
+    private javax.swing.JButton jBLimpiar1;
+    private javax.swing.JButton jBLimpiar2;
+    private javax.swing.JButton jBModificar3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -312,18 +318,22 @@ if(consultar != null){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFCiudad;
     private javax.swing.JTextField jTFCiudad1;
+    private javax.swing.JTextField jTFCiudad2;
     private javax.swing.JTextField jTFCodigo;
     private javax.swing.JTextField jTFCodigo1;
+    private javax.swing.JTextField jTFCodigo2;
     private javax.swing.JTextField jTFDireccion;
     private javax.swing.JTextField jTFDireccion1;
+    private javax.swing.JTextField jTFDireccion2;
     private javax.swing.JTextField jTFNombre;
     private javax.swing.JTextField jTFNombre1;
+    private javax.swing.JTextField jTFNombre2;
     private javax.swing.JTextField jTFTelefono;
     private javax.swing.JTextField jTFTelefono1;
+    private javax.swing.JTextField jTFTelefono2;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
