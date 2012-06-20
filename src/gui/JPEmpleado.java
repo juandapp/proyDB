@@ -68,9 +68,10 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBTipoContrato2 = new javax.swing.JComboBox();
         jLabel41 = new javax.swing.JLabel();
         jCBSucursal2 = new javax.swing.JComboBox();
-        jBConsultar = new javax.swing.JButton();
+        jBLimpiar2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
+        jBConsultar1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jTFCodigo3 = new javax.swing.JTextField();
@@ -244,13 +245,13 @@ public class JPEmpleado extends javax.swing.JPanel {
         });
         jPanel2.add(jCBSucursal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
 
-        jBConsultar.setText("Consultar");
-        jBConsultar.addActionListener(new java.awt.event.ActionListener() {
+        jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBConsultarActionPerformed(evt);
+                jBLimpiar2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 150, 40));
+        jPanel2.add(jBLimpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 90, -1));
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -271,6 +272,14 @@ public class JPEmpleado extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 640, 140));
+
+        jBConsultar1.setText("Consultar");
+        jBConsultar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBConsultar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 150, 40));
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
@@ -376,9 +385,9 @@ public class JPEmpleado extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
 
-   }//GEN-LAST:event_jBConsultarActionPerformed
+   }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jCBSucursal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSucursal2ActionPerformed
         // TODO add your handling code here:
@@ -400,11 +409,16 @@ public class JPEmpleado extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBCrear2ActionPerformed
 
+    private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultar1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBConsultar;
+    private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBCrear2;
     private javax.swing.JButton jBLimpiar1;
+    private javax.swing.JButton jBLimpiar2;
     private javax.swing.JComboBox jCBCargo1;
     private javax.swing.JComboBox jCBCargo2;
     private javax.swing.JComboBox jCBCargo3;

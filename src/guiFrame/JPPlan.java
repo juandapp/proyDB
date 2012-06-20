@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package guiFrame;
 
 /**
  *
@@ -192,7 +192,7 @@ public class JPPlan extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBLimpiar)
                     .addComponent(jBCrear))
-                .addGap(0, 192, Short.MAX_VALUE))
+                .addGap(0, 175, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear", jPanel4);
@@ -320,7 +320,7 @@ public class JPPlan extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBLimpiar1)
                     .addComponent(jBCrear1))
-                .addGap(0, 192, Short.MAX_VALUE))
+                .addGap(0, 175, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Crear", jPanel9);

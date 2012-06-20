@@ -22,6 +22,14 @@
                 <Property name="text" type="java.lang.String" value="Abonado"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIEquipo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equipo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIEquipoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIEmpleado">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Empleado"/>
