@@ -4,12 +4,8 @@
  */
 package gui;
 
-import gui.JPSucursal;
-import gui.JPEmpleado;
-import guiFrame.JFEquipo;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import javax.swing.border.Border;
 
 /**
  *
@@ -116,7 +112,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void jMIEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEquipoActionPerformed
         try {
             jPPrincipal.removeAll();
-            jPPrincipal.add(new JFEquipo(), BorderLayout.CENTER);
+            jPPrincipal.add(new JPEquipo(), BorderLayout.CENTER);
             jPPrincipal.updateUI();
             this.pack();
         } catch (Exception e) {

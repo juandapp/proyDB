@@ -288,6 +288,8 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel42.setText("Id");
         jPanel4.add(jLabel42);
         jLabel42.setBounds(10, 10, 10, 14);
+
+        jTFCodigo3.setEnabled(false);
         jPanel4.add(jTFCodigo3);
         jTFCodigo3.setBounds(120, 10, 100, 20);
 

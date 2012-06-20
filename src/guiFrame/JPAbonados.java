@@ -38,7 +38,6 @@ public class JPAbonados extends javax.swing.JFrame {
         jTFTelefono2 = new javax.swing.JTextField();
         jTFDireccion2 = new javax.swing.JTextField();
         jTFCiudad2 = new javax.swing.JTextField();
-        jTFNombre10 = new javax.swing.JTextField();
         jTFCodigo2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -55,9 +54,10 @@ public class JPAbonados extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jTFNombre12 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTFNombre13 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTFNombre14 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox3 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -104,61 +104,59 @@ public class JPAbonados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBConsultar);
-        jBConsultar.setBounds(270, 10, 90, 23);
+        jBConsultar.setBounds(280, 10, 90, 23);
 
         jLabel15.setText("Id");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(20, 20, 10, 14);
+        jLabel15.setBounds(20, 10, 10, 14);
         jPanel1.add(jTFNombre6);
-        jTFNombre6.setBounds(130, 260, 140, 20);
+        jTFNombre6.setBounds(130, 250, 140, 20);
         jPanel1.add(jTFNombre7);
-        jTFNombre7.setBounds(130, 230, 140, 20);
+        jTFNombre7.setBounds(130, 220, 140, 20);
         jPanel1.add(jTFNombre8);
-        jTFNombre8.setBounds(130, 200, 140, 20);
+        jTFNombre8.setBounds(130, 190, 140, 20);
         jPanel1.add(jTFNombre9);
-        jTFNombre9.setBounds(130, 170, 140, 20);
+        jTFNombre9.setBounds(130, 160, 140, 20);
         jPanel1.add(jTFTelefono2);
-        jTFTelefono2.setBounds(130, 140, 140, 20);
+        jTFTelefono2.setBounds(130, 130, 140, 20);
         jPanel1.add(jTFDireccion2);
-        jTFDireccion2.setBounds(130, 110, 140, 20);
+        jTFDireccion2.setBounds(130, 100, 140, 20);
         jPanel1.add(jTFCiudad2);
-        jTFCiudad2.setBounds(130, 80, 140, 20);
-        jPanel1.add(jTFNombre10);
-        jTFNombre10.setBounds(130, 50, 140, 20);
+        jTFCiudad2.setBounds(130, 70, 140, 20);
         jPanel1.add(jTFCodigo2);
-        jTFCodigo2.setBounds(130, 20, 100, 20);
+        jTFCodigo2.setBounds(130, 10, 100, 20);
 
         jLabel16.setText("Tipo de Documento");
         jPanel1.add(jLabel16);
-        jLabel16.setBounds(10, 50, 60, 14);
+        jLabel16.setBounds(20, 40, 100, 14);
 
         jLabel17.setText("Nombres");
         jPanel1.add(jLabel17);
-        jLabel17.setBounds(10, 90, 50, 14);
+        jLabel17.setBounds(20, 70, 50, 14);
 
         jLabel18.setText("Apellidos");
         jPanel1.add(jLabel18);
-        jLabel18.setBounds(10, 120, 70, 14);
+        jLabel18.setBounds(20, 100, 70, 14);
 
         jLabel19.setText("Direccion");
         jPanel1.add(jLabel19);
-        jLabel19.setBounds(10, 140, 43, 14);
+        jLabel19.setBounds(20, 130, 43, 14);
 
         jLabel20.setText("Genero");
         jPanel1.add(jLabel20);
-        jLabel20.setBounds(10, 170, 80, 20);
+        jLabel20.setBounds(20, 160, 50, 10);
 
         jLabel21.setText("Estado Civil");
         jPanel1.add(jLabel21);
-        jLabel21.setBounds(10, 200, 100, 20);
+        jLabel21.setBounds(20, 190, 100, 20);
 
         jLabel22.setText("Fecha de Nacimiento");
         jPanel1.add(jLabel22);
-        jLabel22.setBounds(10, 230, 110, 20);
+        jLabel22.setBounds(20, 220, 110, 20);
 
         jLabel23.setText("Comuna");
         jPanel1.add(jLabel23);
-        jLabel23.setBounds(10, 260, 60, 20);
+        jLabel23.setBounds(20, 250, 60, 20);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,31 +177,39 @@ public class JPAbonados extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 410, 540, 80);
+        jScrollPane1.setBounds(10, 410, 660, 80);
 
         jLabel24.setText("Ciudad");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(10, 320, 60, 20);
+        jLabel24.setBounds(20, 310, 60, 20);
         jPanel1.add(jTFNombre11);
-        jTFNombre11.setBounds(130, 320, 140, 20);
+        jTFNombre11.setBounds(130, 310, 140, 20);
 
         jLabel25.setText("Barrio");
         jPanel1.add(jLabel25);
-        jLabel25.setBounds(10, 290, 60, 20);
+        jLabel25.setBounds(20, 280, 60, 20);
         jPanel1.add(jTFNombre12);
-        jTFNombre12.setBounds(130, 290, 140, 20);
+        jTFNombre12.setBounds(130, 280, 140, 20);
 
         jLabel26.setText("Tipo");
         jPanel1.add(jLabel26);
-        jLabel26.setBounds(10, 350, 60, 20);
-        jPanel1.add(jTFNombre13);
-        jTFNombre13.setBounds(130, 350, 140, 20);
+        jLabel26.setBounds(20, 340, 60, 20);
 
         jLabel27.setText("Imei");
         jPanel1.add(jLabel27);
-        jLabel27.setBounds(10, 380, 60, 20);
-        jPanel1.add(jTFNombre14);
-        jTFNombre14.setBounds(130, 380, 140, 20);
+        jLabel27.setBounds(20, 370, 60, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(130, 370, 56, 20);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox2);
+        jComboBox2.setBounds(130, 40, 56, 20);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox3);
+        jComboBox3.setBounds(130, 340, 56, 20);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
@@ -306,18 +312,18 @@ public class JPAbonados extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 318, Short.MAX_VALUE))
+                .addGap(0, 388, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBLimpiar)
@@ -328,21 +334,21 @@ public class JPAbonados extends javax.swing.JFrame {
         jTabbedPane1.addTab("Crear", jPanel4);
 
         jPanel3.add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 20, 610, 520);
+        jTabbedPane1.setBounds(10, 20, 680, 590);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -400,6 +406,9 @@ public class JPAbonados extends javax.swing.JFrame {
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBCrear;
     private javax.swing.JButton jBLimpiar;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -438,11 +447,8 @@ public class JPAbonados extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCodigo3;
     private javax.swing.JTextField jTFDireccion2;
     private javax.swing.JTextField jTFDireccion3;
-    private javax.swing.JTextField jTFNombre10;
     private javax.swing.JTextField jTFNombre11;
     private javax.swing.JTextField jTFNombre12;
-    private javax.swing.JTextField jTFNombre13;
-    private javax.swing.JTextField jTFNombre14;
     private javax.swing.JTextField jTFNombre15;
     private javax.swing.JTextField jTFNombre16;
     private javax.swing.JTextField jTFNombre17;

@@ -200,6 +200,8 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel11.setText("Codigo");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jTFCodigo2.setEnabled(false);
         jPanel2.add(jTFCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, -1));
         jPanel2.add(jTFNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
         jPanel2.add(jTFCiudad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 190, -1));
