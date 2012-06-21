@@ -13,6 +13,10 @@ public class Prepago {
 
     public Prepago() {
     } 
+    
+    public Prepago(Plan cod_plan) {
+        this.cod_plan=cod_plan;
+    } 
  
     public Plan getCod_plan() {
         return cod_plan;
