@@ -29,7 +29,7 @@ public class DaoPlanDatos {
 
     public int guardar(PlanDatos pDAtos) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO postpago VALUES ('"
+        sql_guardar = "INSERT INTO plan_datos VALUES ('"
                 + pDAtos.getCod_plan_datos() + "', '"
                 + pDAtos.getCosto_internet() + "', '"
                 + pDAtos.getCosto_correo() + "')";
