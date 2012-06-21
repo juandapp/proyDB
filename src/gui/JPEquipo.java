@@ -4,17 +4,28 @@
  */
 package gui;
 
+import controlador.ControladorEquipo;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Equipo;
+
 /**
  *
- * @author JUANPAULO
+ * 
  */
 public class JPEquipo extends javax.swing.JPanel {
 
     /**
      * Creates new form JPEquipo
      */
+    
+    ControladorEquipo ce;
     public JPEquipo() {
         initComponents();
+        ce=new ControladorEquipo();
     }
 
     /**
@@ -64,25 +75,25 @@ public class JPEquipo extends javax.swing.JPanel {
 
         jLabel9.setText("Imei");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(10, 10, 40, 18);
+        jLabel9.setBounds(10, 10, 40, 14);
         jPanel4.add(jTFImei1);
-        jTFImei1.setBounds(90, 10, 100, 28);
+        jTFImei1.setBounds(90, 10, 100, 20);
 
         jLabel6.setText("Modelo");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(10, 40, 70, 18);
+        jLabel6.setBounds(10, 40, 70, 14);
         jPanel4.add(jTFModelo1);
-        jTFModelo1.setBounds(90, 40, 190, 28);
+        jTFModelo1.setBounds(90, 40, 190, 20);
 
         jLabel8.setText("Marca");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(10, 70, 60, 18);
+        jLabel8.setBounds(10, 70, 60, 14);
         jPanel4.add(jTFMarca1);
-        jTFMarca1.setBounds(90, 70, 190, 28);
+        jTFMarca1.setBounds(90, 70, 190, 20);
 
         jBLimpiar1.setText("Limpiar");
         jPanel4.add(jBLimpiar1);
-        jBLimpiar1.setBounds(90, 100, 72, 30);
+        jBLimpiar1.setBounds(90, 100, 72, 23);
 
         jBCrear.setText("Crear");
         jBCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +102,7 @@ public class JPEquipo extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBCrear);
-        jBCrear.setBounds(180, 100, 70, 30);
+        jBCrear.setBounds(180, 100, 70, 23);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -99,21 +110,21 @@ public class JPEquipo extends javax.swing.JPanel {
 
         jLabel4.setText("Imei");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 10, 40, 18);
+        jLabel4.setBounds(10, 10, 40, 14);
         jPanel1.add(jTFImei2);
-        jTFImei2.setBounds(80, 10, 100, 28);
+        jTFImei2.setBounds(80, 10, 100, 20);
 
         jLabel1.setText("Modelo");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 40, 60, 18);
+        jLabel1.setBounds(10, 40, 60, 14);
         jPanel1.add(jTFModelo2);
-        jTFModelo2.setBounds(80, 40, 160, 28);
+        jTFModelo2.setBounds(80, 40, 160, 20);
 
         jLabel3.setText("Marca");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 70, 60, 18);
+        jLabel3.setBounds(10, 70, 60, 14);
         jPanel1.add(jTFMarca2);
-        jTFMarca2.setBounds(80, 70, 160, 28);
+        jTFMarca2.setBounds(80, 70, 160, 20);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +142,11 @@ public class JPEquipo extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel1.add(jScrollPane1);
@@ -143,7 +159,7 @@ public class JPEquipo extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBConsultar2);
-        jBConsultar2.setBounds(250, 10, 90, 30);
+        jBConsultar2.setBounds(250, 10, 90, 23);
 
         jBLimpiar2.setText("Limpiar");
         jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +168,7 @@ public class JPEquipo extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBLimpiar2);
-        jBLimpiar2.setBounds(250, 40, 90, 30);
+        jBLimpiar2.setBounds(250, 40, 90, 23);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
@@ -160,23 +176,23 @@ public class JPEquipo extends javax.swing.JPanel {
 
         jLabel10.setText("Imei");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(10, 10, 40, 18);
+        jLabel10.setBounds(10, 10, 40, 14);
 
         jTFCodigo3.setEnabled(false);
         jPanel2.add(jTFCodigo3);
-        jTFCodigo3.setBounds(80, 10, 100, 28);
+        jTFCodigo3.setBounds(80, 10, 100, 20);
 
         jLabel11.setText("Modelo");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(10, 40, 60, 18);
+        jLabel11.setBounds(10, 40, 60, 14);
         jPanel2.add(jTFModelo3);
-        jTFModelo3.setBounds(80, 40, 190, 28);
+        jTFModelo3.setBounds(80, 40, 190, 20);
 
         jLabel12.setText("Marca");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(10, 70, 60, 18);
+        jLabel12.setBounds(10, 70, 60, 14);
         jPanel2.add(jTFMarca3);
-        jTFMarca3.setBounds(80, 70, 190, 28);
+        jTFMarca3.setBounds(80, 70, 190, 20);
 
         jBModificar3.setText("Modificar");
         jBModificar3.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +201,7 @@ public class JPEquipo extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(180, 100, 90, 30);
+        jBModificar3.setBounds(180, 100, 90, 23);
 
         jTabbedPane1.addTab("Editar", jPanel2);
 
@@ -205,21 +221,118 @@ public class JPEquipo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
+        int guardar = -1;
+        try {
+            guardar = ce.guardar(
+                    jTFImei1.getText(),
+                    jTFModelo1.getText(),
+                    jTFMarca1.getText());
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear el Equipo", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Equipo Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFImei2.setText(jTFImei1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
+        }
 
    }//GEN-LAST:event_jBCrearActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
         // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+        try {
+         consulta = ce.consultar(  
+                    jTFImei2.getText(),
+                    jTFModelo2.getText(),
+                    jTFMarca2.getText());
+            
+                Object[][] s = new Object[consulta.size()][3];
+                for (int i = 0; i < consulta.size(); i++) {
+                   Equipo eq = (Equipo) consulta.get(i);
+                    if (eq.getModelo() != null) {
+                        s[i][0] = eq.getImei();
+                        s[i][1] = eq.getModelo();
+                        s[i][2] = eq.getMarca();
+                    } else {
+                        s = null;
+                    }
+                }
+                TableModel myModel = new DefaultTableModel(s, new String[]{"Imei", "Modelo", "Marca"}) {
+                    boolean[] canEdit = new boolean[]{false, false, false};
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                };
+                ///remover filas
+                jTResultados.setModel(myModel);
+                jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-
+        limpiarCamposConsultar();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
         // TODO add your handling code here:
+        int editar = -1;
+        try {
+            editar = ce.editar(
+                    jTFCodigo3.getText(),
+                    jTFModelo3.getText(),
+                    jTFMarca3.getText()
+                    );
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar el Equipo", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Equipo modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFImei2.setText(jTFCodigo3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }
     }//GEN-LAST:event_jBModificar3ActionPerformed
 
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+        // TODO add your handling code here:
+         int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFModelo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_jTResultadosMouseClicked
+ private void limpiarCamposModificar() {
+        jTFCodigo3.setText("");
+        jTFModelo3.setText("");
+        jTFMarca3.setText("");
+    }
+
+    private void limpiarCamposCrear() {
+        jTFImei1.setText("");
+        jTFModelo1.setText("");
+        jTFMarca1.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFImei2.setText("");
+        jTFModelo2.setText("");
+        jTFMarca2.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear;

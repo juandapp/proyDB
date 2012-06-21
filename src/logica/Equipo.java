@@ -14,7 +14,11 @@ public class Equipo {
 
     public Equipo() {
     }
-
+  public Equipo(String imei, String modelo, String marca) {
+        this.imei = imei;
+        this.modelo = modelo;
+        this.marca = marca;
+    }
     public String getImei() {
         return imei;
     }
