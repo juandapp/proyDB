@@ -15,7 +15,12 @@ public class Plan {
 
     public Plan() {
     }
-
+    public Plan(String cod_plan, int tarifa_otro_operador, int tarifa_msj_multimedia, int tarifa_msj_texto){
+        this.cod_plan=cod_plan;
+        this.tarifa_otro_operador=tarifa_otro_operador;
+        this.tarifa_msj_multimedia=tarifa_msj_multimedia;
+        this.tarifa_msj_texto=tarifa_msj_texto;
+    }
     public String getCod_plan() {
         return cod_plan;
     }
