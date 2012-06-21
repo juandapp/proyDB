@@ -7,7 +7,6 @@ package controlador;
 import dao.DaoCia_internacional;
 import java.util.LinkedList;
 import logica.Cia_internacional;
-import logica.Sucursal;
 
 /**
  *
@@ -25,12 +24,12 @@ public class ControladorCiaInternacional {
             int tar_llam_entra_i, int tar_llam_sale_i, int tar_llam_entra_n,
             int tar_llam_sale_n, int tar_datos_recibidos, int tar_datos_enviados) {
         if (!id.isEmpty() && !nombre.isEmpty() && !pais.isEmpty()
-                && tarifa_mensajes>0 && tar_llam_entra_i>0 && tar_llam_sale_i>0
-                && tar_llam_entra_n>0 && tar_llam_sale_n>0 && tar_datos_recibidos>0
-                && tar_datos_enviados>0) {
+                && tarifa_mensajes > 0 && tar_llam_entra_i > 0 && tar_llam_sale_i > 0
+                && tar_llam_entra_n > 0 && tar_llam_sale_n > 0 && tar_datos_recibidos > 0
+                && tar_datos_enviados > 0) {
             Cia_internacional ciaI = new Cia_internacional(id, nombre, pais, tarifa_mensajes, tar_llam_entra_i,
-                                                           tar_llam_sale_i, tar_llam_entra_n, tar_llam_sale_n,
-                                                            tar_datos_recibidos, tar_datos_enviados );
+                    tar_llam_sale_i, tar_llam_entra_n, tar_llam_sale_n,
+                    tar_datos_recibidos, tar_datos_enviados);
             int retorno = daoCiaInternacional.guardar(ciaI);
             return retorno;
         } else {
@@ -38,31 +37,37 @@ public class ControladorCiaInternacional {
         }
     }
 
-    public Sucursal consultar(String cod_s) {
-        Sucursal s = new Sucursal();
-        s = daoCiaInternacional.consultar(cod_s);
-        return s;
+    public Cia_internacional consultar(String id) {
+        Cia_internacional ciaI = new Cia_internacional();
+        ciaI = daoCiaInternacional.consultar(id);
+        return ciaI;
     }
 
-    public LinkedList consultar(String cod_s, String nombre_s, String ciudad_s, String direccion_s,
-            String telefono_s) {
-        LinkedList sucursalConsultar = new LinkedList();
-        sucursalConsultar = daoCiaInternacional.consultar(cod_s, nombre_s, ciudad_s, direccion_s, telefono_s);
-        return sucursalConsultar;
+    public LinkedList consultar(String id, String nombre, String pais, String tarifa_mensajes,
+            String tar_llam_entra_i, String tar_llam_sale_i, String tar_llam_entra_n,
+            String tar_llam_sale_n, String tar_datos_recibidos, String tar_datos_enviados) {
+        LinkedList Consultar = new LinkedList();
+        Consultar = daoCiaInternacional.consultar(id, nombre, pais, tarifa_mensajes,
+                tar_llam_entra_i, tar_llam_sale_i, tar_llam_entra_n,
+                tar_llam_sale_n, tar_datos_recibidos, tar_datos_enviados);
+        return Consultar;
     }
 
-    public int editar(String cod_s, String nombre_s, String ciudad_s, String direccion_s,
-            String telefono_s) {
-        if (!cod_s.isEmpty() && !nombre_s.isEmpty() && !ciudad_s.isEmpty()
-                && !direccion_s.isEmpty() && !telefono_s.isEmpty()) {
-            Sucursal suc = new Sucursal(cod_s, nombre_s, ciudad_s, direccion_s, telefono_s);
-            int retorno = daoCiaInternacional.editar(suc);
+    public int editar(String id, String nombre, String pais, int tarifa_mensajes,
+            int tar_llam_entra_i, int tar_llam_sale_i, int tar_llam_entra_n,
+            int tar_llam_sale_n, int tar_datos_recibidos, int tar_datos_enviados) {
+        if (!id.isEmpty() && !nombre.isEmpty() && !pais.isEmpty()
+                && tarifa_mensajes > 0 && tar_llam_entra_i > 0 && tar_llam_sale_i > 0
+                && tar_llam_entra_n > 0 && tar_llam_sale_n > 0 && tar_datos_recibidos > 0
+                && tar_datos_enviados > 0) {
+            Cia_internacional ciaI = new Cia_internacional(id, nombre, pais, tarifa_mensajes, tar_llam_entra_i,
+                                                           tar_llam_sale_i, tar_llam_entra_n,  tar_llam_sale_n,
+                                                            tar_datos_recibidos, tar_datos_enviados);
+            int retorno = daoCiaInternacional.editar(ciaI);
             return retorno;
         } else {
             return -1;
         }
     }
-
     /// metodo para llenar los JComboBox con las sucursales
-
 }
