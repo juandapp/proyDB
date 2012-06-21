@@ -6,7 +6,9 @@ package controlador;
 
 import java.util.LinkedList;
 import dao.DaoEmpresa;
+import dao.DaoPostpago;
 import logica.Empresa;
+import logica.Postpago;
 
 /**
  *
@@ -15,12 +17,13 @@ import logica.Empresa;
 public class ControladorEmpresa {
     
     DaoEmpresa daoEmpresa;
+    DaoPostpago daoPostpago;
     
     
     public ControladorEmpresa()
     {
     daoEmpresa= new DaoEmpresa();
-    
+    daoPostpago= new DaoPostpago();
     }
     
     
@@ -28,8 +31,9 @@ public class ControladorEmpresa {
             String cod_plan) {
         if(!nombre.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty()
                 &&  !cod_plan.isEmpty() ) {
+            Postpago postpago =daoPostpago.consultar(cod_plan);
             Empresa empresa = new Empresa(nombre, telefono,
-                    direccion,cod_plan);
+                    direccion,postpago);
             int retorno = daoEmpresa.guardar(empresa);
             return retorno;
         } else {
@@ -63,8 +67,9 @@ public class ControladorEmpresa {
             String cod_plan) {
         if(!nombre.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty()
                 &&  !cod_plan.isEmpty() ){
+            Postpago postpago =daoPostpago.consultar(cod_plan);
             Empresa empresa = new Empresa(nombre,telefono,direccion,
-                cod_plan);
+                postpago);
             int retorno = daoEmpresa.editar(empresa);
             return retorno;
         } else {

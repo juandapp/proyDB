@@ -14,12 +14,12 @@ public class Empresa {
     Postpago cod_plan;
 
     public Empresa(String nombre, String telefono,String direccion,
-            String cod_plan) {
+            Postpago cod_plan) {
         
        this.nombre=nombre;
        this.telefono=telefono;
        this.direccion=direccion;
-      // this.cod_plan=cod_plan;
+       this.cod_plan=cod_plan;
         
     }
     
