@@ -16,6 +16,17 @@ public class Recarga {
     String medio_recarga;
     Simcard simcard;
 
+    public Recarga(){
+        
+    }
+    
+    public Recarga(int valor, Date fecha, String medio_recarga, Simcard simcard){
+        this.valor=valor;
+        this.fecha=fecha;
+        this.medio_recarga=medio_recarga;
+        this.simcard=simcard;
+    }
+    
     public Date getFecha() {
         return fecha;
     }
