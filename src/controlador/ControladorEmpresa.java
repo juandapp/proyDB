@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 package controlador;
-import dao.DaoEmpresa;
-import java.util.LinkedList;
 
+import java.util.LinkedList;
+import dao.DaoEmpresa;
 import logica.Empresa;
 
 /**

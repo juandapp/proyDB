@@ -141,7 +141,7 @@ public class DaoEmpresa {
         sql_update = "UPDATE empresa  SET "
                 + "telefono='" + em.getTelefono() + "', "
                 + "direccion='" + em.getDireccion() + "', "
-                + "cod_plan='" + em.getCod_plan() + "', "
+                + "cod_plan='" + em.getCod_plan() + "' "
                 + "WHERE nombre='" + em.getNombre() + "'";
         try {
             Connection conn = fachada.conectar();
