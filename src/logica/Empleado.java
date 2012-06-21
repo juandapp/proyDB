@@ -16,7 +16,25 @@ public class Empleado {
     Date fecha_nacimiento, fecha_ingreso;
     Sucursal cod_sucursal;
     
-    public Empleado() {
+    
+    public Empleado()
+    {}
+    
+    public Empleado(String id_empleado,String nombre,
+            String genero,String estado_civil,Date fecha_nacimiento,
+            Date fecha_ingreso,String tipo_contrato,String cargo,
+            Sucursal codigo_sucursal) {
+        
+        this.id_empleado=id_empleado;
+        this.nombre=nombre;
+        this.genero=genero;
+        this.estado_civil=estado_civil;
+        this.fecha_nacimiento=fecha_nacimiento;
+        this.fecha_ingreso=fecha_ingreso;
+        this.tipo_contrato=tipo_contrato;
+        this.cargo=cargo;
+        this.cod_sucursal=codigo_sucursal;
+        
     }    
 
     public Date getFecha_nacimiento() {
