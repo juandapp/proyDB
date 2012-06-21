@@ -82,16 +82,16 @@ public class DaoCia_internacional {
     public int editar(Cia_internacional ci) {
         String sql_editar;
         sql_editar = "UPDATE cia_internacional SET "
-                + "nombre='" + ci.getId() + "'"
-                + "pais='" + ci.getPais() + "'"
-                + "tarifa_mensajes=" + ci.getTarifa_mensajes() + ""
-                + "tar_llamada_entra_inter=" + ci.getTar_llamada_entra_inter() + ""
-                + "tar_llamada_sale_inter=" + ci.getTar_llamada_sale_inter() + ""
-                + "tar_llamada_entra_nal=" + ci.getTar_llamada_entra_nal() + ""
-                + "tar_llamada_sale_nal=" + ci.getTar_llamada_sale_nal() + ""
-                + "tar_datos_recibidos=" + ci.getTar_datos_recibidos() + ""
-                + "tar_datos_enviados=" + ci.getTar_datos_enviados() + ""
-                + "WHERE id='" + ci.getId() + "'";
+                + "nombre='" + ci.getId() + "', "
+                + "pais='" + ci.getPais() + "', "
+                + "tarifa_mensajes=" + ci.getTarifa_mensajes() + ", "
+                + "tar_llamada_entra_inter=" + ci.getTar_llamada_entra_inter() + ", "
+                + "tar_llamada_sale_inter=" + ci.getTar_llamada_sale_inter() + ", "
+                + "tar_llamada_entra_nal=" + ci.getTar_llamada_entra_nal() + ", "
+                + "tar_llamada_sale_nal=" + ci.getTar_llamada_sale_nal() + ", "
+                + "tar_datos_recibidos=" + ci.getTar_datos_recibidos() + ", "
+                + "tar_datos_enviados=" + ci.getTar_datos_enviados() + " "
+                + " WHERE id='" + ci.getId() + "'";
 
         try {
             Connection conn = fachada.conectar();

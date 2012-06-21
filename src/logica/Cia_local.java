@@ -14,6 +14,7 @@ public class Cia_local {
     public Cia_local() {
     }
     
+   
     public Cia_local(String id, String nombre) {
         this.id=id;
         this.nombre=nombre;
