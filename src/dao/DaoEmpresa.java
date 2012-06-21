@@ -67,13 +67,13 @@ public class DaoEmpresa {
             sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
         }
         if(!telefono.equals("")){
-            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+            sql_select += "telefono LIKE '%"+telefono+"%'"+" AND ";
         }
         if(!direccion.equals("")){
-            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+            sql_select += "direccion LIKE '%"+direccion+"%'"+" AND ";
         }
         if(!cod_plan.equals("")){
-            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+            sql_select += "cod_plan LIKE '%"+cod_plan+"%'"+" AND ";
         }
                      
         sql_select = sql_select.substring(0, sql_select.length() - 5);
@@ -86,9 +86,7 @@ public class DaoEmpresa {
                 empresa.setNombre(tabla.getString("nombre"));
                 empresa.setTelefono(tabla.getString("telefono"));
                 empresa.setDireccion(tabla.getString("direccion"));
-                
-                
-                //empresa.setCod_plan(tabla.getString("cod_plan"));
+                empresa.setCod_plan(new DaoPostpago().consultar(tabla.getString("cod_plan")));
             }
             conn.close();
             System.out.println("Conexion cerrada");
