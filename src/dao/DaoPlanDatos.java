@@ -27,12 +27,12 @@ public class DaoPlanDatos {
         fachada = new FachadaBD();
     }
 
-    public int guardar(PlanDatos pDAtos) {
+    public int guardar(PlanDatos pDatos) {
         String sql_guardar;
         sql_guardar = "INSERT INTO plan_datos VALUES ('"
-                + pDAtos.getCod_plan_datos() + "', '"
-                + pDAtos.getCosto_internet() + "', '"
-                + pDAtos.getCosto_correo() + "')";
+                + pDatos.getCod_plan_datos() + "', '"
+                + pDatos.getCosto_internet() + "', '"
+                + pDatos.getCosto_correo() + "')";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -83,7 +83,7 @@ public LinkedList consultar(String cod_plan_datos, String costo_internet, String
             sql_select += "WHERE ";
         }
         if (!cod_plan_datos.equals("")) {
-            sql_select += "cod_plan_datos = " + cod_plan_datos + " AND ";
+            sql_select += "cod_plan_datos = '" + cod_plan_datos + "' AND ";
         }
         if (!costo_internet.equals("")) {
             sql_select += "costo_internet LIKE '%" + costo_internet + "%'" + " AND ";
@@ -121,8 +121,8 @@ public LinkedList consultar(String cod_plan_datos, String costo_internet, String
 
         String sql_update;
         sql_update = "UPDATE plan_datos SET "
-                + "costo_internet=" + pDatos.getCosto_internet() + ", "
-                + "costo_correo=" + pDatos.getCosto_correo() + " "
+                + "costo_internet='" + pDatos.getCosto_internet() + "', "
+                + "costo_correo='" + pDatos.getCosto_correo() + "' "
                 + "WHERE cod_plan_datos='" + pDatos.getCod_plan_datos() + "'";
         try {
             Connection conn = fachada.conectar();

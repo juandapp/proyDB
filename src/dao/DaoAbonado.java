@@ -118,7 +118,7 @@ public class DaoAbonado {
         }
       
         if(!id.equals("")){
-            sql_select += "id LIKE '%"+id+"%'"+" AND ";
+            sql_select += "id = '"+id+"'"+" AND ";
         }
         if(!tipo_documento.equals("")){
             sql_select += "tipo_documento LIKE '%"+tipo_documento+"%'"+" AND ";
