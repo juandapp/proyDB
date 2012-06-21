@@ -19,7 +19,7 @@ CREATE TABLE empleado (
 id_empleado varchar(10) PRIMARY KEY,
 nombre varchar(20),
 genero varchar(10),
-estado_civil varchar(10),
+estado_civil varchar(12),
 fecha_nacimiento Date,
 fecha_ingreso Date,
 tipo_contrato varchar(15),
