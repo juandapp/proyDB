@@ -14,18 +14,18 @@ import logica.Equipo;
 
 /**
  *
- * 
+ *
  */
 public class JPEquipo extends javax.swing.JPanel {
 
     /**
      * Creates new form JPEquipo
      */
-    
     ControladorEquipo ce;
+
     public JPEquipo() {
         initComponents();
-        ce=new ControladorEquipo();
+        ce = new ControladorEquipo();
     }
 
     /**
@@ -232,7 +232,8 @@ public class JPEquipo extends javax.swing.JPanel {
 
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No su pudo crear el Equipo", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        } else {
+        }
+        else {
             JOptionPane.showMessageDialog(this, "Equipo Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTFImei2.setText(jTFImei1.getText());
@@ -248,36 +249,37 @@ public class JPEquipo extends javax.swing.JPanel {
         // TODO add your handling code here:
         LinkedList consulta = new LinkedList();
         try {
-         consulta = ce.consultar(  
+            consulta = ce.consultar(
                     jTFImei2.getText(),
                     jTFModelo2.getText(),
                     jTFMarca2.getText());
-            
-                Object[][] s = new Object[consulta.size()][3];
-                for (int i = 0; i < consulta.size(); i++) {
-                   Equipo eq = (Equipo) consulta.get(i);
-                    if (eq.getModelo() != null) {
-                        s[i][0] = eq.getImei();
-                        s[i][1] = eq.getModelo();
-                        s[i][2] = eq.getMarca();
-                    } else {
-                        s = null;
-                    }
-                }
-                TableModel myModel = new DefaultTableModel(s, new String[]{"Imei", "Modelo", "Marca"}) {
-                    boolean[] canEdit = new boolean[]{false, false, false};
 
-                    @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit[columnIndex];
-                    }
-                };
-                ///remover filas
-                jTResultados.setModel(myModel);
-                jTResultados.setRowSorter(new TableRowSorter(myModel));
+            Object[][] s = new Object[consulta.size()][3];
+            for (int i = 0; i < consulta.size(); i++) {
+                Equipo eq = (Equipo) consulta.get(i);
+                if (eq.getModelo() != null) {
+                    s[i][0] = eq.getImei();
+                    s[i][1] = eq.getModelo();
+                    s[i][2] = eq.getMarca();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Imei", "Modelo", "Marca"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
-        }   
+        }
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
@@ -291,8 +293,7 @@ public class JPEquipo extends javax.swing.JPanel {
             editar = ce.editar(
                     jTFCodigo3.getText(),
                     jTFModelo3.getText(),
-                    jTFMarca3.getText()
-                    );
+                    jTFMarca3.getText());
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -310,13 +311,13 @@ public class JPEquipo extends javax.swing.JPanel {
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
         // TODO add your handling code here:
-         int selectedRow = jTResultados.getSelectedRow();
+        int selectedRow = jTResultados.getSelectedRow();
         jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTFModelo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
         jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
- private void limpiarCamposModificar() {
+    private void limpiarCamposModificar() {
         jTFCodigo3.setText("");
         jTFModelo3.setText("");
         jTFMarca3.setText("");
