@@ -15,6 +15,15 @@ public class Simcard {
             
     public Simcard() {
     }
+    public Simcard(String codigo, String num_telefono, String activacion_internet, String bloqueado_por_robo,
+            String activacion_correo, String autorizacion_roaming){
+        this.codigo=codigo;
+        this.num_telefono=num_telefono;
+        this.activacion_internet=activacion_internet;
+        this.bloqueado_por_robo=bloqueado_por_robo;
+        this.activacion_correo=activacion_correo;
+        this.autorizacion_roaming=autorizacion_roaming;
+    }
 
     public String getActivacion_correo() {
         return activacion_correo;
