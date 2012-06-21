@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import logica.Cia_local;
 
 /**
@@ -72,12 +73,50 @@ public class DaoCia_local {
 
         return null;
     }
+    
+    
+    public LinkedList consultar(String id, String nombre) {
+        LinkedList ciaLConsulta = new LinkedList();
+        String sql_select = "SELECT * FROM cia_local      ";
+        if (!id.equals("") || !nombre.equals("")) {
+            sql_select += "WHERE ";
+        }
+        if (!id.equals("")) {
+            sql_select += "id ='" + id + "' AND ";
+        }
+        if(!nombre.equals("")){
+            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+        }
+                     
+        sql_select = sql_select.substring(0, sql_select.length() - 5);
+        try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                Cia_local cl = new Cia_local();
+                cl.setId(tabla.getString("id"));
+                cl.setNombre(tabla.getString("nombre"));
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return ciaLConsulta;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
 
     public int editar(Cia_local c) {
 
         String sql_update;
-        sql_update = "UPDATE cia_local  SET"
-                + "nombre='" + c.getNombre() + "'"
+        sql_update = "UPDATE cia_local  SET "
+                + "nombre='" + c.getNombre() + "' "
                 + "WHERE id='" + c.getId() + "'";
         try {
             Connection conn = fachada.conectar();

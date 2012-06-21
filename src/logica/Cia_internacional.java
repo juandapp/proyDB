@@ -16,6 +16,20 @@ public class Cia_internacional {
     public Cia_internacional() {
     }
     
+    public Cia_internacional(String id, String nombre, String pais, int tarifa_mensajes,
+            int tar_llam_entra_i, int tar_llam_sale_i, int tar_llam_entra_n,
+            int tar_llam_sale_n, int tar_datos_recibidos, int tar_datos_enviados){
+        this.id=id;
+        this.nombre=nombre;
+        this.pais=pais;
+        this.tarifa_mensajes=tarifa_mensajes;
+        this.tar_llamada_entra_inter=tar_llam_entra_i;
+        this.tar_llamada_sale_inter=tar_llam_sale_i;
+        this.tar_llamada_entra_nal=tar_llam_entra_n;
+        this.tar_llamada_sale_nal=tar_llam_sale_n;
+        this.tar_datos_recibidos=tar_datos_recibidos;
+        this.tar_datos_enviados=tar_datos_enviados;
+    }
     public String getId() {
         return id;
     }

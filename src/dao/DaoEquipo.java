@@ -76,7 +76,7 @@ public class DaoEquipo {
     }
     
     public LinkedList consultar(String imei, String modelo, String marca) {
-        LinkedList sucursalConsulta = new LinkedList();
+        LinkedList equipoConsulta = new LinkedList();
         String sql_select = "SELECT * FROM equipo      ";
         if (!imei.equals("") || !modelo.equals("") || !marca.equals("")) {
             sql_select += "WHERE ";
@@ -101,11 +101,11 @@ public class DaoEquipo {
                 eq.setImei(tabla.getString("imei"));
                 eq.setModelo(tabla.getString("modelo"));
                 eq.setMarca(tabla.getString("marca"));
-                sucursalConsulta.add(eq);
+                equipoConsulta.add(eq);
             }
             conn.close();
             System.out.println("Conexion cerrada");
-            return sucursalConsulta;
+            return equipoConsulta;
 
         } catch (SQLException e) {
             System.out.println(e);
