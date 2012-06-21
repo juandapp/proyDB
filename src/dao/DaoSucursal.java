@@ -131,12 +131,12 @@ public class DaoSucursal {
     public int editar(Sucursal s) {
 
         String sql_update;
-        sql_update = "UPDATE sucursal  SET"
+        sql_update = "UPDATE sucursal SET "
                 + "nombre='" + s.getNombre() + "', "
                 + "ciudad='" + s.getCiudad() + "', "
                 + "direccion='" + s.getDireccion() + "', "
                 + "telefono='" + s.getTelefono() + "' "
-                + "WHERE cod_sucursal='" + s.getCod_sucursal() + "'";
+                + " WHERE cod_sucursal='" + s.getCod_sucursal() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -149,6 +149,7 @@ public class DaoSucursal {
             return 0;
 
         } catch (SQLException e) {
+            System.out.println("Conexion aquii");
             System.out.println(e);
         } catch (Exception e) {
             System.out.println(e);
