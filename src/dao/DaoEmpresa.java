@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import logica.Cia_local;
 import logica.Empresa;
 
 /**
@@ -44,6 +46,61 @@ public class DaoEmpresa {
         return -1;
     }//fin guardar
 
+    
+    
+    
+    
+    
+    public LinkedList consultar(String nombre, String telefono,
+            String direccion, String cod_plan) {
+        LinkedList empresaConsulta = new LinkedList();
+        String sql_select = "SELECT * FROM empresa      ";
+        if (!nombre.equals("") 
+            || !telefono.equals("")
+            || !direccion.equals("")
+            || !cod_plan.equals("")) {
+            sql_select += "WHERE ";
+        }
+      
+        if(!nombre.equals("")){
+            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+        }
+        if(!telefono.equals("")){
+            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+        }
+        if(!direccion.equals("")){
+            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+        }
+        if(!cod_plan.equals("")){
+            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+        }
+                     
+        sql_select = sql_select.substring(0, sql_select.length() - 5);
+        try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                Empresa empresa = new Empresa();
+                empresa.setNombre(tabla.getString("nombre"));
+                empresa.setTelefono(tabla.getString("telefono"));
+                empresa.setDireccion(tabla.getString("direccion"));
+                //empresa.setCod_plan(tabla.getString("cod_plan"));
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return empresaConsulta;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+    
+    
     public Empresa consultar(String nombre) {
         Empresa em = new Empresa();
         String sql_select;
@@ -81,10 +138,10 @@ public class DaoEmpresa {
     public int editar(Empresa em) {
 
         String sql_update;
-        sql_update = "UPDATE empresa  SET"
-                + "telefono='" + em.getTelefono() + "'"
-                + "direccion='" + em.getDireccion() + "'"
-                + "cod_plan='" + em.getCod_plan() + "'"
+        sql_update = "UPDATE empresa  SET "
+                + "telefono='" + em.getTelefono() + "', "
+                + "direccion='" + em.getDireccion() + "', "
+                + "cod_plan='" + em.getCod_plan() + "', "
                 + "WHERE nombre='" + em.getNombre() + "'";
         try {
             Connection conn = fachada.conectar();
