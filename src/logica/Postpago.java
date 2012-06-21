@@ -14,6 +14,13 @@ public class Postpago {
 
     public Postpago() {
     }
+    
+    public Postpago(Plan cod_plan, int total_minutos, int costo_min_adicional) {
+        this.cod_plan=cod_plan;
+        this.total_minutos=total_minutos;
+        this.costo_min_adicional=costo_min_adicional;
+    }
+
 
     public Plan getCod_plan() {
         return cod_plan;
