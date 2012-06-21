@@ -16,8 +16,29 @@ public class Abonado {
     Equipo imei;
     Date fecha_nacimiento;
 
-    public Abonado() {
+    public Abonado(String id,String tipo_documento,String nombres,
+            String apellidos,String direccion,String genero,String estado_civil, 
+            Date fecha_nacimiento,String comuna,String barrio,String ciudad,
+            String tipo,Equipo imei) {
+        
+        this.id=id;
+        this.tipo_documento=tipo_documento;
+        this.nombres=nombres;
+        this.apellidos=apellidos;
+        this.direccion=direccion;
+        this.genero=genero;
+        this.estado_civil=estado_civil;
+        this.fecha_nacimiento=fecha_nacimiento;
+        this.comuna=comuna;
+        this.barrio=barrio;
+        this.ciudad=ciudad;
+        this.tipo=tipo;
+        this.imei=imei;
+        
     }     
+    
+    public Abonado() {
+    }   
 
     public String getId() {
         return id;

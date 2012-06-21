@@ -87,6 +87,7 @@ public class DaoEmpresa {
                 empresa.setTelefono(tabla.getString("telefono"));
                 empresa.setDireccion(tabla.getString("direccion"));
                 empresa.setCod_plan(new DaoPostpago().consultar(tabla.getString("cod_plan")));
+                empresaConsulta.add(empresa);
             }
             conn.close();
             System.out.println("Conexion cerrada");

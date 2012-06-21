@@ -97,6 +97,7 @@ public class DaoCia_local {
                 Cia_local cl = new Cia_local();
                 cl.setId(tabla.getString("id"));
                 cl.setNombre(tabla.getString("nombre"));
+                ciaLConsulta.add(cl);
             }
             conn.close();
             System.out.println("Conexion cerrada");
