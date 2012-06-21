@@ -13,8 +13,19 @@ public class Empresa {
     String nombre, telefono, direccion;
     Postpago cod_plan;
 
+    public Empresa(String nombre, String telefono,String direccion,
+            String cod_plan) {
+        
+       this.nombre=nombre;
+       this.telefono=telefono;
+       this.direccion=direccion;
+      // this.cod_plan=cod_plan;
+        
+    }
+    
     public Empresa() {
     }
+
 
     public Postpago getCod_plan() {
         return cod_plan;

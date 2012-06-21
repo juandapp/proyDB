@@ -74,8 +74,8 @@ public class DaoPrepago {
     public int editar(Prepago c) {
 
         String sql_update;
-        sql_update = "UPDATE prepago  SET"
-                + "cod_plan='" + c.getCod_plan() + "'"
+        sql_update = "UPDATE prepago  SET "
+                + "cod_plan='" + c.getCod_plan() + "' "
                 + "WHERE cod_plan='" + c.getCod_plan() + "'";
         try {
             Connection conn = fachada.conectar();
