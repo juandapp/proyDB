@@ -10,8 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-import logica.Cia_local;
+import logica.Postpago;
 import logica.Empresa;
+
 
 /**
  *
@@ -85,6 +86,8 @@ public class DaoEmpresa {
                 empresa.setNombre(tabla.getString("nombre"));
                 empresa.setTelefono(tabla.getString("telefono"));
                 empresa.setDireccion(tabla.getString("direccion"));
+                
+                
                 //empresa.setCod_plan(tabla.getString("cod_plan"));
             }
             conn.close();
