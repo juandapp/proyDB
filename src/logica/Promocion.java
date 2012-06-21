@@ -15,6 +15,13 @@ public class Promocion {
     
     public Promocion(){        
     }
+    
+    public Promocion(String nombre, String descripcion, Prepago cod_plan){   
+        this.nombre=nombre;
+        this.descripcion=descripcion;
+        this.cod_plan=cod_plan;
+             
+    }
 
     public Prepago getCod_plan() {
         return cod_plan;
