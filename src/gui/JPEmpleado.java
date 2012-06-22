@@ -109,37 +109,37 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel24.setText("Id");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(10, 10, 11, 17);
+        jLabel24.setBounds(10, 10, 10, 14);
         jPanel1.add(jTFCodigo1);
-        jTFCodigo1.setBounds(130, 10, 130, 27);
+        jTFCodigo1.setBounds(130, 10, 130, 20);
 
         jLabel25.setText("Nombre");
         jPanel1.add(jLabel25);
-        jLabel25.setBounds(10, 40, 80, 17);
+        jLabel25.setBounds(10, 40, 80, 14);
         jPanel1.add(jTFNombre1);
-        jTFNombre1.setBounds(130, 40, 200, 27);
+        jTFNombre1.setBounds(130, 40, 200, 20);
 
         jLabel26.setText("Genero");
         jPanel1.add(jLabel26);
-        jLabel26.setBounds(10, 70, 70, 17);
+        jLabel26.setBounds(10, 70, 70, 14);
 
         jCBGenero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Femenino", "Masculino" }));
         jCBGenero1.setName(""); // NOI18N
         jPanel1.add(jCBGenero1);
-        jCBGenero1.setBounds(130, 70, 200, 27);
+        jCBGenero1.setBounds(130, 70, 200, 20);
 
         jLabel27.setText("Estado Civil");
         jPanel1.add(jLabel27);
-        jLabel27.setBounds(10, 100, 100, 17);
+        jLabel27.setBounds(10, 100, 100, 14);
 
         jCBEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Casado", "Soltero", "Viudo", "Divorciado", "Union Libre" }));
         jCBEstadoCivil1.setName(""); // NOI18N
         jPanel1.add(jCBEstadoCivil1);
-        jCBEstadoCivil1.setBounds(130, 100, 200, 27);
+        jCBEstadoCivil1.setBounds(130, 100, 200, 20);
 
         jLabel28.setText("F. de Nacimiento");
         jPanel1.add(jLabel28);
-        jLabel28.setBounds(10, 130, 130, 17);
+        jLabel28.setBounds(10, 130, 130, 14);
 
         jLabel29.setText("F. de Ingreso");
         jPanel1.add(jLabel29);
@@ -152,7 +152,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBTipoContrato1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Tiempo Completo", "Medio Tiempo", "Contratista" }));
         jCBTipoContrato1.setName(""); // NOI18N
         jPanel1.add(jCBTipoContrato1);
-        jCBTipoContrato1.setBounds(130, 190, 200, 27);
+        jCBTipoContrato1.setBounds(130, 190, 200, 20);
 
         jLabel31.setText("Cargo");
         jPanel1.add(jLabel31);
@@ -161,7 +161,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBCargo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Vendedor", "Gerente" }));
         jCBCargo1.setName(""); // NOI18N
         jPanel1.add(jCBCargo1);
-        jCBCargo1.setBounds(130, 220, 200, 27);
+        jCBCargo1.setBounds(130, 220, 200, 20);
 
         jLabel32.setText("Sucursal");
         jPanel1.add(jLabel32);
@@ -170,20 +170,20 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBSucursal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Sucursales" }));
         jCBSucursal1.setName(""); // NOI18N
         jCBSucursal1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBSucursal1PopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBSucursal1PopupMenuWillBecomeVisible(evt);
             }
         });
         jPanel1.add(jCBSucursal1);
-        jCBSucursal1.setBounds(130, 250, 200, 27);
+        jCBSucursal1.setBounds(130, 250, 200, 20);
 
         jBLimpiar1.setText("Limpiar");
         jPanel1.add(jBLimpiar1);
-        jBLimpiar1.setBounds(130, 280, 80, 33);
+        jBLimpiar1.setBounds(130, 280, 80, 23);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -192,31 +192,31 @@ public class JPEmpleado extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBCrear1);
-        jBCrear1.setBounds(220, 280, 90, 33);
+        jBCrear1.setBounds(220, 280, 90, 23);
 
         jDCFechaIngreso1.setDateFormatString("dd MMM yyyy");
         jPanel1.add(jDCFechaIngreso1);
-        jDCFechaIngreso1.setBounds(130, 160, 200, 29);
+        jDCFechaIngreso1.setBounds(130, 160, 200, 20);
 
         jDCFechaNacimiento1.setDateFormatString("dd MMM yyyy");
         jPanel1.add(jDCFechaNacimiento1);
-        jDCFechaNacimiento1.setBounds(130, 130, 200, 29);
+        jDCFechaNacimiento1.setBounds(130, 130, 200, 20);
 
         jTabbedPane1.addTab("Crear", jPanel1);
 
         jPanel2.setLayout(null);
         jPanel2.add(jTFCodigo2);
-        jTFCodigo2.setBounds(140, 10, 100, 27);
+        jTFCodigo2.setBounds(140, 10, 100, 20);
 
         jLabel33.setText("Id");
         jPanel2.add(jLabel33);
-        jLabel33.setBounds(10, 10, 11, 17);
+        jLabel33.setBounds(10, 10, 10, 14);
 
         jLabel34.setText("Nombre");
         jPanel2.add(jLabel34);
-        jLabel34.setBounds(10, 40, 80, 17);
+        jLabel34.setBounds(10, 40, 80, 14);
         jPanel2.add(jTFNombre2);
-        jTFNombre2.setBounds(140, 40, 200, 27);
+        jTFNombre2.setBounds(140, 40, 200, 20);
 
         jLabel38.setText("F. de Ingreso");
         jPanel2.add(jLabel38);
@@ -224,25 +224,25 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel37.setText("F. de Nacimiento");
         jPanel2.add(jLabel37);
-        jLabel37.setBounds(10, 100, 108, 17);
+        jLabel37.setBounds(10, 100, 80, 14);
 
         jLabel35.setText("Genero");
         jPanel2.add(jLabel35);
-        jLabel35.setBounds(390, 10, 70, 17);
+        jLabel35.setBounds(390, 10, 70, 14);
 
         jCBGenero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Femenino", "Masculino" }));
         jCBGenero2.setName(""); // NOI18N
         jPanel2.add(jCBGenero2);
-        jCBGenero2.setBounds(470, 10, 170, 27);
+        jCBGenero2.setBounds(470, 10, 170, 20);
 
         jLabel36.setText("Estado Civil");
         jPanel2.add(jLabel36);
-        jLabel36.setBounds(390, 40, 100, 17);
+        jLabel36.setBounds(390, 40, 100, 14);
 
         jCBEstadoCivil2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado", "Union Libre" }));
         jCBEstadoCivil2.setName(""); // NOI18N
         jPanel2.add(jCBEstadoCivil2);
-        jCBEstadoCivil2.setBounds(470, 40, 170, 27);
+        jCBEstadoCivil2.setBounds(470, 40, 170, 20);
 
         jLabel40.setText("Cargo");
         jPanel2.add(jLabel40);
@@ -251,7 +251,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBCargo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Vendedor", "Gerente" }));
         jCBCargo2.setName(""); // NOI18N
         jPanel2.add(jCBCargo2);
-        jCBCargo2.setBounds(470, 70, 170, 27);
+        jCBCargo2.setBounds(470, 70, 170, 20);
 
         jLabel39.setText("Tipo de Contrato");
         jPanel2.add(jLabel39);
@@ -260,7 +260,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBTipoContrato2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado" }));
         jCBTipoContrato2.setName(""); // NOI18N
         jPanel2.add(jCBTipoContrato2);
-        jCBTipoContrato2.setBounds(140, 130, 200, 27);
+        jCBTipoContrato2.setBounds(140, 130, 200, 20);
 
         jLabel41.setText("Sucursal");
         jPanel2.add(jLabel41);
@@ -269,11 +269,11 @@ public class JPEmpleado extends javax.swing.JPanel {
         jCBSucursal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Sucursales" }));
         jCBSucursal2.setName(""); // NOI18N
         jPanel2.add(jCBSucursal2);
-        jCBSucursal2.setBounds(470, 100, 170, 27);
+        jCBSucursal2.setBounds(470, 100, 170, 20);
 
         jBLimpiar2.setText("Limpiar");
         jPanel2.add(jBLimpiar2);
-        jBLimpiar2.setBounds(550, 140, 90, 33);
+        jBLimpiar2.setBounds(550, 140, 90, 23);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -302,11 +302,11 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jDCFechaNacimiento2.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaNacimiento2);
-        jDCFechaNacimiento2.setBounds(140, 100, 200, 29);
+        jDCFechaNacimiento2.setBounds(140, 100, 200, 20);
 
         jDCFechaIngreso2.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaIngreso2);
-        jDCFechaIngreso2.setBounds(140, 70, 200, 29);
+        jDCFechaIngreso2.setBounds(140, 70, 200, 20);
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
@@ -314,23 +314,23 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jLabel42.setText("Id");
         jPanel4.add(jLabel42);
-        jLabel42.setBounds(10, 10, 40, 17);
+        jLabel42.setBounds(10, 10, 40, 14);
 
         jLabel43.setText("Nombre");
         jPanel4.add(jLabel43);
-        jLabel43.setBounds(10, 40, 90, 17);
+        jLabel43.setBounds(10, 40, 90, 14);
 
         jLabel44.setText("Genero");
         jPanel4.add(jLabel44);
-        jLabel44.setBounds(10, 70, 80, 17);
+        jLabel44.setBounds(10, 70, 80, 14);
 
         jLabel45.setText("Estado Civil");
         jPanel4.add(jLabel45);
-        jLabel45.setBounds(10, 100, 100, 17);
+        jLabel45.setBounds(10, 100, 100, 14);
 
         jLabel46.setText("F. de Nacimiento");
         jPanel4.add(jLabel46);
-        jLabel46.setBounds(10, 130, 130, 17);
+        jLabel46.setBounds(10, 130, 130, 14);
 
         jLabel47.setText("F. de Ingreso");
         jPanel4.add(jLabel47);
@@ -350,53 +350,53 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jBCrear2.setText("Crear");
         jPanel4.add(jBCrear2);
-        jBCrear2.setBounds(240, 280, 90, 33);
+        jBCrear2.setBounds(240, 280, 90, 23);
         jPanel4.add(jTFCodigo3);
-        jTFCodigo3.setBounds(130, 10, 130, 27);
+        jTFCodigo3.setBounds(130, 10, 130, 20);
         jPanel4.add(jTFNombre3);
-        jTFNombre3.setBounds(130, 40, 200, 27);
+        jTFNombre3.setBounds(130, 40, 200, 20);
 
         jCBGenero3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Femenino", "Masculino" }));
         jCBGenero3.setName(""); // NOI18N
         jPanel4.add(jCBGenero3);
-        jCBGenero3.setBounds(130, 70, 200, 27);
+        jCBGenero3.setBounds(130, 70, 200, 20);
 
         jCBEstadoCivil3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Casado", "Soltero", "Viudo", "Divorsiado", "Union Libre" }));
         jCBEstadoCivil3.setName(""); // NOI18N
         jPanel4.add(jCBEstadoCivil3);
-        jCBEstadoCivil3.setBounds(130, 100, 200, 27);
+        jCBEstadoCivil3.setBounds(130, 100, 200, 20);
 
         jDCFechaNacimiento3.setDateFormatString("dd MMM yyyy");
         jPanel4.add(jDCFechaNacimiento3);
-        jDCFechaNacimiento3.setBounds(130, 130, 200, 29);
+        jDCFechaNacimiento3.setBounds(130, 130, 200, 20);
 
         jDCFechaIngreso3.setDateFormatString("dd MMM yyyy");
         jPanel4.add(jDCFechaIngreso3);
-        jDCFechaIngreso3.setBounds(130, 160, 200, 29);
+        jDCFechaIngreso3.setBounds(130, 160, 200, 20);
 
         jCBTipoContrato3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Tiempo Completo", "Medio Tiempo", "Contratista" }));
         jCBTipoContrato3.setName(""); // NOI18N
         jPanel4.add(jCBTipoContrato3);
-        jCBTipoContrato3.setBounds(130, 190, 200, 27);
+        jCBTipoContrato3.setBounds(130, 190, 200, 20);
 
         jCBCargo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Vendedor", "Gerente" }));
         jCBCargo3.setName(""); // NOI18N
         jPanel4.add(jCBCargo3);
-        jCBCargo3.setBounds(130, 220, 200, 27);
+        jCBCargo3.setBounds(130, 220, 200, 20);
 
         jCBSucursal3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Sucursales" }));
         jCBSucursal3.setName(""); // NOI18N
         jCBSucursal3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBSucursal3PopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBSucursal3PopupMenuWillBecomeVisible(evt);
             }
         });
         jPanel4.add(jCBSucursal3);
-        jCBSucursal3.setBounds(130, 250, 200, 27);
+        jCBSucursal3.setBounds(130, 250, 200, 20);
 
         jTabbedPane1.addTab("Editar", jPanel4);
 

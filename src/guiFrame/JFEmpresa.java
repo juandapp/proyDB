@@ -8,12 +8,12 @@ package guiFrame;
  *
  * @author juandapp
  */
-public class JPEmpresa extends javax.swing.JPanel {
+public class JFEmpresa extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPEmpresa
+     * Creates new form JFEmpresa
      */
-    public JPEmpresa() {
+    public JFEmpresa() {
         initComponents();
     }
 

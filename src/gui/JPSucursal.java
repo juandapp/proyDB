@@ -92,7 +92,7 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBLimpiar1);
-        jBLimpiar1.setBounds(130, 170, 72, 30);
+        jBLimpiar1.setBounds(130, 170, 72, 23);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,37 +101,37 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBCrear1);
-        jBCrear1.setBounds(210, 170, 70, 30);
+        jBCrear1.setBounds(210, 170, 70, 23);
 
         jLabel6.setText("Codigo");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(20, 20, 60, 18);
+        jLabel6.setBounds(20, 20, 60, 14);
         jPanel4.add(jTFCodigo1);
-        jTFCodigo1.setBounds(90, 10, 100, 28);
+        jTFCodigo1.setBounds(90, 10, 100, 20);
 
         jLabel7.setText("Nombre");
         jPanel4.add(jLabel7);
         jLabel7.setBounds(20, 50, 70, 20);
         jPanel4.add(jTFNombre1);
-        jTFNombre1.setBounds(90, 40, 190, 28);
+        jTFNombre1.setBounds(90, 40, 190, 20);
         jPanel4.add(jTFCiudad1);
-        jTFCiudad1.setBounds(90, 70, 190, 28);
+        jTFCiudad1.setBounds(90, 70, 190, 20);
         jPanel4.add(jTFDireccion1);
-        jTFDireccion1.setBounds(90, 100, 190, 28);
+        jTFDireccion1.setBounds(90, 100, 190, 20);
 
         jLabel8.setText("Ciudad");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(20, 80, 60, 18);
+        jLabel8.setBounds(20, 80, 60, 14);
 
         jLabel9.setText("Direccion");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(20, 110, 90, 18);
+        jLabel9.setBounds(20, 110, 90, 14);
 
         jLabel10.setText("Telefono");
         jPanel4.add(jLabel10);
-        jLabel10.setBounds(20, 140, 90, 18);
+        jLabel10.setBounds(20, 140, 90, 14);
         jPanel4.add(jTFTelefono1);
-        jTFTelefono1.setBounds(90, 130, 190, 28);
+        jTFTelefono1.setBounds(90, 130, 190, 20);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -139,33 +139,33 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel1.setText("Codigo");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 20, 70, 18);
+        jLabel1.setBounds(10, 20, 70, 14);
         jPanel1.add(jTFCodigo);
-        jTFCodigo.setBounds(80, 10, 120, 28);
+        jTFCodigo.setBounds(80, 10, 120, 20);
 
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 50, 70, 20);
         jPanel1.add(jTFNombre);
-        jTFNombre.setBounds(80, 40, 190, 28);
+        jTFNombre.setBounds(80, 40, 190, 20);
 
         jLabel3.setText("Ciudad");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 80, 70, 18);
+        jLabel3.setBounds(10, 80, 70, 14);
         jPanel1.add(jTFCiudad);
-        jTFCiudad.setBounds(80, 70, 190, 28);
+        jTFCiudad.setBounds(80, 70, 190, 20);
 
         jLabel4.setText("Direccion");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 110, 90, 18);
+        jLabel4.setBounds(10, 110, 90, 14);
         jPanel1.add(jTFDireccion);
-        jTFDireccion.setBounds(80, 100, 190, 28);
+        jTFDireccion.setBounds(80, 100, 190, 20);
 
         jLabel5.setText("Telefono");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 140, 90, 18);
+        jLabel5.setBounds(10, 140, 90, 14);
         jPanel1.add(jTFTelefono);
-        jTFTelefono.setBounds(80, 130, 190, 28);
+        jTFTelefono.setBounds(80, 130, 190, 20);
 
         jTResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,11 +200,11 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBConsultar);
-        jBConsultar.setBounds(280, 10, 90, 30);
+        jBConsultar.setBounds(280, 10, 90, 23);
 
         jBLimpiar2.setText("Limpiar");
         jPanel1.add(jBLimpiar2);
-        jBLimpiar2.setBounds(280, 40, 90, 30);
+        jBLimpiar2.setBounds(280, 40, 90, 23);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
@@ -212,15 +212,15 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jTFCodigo2.setEditable(false);
         jPanel2.add(jTFCodigo2);
-        jTFCodigo2.setBounds(80, 10, 100, 28);
+        jTFCodigo2.setBounds(80, 10, 100, 20);
         jPanel2.add(jTFNombre2);
-        jTFNombre2.setBounds(80, 40, 190, 28);
+        jTFNombre2.setBounds(80, 40, 190, 20);
         jPanel2.add(jTFCiudad2);
-        jTFCiudad2.setBounds(80, 70, 190, 28);
+        jTFCiudad2.setBounds(80, 70, 190, 20);
         jPanel2.add(jTFDireccion2);
-        jTFDireccion2.setBounds(80, 100, 190, 28);
+        jTFDireccion2.setBounds(80, 100, 190, 20);
         jPanel2.add(jTFTelefono2);
-        jTFTelefono2.setBounds(80, 130, 190, 28);
+        jTFTelefono2.setBounds(80, 130, 190, 20);
 
         jBModificar3.setText("Modificar");
         jBModificar3.addActionListener(new java.awt.event.ActionListener() {
@@ -229,27 +229,27 @@ public class JPSucursal extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(180, 160, 90, 30);
+        jBModificar3.setBounds(180, 160, 90, 23);
 
         jLabel16.setText("Telefono");
         jPanel2.add(jLabel16);
-        jLabel16.setBounds(10, 140, 90, 18);
+        jLabel16.setBounds(10, 140, 90, 14);
 
         jLabel17.setText("Direccion");
         jPanel2.add(jLabel17);
-        jLabel17.setBounds(10, 110, 100, 18);
+        jLabel17.setBounds(10, 110, 100, 14);
 
         jLabel18.setText("Ciudad");
         jPanel2.add(jLabel18);
-        jLabel18.setBounds(10, 80, 48, 18);
+        jLabel18.setBounds(10, 80, 33, 14);
 
         jLabel19.setText("Nombre");
         jPanel2.add(jLabel19);
-        jLabel19.setBounds(10, 40, 80, 18);
+        jLabel19.setBounds(10, 40, 80, 14);
 
         jLabel20.setText("Codigo");
         jPanel2.add(jLabel20);
-        jLabel20.setBounds(10, 10, 60, 18);
+        jLabel20.setBounds(10, 10, 60, 14);
 
         jTabbedPane1.addTab("Editar", jPanel2);
 

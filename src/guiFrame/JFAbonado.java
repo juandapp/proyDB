@@ -8,12 +8,12 @@ package guiFrame;
  *
  * @author juandapp
  */
-public class JPAbonado extends javax.swing.JPanel {
+public class JFAbonado extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPAbonado
+     * Creates new form JFAbonado
      */
-    public JPAbonado() {
+    public JFAbonado() {
         initComponents();
     }
 

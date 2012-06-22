@@ -54,6 +54,11 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMISucursal);
 
         jMIAbonado.setText("Abonado");
+        jMIAbonado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAbonadoActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMIAbonado);
 
         jMIEquipo.setText("Equipo");
@@ -120,6 +125,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMIEquipoActionPerformed
 
+    private void jMIAbonadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAbonadoActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPAbonado(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMIAbonadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -144,7 +159,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
         } catch (Exception ex) {
-        //    java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            //    java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

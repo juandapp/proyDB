@@ -8,12 +8,12 @@ package guiFrame;
  *
  * @author Juan
  */
-public class JPCia_Internacional extends javax.swing.JFrame {
+public class JFCia_Internacional extends javax.swing.JFrame {
 
     /**
-     * Creates new form JPCia_Internacional
+     * Creates new form JFCia_Internacional
      */
-    public JPCia_Internacional() {
+    public JFCia_Internacional() {
         initComponents();
     }
 
@@ -63,13 +63,13 @@ public class JPCia_Internacional extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JPCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JPCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JPCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JPCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCia_Internacional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -79,7 +79,7 @@ public class JPCia_Internacional extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new JPCia_Internacional().setVisible(true);
+                new JFCia_Internacional().setVisible(true);
             }
         });
     }
