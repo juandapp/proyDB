@@ -600,7 +600,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jBConsultar1">
+                <Component class="javax.swing.JButton" name="jBConsultar2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>

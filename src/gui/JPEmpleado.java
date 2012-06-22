@@ -78,7 +78,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jBLimpiar2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
-        jBConsultar1 = new javax.swing.JButton();
+        jBConsultar2 = new javax.swing.JButton();
         jDCFechaNacimiento2 = new com.toedter.calendar.JDateChooser();
         jDCFechaIngreso2 = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
@@ -296,9 +296,9 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(10, 210, 640, 140);
 
-        jBConsultar1.setText("Consultar");
-        jPanel2.add(jBConsultar1);
-        jBConsultar1.setBounds(390, 140, 120, 30);
+        jBConsultar2.setText("Consultar");
+        jPanel2.add(jBConsultar2);
+        jBConsultar2.setBounds(390, 140, 120, 30);
 
         jDCFechaNacimiento2.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaNacimiento2);
@@ -462,7 +462,7 @@ public class JPEmpleado extends javax.swing.JPanel {
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBConsultar1;
+    private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBCrear2;
     private javax.swing.JButton jBLimpiar1;
