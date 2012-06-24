@@ -50,10 +50,10 @@ public class JPEmpresa extends javax.swing.JPanel {
         jLabel55 = new javax.swing.JLabel();
         jTFDireccion2 = new javax.swing.JTextField();
         jLabel56 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBConsultar2 = new javax.swing.JButton();
+        jBLimpiar2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jBCrear2 = new javax.swing.JButton();
+        jBModificar3 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jTFNombre3 = new javax.swing.JTextField();
         jCBCod_plan3 = new javax.swing.JComboBox();
@@ -178,21 +178,21 @@ public class JPEmpresa extends javax.swing.JPanel {
         jPanel2.add(jLabel56);
         jLabel56.setBounds(10, 70, 80, 14);
 
-        jButton1.setText("Consultar");
-        jPanel2.add(jButton1);
-        jButton1.setBounds(360, 20, 100, 23);
+        jBConsultar2.setText("Consultar");
+        jPanel2.add(jBConsultar2);
+        jBConsultar2.setBounds(360, 20, 100, 23);
 
-        jButton2.setText("Limpiar");
-        jPanel2.add(jButton2);
-        jButton2.setBounds(360, 50, 100, 23);
+        jBLimpiar2.setText("Limpiar");
+        jPanel2.add(jBLimpiar2);
+        jBLimpiar2.setBounds(360, 50, 100, 23);
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
         jPanel4.setLayout(null);
 
-        jBCrear2.setText("Modificar");
-        jPanel4.add(jBCrear2);
-        jBCrear2.setBounds(240, 140, 90, 23);
+        jBModificar3.setText("Modificar");
+        jPanel4.add(jBModificar3);
+        jBModificar3.setBounds(240, 140, 90, 23);
 
         jLabel27.setText("Nombre");
         jPanel4.add(jLabel27);
@@ -264,11 +264,11 @@ public class JPEmpresa extends javax.swing.JPanel {
     }//GEN-LAST:event_jCBCod_plan3PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
-    private javax.swing.JButton jBCrear2;
     private javax.swing.JButton jBLimpiar1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBLimpiar2;
+    private javax.swing.JButton jBModificar3;
     private javax.swing.JComboBox jCBCod_plan1;
     private javax.swing.JComboBox jCBCod_plan2;
     private javax.swing.JComboBox jCBCod_plan3;

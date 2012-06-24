@@ -47,7 +47,7 @@ public class JPEquipo extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jTFMarca1 = new javax.swing.JTextField();
         jBLimpiar1 = new javax.swing.JButton();
-        jBCrear = new javax.swing.JButton();
+        jBCrear1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTFImei2 = new javax.swing.JTextField();
@@ -95,14 +95,14 @@ public class JPEquipo extends javax.swing.JPanel {
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(90, 100, 72, 23);
 
-        jBCrear.setText("Crear");
-        jBCrear.addActionListener(new java.awt.event.ActionListener() {
+        jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCrearActionPerformed(evt);
+                jBCrear1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jBCrear);
-        jBCrear.setBounds(180, 100, 70, 23);
+        jPanel4.add(jBCrear1);
+        jBCrear1.setBounds(180, 100, 70, 23);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -220,7 +220,7 @@ public class JPEquipo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
         int guardar = -1;
         try {
             guardar = ce.guardar(
@@ -243,7 +243,7 @@ public class JPEquipo extends javax.swing.JPanel {
 
         }
 
-   }//GEN-LAST:event_jBCrearActionPerformed
+   }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
         // TODO add your handling code here:
@@ -336,7 +336,7 @@ public class JPEquipo extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
-    private javax.swing.JButton jBCrear;
+    private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiar2;
     private javax.swing.JButton jBModificar3;

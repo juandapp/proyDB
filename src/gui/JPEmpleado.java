@@ -78,9 +78,9 @@ public class JPEmpleado extends javax.swing.JPanel {
         jBLimpiar2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
-        jBConsultar2 = new javax.swing.JButton();
         jDCFechaNacimiento2 = new com.toedter.calendar.JDateChooser();
         jDCFechaIngreso2 = new com.toedter.calendar.JDateChooser();
+        jBConsultar2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -91,7 +91,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jBCrear2 = new javax.swing.JButton();
+        jBModificar3 = new javax.swing.JButton();
         jTFCodigo3 = new javax.swing.JTextField();
         jTFNombre3 = new javax.swing.JTextField();
         jCBGenero3 = new javax.swing.JComboBox();
@@ -296,15 +296,6 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(10, 210, 640, 140);
 
-        jBConsultar2.setText("Consultar");
-        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBConsultar2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jBConsultar2);
-        jBConsultar2.setBounds(390, 140, 120, 30);
-
         jDCFechaNacimiento2.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaNacimiento2);
         jDCFechaNacimiento2.setBounds(140, 100, 200, 20);
@@ -312,6 +303,10 @@ public class JPEmpleado extends javax.swing.JPanel {
         jDCFechaIngreso2.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaIngreso2);
         jDCFechaIngreso2.setBounds(140, 70, 200, 20);
+
+        jBConsultar2.setText("Consultar");
+        jPanel2.add(jBConsultar2);
+        jBConsultar2.setBounds(400, 140, 120, 23);
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
@@ -353,9 +348,9 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel4.add(jLabel50);
         jLabel50.setBounds(10, 250, 90, 20);
 
-        jBCrear2.setText("Modificar");
-        jPanel4.add(jBCrear2);
-        jBCrear2.setBounds(240, 280, 90, 23);
+        jBModificar3.setText("Modificar");
+        jPanel4.add(jBModificar3);
+        jBModificar3.setBounds(240, 280, 90, 23);
         jPanel4.add(jTFCodigo3);
         jTFCodigo3.setBounds(130, 10, 130, 20);
         jPanel4.add(jTFNombre3);
@@ -466,16 +461,12 @@ public class JPEmpleado extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
-    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBConsultar2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
-    private javax.swing.JButton jBCrear2;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiar2;
+    private javax.swing.JButton jBModificar3;
     private javax.swing.JComboBox jCBCargo1;
     private javax.swing.JComboBox jCBCargo2;
     private javax.swing.JComboBox jCBCargo3;

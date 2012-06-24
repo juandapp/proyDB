@@ -65,7 +65,7 @@ public class JPSucursal extends javax.swing.JPanel {
         jTFTelefono = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
-        jBConsultar = new javax.swing.JButton();
+        jBConsultar2 = new javax.swing.JButton();
         jBLimpiar2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTFCodigo2 = new javax.swing.JTextField();
@@ -193,14 +193,14 @@ public class JPSucursal extends javax.swing.JPanel {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 160, 452, 125);
 
-        jBConsultar.setText("Consultar");
-        jBConsultar.addActionListener(new java.awt.event.ActionListener() {
+        jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBConsultarActionPerformed(evt);
+                jBConsultar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jBConsultar);
-        jBConsultar.setBounds(280, 10, 90, 23);
+        jPanel1.add(jBConsultar2);
+        jBConsultar2.setBounds(280, 10, 90, 23);
 
         jBLimpiar2.setText("Limpiar");
         jPanel1.add(jBLimpiar2);
@@ -268,7 +268,7 @@ public class JPSucursal extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
 
         LinkedList consulta = new LinkedList();
         try {
@@ -307,7 +307,7 @@ public class JPSucursal extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }   
-    }//GEN-LAST:event_jBConsultarActionPerformed
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
      int guardar = -1;
@@ -327,7 +327,7 @@ public class JPSucursal extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Sucursal Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTFCodigo.setText(jTFCodigo1.getText());
-            jBConsultar.doClick();
+            jBConsultar2.doClick();
             jBLimpiar1.doClick();
             jTabbedPane1.setSelectedIndex(1);
 
@@ -376,7 +376,7 @@ public class JPSucursal extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Sucursal modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTFCodigo.setText(jTFCodigo2.getText());
-            jBConsultar.doClick();
+            jBConsultar2.doClick();
             jTabbedPane1.setSelectedIndex(1);
             limpiarCamposModificar();
         }
@@ -397,7 +397,7 @@ public class JPSucursal extends javax.swing.JPanel {
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBConsultar;
+    private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiar2;
