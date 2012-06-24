@@ -8,12 +8,12 @@ package gui;
  *
  * @author JUANPAULO
  */
-public class JPPlanPostpago extends javax.swing.JPanel {
+public class JPPlanPrepago extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPPlanPostpago
+     * Creates new form JPPlanPrepago
      */
-    public JPPlanPostpago() {
+    public JPPlanPrepago() {
         initComponents();
     }
 
@@ -33,16 +33,12 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jTFCodigo1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTFtarifa_otro_operador1 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jTFtarifa_msj_multimedia1 = new javax.swing.JTextField();
         jBLimpiar1 = new javax.swing.JButton();
         jBCrear1 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jTtarifa_msj_texto1 = new javax.swing.JTextField();
-        jTtotal_minutos1 = new javax.swing.JTextField();
-        jTcosto_min_adicional1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
@@ -56,26 +52,18 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jTFtarifa_msj_multimedia2 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jTtarifa_msj_texto2 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jTtotal_minutos2 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jTcosto_min_adicional2 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jBModificar3 = new javax.swing.JButton();
         jTFtarifa_msj_multimedia3 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jTFCodigo3 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTcosto_min_adicional3 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jTtotal_minutos3 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
         jTtarifa_msj_texto3 = new javax.swing.JTextField();
         jTFtarifa_otro_operador3 = new javax.swing.JTextField();
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Plan Postpago"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Plan Prepago"));
         jPanel3.setLayout(null);
 
         jPanel4.setLayout(null);
@@ -91,20 +79,16 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jLabel6.setBounds(10, 40, 70, 14);
         jPanel4.add(jTFtarifa_otro_operador1);
         jTFtarifa_otro_operador1.setBounds(120, 40, 110, 20);
-
-        jLabel8.setText("Costo min adicional");
-        jPanel4.add(jLabel8);
-        jLabel8.setBounds(10, 160, 110, 14);
         jPanel4.add(jTFtarifa_msj_multimedia1);
         jTFtarifa_msj_multimedia1.setBounds(120, 70, 110, 20);
 
         jBLimpiar1.setText("Limpiar");
         jPanel4.add(jBLimpiar1);
-        jBLimpiar1.setBounds(50, 190, 72, 23);
+        jBLimpiar1.setBounds(60, 150, 72, 23);
 
         jBCrear1.setText("Crear");
         jPanel4.add(jBCrear1);
-        jBCrear1.setBounds(160, 190, 70, 23);
+        jBCrear1.setBounds(150, 150, 70, 23);
 
         jLabel13.setText("Tarifa msj multimedia");
         jPanel4.add(jLabel13);
@@ -114,17 +98,9 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jPanel4.add(jLabel14);
         jLabel14.setBounds(10, 100, 100, 14);
 
-        jLabel15.setText("Total minutos");
-        jPanel4.add(jLabel15);
-        jLabel15.setBounds(10, 130, 100, 14);
-
         jTtarifa_msj_texto1.setText(" ");
         jPanel4.add(jTtarifa_msj_texto1);
         jTtarifa_msj_texto1.setBounds(120, 100, 110, 20);
-        jPanel4.add(jTtotal_minutos1);
-        jTtotal_minutos1.setBounds(120, 130, 110, 20);
-        jPanel4.add(jTcosto_min_adicional1);
-        jTcosto_min_adicional1.setBounds(120, 160, 110, 20);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -135,11 +111,11 @@ public class JPPlanPostpago extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Codigo", "T. otro operador", "T. msj multimedia", "T. msj texto", "Total minutos", "Costo min adicional"
+                "Codigo", "T. otro operador", "T. msj multimedia", "T. msj texto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -154,15 +130,15 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 140, 470, 125);
+        jScrollPane1.setBounds(10, 100, 470, 125);
 
         jBConsultar2.setText("Consultar");
         jPanel1.add(jBConsultar2);
-        jBConsultar2.setBounds(270, 100, 90, 23);
+        jBConsultar2.setBounds(270, 50, 90, 23);
 
         jBLimpiar2.setText("Limpiar");
         jPanel1.add(jBLimpiar2);
-        jBLimpiar2.setBounds(380, 100, 90, 23);
+        jBLimpiar2.setBounds(380, 50, 90, 23);
 
         jLabel16.setText("Codigo");
         jPanel1.add(jLabel16);
@@ -190,25 +166,13 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jPanel1.add(jTtarifa_msj_texto2);
         jTtarifa_msj_texto2.setBounds(380, 10, 110, 20);
 
-        jLabel19.setText("Total minutos");
-        jPanel1.add(jLabel19);
-        jLabel19.setBounds(270, 40, 100, 14);
-        jPanel1.add(jTtotal_minutos2);
-        jTtotal_minutos2.setBounds(380, 40, 110, 20);
-
-        jLabel20.setText("Costo min adicional");
-        jPanel1.add(jLabel20);
-        jLabel20.setBounds(270, 70, 110, 14);
-        jPanel1.add(jTcosto_min_adicional2);
-        jTcosto_min_adicional2.setBounds(380, 70, 110, 20);
-
         jTabbedPane1.addTab("Consultar", jPanel1);
 
         jPanel2.setLayout(null);
 
         jBModificar3.setText("Modificar");
         jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(120, 200, 90, 23);
+        jBModificar3.setBounds(130, 140, 90, 23);
         jPanel2.add(jTFtarifa_msj_multimedia3);
         jTFtarifa_msj_multimedia3.setBounds(120, 70, 110, 20);
 
@@ -221,15 +185,9 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jPanel2.add(jTFCodigo3);
         jTFCodigo3.setBounds(120, 10, 100, 20);
 
-        jLabel22.setText("Total minutos");
-        jPanel2.add(jLabel22);
-        jLabel22.setBounds(10, 130, 100, 14);
-
         jLabel23.setText("Codigo");
         jPanel2.add(jLabel23);
         jLabel23.setBounds(10, 10, 60, 14);
-        jPanel2.add(jTcosto_min_adicional3);
-        jTcosto_min_adicional3.setBounds(120, 160, 110, 20);
 
         jLabel24.setText("Tarifa msj multimedia");
         jPanel2.add(jLabel24);
@@ -238,12 +196,6 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jLabel25.setText("Tarifa otro op.");
         jPanel2.add(jLabel25);
         jLabel25.setBounds(10, 40, 70, 14);
-        jPanel2.add(jTtotal_minutos3);
-        jTtotal_minutos3.setBounds(120, 130, 110, 20);
-
-        jLabel26.setText("Costo min adicional");
-        jPanel2.add(jLabel26);
-        jLabel26.setBounds(10, 160, 110, 14);
 
         jTtarifa_msj_texto3.setText(" ");
         jPanel2.add(jTtarifa_msj_texto3);
@@ -254,17 +206,17 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jTabbedPane1.addTab("Editar", jPanel2);
 
         jPanel3.add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 20, 500, 310);
+        jTabbedPane1.setBounds(10, 20, 500, 260);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -280,21 +232,15 @@ public class JPPlanPostpago extends javax.swing.JPanel {
     private javax.swing.JButton jBModificar3;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -312,14 +258,8 @@ public class JPPlanPostpago extends javax.swing.JPanel {
     private javax.swing.JTextField jTFtarifa_otro_operador3;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTcosto_min_adicional1;
-    private javax.swing.JTextField jTcosto_min_adicional2;
-    private javax.swing.JTextField jTcosto_min_adicional3;
     private javax.swing.JTextField jTtarifa_msj_texto1;
     private javax.swing.JTextField jTtarifa_msj_texto2;
     private javax.swing.JTextField jTtarifa_msj_texto3;
-    private javax.swing.JTextField jTtotal_minutos1;
-    private javax.swing.JTextField jTtotal_minutos2;
-    private javax.swing.JTextField jTtotal_minutos3;
     // End of variables declaration//GEN-END:variables
 }
