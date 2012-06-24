@@ -297,6 +297,11 @@ public class JPEmpleado extends javax.swing.JPanel {
         jScrollPane1.setBounds(10, 210, 640, 140);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBConsultar2);
         jBConsultar2.setBounds(390, 140, 120, 30);
 
@@ -348,7 +353,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel4.add(jLabel50);
         jLabel50.setBounds(10, 250, 90, 20);
 
-        jBCrear2.setText("Crear");
+        jBCrear2.setText("Modificar");
         jPanel4.add(jBCrear2);
         jBCrear2.setBounds(240, 280, 90, 23);
         jPanel4.add(jTFCodigo3);
@@ -460,6 +465,10 @@ public class JPEmpleado extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
