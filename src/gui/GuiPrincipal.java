@@ -37,6 +37,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMISucursal = new javax.swing.JMenuItem();
         jMIAbonado = new javax.swing.JMenuItem();
         jMIEquipo = new javax.swing.JMenuItem();
+        jMIPlanPostpago = new javax.swing.JMenuItem();
         jMIEmpleado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +69,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMIEquipo);
+
+        jMIPlanPostpago.setText("Plan Postpago");
+        jMIPlanPostpago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIPlanPostpagoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIPlanPostpago);
 
         jMIEmpleado.setText("Empleado");
         jMIEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +144,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMIAbonadoActionPerformed
 
+    private void jMIPlanPostpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIPlanPostpagoActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPPlanPostpago(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMIPlanPostpagoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -177,6 +196,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIAbonado;
     private javax.swing.JMenuItem jMIEmpleado;
     private javax.swing.JMenuItem jMIEquipo;
+    private javax.swing.JMenuItem jMIPlanPostpago;
     private javax.swing.JMenuItem jMISucursal;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

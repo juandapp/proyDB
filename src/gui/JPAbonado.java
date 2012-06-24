@@ -156,7 +156,7 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel1.add(jLabel27);
         jLabel27.setBounds(360, 130, 100, 14);
 
-        jCBEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Casado", "Soltero", "Viudo", "Divorciado", "Union Libre" }));
+        jCBEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Casado", "Soltero", "Viudo", "Divorciado", "Union Libre", "Felizmente Separad@" }));
         jCBEstadoCivil1.setName(""); // NOI18N
         jPanel1.add(jCBEstadoCivil1);
         jCBEstadoCivil1.setBounds(430, 130, 200, 20);

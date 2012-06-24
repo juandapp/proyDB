@@ -135,13 +135,14 @@
                 <Component class="javax.swing.JComboBox" name="jCBEstadoCivil1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="6">
-                        <StringItem index="0" value=""/>
+                      <StringArray count="7">
+                        <StringItem index="0" value=" "/>
                         <StringItem index="1" value="Casado"/>
                         <StringItem index="2" value="Soltero"/>
                         <StringItem index="3" value="Viudo"/>
                         <StringItem index="4" value="Divorciado"/>
                         <StringItem index="5" value="Union Libre"/>
+                        <StringItem index="6" value="Felizmente Separad@"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
