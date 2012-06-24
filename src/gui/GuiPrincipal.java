@@ -42,6 +42,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMIEmpleado = new javax.swing.JMenuItem();
         jMICompaniaInternacional = new javax.swing.JMenuItem();
         jMICompaniaLocal = new javax.swing.JMenuItem();
+        jMISimCard = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +113,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMICompaniaLocal);
+
+        jMISimCard.setText("SimCard");
+        jMISimCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMISimCardActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMISimCard);
 
         jMenuBar1.add(jMenu3);
 
@@ -212,6 +221,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMICompaniaLocalActionPerformed
 
+    private void jMISimCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISimCardActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPSimCard(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMISimCardActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +277,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIEmpresa;
     private javax.swing.JMenuItem jMIEquipo;
     private javax.swing.JMenuItem jMIPlanPostpago;
+    private javax.swing.JMenuItem jMISimCard;
     private javax.swing.JMenuItem jMISucursal;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
