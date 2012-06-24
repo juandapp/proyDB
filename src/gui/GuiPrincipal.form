@@ -65,6 +65,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICompaniaInternacionalActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMICompaniaLocal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Compania Local"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICompaniaLocalActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

@@ -105,13 +105,13 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel6.setText("Codigo");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(20, 20, 60, 14);
+        jLabel6.setBounds(20, 10, 60, 14);
         jPanel4.add(jTFCodigo1);
         jTFCodigo1.setBounds(90, 10, 100, 20);
 
         jLabel7.setText("Nombre");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(20, 50, 70, 20);
+        jLabel7.setBounds(20, 40, 70, 20);
         jPanel4.add(jTFNombre1);
         jTFNombre1.setBounds(90, 40, 190, 20);
         jPanel4.add(jTFCiudad1);
@@ -121,15 +121,15 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel8.setText("Ciudad");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(20, 80, 60, 14);
+        jLabel8.setBounds(20, 70, 60, 14);
 
         jLabel9.setText("Direccion");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(20, 110, 90, 14);
+        jLabel9.setBounds(20, 100, 90, 14);
 
         jLabel10.setText("Telefono");
         jPanel4.add(jLabel10);
-        jLabel10.setBounds(20, 140, 90, 14);
+        jLabel10.setBounds(20, 130, 90, 14);
         jPanel4.add(jTFTelefono1);
         jTFTelefono1.setBounds(90, 130, 190, 20);
 
@@ -139,31 +139,31 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel1.setText("Codigo");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 20, 70, 14);
+        jLabel1.setBounds(10, 10, 70, 14);
         jPanel1.add(jTFCodigo);
         jTFCodigo.setBounds(80, 10, 120, 20);
 
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 50, 70, 20);
+        jLabel2.setBounds(10, 40, 70, 20);
         jPanel1.add(jTFNombre);
         jTFNombre.setBounds(80, 40, 190, 20);
 
         jLabel3.setText("Ciudad");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 80, 70, 14);
+        jLabel3.setBounds(10, 70, 70, 14);
         jPanel1.add(jTFCiudad);
         jTFCiudad.setBounds(80, 70, 190, 20);
 
         jLabel4.setText("Direccion");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 110, 90, 14);
+        jLabel4.setBounds(10, 100, 90, 14);
         jPanel1.add(jTFDireccion);
         jTFDireccion.setBounds(80, 100, 190, 20);
 
         jLabel5.setText("Telefono");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 140, 90, 14);
+        jLabel5.setBounds(10, 130, 90, 14);
         jPanel1.add(jTFTelefono);
         jTFTelefono.setBounds(80, 130, 190, 20);
 
@@ -233,15 +233,15 @@ public class JPSucursal extends javax.swing.JPanel {
 
         jLabel16.setText("Telefono");
         jPanel2.add(jLabel16);
-        jLabel16.setBounds(10, 140, 90, 14);
+        jLabel16.setBounds(10, 130, 90, 14);
 
         jLabel17.setText("Direccion");
         jPanel2.add(jLabel17);
-        jLabel17.setBounds(10, 110, 100, 14);
+        jLabel17.setBounds(10, 100, 100, 14);
 
         jLabel18.setText("Ciudad");
         jPanel2.add(jLabel18);
-        jLabel18.setBounds(10, 80, 33, 14);
+        jLabel18.setBounds(10, 70, 50, 14);
 
         jLabel19.setText("Nombre");
         jPanel2.add(jLabel19);
