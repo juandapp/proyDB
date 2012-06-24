@@ -142,7 +142,7 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
         jPanel1.add(jTFId1);
         jTFId1.setBounds(80, 20, 200, 20);
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(0, 80, 630, 20);
+        jSeparator1.setBounds(0, 80, 710, 20);
 
         jLabel60.setText("Mensajes");
         jPanel1.add(jLabel60);
@@ -235,7 +235,7 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
         jPanel2.add(jTFPais2);
         jTFPais2.setBounds(360, 20, 180, 20);
         jPanel2.add(jSeparator2);
-        jSeparator2.setBounds(0, 80, 630, 20);
+        jSeparator2.setBounds(0, 80, 710, 20);
 
         jLabel67.setText("Tarifas");
         jPanel2.add(jLabel67);
@@ -318,7 +318,7 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
         jPanel4.add(jTFId3);
         jTFId3.setBounds(80, 20, 200, 20);
         jPanel4.add(jSeparator3);
-        jSeparator3.setBounds(0, 80, 630, 20);
+        jSeparator3.setBounds(0, 80, 710, 20);
 
         jLabel75.setText("Mensajes");
         jPanel4.add(jLabel75);

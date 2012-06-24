@@ -40,6 +40,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMIPlanPostpago = new javax.swing.JMenuItem();
         jMIEmpresa = new javax.swing.JMenuItem();
         jMIEmpleado = new javax.swing.JMenuItem();
+        jMICompaniaInternacional = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMIEmpleado);
+
+        jMICompaniaInternacional.setText("Compania Internacional");
+        jMICompaniaInternacional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICompaniaInternacionalActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMICompaniaInternacional);
 
         jMenuBar1.add(jMenu3);
 
@@ -171,7 +180,18 @@ public class GuiPrincipal extends javax.swing.JFrame {
             this.pack();
         } catch (Exception e) {
         }
+
     }//GEN-LAST:event_jMIEmpresaActionPerformed
+
+    private void jMICompaniaInternacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICompaniaInternacionalActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPCompaniaInternacional(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMICompaniaInternacionalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +233,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMIAbonado;
+    private javax.swing.JMenuItem jMICompaniaInternacional;
     private javax.swing.JMenuItem jMIEmpleado;
     private javax.swing.JMenuItem jMIEmpresa;
     private javax.swing.JMenuItem jMIEquipo;
