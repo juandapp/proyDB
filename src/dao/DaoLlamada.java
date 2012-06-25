@@ -139,13 +139,13 @@ public class DaoLlamada {
     public int editar(Llamada llamada) {
 
         String sql_update;
-        sql_update = "UPDATE simcard SET '"
+        sql_update = "UPDATE llamada SET '"
                 + llamada.getHora_inicio() + "', '"
                 + llamada.getFecha()+ "', '"
                 + llamada.getTelefono_destino() + "', '"
                 + llamada.getHora_fin() + "','"
                 + llamada.getcLocal().getId() + "'"
-                + " WHERE codigo='" + llamada.getSim().getCodigo() + "'";
+                + " WHERE simcard='" + llamada.getSim().getCodigo() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();

@@ -4,7 +4,7 @@
  */
 package logica;
 
-import sun.util.calendar.BaseCalendar.Date;
+import java.sql.Date;
 
 /**
  *
@@ -20,7 +20,8 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(Abonado abonado, Empleado empleado, Plan plan, Simcard sim, Date fecha_ingreso) {
+    public Contrato(Abonado abonado, Empleado empleado, Plan plan, 
+            Simcard sim, Date fecha_ingreso) {
         this.abonado = abonado;
         this.empleado = empleado;
         this.plan = plan;
