@@ -30,9 +30,9 @@ public class DaoPlanDatos {
     public int guardar(PlanDatos pDatos) {
         String sql_guardar;
         sql_guardar = "INSERT INTO plan_datos VALUES ('"
-                + pDatos.getCod_plan_datos() + "', '"
-                + pDatos.getCosto_internet() + "', '"
-                + pDatos.getCosto_correo() + "')";
+                + pDatos.getCod_plan_datos() + "', "
+                + pDatos.getCosto_internet() + ", "
+                + pDatos.getCosto_correo() + ")";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -121,8 +121,8 @@ public LinkedList consultar(String cod_plan_datos, String costo_internet, String
 
         String sql_update;
         sql_update = "UPDATE plan_datos SET "
-                + "costo_internet='" + pDatos.getCosto_internet() + "', "
-                + "costo_correo='" + pDatos.getCosto_correo() + "' "
+                + "costo_internet=" + pDatos.getCosto_internet() + ", "
+                + "costo_correo=" + pDatos.getCosto_correo() + " "
                 + "WHERE cod_plan_datos='" + pDatos.getCod_plan_datos() + "'";
         try {
             Connection conn = fachada.conectar();

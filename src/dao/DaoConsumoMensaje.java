@@ -29,8 +29,8 @@ public class DaoConsumoMensaje {
         String sql_guardar;
         sql_guardar = "INSERT INTO consumo_mensaje VALUES ('"
                 + consumoMsj.getSimcard().getCodigo() + "', '"
-                + consumoMsj.getCompania_local().getId()+ "', '"
-                + consumoMsj.getMsjs_enviados() + "')";
+                + consumoMsj.getCompania_local().getId()+ "', "
+                + consumoMsj.getMsjs_enviados() + ")";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -125,7 +125,7 @@ public LinkedList consultar(String simcard,
         String sql_update;
         sql_update = "UPDATE consumo_mensaje SET "
                 + "cia_local='" + consumoMsj.getCompania_local().getId() + "', "
-                + "msjs_enviados='" + consumoMsj.getMsjs_enviados() + "' "
+                + "msjs_enviados=" + consumoMsj.getMsjs_enviados() + " "
                 + "WHERE simcard='" + consumoMsj.getSimcard().getCodigo() + "'";
         try {
             Connection conn = fachada.conectar();
