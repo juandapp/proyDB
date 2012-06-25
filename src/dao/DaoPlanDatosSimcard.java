@@ -139,7 +139,7 @@ public LinkedList consultar(String simcard,String cod_plan_datos,
                 + "tipo_pago='" + pDatosSim.getTipo_pago() + "', "
                 + "vol_datos_correo='" + pDatosSim.getVol_datos_correo() + "', "
                 + "vol_datos_internet='" + pDatosSim.getVol_datos_internet() + "' "
-                + "WHERE simcard='" + pDatosSim.getSimcard() + "'";
+                + "WHERE simcard='" + pDatosSim.getSimcard().getCodigo() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
