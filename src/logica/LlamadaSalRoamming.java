@@ -23,7 +23,9 @@ public class LlamadaSalRoamming {
     public LlamadaSalRoamming() {
     }
 
-    public LlamadaSalRoamming(Simcard sim, Date fecha, Time hora_inicio, Time hora_fin, String pais_destino, String tel_destino, Cia_internacional cInter) {
+    public LlamadaSalRoamming(Simcard sim, Date fecha, Time hora_inicio,
+            Time hora_fin, String pais_destino, String tel_destino, 
+            Cia_internacional cInter) {
         this.sim = sim;
         this.fecha = fecha;
         this.hora_inicio = hora_inicio;
