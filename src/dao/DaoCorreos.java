@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import logica.Correos;
+
 
 /**
  *
@@ -72,12 +74,51 @@ public class DaoCorreos {
 
         return null;
     }
+    
+     public LinkedList consultar(String email, String id_abonado) {
+        LinkedList correosConsulta = new LinkedList();
+        String sql_select = "SELECT * FROM correos";
+        if (!email.equals("") || !id_abonado.equals("")) {
+            sql_select += "WHERE ";
+        }
+        if (!email.equals("")) {
+            sql_select += "email ='" + email + "' AND ";
+        }
+        if(!id_abonado.equals("")){
+            sql_select += "id_abonado LIKE '%"+id_abonado+"%'"+" AND ";
+        }
+      
+                
+        sql_select = sql_select.substring(0, sql_select.length() - 5);
+        try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                Correos c = new Correos();
+                c.setEmail(tabla.getString("email"));
+                c.setId_abonado(new DaoAbonado().consultar(tabla.getString("id_abonado")));
+                correosConsulta.add(c);
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return correosConsulta;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
 
     public int editar(Correos c) {
 
         String sql_update;
-        sql_update = "UPDATE correos  SET"
-                + "id_abonado='" + c.getId_abonado() + "'"
+        sql_update = "UPDATE correos  SET "
+                + "id_abonado='" + c.getId_abonado() + "' "
                 + "WHERE email='" + c.getEmail() + "'";
         try {
             Connection conn = fachada.conectar();
