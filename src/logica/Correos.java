@@ -14,6 +14,13 @@ public class Correos {
 
     public Correos() {
     }
+
+    public Correos(String email, Abonado id_abonado) {
+        this.email = email;
+        this.id_abonado = id_abonado;
+    }
+    
+    
     
     public String getEmail() {
         return email;
