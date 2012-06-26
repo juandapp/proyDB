@@ -21,7 +21,8 @@ public class MensajeSalRoamming {
     public MensajeSalRoamming()
     {}
 
-    public MensajeSalRoamming(Simcard sim, Date fecha, Time hora, Cia_internacional cInter, String tel_destino) {
+    public MensajeSalRoamming(Simcard sim, Date fecha, Time hora,
+            Cia_internacional cInter, String tel_destino) {
         this.sim = sim;
         this.fecha = fecha;
         this.hora = hora;
