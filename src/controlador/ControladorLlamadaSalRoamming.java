@@ -33,7 +33,7 @@ public class ControladorLlamadaSalRoamming {
     public int guardar(String sim, Date fecha,Time hora_inicio,
             Time hora_fin, String pais_destino,String tel_destino,
             String cInter) {
-        if(!sim.isEmpty() && sim!=null && hora_inicio!=null
+        if(!sim.isEmpty() && fecha!=null && hora_inicio!=null
                 &&  hora_fin!=null &&  !pais_destino.isEmpty()
                 &&  !tel_destino.isEmpty() &&  !cInter.isEmpty()) {
             Simcard simcard= new DaoSimcard().consultar(sim);
