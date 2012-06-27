@@ -4,6 +4,14 @@
  */
 package gui;
 
+import controlador.ControladorSimcard;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Simcard;
+
 /**
  *
  * @author JUANPAULO
@@ -13,8 +21,11 @@ public class JPSimCard extends javax.swing.JPanel {
     /**
      * Creates new form JPSimCard
      */
+    ControladorSimcard cs;
+
     public JPSimCard() {
         initComponents();
+        cs = new ControladorSimcard();
     }
 
     /**
@@ -62,18 +73,18 @@ public class JPSimCard extends javax.swing.JPanel {
         jCBbloqueado_por_robo2 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jBModificar3 = new javax.swing.JButton();
-        jTFtarifa_msj_multimedia3 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
         jTFCodigo3 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTcosto_min_adicional3 = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jTtotal_minutos3 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jTtarifa_msj_texto3 = new javax.swing.JTextField();
-        jTFtarifa_otro_operador3 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jCBActivacion_Internet3 = new javax.swing.JComboBox();
+        jLabel16 = new javax.swing.JLabel();
+        jCBautorizacion_roaming3 = new javax.swing.JComboBox();
+        jCBactivacion_correo3 = new javax.swing.JComboBox();
+        jCBbloqueado_por_robo3 = new javax.swing.JComboBox();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jTFnum_telefono3 = new javax.swing.JTextField();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Sim Card"));
         jPanel3.setLayout(null);
@@ -97,10 +108,20 @@ public class JPSimCard extends javax.swing.JPanel {
         jLabel8.setBounds(10, 160, 110, 14);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(50, 190, 72, 23);
 
         jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBCrear1);
         jBCrear1.setBounds(160, 190, 70, 23);
 
@@ -163,10 +184,20 @@ public class JPSimCard extends javax.swing.JPanel {
         jScrollPane1.setBounds(10, 130, 490, 125);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBConsultar2);
         jBConsultar2.setBounds(260, 100, 100, 23);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBLimpiar2);
         jBLimpiar2.setBounds(390, 100, 100, 23);
 
@@ -219,49 +250,60 @@ public class JPSimCard extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(120, 200, 90, 23);
-        jPanel2.add(jTFtarifa_msj_multimedia3);
-        jTFtarifa_msj_multimedia3.setBounds(120, 70, 110, 20);
-
-        jLabel21.setText("Tarifa msj texto");
-        jPanel2.add(jLabel21);
-        jLabel21.setBounds(10, 100, 100, 14);
+        jBModificar3.setBounds(220, 120, 90, 23);
 
         jTFCodigo3.setEditable(false);
         jTFCodigo3.setEnabled(false);
         jPanel2.add(jTFCodigo3);
         jTFCodigo3.setBounds(120, 10, 100, 20);
 
-        jLabel22.setText("Total minutos");
-        jPanel2.add(jLabel22);
-        jLabel22.setBounds(10, 130, 100, 14);
-
         jLabel23.setText("Codigo");
         jPanel2.add(jLabel23);
         jLabel23.setBounds(10, 10, 60, 14);
-        jPanel2.add(jTcosto_min_adicional3);
-        jTcosto_min_adicional3.setBounds(120, 160, 110, 20);
 
-        jLabel24.setText("Tarifa msj multimedia");
-        jPanel2.add(jLabel24);
-        jLabel24.setBounds(10, 70, 120, 14);
-
-        jLabel25.setText("Tarifa otro op.");
+        jLabel25.setText("Numero de Tel");
         jPanel2.add(jLabel25);
         jLabel25.setBounds(10, 40, 70, 14);
-        jPanel2.add(jTtotal_minutos3);
-        jTtotal_minutos3.setBounds(120, 130, 110, 20);
 
-        jLabel26.setText("Costo min adicional");
-        jPanel2.add(jLabel26);
-        jLabel26.setBounds(10, 160, 110, 14);
+        jLabel30.setText("Activacion de Internet");
+        jPanel2.add(jLabel30);
+        jLabel30.setBounds(10, 70, 140, 14);
 
-        jTtarifa_msj_texto3.setText(" ");
-        jPanel2.add(jTtarifa_msj_texto3);
-        jTtarifa_msj_texto3.setBounds(120, 100, 110, 20);
-        jPanel2.add(jTFtarifa_otro_operador3);
-        jTFtarifa_otro_operador3.setBounds(120, 40, 110, 20);
+        jCBActivacion_Internet3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jPanel2.add(jCBActivacion_Internet3);
+        jCBActivacion_Internet3.setBounds(130, 70, 100, 20);
+
+        jLabel16.setText("Autorizacion Roaming");
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(270, 70, 110, 14);
+
+        jCBautorizacion_roaming3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jPanel2.add(jCBautorizacion_roaming3);
+        jCBautorizacion_roaming3.setBounds(390, 70, 100, 20);
+
+        jCBactivacion_correo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jPanel2.add(jCBactivacion_correo3);
+        jCBactivacion_correo3.setBounds(390, 40, 100, 20);
+
+        jCBbloqueado_por_robo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jPanel2.add(jCBbloqueado_por_robo3);
+        jCBbloqueado_por_robo3.setBounds(390, 10, 100, 20);
+
+        jLabel31.setText("Bloqueado por robo");
+        jPanel2.add(jLabel31);
+        jLabel31.setBounds(270, 10, 100, 14);
+
+        jLabel32.setText("Activacion Correo");
+        jPanel2.add(jLabel32);
+        jLabel32.setBounds(270, 40, 100, 14);
+        jPanel2.add(jTFnum_telefono3);
+        jTFnum_telefono3.setBounds(130, 40, 110, 20);
 
         jTabbedPane1.addTab("Editar", jPanel2);
 
@@ -281,9 +323,147 @@ public class JPSimCard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
+int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFnum_telefono3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jCBActivacion_Internet3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jCBbloqueado_por_robo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jCBactivacion_correo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+         jCBautorizacion_roaming3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+            System.out.println(jCBActivacion_Internet1.getSelectedItem());
+            guardar = cs.guardar(
+                    jTFCodigo1.getText(),
+                    jTFnum_telefono1.getText(),
+                    jCBActivacion_Internet1.getSelectedItem().toString(),
+                    jCBbloqueado_por_robo1.getSelectedItem().toString(),
+                    jCBactivacion_correo1.getSelectedItem().toString(),
+                    jCBautorizacion_roaming1.getSelectedItem().toString());
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear la Simcard", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Simcard Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
+        }
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+        try {
+            consulta = cs.consultar(
+                    jTFCodigo2.getText(),
+                    jTFnum_telefono2.getText(),
+                    jCBActivacion_Internet2.getSelectedItem().toString(),
+                    jCBbloqueado_por_robo2.getSelectedItem().toString(),
+                    jCBactivacion_correo2.getSelectedItem().toString(),
+                    jCBautorizacion_roaming2.getSelectedItem().toString());
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                Simcard sim = (Simcard) consulta.get(i);
+                if (sim.getActivacion_correo() != null) {
+                    s[i][0] = sim.getCodigo();
+                    s[i][1] = sim.getNum_telefono();
+                    s[i][2] = sim.getActivacion_internet();
+                    s[i][3] = sim.getBloqueado_por_robo();
+                    s[i][4] = sim.getActivacion_correo();
+                    s[i][5] = sim.getAutorizacion_roaming();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo", "Numero Tel", "Internet", "Bloqueado", "Correo", "Roaming"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false
+                };
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+        // TODO add your handling code here:
+        int editar = -1;
+        try {
+            editar = cs.editar(
+                    jTFCodigo3.getText(),
+                    jTFnum_telefono3.getText(),
+                    jCBActivacion_Internet3.getSelectedItem().toString(),
+                    jCBbloqueado_por_robo3.getSelectedItem().toString(),
+                    jCBactivacion_correo3.getSelectedItem().toString(),
+                    jCBautorizacion_roaming3.getSelectedItem().toString());
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar la Simcard", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Simcard modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
+        limpiarCamposConsultar();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar2ActionPerformed
+
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+        limpiarCamposCrear();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+    private void limpiarCamposModificar() {
+        jTFCodigo3.setText("");
+        jTFnum_telefono3.setText("");
+        jCBActivacion_Internet3.setSelectedIndex(0);
+        jCBbloqueado_por_robo3.setSelectedIndex(0);
+        jCBactivacion_correo3.setSelectedIndex(0);
+        jCBautorizacion_roaming3.setSelectedIndex(0);
+    }
+
+    private void limpiarCamposCrear() {
+        jTFCodigo1.setText("");
+        jTFnum_telefono1.setText("");
+        jCBActivacion_Internet1.setSelectedIndex(0);
+        jCBbloqueado_por_robo1.setSelectedIndex(0);
+        jCBactivacion_correo1.setSelectedIndex(0);
+        jCBautorizacion_roaming1.setSelectedIndex(0);
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFCodigo2.setText("");
+        jTFnum_telefono2.setText("");
+        jCBActivacion_Internet2.setSelectedIndex(0);
+        jCBbloqueado_por_robo2.setSelectedIndex(0);
+        jCBactivacion_correo2.setSelectedIndex(0);
+        jCBautorizacion_roaming2.setSelectedIndex(0);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
@@ -292,27 +472,31 @@ public class JPSimCard extends javax.swing.JPanel {
     private javax.swing.JButton jBModificar3;
     private javax.swing.JComboBox jCBActivacion_Internet1;
     private javax.swing.JComboBox jCBActivacion_Internet2;
+    private javax.swing.JComboBox jCBActivacion_Internet3;
     private javax.swing.JComboBox jCBactivacion_correo1;
     private javax.swing.JComboBox jCBactivacion_correo2;
+    private javax.swing.JComboBox jCBactivacion_correo3;
     private javax.swing.JComboBox jCBautorizacion_roaming1;
     private javax.swing.JComboBox jCBautorizacion_roaming2;
+    private javax.swing.JComboBox jCBautorizacion_roaming3;
     private javax.swing.JComboBox jCBbloqueado_por_robo1;
     private javax.swing.JComboBox jCBbloqueado_por_robo2;
+    private javax.swing.JComboBox jCBbloqueado_por_robo3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -326,12 +510,8 @@ public class JPSimCard extends javax.swing.JPanel {
     private javax.swing.JTextField jTFCodigo3;
     private javax.swing.JTextField jTFnum_telefono1;
     private javax.swing.JTextField jTFnum_telefono2;
-    private javax.swing.JTextField jTFtarifa_msj_multimedia3;
-    private javax.swing.JTextField jTFtarifa_otro_operador3;
+    private javax.swing.JTextField jTFnum_telefono3;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTcosto_min_adicional3;
-    private javax.swing.JTextField jTtarifa_msj_texto3;
-    private javax.swing.JTextField jTtotal_minutos3;
     // End of variables declaration//GEN-END:variables
 }

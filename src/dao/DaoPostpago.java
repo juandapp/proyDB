@@ -29,11 +29,12 @@ public class DaoPostpago {
 
     public int guardar(Postpago post) {
         String sql_guardar;
+        dp.guardar(post.getCod_plan());
         sql_guardar = "INSERT INTO postpago VALUES ('"
                 + post.getCod_plan().getCod_plan() + "', "
                 + post.getTotal_minutos() + ", "
                 + post.getCosto_min_adicional() + ")";
-        dp.guardar(post.getCod_plan());
+        
         
         try {
             Connection conn = fachada.conectar();

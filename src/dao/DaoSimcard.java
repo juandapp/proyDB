@@ -90,20 +90,20 @@ public class DaoSimcard {
             sql_select += "codigo ='" + codigo + "' AND ";
         }
         if (!num_telefono.equals("")) {
-            sql_select += "num_telefono LIKE '%" + num_telefono + "%'" + " AND ";
+            sql_select += "num_telefono ='" + num_telefono  + "' AND ";
         }
         if (!activacion_internet.equals("")) {
-            sql_select += "activacion_internet LIKE '%" + activacion_internet + "%'" + " AND ";
+            sql_select += "activacion_internet ='" + activacion_internet + "'" + " AND ";
         }
         if (!bloqueado_por_robo.equals("")) {
-            sql_select += "bloqueado_por_robo LIKE '%" + bloqueado_por_robo + "%'" + " AND ";
+            sql_select += "bloqueado_por_robo = '" + bloqueado_por_robo + "'" + " AND ";
         }
         if (!activacion_correo.equals("")) {
-            sql_select += "activacion_correo LIKE '%" + activacion_correo + "%'" + " AND ";
+            sql_select += "activacion_correo = '" + activacion_correo + "'" + " AND ";
         }
         
         if (!autorizacion_roaming.equals("")) {
-            sql_select += "autorizacion_roaming LIKE '%" + autorizacion_roaming + "%'" + " AND ";
+            sql_select += "autorizacion_roaming = '" + autorizacion_roaming + "'" + " AND ";
         }
 
         sql_select = sql_select.substring(0, sql_select.length() - 5);
