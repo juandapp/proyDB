@@ -39,9 +39,9 @@ public class ControladorPostPago {
         return postPago;
     }
 
-    public LinkedList consultar(String cod_plan, String total_minutos, String costo_min_adicional) {
+    public LinkedList consultar(String cod_plan,  String tarifa_otro_operador, String tarifa_msj_multimedia, String tarifa_msj_texto, String total_minutos, String costo_min_adicional) {
         LinkedList consulta = new LinkedList();
-        consulta = daoPostpago.consultar(cod_plan, total_minutos, costo_min_adicional);
+        consulta = daoPostpago.consultar(cod_plan,   tarifa_otro_operador, tarifa_msj_multimedia,  tarifa_msj_texto,total_minutos,  costo_min_adicional);
         return consulta;
     }
 

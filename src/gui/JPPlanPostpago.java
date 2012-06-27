@@ -4,6 +4,15 @@
  */
 package gui;
 
+import controlador.ControladorPlan;
+import controlador.ControladorPostPago;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Postpago;
+
 /**
  *
  * @author JUANPAULO
@@ -13,8 +22,13 @@ public class JPPlanPostpago extends javax.swing.JPanel {
     /**
      * Creates new form JPPlanPostpago
      */
+    
+    ControladorPostPago cp;
+    ControladorPlan cplan;
+    
     public JPPlanPostpago() {
         initComponents();
+        cp=new ControladorPostPago();
     }
 
     /**
@@ -99,10 +113,20 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jTFtarifa_msj_multimedia1.setBounds(120, 70, 110, 20);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(50, 190, 72, 23);
 
         jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBCrear1);
         jBCrear1.setBounds(160, 190, 70, 23);
 
@@ -157,10 +181,20 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jScrollPane1.setBounds(10, 140, 470, 125);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBConsultar2);
         jBConsultar2.setBounds(270, 100, 90, 23);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBLimpiar2);
         jBLimpiar2.setBounds(380, 100, 90, 23);
 
@@ -207,6 +241,11 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBModificar3);
         jBModificar3.setBounds(120, 200, 90, 23);
         jPanel2.add(jTFtarifa_msj_multimedia3);
@@ -269,9 +308,153 @@ public class JPPlanPostpago extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFtarifa_otro_operador3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFtarifa_msj_multimedia3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTtarifa_msj_texto3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTtotal_minutos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+        jTcosto_min_adicional3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+        // TODO add your handling code here:
+        limpiarCamposCrear();
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
+        // TODO add your handling code here:
+        limpiarCamposConsultar();
+    }//GEN-LAST:event_jBLimpiar2ActionPerformed
+
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+            guardar = cp.guardar(
+                    jTFCodigo1.getText(),
+                    Integer.parseInt(jTFtarifa_otro_operador1.getText()),
+                    Integer.parseInt(jTFtarifa_msj_multimedia1.getText()),
+                    Integer.parseInt(jTtarifa_msj_texto1.getText()),
+                    Integer.parseInt(jTtotal_minutos1.getText()),
+                    Integer.parseInt(jTcosto_min_adicional1.getText())
+                    );
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear el plan", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Plan Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
+        }
+
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+ LinkedList consulta = new LinkedList();
+        try {
+            consulta = cp.consultar(
+                    jTFCodigo2.getText(),
+                    jTFtarifa_otro_operador2.getText(),
+                    jTFtarifa_msj_multimedia2.getText(),
+                    jTtarifa_msj_texto2.getText(),
+                    jTtotal_minutos2.getText(),
+                    jTcosto_min_adicional2.getText()
+                    );
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                Postpago post = (Postpago) consulta.get(i);
+                if (post.getCod_plan()!= null) {
+                    s[i][0] = post.getCod_plan().getCod_plan();
+                    s[i][1] = post.getCod_plan().getTarifa_otro_operador();
+                    s[i][2] = post.getCod_plan().getTarifa_msj_multimedia();
+                    s[i][3] = post.getCod_plan().getTarifa_msj_texto();
+                    s[i][4] = post.getTotal_minutos();
+                    s[i][5] = post.getCosto_min_adicional();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo", "Tarifa_otros_operadores",
+                "Tarifa_msj_multimedia", "Tarifa_msj_texto","Total_minutos", "Costo_min_adicional"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }       
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+        // TODO add your handling code here:
+        int editar = -1;
+        try {
+            editar = cp.editar(
+                    jTFCodigo3.getText(),
+                    Integer.parseInt(jTFtarifa_otro_operador3.getText()),
+                    Integer.parseInt(jTFtarifa_msj_multimedia3.getText()),
+                    Integer.parseInt(jTtarifa_msj_texto3.getText()),
+                    Integer.parseInt(jTtotal_minutos3.getText()),
+                    Integer.parseInt(jTcosto_min_adicional3.getText())
+                    );
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar el Plan", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Plan modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+    private void limpiarCamposModificar() {
+        jTFCodigo3.setText("");
+        jTFtarifa_msj_multimedia3.setText("");
+        jTFtarifa_otro_operador3.setText("");
+        jTcosto_min_adicional3.setText("");
+        jTtarifa_msj_texto3.setText("");
+        jTtotal_minutos3.setText("");
+
+    }
+
+    private void limpiarCamposCrear() {
+        jTFCodigo1.setText("");
+        jTFtarifa_msj_multimedia1.setText("");
+        jTFtarifa_otro_operador1.setText("");
+        jTcosto_min_adicional1.setText("");
+        jTtarifa_msj_texto1.setText("");
+        jTtotal_minutos1.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFCodigo2.setText("");
+        jTFtarifa_msj_multimedia2.setText("");
+        jTFtarifa_otro_operador2.setText("");
+        jTcosto_min_adicional2.setText("");
+        jTtarifa_msj_texto2.setText("");
+        jTtotal_minutos2.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
