@@ -1,6 +1,6 @@
-ï»¿-----ENTREGA 2 DEL PROYECTO
+-----ENTREGA 2 DEL PROYECTO
 -----Juan David Rengifo 0939879
------Juan David PatiÃ±o 0932180
+-----Juan David Patiño 0932180
 -----Cristian Dario Loaiza 0933174
 
 -----CREACION DE TABLAS
@@ -272,7 +272,7 @@ INSERT INTO equipo VALUES ('569874147587745','GalaxyAce','Samsung');
 INSERT INTO equipo values ('545478569852136','Xperia','SonyEriccson');
 INSERT INTO equipo values ('474578569885475','C3','Nokia');
 
-INSERT INTO abonado VALUES ('100','cedula','Juan David','PatiÃ±o PatiÃ±o','Cra 50#32-20',
+INSERT INTO abonado VALUES ('100','cedula','Juan David','Patiño Patiño','Cra 50#32-20',
 			    'Masculino','Casado','1989-11-11','5','La Base','Cali', 'individual',
 			    '245879652114523');
 INSERT INTO abonado VALUES ('101','cedula','Juan David','Rengifo Diaz','Cra 30#54-21',
@@ -290,14 +290,14 @@ INSERT INTO sucursal values ('01','Principal','Cali','Cra 5 # 13-20','3801542');
 INSERT INTO empleado values ('1000','Andres Martinez','Masc','Viudo','1970-05-24','2000-10-08',
 			    'tipo1','vendedor','01');
 			 
-INSERT INTO simcard VALUES ('112547854125469','3154741365','Activado','Desbloqueado','Desactivado',
-			    'Desautorizado');
-INSERT INTO simcard VALUES ('154786985414754','3154568745','Activado','Desbloqueado','Desactivado',
-			    'Desautorizado');
-INSERT INTO simcard VALUES ('123541254876523','3154651645','Activado','Desbloqueado','Desactivado',
-			    'Autorizado');
-INSERT INTO simcard VALUES ('112547445233469','3203654238','Activado','Desbloqueado','Activado',
-			    'Desautorizado');
+INSERT INTO simcard VALUES ('112547854125469','3154741365','Si','No','No',
+			    'No');
+INSERT INTO simcard VALUES ('154786985414754','3154568745','Si','No','No',
+			    'No');
+INSERT INTO simcard VALUES ('123541254876523','3154651645','Si','No','No',
+			    'Si');
+INSERT INTO simcard VALUES ('112547445233469','3203654238','Si','No','Si',
+			    'No');
 
 
 INSERT INTO contrato VALUES ('100','1000','12345','112547854125469','2012-01-05');	

@@ -137,19 +137,19 @@ public class JPSimCard extends javax.swing.JPanel {
         jPanel4.add(jLabel15);
         jLabel15.setBounds(10, 130, 100, 14);
 
-        jCBactivacion_correo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBactivacion_correo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si", " " }));
         jPanel4.add(jCBactivacion_correo1);
         jCBactivacion_correo1.setBounds(130, 130, 100, 20);
 
-        jCBActivacion_Internet1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBActivacion_Internet1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
         jPanel4.add(jCBActivacion_Internet1);
         jCBActivacion_Internet1.setBounds(130, 70, 100, 20);
 
-        jCBautorizacion_roaming1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBautorizacion_roaming1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si", " " }));
         jPanel4.add(jCBautorizacion_roaming1);
         jCBautorizacion_roaming1.setBounds(130, 160, 100, 20);
 
-        jCBbloqueado_por_robo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBbloqueado_por_robo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si", " " }));
         jPanel4.add(jCBbloqueado_por_robo1);
         jCBbloqueado_por_robo1.setBounds(130, 100, 100, 20);
 
@@ -365,6 +365,7 @@ int selectedRow = jTResultados.getSelectedRow();
         // TODO add your handling code here:
         LinkedList consulta = new LinkedList();
         try {
+            
             consulta = cs.consultar(
                     jTFCodigo2.getText(),
                     jTFnum_telefono2.getText(),
@@ -376,7 +377,7 @@ int selectedRow = jTResultados.getSelectedRow();
             Object[][] s = new Object[consulta.size()][6];
             for (int i = 0; i < consulta.size(); i++) {
                 Simcard sim = (Simcard) consulta.get(i);
-                if (sim.getActivacion_correo() != null) {
+                if (sim.getCodigo() != null) {
                     s[i][0] = sim.getCodigo();
                     s[i][1] = sim.getNum_telefono();
                     s[i][2] = sim.getActivacion_internet();
