@@ -245,7 +245,7 @@ int editar = -1;
         } else {
             JOptionPane.showMessageDialog(this, "Cia Local modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
-            jTFId3.setText(jTFId2.getText());
+            jTFId2.setText(jTFId3.getText());
             jBConsultar2.doClick();
             jTabbedPane1.setSelectedIndex(1);
             limpiarCamposModificar();

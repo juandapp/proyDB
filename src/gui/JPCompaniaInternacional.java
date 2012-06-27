@@ -4,6 +4,14 @@
  */
 package gui;
 
+import controlador.ControladorCiaInternacional;
+import logica.Cia_internacional;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author JUANPAULO
@@ -13,8 +21,11 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
     /**
      * Creates new form JPCompaniaInternacional
      */
+    ControladorCiaInternacional cia;
+
     public JPCompaniaInternacional() {
         initComponents();
+        cia = new ControladorCiaInternacional();
     }
 
     /**
@@ -111,10 +122,20 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
         jPanel1.setLayout(null);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBLimpiar1);
         jBLimpiar1.setBounds(510, 180, 80, 23);
 
         jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBCrear1);
         jBCrear1.setBounds(380, 180, 90, 23);
 
@@ -193,7 +214,7 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Nombre", "Pais", "T msj", "T msj e int", "T msj s int", "T msj e nal", "T msj s nal", "D. enviados", "D. recibidos"
+                "Id", "Nombre", "Pais", "T msj", "T llam e int", "T llam s int", "T llam e nal", "T llam s nal", "D. enviados", "D. recibidos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,16 +225,31 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(10, 260, 690, 160);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBConsultar2);
         jBConsultar2.setBounds(390, 170, 100, 23);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBLimpiar2);
         jBLimpiar2.setBounds(500, 170, 100, 23);
 
@@ -288,6 +324,11 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
         jPanel4.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBModificar3);
         jBModificar3.setBounds(390, 180, 90, 23);
 
@@ -376,6 +417,178 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+        limpiarCamposCrear();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
+        limpiarCamposConsultar();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar2ActionPerformed
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+        LinkedList consulta = new LinkedList();
+        try {
+            consulta = cia.consultar(
+                    jTFId2.getText(),
+                    jTFNombre2.getText(),
+                    jTFPais2.getText(),
+                    jTFtarifa_mensajes2.getText(),
+                    jTFtar_llamada_entra_inter2.getText(),
+                    jTFtar_llamada_sale_inter2.getText(),
+                    jTFtar_llamada_entra_nal2.getText(),
+                    jTFtar_llamada_sale_nal2.getText(),
+                    jTFtar_datos_recibidos2.getText(),
+                    jTFtar_datos_enviados2.getText());
+
+            Object[][] s = new Object[consulta.size()][10];
+            for (int i = 0; i < consulta.size(); i++) {
+                Cia_internacional inter = (Cia_internacional) consulta.get(i);
+                if (inter.getNombre() != null) {
+                    s[i][0] = inter.getId();
+                    s[i][1] = inter.getNombre();
+                    s[i][2] = inter.getPais();
+                    s[i][3] = inter.getTarifa_mensajes();
+                    s[i][4] = inter.getTar_llamada_entra_inter();
+                    s[i][5] = inter.getTar_llamada_sale_inter();
+                    s[i][6] = inter.getTar_llamada_entra_nal();
+                    s[i][7] = inter.getTar_llamada_sale_nal();
+                    s[i][8] = inter.getTar_datos_enviados();
+                    s[i][9] = inter.getTar_datos_recibidos();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombre", "Pais", "T msj",
+                        "T llam e int", "T llam s int", "T llam e nal", "T llam s nal", "D. enviados", "D. recibidos"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+        int guardar = -1;
+        try {
+            guardar = cia.guardar(
+                    jTFId1.getText(),
+                    jTFNombre1.getText(),
+                    jTFPais1.getText(),
+                    Integer.parseInt(jTFtarifa_mensajes1.getText()),
+                    Integer.parseInt(jTFtar_llamada_entra_inter1.getText()),
+                    Integer.parseInt(jTFtar_llamada_sale_inter1.getText()),
+                    Integer.parseInt(jTFtar_llamada_entra_nal1.getText()),
+                    Integer.parseInt(jTFtar_llamada_sale_nal1.getText()),
+                    Integer.parseInt(jTFtar_datos_recibidos1.getText()),
+                    Integer.parseInt(jTFtar_datos_enviados1.getText()));
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear la Cia Internacional", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cia Internacional Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFId2.setText(jTFId1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
+        }        //
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+        int editar = -1;
+        try {
+            editar = cia.editar(
+                    jTFId3.getText(),
+                    jTFNombre3.getText(),
+                    jTFPais3.getText(),
+                    Integer.parseInt(jTFtarifa_mensajes3.getText()),
+                    Integer.parseInt(jTFtar_llamada_entra_inter3.getText()),
+                    Integer.parseInt(jTFtar_llamada_sale_inter3.getText()),
+                    Integer.parseInt(jTFtar_llamada_entra_nal3.getText()),
+                    Integer.parseInt(jTFtar_llamada_sale_nal3.getText()),
+                    Integer.parseInt(jTFtar_datos_recibidos3.getText()),
+                    Integer.parseInt(jTFtar_datos_enviados3.getText()));
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar la Cia Internacional", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cia Internacional modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFId2.setText(jTFId3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }        // TODO ad        // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFPais3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTFtarifa_mensajes3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTFtar_llamada_entra_inter3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+        jTFtar_llamada_sale_inter3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jTFtar_llamada_entra_nal3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+        jTFtar_llamada_sale_nal3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 7));
+        jTFtar_datos_recibidos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 8));
+        jTFtar_datos_enviados3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 9));
+        jTabbedPane1.setSelectedIndex(2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jTResultadosMouseClicked
+    private void limpiarCamposModificar() {
+        jTFId3.setText("");
+        jTFNombre3.setText("");
+        jTFPais3.setText("");
+        jTFtar_datos_enviados3.setText("");
+        jTFtar_datos_recibidos3.setText("");
+        jTFtar_llamada_entra_inter3.setText("");
+        jTFtar_llamada_entra_nal3.setText("");
+        jTFtar_llamada_sale_inter3.setText("");
+        jTFtar_llamada_sale_nal3.setText("");
+        jTFtarifa_mensajes3.setText("");
+
+    }
+
+    private void limpiarCamposCrear() {
+        jTFId1.setText("");
+        jTFNombre1.setText("");
+        jTFPais1.setText("");
+        jTFtar_datos_enviados1.setText("");
+        jTFtar_datos_recibidos1.setText("");
+        jTFtar_llamada_entra_inter1.setText("");
+        jTFtar_llamada_entra_nal1.setText("");
+        jTFtar_llamada_sale_inter1.setText("");
+        jTFtar_llamada_sale_nal1.setText("");
+        jTFtarifa_mensajes1.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFId2.setText("");
+        jTFNombre2.setText("");
+        jTFPais2.setText("");
+        jTFtar_datos_enviados2.setText("");
+        jTFtar_datos_recibidos2.setText("");
+        jTFtar_llamada_entra_inter2.setText("");
+        jTFtar_llamada_entra_nal2.setText("");
+        jTFtar_llamada_sale_inter2.setText("");
+        jTFtar_llamada_sale_nal2.setText("");
+        jTFtarifa_mensajes2.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;

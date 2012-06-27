@@ -102,28 +102,28 @@ public class DaoCia_internacional {
             sql_select += "nombre LIKE '%" + nombre + "%'" + " AND ";
         }
         if (!pais.equals("")) {
-            sql_select += "marca LIKE '%" + pais + "%'" + " AND ";
+            sql_select += "pais LIKE '%" + pais + "%'" + " AND ";
         }
         if (!tarifa_mensajes.equals("")) {
-            sql_select += "tarifa_mensajes LIKE '%" + tarifa_mensajes + "%'" + " AND ";
+            sql_select += "tarifa_mensajes <" + tarifa_mensajes + " AND ";
         }
         if (!tar_llam_entra_i.equals("")) {
-            sql_select += "tar_llamada_entra_inter LIKE '%" + tar_llam_entra_i + "%'" + " AND ";
+            sql_select += "tar_llamada_entra_inter <" + tar_llam_entra_i  + " AND ";
         }
         if (!tar_llam_sale_i.equals("")) {
-            sql_select += "tar_llamada_sale_inter LIKE '%" + tar_llam_sale_i + "%'" + " AND ";
+            sql_select += "tar_llamada_sale_inter <" + tar_llam_sale_i + " AND ";
         }
         if (!tar_llam_entra_n.equals("")) {
-            sql_select += "tar_llamada_entra_nal LIKE '%" + tar_llam_entra_n + "%'" + " AND ";
+            sql_select += "tar_llamada_entra_nal <" + tar_llam_entra_n  + " AND ";
         }
         if (!tar_llam_sale_n.equals("")) {
-            sql_select += "tar_llamada_sale_nal LIKE '%" + tar_llam_sale_n + "%'" + " AND ";
+            sql_select += "tar_llamada_sale_nal <" + tar_llam_sale_n +  " AND ";
         }
         if (!tar_datos_recibidos.equals("")) {
-            sql_select += "tar_datos_recibidos LIKE '%" + tar_llam_sale_n + "%'" + " AND ";
+            sql_select += "tar_datos_recibidos <" + tar_datos_recibidos +  " AND ";
         }
         if (!tar_datos_enviados.equals("")) {
-            sql_select += "tar_datos_enviados LIKE '%" + tar_llam_sale_n + "%'" + " AND ";
+            sql_select += "tar_datos_enviados <" + tar_datos_enviados +  " AND ";
         }
         
 
