@@ -21,8 +21,9 @@ public class ControladorPostPago {
         daoPostpago = new DaoPostpago();
     }
 
-    public int guardar(String cod_plan, int tarifa_otro_operador, int tarifa_msj_multimedia, int tarifa_msj_texto, int total_minutos, int costo_min_adicional) {
-        if (!cod_plan.isEmpty() && total_minutos > 0 && costo_min_adicional > 0
+    public int guardar(String cod_plan, int tarifa_otro_operador, int tarifa_msj_multimedia,
+            int tarifa_msj_texto, int total_minutos, int costo_min_adicional) {
+        if (!cod_plan.isEmpty() && total_minutos> 0 && costo_min_adicional>0
                 && tarifa_otro_operador>0 && tarifa_msj_multimedia>0
                 && tarifa_msj_texto>0) {
             Postpago postPago = new Postpago(new Plan(cod_plan, tarifa_otro_operador, tarifa_msj_multimedia, tarifa_msj_texto), total_minutos, costo_min_adicional);

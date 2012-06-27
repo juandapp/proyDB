@@ -341,6 +341,8 @@ public class JPPlanPostpago extends javax.swing.JPanel {
                     Integer.parseInt(jTcosto_min_adicional1.getText())
                     );
         } catch (Exception e) {
+            
+            e.printStackTrace();
         }
 
         if (guardar == -1) {
