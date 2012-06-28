@@ -28,14 +28,14 @@ public class DaoPostpago {
     }
 
     public int guardar(Postpago post) {
-        String sql_guardar;
-        dp.guardar(post.getCod_plan());
+        System.out.println("en guardar de postpago" );
+        String sql_guardar;        
         sql_guardar = "INSERT INTO postpago VALUES ('"
                 + post.getCod_plan().getCod_plan() + "', "
                 + post.getTotal_minutos() + ", "
                 + post.getCosto_min_adicional() + ")";
         
-        
+        dp.guardar(post.getCod_plan());
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -83,7 +83,7 @@ public LinkedList consultar(String cod_plan,String tarifa_otro_operador,
         String total_minutos, String costo_min_adicional) {
         
         LinkedList postPagoConsulta = new LinkedList();
-        String sql_select = "SELECT * FROM postpago NATURAL JOIN plan";
+        String sql_select = "SELECT * FROM postpago NATURAL JOIN plan      ";
         if (!cod_plan.equals("") || !total_minutos.equals("") || !costo_min_adicional.equals("")
                 || !tarifa_otro_operador.equals("")|| !tarifa_msj_multimedia.equals("")|| !tarifa_msj_texto.equals("")) {
             sql_select += "WHERE ";
@@ -149,7 +149,7 @@ public LinkedList consultar(String cod_plan,String tarifa_otro_operador,
         sql_update = "UPDATE postpago SET "
                 + "total_minutos=" + post.getTotal_minutos() + ", "
                 + "costo_min_adicional=" + post.getCosto_min_adicional() + " "
-                + "WHERE cod_plan='" + post.getCod_plan() + "'";
+                + "WHERE cod_plan='" + post.getCod_plan().getCod_plan() + "'";
         dp.editar(post.getCod_plan());
         try {
             Connection conn = fachada.conectar();

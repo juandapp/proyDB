@@ -348,11 +348,11 @@ public class JPPlanPostpago extends javax.swing.JPanel {
         }
         else {
             JOptionPane.showMessageDialog(this, "Plan Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCamposConsultar();
             jTFCodigo2.setText(jTFCodigo1.getText());
             jBConsultar2.doClick();
             jBLimpiar1.doClick();
             jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposCrear();
 
         }
 
