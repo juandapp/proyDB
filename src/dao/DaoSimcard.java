@@ -93,17 +93,17 @@ public class DaoSimcard {
             sql_select += "num_telefono ='" + num_telefono  + "' AND ";
         }
         if (!activacion_internet.equals("")) {
-            sql_select += "activacion_internet ='" + activacion_internet + "'" + " AND ";
+            sql_select += "activacion_internet ='" + activacion_internet +  "' AND ";
         }
         if (!bloqueado_por_robo.equals("")) {
-            sql_select += "bloqueado_por_robo = '" + bloqueado_por_robo + "'" + " AND ";
+            sql_select += "bloqueado_por_robo = '" + bloqueado_por_robo +  "' AND ";
         }
         if (!activacion_correo.equals("")) {
-            sql_select += "activacion_correo = '" + activacion_correo + "'" + " AND ";
+            sql_select += "activacion_correo = '" + activacion_correo + "' AND ";
         }
         
         if (!autorizacion_roaming.equals("")) {
-            sql_select += "autorizacion_roaming = '" + autorizacion_roaming + "'" + " AND ";
+            sql_select += "autorizacion_roaming = '" + autorizacion_roaming +  "' AND ";
         }
 
         sql_select = sql_select.substring(0, sql_select.length() - 5);
@@ -118,7 +118,7 @@ public class DaoSimcard {
                 sim.setActivacion_internet(tabla.getString("activacion_internet"));
                 sim.setBloqueado_por_robo(tabla.getString("bloqueado_por_robo"));
                 sim.setActivacion_correo(tabla.getString("activacion_correo"));
-                sim.setAutorizacion_roaming(tabla.getString("activacion_correo"));
+                sim.setAutorizacion_roaming(tabla.getString("autorizacion_roaming"));
                 simcardConsulta.add(sim);
             }
             conn.close();

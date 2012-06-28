@@ -4,6 +4,14 @@
  */
 package gui;
 
+import controlador.ControladorCiaLocal;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Cia_local;
+
 /**
  *
  * @author JUANPAULO
@@ -13,8 +21,11 @@ public class JPCompaniaLocal extends javax.swing.JPanel {
     /**
      * Creates new form JPCompaniaLocal
      */
+    
+    ControladorCiaLocal clocal;
     public JPCompaniaLocal() {
         initComponents();
+        clocal=new ControladorCiaLocal();
     }
 
     /**
@@ -57,10 +68,20 @@ public class JPCompaniaLocal extends javax.swing.JPanel {
         jPanel4.setLayout(null);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(210, 40, 90, 23);
 
         jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBCrear1);
         jBCrear1.setBounds(210, 10, 90, 23);
 
@@ -89,7 +110,7 @@ public class JPCompaniaLocal extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -107,10 +128,20 @@ public class JPCompaniaLocal extends javax.swing.JPanel {
         jScrollPane1.setBounds(20, 70, 370, 125);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBConsultar2);
         jBConsultar2.setBounds(280, 10, 90, 23);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBLimpiar2);
         jBLimpiar2.setBounds(280, 40, 90, 23);
 
@@ -131,12 +162,19 @@ public class JPCompaniaLocal extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBModificar3);
         jBModificar3.setBounds(200, 10, 90, 23);
 
         jLabel15.setText("Id");
         jPanel2.add(jLabel15);
         jLabel15.setBounds(20, 10, 10, 14);
+
+        jTFId3.setEditable(false);
         jPanel2.add(jTFId3);
         jTFId3.setBounds(80, 10, 90, 20);
 
@@ -164,8 +202,113 @@ public class JPCompaniaLocal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
+ int selectedRow = jTResultados.getSelectedRow();
+        jTFId3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFNombre5.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
+
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+int guardar = -1;
+        try {
+            guardar = clocal.guardar(
+                    jTFId1.getText(),
+                    jTFNombre3.getText()
+                   );
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear la Cia Local", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cia Local Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFId2.setText(jTFId1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+int editar = -1;
+        try {
+            editar = clocal.editar(
+                    jTFId3.getText(),
+                    jTFNombre5.getText());
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar la Cia Local", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cia Local modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFId2.setText(jTFId3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+LinkedList consulta = new LinkedList();
+        try {
+            consulta = clocal.consultar(
+                    jTFId2.getText(),
+                    jTFNombre4.getText()
+                  );
+            
+                Object[][] s = new Object[consulta.size()][2];
+                for (int i = 0; i < consulta.size(); i++) {
+                   Cia_local local = (Cia_local) consulta.get(i);
+                    if (local.getNombre() != null) {
+                        s[i][0] = local.getId();
+                        s[i][1] = local.getNombre();
+                      
+                    } else {
+                        s = null;
+                    }
+                }
+                TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombre"}) {
+                    boolean[] canEdit = new boolean[]{false, false          };
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                };
+                ///remover filas
+                jTResultados.setModel(myModel);
+                jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
+limpiarCamposConsultar();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar2ActionPerformed
+
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+limpiarCamposCrear();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+ private void limpiarCamposModificar() {
+        jTFId3.setText("");
+        jTFNombre5.setText("");
+       
+    }
+
+    private void limpiarCamposCrear() {
+        jTFId1.setText("");
+        jTFNombre3.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFId2.setText("");
+        jTFNombre4.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
