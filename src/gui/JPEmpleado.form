@@ -465,12 +465,11 @@
                 <Component class="javax.swing.JComboBox" name="jCBTipoContrato2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
+                      <StringArray count="4">
                         <StringItem index="0" value="Seleccionar"/>
-                        <StringItem index="1" value="Casado"/>
-                        <StringItem index="2" value="Soltero"/>
-                        <StringItem index="3" value="Viudo"/>
-                        <StringItem index="4" value="Divorsiado"/>
+                        <StringItem index="1" value="Tiempo Completo"/>
+                        <StringItem index="2" value="Medio Tiempo"/>
+                        <StringItem index="3" value="Contratista"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -501,6 +500,9 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="popupMenuWillBecomeVisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="jCBSucursal2PopupMenuWillBecomeVisible"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="470" y="100" width="170" height="-1"/>
@@ -523,7 +525,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="210" width="640" height="140"/>
+                      <AbsoluteConstraints x="20" y="220" width="640" height="140"/>
                     </Constraint>
                   </Constraints>
 
@@ -532,20 +534,26 @@
                     <Component class="javax.swing.JTable" name="jTResultados">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="9" rowCount="0">
+                          <Table columnCount="10" rowCount="0">
                             <Column editable="false" title="Id" type="java.lang.Object"/>
                             <Column editable="false" title="Nombre" type="java.lang.Object"/>
                             <Column editable="false" title="Genero" type="java.lang.Object"/>
                             <Column editable="false" title="Estado Civil" type="java.lang.Object"/>
                             <Column editable="false" title="Fecha Nacimiento" type="java.lang.Object"/>
-                            <Column editable="false" title="Fehca Ingreso" type="java.lang.Object"/>
+                            <Column editable="false" title="Fecha Ingreso" type="java.lang.Object"/>
                             <Column editable="false" title="Tipo Contraro" type="java.lang.Object"/>
                             <Column editable="false" title="Cargo" type="java.lang.Object"/>
+                            <Column editable="false" title="Cod Sucursal" type="java.lang.Object"/>
                             <Column editable="false" title="Sucursal" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -624,6 +632,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBConsultar2ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="400" y="140" width="120" height="-1"/>

@@ -6,7 +6,12 @@ package gui;
 
 import controlador.ControladorEmpleado;
 import controlador.ControladorSucursal;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Empleado;
 
 /**
  *
@@ -19,13 +24,13 @@ public class JPEmpleado extends javax.swing.JPanel {
      */
     ControladorSucursal controladorSucursal;
     ControladorEmpleado controladorEmpleado;
+
     public JPEmpleado() {
         initComponents();
         controladorSucursal = new ControladorSucursal();
-        controladorEmpleado= new ControladorEmpleado();
+        controladorEmpleado = new ControladorEmpleado();
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -257,7 +262,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jPanel2.add(jLabel39);
         jLabel39.setBounds(10, 130, 130, 20);
 
-        jCBTipoContrato2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Casado", "Soltero", "Viudo", "Divorsiado" }));
+        jCBTipoContrato2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Tiempo Completo", "Medio Tiempo", "Contratista" }));
         jCBTipoContrato2.setName(""); // NOI18N
         jPanel2.add(jCBTipoContrato2);
         jCBTipoContrato2.setBounds(140, 130, 200, 20);
@@ -268,6 +273,15 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         jCBSucursal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Sucursales" }));
         jCBSucursal2.setName(""); // NOI18N
+        jCBSucursal2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBSucursal2PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel2.add(jCBSucursal2);
         jCBSucursal2.setBounds(470, 100, 170, 20);
 
@@ -280,11 +294,11 @@ public class JPEmpleado extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Nombre", "Genero", "Estado Civil", "Fecha Nacimiento", "Fehca Ingreso", "Tipo Contraro", "Cargo", "Sucursal"
+                "Id", "Nombre", "Genero", "Estado Civil", "Fecha Nacimiento", "Fecha Ingreso", "Tipo Contraro", "Cargo", "Cod Sucursal", "Sucursal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -294,7 +308,7 @@ public class JPEmpleado extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 210, 640, 140);
+        jScrollPane1.setBounds(20, 220, 640, 140);
 
         jDCFechaNacimiento2.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaNacimiento2);
@@ -305,6 +319,11 @@ public class JPEmpleado extends javax.swing.JPanel {
         jDCFechaIngreso2.setBounds(140, 70, 200, 20);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBConsultar2);
         jBConsultar2.setBounds(400, 140, 120, 23);
 
@@ -421,45 +440,168 @@ public class JPEmpleado extends javax.swing.JPanel {
     }//GEN-LAST:event_jCBSucursal1PopupMenuWillBecomeVisible
 
     private void jCBSucursal3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSucursal3PopupMenuWillBecomeVisible
-        // TODO add your handling code here:
+   jCBSucursal3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSucursal.listar()));      // TODO add your handling code here:
     }//GEN-LAST:event_jCBSucursal3PopupMenuWillBecomeVisible
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
         // TODO add your handling code here:
-         int guardar = -1;
+        int guardar = -1;
         try {
-        java.sql.Date fecha_nacimiento=new java.sql.Date(jDCFechaNacimiento1.getDate()
-                .getTime());
-        
-        java.sql.Date fecha_ingreso=new java.sql.Date(jDCFechaIngreso1.getDate()
-                .getTime());
-        
-        String codigo_sucursal[]= new String[2];
-        codigo_sucursal=jCBSucursal1.getSelectedItem().toString().split(" - ");
-        System.out.println(codigo_sucursal[0]);
-        
-        guardar=controladorEmpleado.guardar(jTFCodigo1.getText(),
-                jTFNombre1.getText(), jCBGenero1.getSelectedItem().toString(),
-                jCBEstadoCivil1.getSelectedItem().toString(), 
-                fecha_nacimiento, fecha_ingreso, jCBTipoContrato1.getSelectedItem().toString(),
-                jCBCargo1.getSelectedItem().toString(), codigo_sucursal[0]);
-        
-        }catch (Exception e) {
+            java.sql.Date fecha_nacimiento = new java.sql.Date(jDCFechaNacimiento1.getDate().getTime());
+
+            java.sql.Date fecha_ingreso = new java.sql.Date(jDCFechaIngreso1.getDate().getTime());
+
+            String codigo_sucursal[] = new String[2];
+            codigo_sucursal = jCBSucursal1.getSelectedItem().toString().split(" - ");
+            System.out.println(codigo_sucursal[0]);
+
+            guardar = controladorEmpleado.guardar(jTFCodigo1.getText(),
+                    jTFNombre1.getText(), jCBGenero1.getSelectedItem().toString(),
+                    jCBEstadoCivil1.getSelectedItem().toString(),
+                    fecha_nacimiento, fecha_ingreso, jCBTipoContrato1.getSelectedItem().toString(),
+                    jCBCargo1.getSelectedItem().toString(), codigo_sucursal[0]);
+
+        } catch (Exception e) {
         }
 
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No su pudo crear el Empleado", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Empleado Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
-          /*  limpiarCamposConsultar();
-            jTFImei2.setText(jTFImei1.getText());
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo1.getText());
             jBConsultar2.doClick();
             jBLimpiar1.doClick();
             jTabbedPane1.setSelectedIndex(1);
-          */
+
         }
-        
+
     }//GEN-LAST:event_jBCrear1ActionPerformed
+    private void limpiarCamposConsultar() {
+        jTFCodigo2.setText("");
+        jTFNombre2.setText("");
+        jCBCargo2.setSelectedIndex(0);
+        jCBEstadoCivil2.setSelectedIndex(0);
+        jCBGenero2.setSelectedIndex(0);
+        jCBSucursal2.setSelectedIndex(0);
+        jCBTipoContrato2.setSelectedIndex(0);
+        jDCFechaIngreso2.setDate(null);
+        jDCFechaNacimiento2.setDate(null);
+
+    }
+
+    private void limpiarCamposCrear() {
+        jTFCodigo1.setText("");
+        jTFNombre1.setText("");
+        jCBCargo1.setSelectedIndex(0);
+        jCBEstadoCivil1.setSelectedIndex(0);
+        jCBGenero1.setSelectedIndex(0);
+        jCBSucursal1.setSelectedIndex(0);
+        jCBTipoContrato1.setSelectedIndex(0);
+        jDCFechaIngreso1.setDate(null);
+        jDCFechaNacimiento1.setDate(null);
+
+    }
+
+    private void limpiarCamposModificar() {
+        jTFCodigo3.setText("");
+        jTFNombre3.setText("");
+        jCBCargo3.setSelectedIndex(0);
+        jCBEstadoCivil3.setSelectedIndex(0);
+        jCBGenero3.setSelectedIndex(0);
+        jCBSucursal3.setSelectedIndex(0);
+        jCBTipoContrato3.setSelectedIndex(0);
+        jDCFechaIngreso3.setDate(null);
+        jDCFechaNacimiento3.setDate(null);
+
+    }
+
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jCBCargo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 7));
+        jCBEstadoCivil3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jDCFechaIngreso3.setDateFormatString("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jDCFechaNacimiento3.setDateFormatString("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+        jCBTipoContrato3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+        jTabbedPane1.setSelectedIndex(2);
+    }
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+        LinkedList consulta = new LinkedList();
+        String nacimiento, f_ingreso;
+        try {
+            java.sql.Date fecha_nacimiento = new java.sql.Date(jDCFechaNacimiento2.getDate().getTime());
+            nacimiento = fecha_nacimiento.toString();
+
+        } catch (Exception e) {
+            nacimiento = "";
+
+
+        }
+        try {
+            java.sql.Date fecha_ingreso = new java.sql.Date(jDCFechaIngreso2.getDate().getTime());
+        f_ingreso=fecha_ingreso.toString();
+        } catch (Exception e) {
+
+            f_ingreso = "";
+
+        }
+        try {
+            System.err.println(nacimiento + " y " + f_ingreso);
+            String codigo_sucursal[] = new String[2];
+            codigo_sucursal = jCBSucursal2.getSelectedItem().toString().split(" - ");
+            consulta = controladorEmpleado.consultar(
+                    jTFCodigo2.getText(),
+                    jTFNombre2.getText(), jCBGenero2.getSelectedItem().toString(),
+                    jCBEstadoCivil2.getSelectedItem().toString(),
+                    nacimiento, f_ingreso, jCBTipoContrato2.getSelectedItem().toString(),
+                    jCBCargo1.getSelectedItem().toString(), codigo_sucursal[0]);
+
+            Object[][] s = new Object[consulta.size()][10];
+            for (int i = 0; i < consulta.size(); i++) {
+                Empleado emp = (Empleado) consulta.get(i);
+                if (emp.getNombre() != null) {
+                    s[i][0] = emp.getId_empleado();
+                    s[i][1] = emp.getNombre();
+                    s[i][2] = emp.getGenero();
+                    s[i][3] = emp.getEstado_civil();
+                    s[i][4] = emp.getFecha_nacimiento();
+                    s[i][5] = emp.getFecha_ingreso();
+                    s[i][6] = emp.getTipo_contrato();
+                    s[i][7] = emp.getCargo();
+                    s[i][8] = emp.getCod_sucursal().getCod_sucursal();
+                    s[i][9] = emp.getCod_sucursal().getNombre();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Nombre", "Genero", "Estado Civil",
+                        "Fecha Nacimiento", "Fecha ingreso", "Tipo Contrato", "Cargo", "Cod Sucursal", "Sucursal"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false, false, false, false
+                };
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void jCBSucursal2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSucursal2PopupMenuWillBecomeVisible
+ jCBSucursal2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSucursal.listar()));        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBSucursal2PopupMenuWillBecomeVisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;

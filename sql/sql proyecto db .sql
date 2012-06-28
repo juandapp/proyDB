@@ -287,8 +287,8 @@ INSERT INTO abonado values ('103','cedula','Camila','Perez Gonzales','Calle 32 #
 
 INSERT INTO sucursal values ('01','Principal','Cali','Cra 5 # 13-20','3801542');
 
-INSERT INTO empleado values ('1000','Andres Martinez','Masc','Viudo','1970-05-24','2000-10-08',
-			    'tipo1','vendedor','01');
+INSERT INTO empleado values ('1000','Andres Martinez','Masculino','Viudo','1970-05-24','2000-10-08',
+			    'Tiempo Completo','Vendedor','01');
 			 
 INSERT INTO simcard VALUES ('112547854125469','3154741365','Si','No','No',
 			    'No');

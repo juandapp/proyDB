@@ -88,7 +88,7 @@ public class DaoEmpleado {
             String fecha_ingreso,String tipo_contrato,String cargo,
             String codigo_sucursal) {
         LinkedList consulta = new LinkedList();
-        String sql_select = "SELECT * FROM empleado   ";
+        String sql_select = "SELECT * FROM empleado      ";
         if (!id_empleado.equals("") || !nombre.equals("") || !genero.equals("")
                 || !estado_civil.equals("")
                 || !fecha_nacimiento.equals("")
@@ -96,39 +96,40 @@ public class DaoEmpleado {
                 || !tipo_contrato.equals("")
                 || !cargo.equals("")
                 || !codigo_sucursal.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += "WHERE";
         }
         if (!id_empleado.equals("")) {
-            sql_select += "id_empleado ='" + id_empleado + "' AND ";
+            sql_select += " id_empleado ='" + id_empleado + "' AND ";
         }
         if (!nombre.equals("")) {
-            sql_select += "nombre LIKE '%" + nombre + "%'" + " AND ";
+            sql_select += " nombre LIKE '%" + nombre + "%'" + " AND ";
         }
-        if (!genero.equals("")) {
-            sql_select += "genero LIKE '%" + genero + "%'" + " AND ";
+        if (!genero.equals("Seleccionar")) {
+            sql_select += " genero ='" + genero +  "' AND ";
         }
-        if (!estado_civil.equals("")) {
-            sql_select += "estado_civil LIKE '%" + estado_civil + "%'" + " AND ";
+        if (!estado_civil.equals("Seleccionar")) {
+            sql_select += " estado_civil = '" + estado_civil + "' AND ";
         }
         if (!fecha_nacimiento.equals("")) {
-            sql_select += "fecha_nacimiento LIKE '%" + fecha_nacimiento + "%'" + " AND ";
+            sql_select += " fecha_nacimiento LIKE '%" + fecha_nacimiento + "%'" + " AND ";
         }
         if (!fecha_ingreso.equals("")) {
-            sql_select += "fecha_ingreso LIKE '%" + fecha_ingreso + "%'" + " AND ";
+            sql_select += " fecha_ingreso LIKE '%" + fecha_ingreso + "%'" + " AND ";
         }
-        if (!tipo_contrato.equals("")) {
-            sql_select += "tipo_contrato LIKE '%" + tipo_contrato + "%'" + " AND ";
+        if (!tipo_contrato.equals("Seleccionar")) {
+            sql_select += " tipo_contrato = '" + tipo_contrato  + "' AND ";
         }
-        if (!cargo.equals("")) {
-            sql_select += "cargo LIKE '%" + cargo + "%'" + " AND ";
+        if (!cargo.equals(" ")) {
+            sql_select += " cargo ='" + cargo + "' AND ";
         }
-        if (!codigo_sucursal.equals("")) {
-            sql_select += "codigo_sucursal LIKE '%" + codigo_sucursal + "%'" + " AND ";
+        if (!codigo_sucursal.equals("Seleccionar")) {
+            sql_select += " codigo_sucursal = '" + codigo_sucursal + "'" + " AND ";
         }
        
         
 
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+         System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
