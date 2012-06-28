@@ -57,4 +57,15 @@ public class ControladorPostPago {
             return -1;
         }
     }
+    
+    
+     public String[] listar() {
+        LinkedList postConsultar = daoPostpago.consultar("", "", "", "", "", "");
+        String[] postpagos = new String[postConsultar.size()+1];
+        postpagos[0] = " ";
+        for (int i = 0; i < postConsultar.size(); i++) {
+            postpagos[i+1] = ((Postpago) postConsultar.get(i)).getCod_plan().getCod_plan();
+        }
+        return postpagos;
+    }
 }

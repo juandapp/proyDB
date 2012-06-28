@@ -4,6 +4,14 @@
  */
 package gui;
 
+import controlador.ControladorEmpresa;
+import controlador.ControladorPostPago;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Empresa;
 /**
  *
  * @author JUANPAULO
@@ -13,8 +21,13 @@ public class JPEmpresa extends javax.swing.JPanel {
     /**
      * Creates new form JPEmpresa
      */
+    
+    ControladorEmpresa ce;
+    ControladorPostPago controladorPostpago;
     public JPEmpresa() {
         initComponents();
+        ce=new ControladorEmpresa();
+        controladorPostpago = new ControladorPostPago();
     }
 
     /**
@@ -78,6 +91,11 @@ public class JPEmpresa extends javax.swing.JPanel {
         jBLimpiar1.setBounds(140, 150, 80, 23);
 
         jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBCrear1);
         jBCrear1.setBounds(240, 150, 90, 23);
 
@@ -137,6 +155,11 @@ public class JPEmpresa extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel2.add(jScrollPane1);
@@ -179,10 +202,20 @@ public class JPEmpresa extends javax.swing.JPanel {
         jLabel56.setBounds(10, 70, 80, 14);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBConsultar2);
         jBConsultar2.setBounds(360, 20, 100, 23);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBLimpiar2);
         jBLimpiar2.setBounds(360, 50, 100, 23);
 
@@ -191,12 +224,19 @@ public class JPEmpresa extends javax.swing.JPanel {
         jPanel4.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBModificar3);
         jBModificar3.setBounds(240, 140, 90, 23);
 
         jLabel27.setText("Nombre");
         jPanel4.add(jLabel27);
         jLabel27.setBounds(10, 10, 80, 14);
+
+        jTFNombre3.setEditable(false);
         jPanel4.add(jTFNombre3);
         jTFNombre3.setBounds(130, 10, 200, 20);
 
@@ -248,20 +288,154 @@ public class JPEmpresa extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBCod_plan1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBCod_plan1PopupMenuWillBecomeVisible
-
+jCBCod_plan1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
     }//GEN-LAST:event_jCBCod_plan1PopupMenuWillBecomeVisible
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-        // TODO add your handling code here:
+limpiarCamposCrear();        // TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
+private void limpiarCamposModificar() {
+        jCBCod_plan3.setSelectedIndex(0);
+        jTFNombre3.setText("");       
+        jTFDireccion3.setText("");
+        jTFTelefono3.setText("");
+    }
 
+    private void limpiarCamposCrear() {
+        jCBCod_plan1.setSelectedIndex(0);
+        jTFNombre1.setText("");       
+        jTFDireccion1.setText("");
+        jTFTelefono1.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jCBCod_plan2.setSelectedIndex(0);
+        jTFNombre2.setText("");       
+        jTFDireccion2.setText("");
+        jTFTelefono2.setText("");
+    }
     private void jCBCod_plan2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBCod_plan2PopupMenuWillBecomeVisible
+  jCBCod_plan2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBCod_plan2PopupMenuWillBecomeVisible
 
     private void jCBCod_plan3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBCod_plan3PopupMenuWillBecomeVisible
-        // TODO add your handling code here:
+    jCBCod_plan3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
+      // TODO add your handling code here:
     }//GEN-LAST:event_jCBCod_plan3PopupMenuWillBecomeVisible
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+       
+        LinkedList consulta = new LinkedList();
+        try {
+             String codigo_plan[]= new String[2];
+        codigo_plan=jCBCod_plan2.getSelectedItem().toString().split(" - ");
+            consulta = ce.consultar( 
+                    jTFNombre2.getText(),
+                jTFTelefono2.getText(), jTFDireccion2.getText(),
+                codigo_plan[0]
+                    );
+            
+                Object[][] s = new Object[consulta.size()][4];
+                for (int i = 0; i < consulta.size(); i++) {
+                   Empresa emp = (Empresa) consulta.get(i);
+                    if (emp.getNombre() != null) {
+                        s[i][0] = emp.getNombre();
+                        s[i][1] = emp.getTelefono();
+                        s[i][2] = emp.getDireccion();
+                        s[i][3] = emp.getCod_plan().getCod_plan().getCod_plan();
+                       
+                    } else {
+                        s = null;
+                    }
+                }
+                TableModel myModel = new DefaultTableModel(s, new String[]{"Nombre", "Telefono", "Direccion", "Plan"}) {
+                    boolean[] canEdit = new boolean[]{false, false,  false, false
+                    };
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                };
+                ///remover filas
+                jTResultados.setModel(myModel);
+                jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+        // TODO add your handling code here:
+         int guardar = -1;
+        try {
+                
+        String codigo_plan[]= new String[2];
+        codigo_plan=jCBCod_plan1.getSelectedItem().toString().split(" - ");
+        System.out.println(codigo_plan[0]);
+        
+        guardar=ce.guardar(jTFNombre1.getText(),
+                jTFTelefono1.getText(), jTFDireccion1.getText(),
+                codigo_plan[0]);
+        
+        }catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No se pudo crear la Empresa", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Empresa Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFNombre2.setText(jTFNombre1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+          
+        }
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+int editar = -1;
+        try {
+            String codigo_plan[]= new String[2];
+        codigo_plan=jCBCod_plan3.getSelectedItem().toString().split(" - ");
+        System.out.println(codigo_plan[0]);
+            editar = ce.editar(
+                    jTFNombre3.getText(),
+                jTFTelefono3.getText(), jTFDireccion3.getText(),
+                codigo_plan[0]);
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar la Empresa", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Empresa modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFNombre2.setText(jTFNombre3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
+limpiarCamposConsultar();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar2ActionPerformed
+
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFTelefono3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jCBCod_plan3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_jTResultadosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;

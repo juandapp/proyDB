@@ -77,6 +77,7 @@ public class DaoEmpresa {
         }
                      
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -143,7 +144,7 @@ public class DaoEmpresa {
         sql_update = "UPDATE empresa  SET "
                 + "telefono='" + em.getTelefono() + "', "
                 + "direccion='" + em.getDireccion() + "', "
-                + "cod_plan='" + em.getCod_plan() + "' "
+                + "cod_plan='" + em.getCod_plan().getCod_plan().getCod_plan() + "' "
                 + "WHERE nombre='" + em.getNombre() + "'";
         try {
             Connection conn = fachada.conectar();
