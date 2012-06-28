@@ -275,7 +275,7 @@ public class JPSimCard extends javax.swing.JPanel {
         jPanel2.add(jLabel30);
         jLabel30.setBounds(10, 70, 140, 14);
 
-        jCBActivacion_Internet3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBActivacion_Internet3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         jPanel2.add(jCBActivacion_Internet3);
         jCBActivacion_Internet3.setBounds(130, 70, 100, 20);
 
@@ -283,15 +283,15 @@ public class JPSimCard extends javax.swing.JPanel {
         jPanel2.add(jLabel16);
         jLabel16.setBounds(270, 70, 110, 14);
 
-        jCBautorizacion_roaming3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBautorizacion_roaming3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         jPanel2.add(jCBautorizacion_roaming3);
         jCBautorizacion_roaming3.setBounds(390, 70, 100, 20);
 
-        jCBactivacion_correo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBactivacion_correo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         jPanel2.add(jCBactivacion_correo3);
         jCBactivacion_correo3.setBounds(390, 40, 100, 20);
 
-        jCBbloqueado_por_robo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBbloqueado_por_robo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         jPanel2.add(jCBbloqueado_por_robo3);
         jCBbloqueado_por_robo3.setBounds(390, 10, 100, 20);
 

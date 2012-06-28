@@ -543,10 +543,9 @@
                 <Component class="javax.swing.JComboBox" name="jCBActivacion_Internet3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Si"/>
-                        <StringItem index="2" value="No"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Si"/>
+                        <StringItem index="1" value="No"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -569,10 +568,9 @@
                 <Component class="javax.swing.JComboBox" name="jCBautorizacion_roaming3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Si"/>
-                        <StringItem index="2" value="No"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Si"/>
+                        <StringItem index="1" value="No"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -585,10 +583,9 @@
                 <Component class="javax.swing.JComboBox" name="jCBactivacion_correo3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Si"/>
-                        <StringItem index="2" value="No"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Si"/>
+                        <StringItem index="1" value="No"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -601,10 +598,9 @@
                 <Component class="javax.swing.JComboBox" name="jCBbloqueado_por_robo3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Si"/>
-                        <StringItem index="2" value="No"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Si"/>
+                        <StringItem index="1" value="No"/>
                       </StringArray>
                     </Property>
                   </Properties>

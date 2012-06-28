@@ -82,8 +82,8 @@ public class DaoSimcard {
             String activacion_correo, String autorizacion_roaming) {
         LinkedList simcardConsulta = new LinkedList();
         String sql_select = "SELECT * FROM simcard      ";
-        if (!codigo.equals("") || !num_telefono.equals("") || !activacion_internet.equals("")
-                || !bloqueado_por_robo.equals("") || !activacion_correo.equals("") || !autorizacion_roaming.equals("")) {
+        if (!codigo.equals("") || !num_telefono.equals("") || !activacion_internet.equals(" ")
+                || !bloqueado_por_robo.equals(" ") || !activacion_correo.equals(" ") || !autorizacion_roaming.equals(" ")) {
             sql_select += "WHERE ";
         }
         if (!codigo.equals("")) {
@@ -92,21 +92,23 @@ public class DaoSimcard {
         if (!num_telefono.equals("")) {
             sql_select += "num_telefono ='" + num_telefono  + "' AND ";
         }
-        if (!activacion_internet.equals("")) {
+        if (!activacion_internet.equals(" ")) {
             sql_select += "activacion_internet ='" + activacion_internet +  "' AND ";
         }
-        if (!bloqueado_por_robo.equals("")) {
+        if (!bloqueado_por_robo.equals(" ")) {
             sql_select += "bloqueado_por_robo = '" + bloqueado_por_robo +  "' AND ";
         }
-        if (!activacion_correo.equals("")) {
+        if (!activacion_correo.equals(" ")) {
             sql_select += "activacion_correo = '" + activacion_correo + "' AND ";
         }
         
-        if (!autorizacion_roaming.equals("")) {
+        if (!autorizacion_roaming.equals(" ")) {
             sql_select += "autorizacion_roaming = '" + autorizacion_roaming +  "' AND ";
         }
 
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
+        
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
