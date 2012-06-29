@@ -48,7 +48,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMICorreo = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMIMensaje_entrante_roaming = new javax.swing.JMenuItem();
-        jMIMensaje_saliente_roaming = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,21 +155,13 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Roaming");
 
-        jMIMensaje_entrante_roaming.setText("Mensaje Entrante");
+        jMIMensaje_entrante_roaming.setText("Roaming");
         jMIMensaje_entrante_roaming.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIMensaje_entrante_roamingActionPerformed(evt);
             }
         });
         jMenu1.add(jMIMensaje_entrante_roaming);
-
-        jMIMensaje_saliente_roaming.setText("Mensaje Saliente");
-        jMIMensaje_saliente_roaming.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIMensaje_saliente_roamingActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMIMensaje_saliente_roaming);
 
         jMenuBar1.add(jMenu1);
 
@@ -315,22 +306,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void jMIMensaje_entrante_roamingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMensaje_entrante_roamingActionPerformed
         try {
             jPPrincipal.removeAll();
-            jPPrincipal.add(new JPMensaje_entrante_roaming(), BorderLayout.CENTER);
+            jPPrincipal.add(new JPRoaming(), BorderLayout.CENTER);
             jPPrincipal.updateUI();
             this.pack();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jMIMensaje_entrante_roamingActionPerformed
-
-    private void jMIMensaje_saliente_roamingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMensaje_saliente_roamingActionPerformed
-        try {
-            jPPrincipal.removeAll();
-            jPPrincipal.add(new JPMensaje_saliente_roaming(), BorderLayout.CENTER);
-            jPPrincipal.updateUI();
-            this.pack();
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_jMIMensaje_saliente_roamingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,7 +360,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIEmpresa;
     private javax.swing.JMenuItem jMIEquipo;
     private javax.swing.JMenuItem jMIMensaje_entrante_roaming;
-    private javax.swing.JMenuItem jMIMensaje_saliente_roaming;
     private javax.swing.JMenuItem jMIPlanPostpago;
     private javax.swing.JMenuItem jMIPlanPrepago;
     private javax.swing.JMenuItem jMIRecarga;

@@ -114,18 +114,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMIMensaje_entrante_roaming">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Mensaje Entrante"/>
+                <Property name="text" type="java.lang.String" value="Roaming"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMensaje_entrante_roamingActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMIMensaje_saliente_roaming">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mensaje Saliente"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMensaje_saliente_roamingActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
