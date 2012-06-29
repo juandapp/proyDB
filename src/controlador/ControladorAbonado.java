@@ -30,7 +30,7 @@ public class ControladorAbonado {
         if(!id.isEmpty() && !tipo_documento.isEmpty() && !nombres.isEmpty() &&
             !apellidos.isEmpty() && !direccion.isEmpty() && !genero.isEmpty() &&
             !estado_civil.isEmpty() && fecha_nacimiento!=null && !comuna.isEmpty() &&
-            !barrio.isEmpty() && !ciudad.isEmpty() && !ciudad.isEmpty() && !imei.isEmpty()
+            !barrio.isEmpty() && !ciudad.isEmpty() && !imei.isEmpty()
                 ) {
             Equipo e=new DaoEquipo().consultar(imei);
             Abonado abonado= new Abonado(id, tipo_documento, nombres, apellidos, 

@@ -51,4 +51,14 @@ public class ControladorEquipo {
             return -1;
         }
     }
+    
+    public String[] listar() {
+        LinkedList equiposConsultar = daoEquipo.consultar("", "", "");
+        String[] equipos = new String[equiposConsultar.size()+1];
+        equipos[0] = " ";
+        for (int i = 0; i < equiposConsultar.size(); i++) {
+            equipos[i+1] = ((Equipo) equiposConsultar.get(i)).getImei() ;
+        }
+        return equipos;
+    }
 }
