@@ -114,47 +114,48 @@ public class DaoAbonado {
             || !ciudad.equals("")
             || !tipo.equals("")
             || !imei.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += "WHERE";
         }
       
         if(!id.equals("")){
-            sql_select += "id = '"+id+"'"+" AND ";
+            sql_select += " id = '"+id+"'"+" AND ";
         }
         if(!tipo_documento.equals("")){
-            sql_select += "tipo_documento LIKE '%"+tipo_documento+"%'"+" AND ";
+            sql_select += " tipo_documento LIKE '%"+tipo_documento+"%'"+" AND ";
         }
         if(!apellidos.equals("")){
-            sql_select += "apellidos LIKE '%"+apellidos+"%'"+" AND ";
+            sql_select += " apellidos LIKE '%"+apellidos+"%'"+" AND ";
         }
         if(!direccion.equals("")){
-            sql_select += "direccion LIKE '%"+direccion+"%'"+" AND ";
+            sql_select += " direccion LIKE '%"+direccion+"%'"+" AND ";
         }
         if(!genero.equals("")){
-            sql_select += "genero LIKE '%"+genero+"%'"+" AND ";
+            sql_select += " genero LIKE '%"+genero+"%'"+" AND ";
         }
         if(!estado_civil.equals("")){
-            sql_select += "estado_civil LIKE '%"+estado_civil+"%'"+" AND ";
+            sql_select += " estado_civil LIKE '%"+estado_civil+"%'"+" AND ";
         }
         if(!fecha_nacimiento.equals("")){
-            sql_select += "fecha_nacimiento LIKE '%"+fecha_nacimiento+"%'"+" AND ";
+            sql_select += " fecha_nacimiento LIKE '%"+fecha_nacimiento+"%'"+" AND ";
         }
         if(!comuna.equals("")){
-            sql_select += "comuna LIKE '%"+comuna+"%'"+" AND ";
+            sql_select += " comuna LIKE '%"+comuna+"%'"+" AND ";
         }
         if(!barrio.equals("")){
-            sql_select += "barrio LIKE '%"+barrio+"%'"+" AND ";
+            sql_select += " barrio LIKE '%"+barrio+"%'"+" AND ";
         }
         if(!ciudad.equals("")){
-            sql_select += "ciudad LIKE '%"+ciudad+"%'"+" AND ";
+            sql_select += " ciudad LIKE '%"+ciudad+"%'"+" AND ";
         }
         if(!tipo.equals("")){
-            sql_select += "tipo LIKE '%"+tipo+"%'"+" AND ";
+            sql_select += " tipo LIKE '%"+tipo+"%'"+" AND ";
         }
         if(!imei.equals("")){
-            sql_select += "imei LIKE '%"+imei+"%'"+" AND ";
+            sql_select += " imei = '"+imei+"' AND ";
         }
                      
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();

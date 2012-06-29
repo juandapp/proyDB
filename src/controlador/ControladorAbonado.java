@@ -79,4 +79,14 @@ public class ControladorAbonado {
             return -1;
         }
     }
+    
+      public String[] listar() {
+        LinkedList abonadosConsultar = daoAbonado.consultar("", "", "", "", "", "", "", "", "", "", "", "", "");
+        String[] abonados = new String[abonadosConsultar.size()+1];
+        abonados[0] = " ";
+        for (int i = 0; i < abonadosConsultar.size(); i++) {
+            abonados[i+1] = ((Abonado) abonadosConsultar.get(i)).getId() + " - " + ((Abonado) abonadosConsultar.get(i)).getNombres();
+        }
+        return abonados;
+    }
 }

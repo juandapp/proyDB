@@ -44,6 +44,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMICompaniaInternacional = new javax.swing.JMenuItem();
         jMICompaniaLocal = new javax.swing.JMenuItem();
         jMISimCard = new javax.swing.JMenuItem();
+        jMICorreo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +131,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMISimCard);
+
+        jMICorreo.setText("Correo");
+        jMICorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICorreoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMICorreo);
 
         jMenuBar1.add(jMenu3);
 
@@ -251,6 +260,17 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMIPlanPrepagoActionPerformed
 
+    private void jMICorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICorreoActionPerformed
+        // TODO add your handling code here:
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPCorreos(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMICorreoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -293,6 +313,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIAbonado;
     private javax.swing.JMenuItem jMICompaniaInternacional;
     private javax.swing.JMenuItem jMICompaniaLocal;
+    private javax.swing.JMenuItem jMICorreo;
     private javax.swing.JMenuItem jMIEmpleado;
     private javax.swing.JMenuItem jMIEmpresa;
     private javax.swing.JMenuItem jMIEquipo;
