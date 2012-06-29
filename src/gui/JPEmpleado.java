@@ -538,8 +538,6 @@ public class JPEmpleado extends javax.swing.JPanel {
 
         } catch (Exception e) {
             nacimiento = "";
-
-
         }
         try {
             java.sql.Date fecha_ingreso = new java.sql.Date(jDCFechaIngreso2.getDate().getTime());
