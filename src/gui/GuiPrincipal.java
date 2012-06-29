@@ -38,6 +38,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMIAbonado = new javax.swing.JMenuItem();
         jMIEquipo = new javax.swing.JMenuItem();
         jMIPlanPostpago = new javax.swing.JMenuItem();
+        jMIPlanPrepago = new javax.swing.JMenuItem();
         jMIEmpresa = new javax.swing.JMenuItem();
         jMIEmpleado = new javax.swing.JMenuItem();
         jMICompaniaInternacional = new javax.swing.JMenuItem();
@@ -81,6 +82,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMIPlanPostpago);
+
+        jMIPlanPrepago.setText("Plan Prepago");
+        jMIPlanPrepago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIPlanPrepagoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIPlanPrepago);
 
         jMIEmpresa.setText("Empresa");
         jMIEmpresa.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +240,17 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMISimCardActionPerformed
 
+    private void jMIPlanPrepagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIPlanPrepagoActionPerformed
+        // TODO add your handling code here:
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPPlanPrepago(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMIPlanPrepagoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +297,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIEmpresa;
     private javax.swing.JMenuItem jMIEquipo;
     private javax.swing.JMenuItem jMIPlanPostpago;
+    private javax.swing.JMenuItem jMIPlanPrepago;
     private javax.swing.JMenuItem jMISimCard;
     private javax.swing.JMenuItem jMISucursal;
     private javax.swing.JMenu jMenu3;

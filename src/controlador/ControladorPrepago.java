@@ -46,11 +46,22 @@ public class ControladorPrepago {
         return prepago;
     }
 
+    public LinkedList consultar(String cod_plan,  String tarifa_otro_operador, String tarifa_msj_multimedia, String tarifa_msj_texto
+         ) {
+        LinkedList consulta = new LinkedList();
+        consulta = daoPrepago.consultar(cod_plan,tarifa_otro_operador, tarifa_msj_multimedia,  tarifa_msj_texto);
+        return consulta;
+    }
    
 
-    public int editar(String cod_plan) {
-        if (!cod_plan.isEmpty())  {
-            Plan plan=daoPlan.consultar(cod_plan);
+    public int editar(String cod_plan,int tarifa_otro_operador, int tarifa_msj_multimedia,
+            int tarifa_msj_texto) {
+        if (!cod_plan.isEmpty()) {
+            
+            Plan plan= new Plan(cod_plan, tarifa_otro_operador,
+                    tarifa_msj_multimedia, tarifa_msj_texto);
+            daoPlan.guardar(plan);
+                     
             Prepago prepago = new Prepago(plan);
             int retorno = daoPrepago.editar(prepago);
             return retorno;

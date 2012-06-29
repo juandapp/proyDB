@@ -4,6 +4,14 @@
  */
 package gui;
 
+import controlador.ControladorPrepago;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Prepago;
+
 /**
  *
  * @author JUANPAULO
@@ -13,8 +21,10 @@ public class JPPlanPrepago extends javax.swing.JPanel {
     /**
      * Creates new form JPPlanPrepago
      */
+    ControladorPrepago cp;
     public JPPlanPrepago() {
         initComponents();
+        cp = new ControladorPrepago();
     }
 
     /**
@@ -70,37 +80,47 @@ public class JPPlanPrepago extends javax.swing.JPanel {
 
         jLabel9.setText("Codigo");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(10, 10, 60, 14);
+        jLabel9.setBounds(10, 10, 60, 17);
         jPanel4.add(jTFCodigo1);
         jTFCodigo1.setBounds(120, 10, 100, 20);
 
         jLabel6.setText("Tarifa otro op.");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(10, 40, 70, 14);
+        jLabel6.setBounds(10, 40, 70, 17);
         jPanel4.add(jTFtarifa_otro_operador1);
         jTFtarifa_otro_operador1.setBounds(120, 40, 110, 20);
         jPanel4.add(jTFtarifa_msj_multimedia1);
         jTFtarifa_msj_multimedia1.setBounds(120, 70, 110, 20);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarCamposCrear(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
-        jBLimpiar1.setBounds(60, 150, 72, 23);
+        jBLimpiar1.setBounds(60, 150, 72, 33);
 
         jBCrear1.setText("Crear");
+        jBCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrear1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBCrear1);
-        jBCrear1.setBounds(150, 150, 70, 23);
+        jBCrear1.setBounds(150, 150, 70, 33);
 
         jLabel13.setText("Tarifa msj multimedia");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(10, 70, 120, 14);
+        jLabel13.setBounds(10, 70, 120, 17);
 
         jLabel14.setText("Tarifa msj texto");
         jPanel4.add(jLabel14);
-        jLabel14.setBounds(10, 100, 100, 14);
+        jLabel14.setBounds(10, 100, 100, 17);
 
         jTtarifa_msj_texto1.setText(" ");
         jPanel4.add(jTtarifa_msj_texto1);
-        jTtarifa_msj_texto1.setBounds(120, 100, 110, 20);
+        jTtarifa_msj_texto1.setBounds(120, 100, 110, 27);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -133,52 +153,67 @@ public class JPPlanPrepago extends javax.swing.JPanel {
         jScrollPane1.setBounds(10, 100, 470, 125);
 
         jBConsultar2.setText("Consultar");
+        jBConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBConsultar2);
-        jBConsultar2.setBounds(270, 50, 90, 23);
+        jBConsultar2.setBounds(270, 50, 90, 33);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarCamposConsultar(evt);
+            }
+        });
         jPanel1.add(jBLimpiar2);
-        jBLimpiar2.setBounds(380, 50, 90, 23);
+        jBLimpiar2.setBounds(380, 50, 90, 33);
 
         jLabel16.setText("Codigo");
         jPanel1.add(jLabel16);
-        jLabel16.setBounds(10, 10, 60, 14);
+        jLabel16.setBounds(10, 10, 60, 17);
         jPanel1.add(jTFCodigo2);
         jTFCodigo2.setBounds(120, 10, 100, 20);
 
         jLabel7.setText("Tarifa otro op.");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 40, 70, 14);
+        jLabel7.setBounds(10, 40, 70, 17);
         jPanel1.add(jTFtarifa_otro_operador2);
         jTFtarifa_otro_operador2.setBounds(120, 40, 110, 20);
 
         jLabel17.setText("Tarifa msj multimedia");
         jPanel1.add(jLabel17);
-        jLabel17.setBounds(10, 70, 120, 14);
+        jLabel17.setBounds(10, 70, 120, 17);
         jPanel1.add(jTFtarifa_msj_multimedia2);
         jTFtarifa_msj_multimedia2.setBounds(120, 70, 110, 20);
 
         jLabel18.setText("Tarifa msj texto");
         jPanel1.add(jLabel18);
-        jLabel18.setBounds(270, 10, 100, 14);
+        jLabel18.setBounds(270, 10, 100, 17);
 
         jTtarifa_msj_texto2.setText(" ");
         jPanel1.add(jTtarifa_msj_texto2);
-        jTtarifa_msj_texto2.setBounds(380, 10, 110, 20);
+        jTtarifa_msj_texto2.setBounds(380, 10, 110, 27);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
         jPanel2.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(130, 140, 90, 23);
+        jBModificar3.setBounds(130, 140, 90, 33);
         jPanel2.add(jTFtarifa_msj_multimedia3);
         jTFtarifa_msj_multimedia3.setBounds(120, 70, 110, 20);
 
         jLabel21.setText("Tarifa msj texto");
         jPanel2.add(jLabel21);
-        jLabel21.setBounds(10, 100, 100, 14);
+        jLabel21.setBounds(10, 100, 100, 17);
 
         jTFCodigo3.setEditable(false);
         jTFCodigo3.setEnabled(false);
@@ -187,19 +222,19 @@ public class JPPlanPrepago extends javax.swing.JPanel {
 
         jLabel23.setText("Codigo");
         jPanel2.add(jLabel23);
-        jLabel23.setBounds(10, 10, 60, 14);
+        jLabel23.setBounds(10, 10, 60, 17);
 
         jLabel24.setText("Tarifa msj multimedia");
         jPanel2.add(jLabel24);
-        jLabel24.setBounds(10, 70, 120, 14);
+        jLabel24.setBounds(10, 70, 120, 17);
 
         jLabel25.setText("Tarifa otro op.");
         jPanel2.add(jLabel25);
-        jLabel25.setBounds(10, 40, 70, 14);
+        jLabel25.setBounds(10, 40, 70, 17);
 
         jTtarifa_msj_texto3.setText(" ");
         jPanel2.add(jTtarifa_msj_texto3);
-        jTtarifa_msj_texto3.setBounds(120, 100, 110, 20);
+        jTtarifa_msj_texto3.setBounds(120, 100, 110, 27);
         jPanel2.add(jTFtarifa_otro_operador3);
         jTFtarifa_otro_operador3.setBounds(120, 40, 110, 20);
 
@@ -221,8 +256,140 @@ public class JPPlanPrepago extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFtarifa_otro_operador3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFtarifa_msj_multimedia3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTtarifa_msj_texto3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
+
+    private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+            guardar = cp.guardar(
+                    jTFCodigo1.getText(),
+                    Integer.parseInt(jTFtarifa_otro_operador1.getText()),
+                    Integer.parseInt(jTFtarifa_msj_multimedia1.getText()),
+                    Integer.parseInt(jTtarifa_msj_texto1.getText())
+                    );
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear el plan", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Plan Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            jTFCodigo2.setText(jTFCodigo1.getText());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposCrear();
+
+        }
+    }//GEN-LAST:event_jBCrear1ActionPerformed
+
+    private void limpiarCamposModificar() {
+        jTFCodigo3.setText("");
+        jTFtarifa_msj_multimedia3.setText("");
+        jTFtarifa_otro_operador3.setText("");
+        jTtarifa_msj_texto3.setText("");
+
+    }
+
+    private void limpiarCamposCrear() {
+        jTFCodigo1.setText("");
+        jTFtarifa_msj_multimedia1.setText("");
+        jTFtarifa_otro_operador1.setText("");
+        jTtarifa_msj_texto1.setText("");
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFCodigo2.setText("");
+        jTFtarifa_msj_multimedia2.setText("");
+        jTFtarifa_otro_operador2.setText("");
+        jTtarifa_msj_texto2.setText("");
+
+    }
+    private void limpiarCamposCrear(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposCrear
+        // TODO add your handling code here:
+        limpiarCamposCrear();
+    }//GEN-LAST:event_limpiarCamposCrear
+
+    private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+        try {
+            consulta = cp.consultar(
+                    jTFCodigo2.getText(),
+                    jTFtarifa_otro_operador2.getText(),
+                    jTFtarifa_msj_multimedia2.getText(),
+                    jTtarifa_msj_texto2.getText()
+                    );
+
+            Object[][] s = new Object[consulta.size()][4];
+            for (int i = 0; i < consulta.size(); i++) {
+                Prepago prep = (Prepago) consulta.get(i);
+                if (prep.getCod_plan()!= null) {
+                    s[i][0] = prep.getCod_plan().getCod_plan();
+                    s[i][1] = prep.getCod_plan().getTarifa_otro_operador();
+                    s[i][2] = prep.getCod_plan().getTarifa_msj_multimedia();
+                    s[i][3] = prep.getCod_plan().getTarifa_msj_texto();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo", "Tarifa_otros_operadores",
+                "Tarifa_msj_multimedia", "Tarifa_msj_texto"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }       
+    }//GEN-LAST:event_jBConsultar2ActionPerformed
+
+    private void limpiarCamposConsultar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposConsultar
+        // TODO add your handling code here:
+        limpiarCamposConsultar();
+    }//GEN-LAST:event_limpiarCamposConsultar
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+        // TODO add your handling code here:
+        int editar = -1;
+        try {
+            editar = cp.editar(
+                    jTFCodigo3.getText(),
+                    Integer.parseInt(jTFtarifa_otro_operador3.getText()),
+                    Integer.parseInt(jTFtarifa_msj_multimedia3.getText()),
+                    Integer.parseInt(jTtarifa_msj_texto3.getText())
+                    );
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar el Plan", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Plan modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }
+    }//GEN-LAST:event_jBModificar3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
