@@ -65,7 +65,7 @@ public class JPCorreos extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jCBAbonado3 = new javax.swing.JComboBox();
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Equipo"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Correo"));
         jPanel3.setLayout(null);
 
         jPanel4.setLayout(null);

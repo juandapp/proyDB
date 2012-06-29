@@ -44,7 +44,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMICompaniaInternacional = new javax.swing.JMenuItem();
         jMICompaniaLocal = new javax.swing.JMenuItem();
         jMISimCard = new javax.swing.JMenuItem();
+        jMIRecarga = new javax.swing.JMenuItem();
         jMICorreo = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMIMensaje_entrante_roaming = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,6 +135,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMISimCard);
 
+        jMIRecarga.setText("Recarga");
+        jMIRecarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRecargaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIRecarga);
+
         jMICorreo.setText("Correo");
         jMICorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +152,18 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMICorreo);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu1.setText("Roaming");
+
+        jMIMensaje_entrante_roaming.setText("Mensaje Entrante");
+        jMIMensaje_entrante_roaming.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIMensaje_entrante_roamingActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMIMensaje_entrante_roaming);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -261,7 +284,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIPlanPrepagoActionPerformed
 
     private void jMICorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICorreoActionPerformed
-        // TODO add your handling code here:
         try {
             jPPrincipal.removeAll();
             jPPrincipal.add(new JPCorreos(), BorderLayout.CENTER);
@@ -270,6 +292,26 @@ public class GuiPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jMICorreoActionPerformed
+
+    private void jMIRecargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRecargaActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPRecarga(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMIRecargaActionPerformed
+
+    private void jMIMensaje_entrante_roamingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMensaje_entrante_roamingActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPMensaje_entrante_roaming(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMIMensaje_entrante_roamingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,10 +359,13 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIEmpleado;
     private javax.swing.JMenuItem jMIEmpresa;
     private javax.swing.JMenuItem jMIEquipo;
+    private javax.swing.JMenuItem jMIMensaje_entrante_roaming;
     private javax.swing.JMenuItem jMIPlanPostpago;
     private javax.swing.JMenuItem jMIPlanPrepago;
+    private javax.swing.JMenuItem jMIRecarga;
     private javax.swing.JMenuItem jMISimCard;
     private javax.swing.JMenuItem jMISucursal;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPPrincipal;
