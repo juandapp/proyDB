@@ -20,15 +20,19 @@ import logica.Prepago;
 public class DaoPrepago {
 
     FachadaBD fachada;
+     DaoPlan dp;
 
     public DaoPrepago() {
         fachada = new FachadaBD();
+         dp=new DaoPlan();
+         
     }//
 
     public int guardar(Prepago pre) {
         String sql_guardar;
         sql_guardar = "INSERT INTO prepago VALUES ('"
                 + pre.getCod_plan().getCod_plan() + "')";
+        dp.guardar(pre.getCod_plan());
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -87,14 +91,14 @@ public class DaoPrepago {
             sql_select += "cod_plan='" + cod_plan + "' AND ";
         }
         if (!tarifa_otro_operador.equals("")) {
-            sql_select += "tarifa_otro_operador=" + tarifa_otro_operador + " AND ";
+            sql_select += "tarifa_otro_operador <=" + tarifa_otro_operador + " AND ";
         }
         
         if (!tarifa_msj_multimedia.equals("")) {
-            sql_select += "tarifa_msj_multimedia=" + tarifa_msj_multimedia + " AND ";
+            sql_select += "tarifa_msj_multimedia <=" + tarifa_msj_multimedia + " AND ";
         }
         if (!tarifa_msj_texto.equals("")) {
-            sql_select += "tarifa_msj_texto=" + tarifa_msj_texto + " AND ";
+            sql_select += "tarifa_msj_texto <=" + tarifa_msj_texto + " AND ";
         }
        
         sql_select = sql_select.substring(0, sql_select.length() - 5);
@@ -135,9 +139,10 @@ public class DaoPrepago {
     public int editar(Prepago c) {
 
         String sql_update;
-        sql_update = "UPDATE prepago  SET "
-                + "cod_plan='" + c.getCod_plan() + "' "
-                + "WHERE cod_plan='" + c.getCod_plan() + "'";
+        sql_update = "UPDATE prepago SET "
+                + "cod_plan='" + c.getCod_plan().getCod_plan() + "' "
+                + "WHERE cod_plan='" + c.getCod_plan().getCod_plan() + "'";
+        dp.editar(c.getCod_plan());
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
