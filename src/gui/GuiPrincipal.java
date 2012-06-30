@@ -48,6 +48,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMICorreo = new javax.swing.JMenuItem();
         jMIPlanDatos = new javax.swing.JMenuItem();
         jMIRegistroLocal = new javax.swing.JMenuItem();
+        jMIContrato = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMIMensaje_entrante_roaming = new javax.swing.JMenuItem();
 
@@ -168,6 +169,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMIRegistroLocal);
+
+        jMIContrato.setText("Contrato");
+        jMIContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIContratoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIContrato);
 
         jMenuBar1.add(jMenu3);
 
@@ -351,6 +360,15 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMIRegistroLocalActionPerformed
 
+    private void jMIContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIContratoActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPContrato(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }    }//GEN-LAST:event_jMIContratoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -393,6 +411,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIAbonado;
     private javax.swing.JMenuItem jMICompaniaInternacional;
     private javax.swing.JMenuItem jMICompaniaLocal;
+    private javax.swing.JMenuItem jMIContrato;
     private javax.swing.JMenuItem jMICorreo;
     private javax.swing.JMenuItem jMIEmpleado;
     private javax.swing.JMenuItem jMIEmpresa;
