@@ -30,9 +30,9 @@ FOREIGN KEY(cod_sucursal) REFERENCES sucursal(cod_sucursal));
 
 DROP TABLE equipo CASCADE;
 CREATE TABLE equipo (
-imei varchar(20) PRIMARY KEY,
-modelo varchar(15),
-marca varchar(15));
+imei varchar(100) PRIMARY KEY,
+modelo varchar(100),
+marca varchar(100));
 
 
 DROP TABLE abonado CASCADE;
@@ -55,7 +55,7 @@ FOREIGN KEY(imei) REFERENCES equipo(imei));
 
 DROP TABLE plan CASCADE;
 CREATE TABLE plan (
-cod_plan varchar(10) PRIMARY KEY,
+cod_plan varchar(30) PRIMARY KEY,
 tarifa_otro_operador int,
 tarifa_msj_multimedia int,
 tarifa_msj_texto int);
@@ -63,7 +63,7 @@ tarifa_msj_texto int);
 
 DROP TABLE postpago CASCADE;
 CREATE TABLE postpago (
-cod_plan varchar(10) PRIMARY KEY,
+cod_plan varchar(30) PRIMARY KEY,
 total_minutos int,
 costo_min_adicional int,
 FOREIGN KEY(cod_plan) REFERENCES plan(cod_plan));
@@ -259,9 +259,31 @@ FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 
 
 -----------Insert
+INSERT INTO plan VALUES('mas 1250',215, 180, 137);
+INSERT INTO plan VALUES('sin fin ideal 1460',126, 180, 137);
+INSERT INTO plan VALUES('sin fin ideal 2000',121, 180, 137);
+INSERT INTO plan VALUES('mas blackberry 210',216, 180, 137);
+INSERT INTO plan VALUES('mas blackberry 780',216, 180, 137);
+INSERT INTO plan VALUES('bb todo destino 130bb',265, 180, 137);
+INSERT INTO plan VALUES('bb todo destino 290bb',190, 180, 137);
+INSERT INTO plan VALUES('bbsf 800',132, 180, 137);
+INSERT INTO plan VALUES('bbsf 1120',128, 180, 137);
+
 INSERT INTO plan VALUES('12345',750, 350, 100);
 INSERT INTO plan VALUES('12354',750, 450, 19);
 INSERT INTO plan VALUES('pre123',900, 250, 200);
+
+INSERT INTO postpago VALUES('mas 1250',1250, 115);
+INSERT INTO postpago VALUES('sin fin ideal 1460',1460, 126);
+INSERT INTO postpago VALUES('sin fin ideal 2000',2000, 121);
+INSERT INTO postpago VALUES('mas blackberry 210',210, 235);
+INSERT INTO postpago VALUES('mas blackberry 780',780, 116);
+INSERT INTO postpago VALUES('bb todo destino 130bb',130, 265);
+INSERT INTO postpago VALUES('bb todo destino 290bb',290, 190);
+INSERT INTO postpago VALUES('bbsf 800',800, 132);
+INSERT INTO postpago VALUES('bbsf 1120',1120, 128);
+
+
 
 INSERT INTO postpago VALUES('12345',1000, 550);
 INSERT INTO postpago VALUES('12354',560, 450);
@@ -273,6 +295,24 @@ INSERT INTO equipo VALUES ('245879652114523','MB200','Motorola');
 INSERT INTO equipo VALUES ('569874147587745','GalaxyAce','Samsung');
 INSERT INTO equipo values ('545478569852136','Xperia','SonyEriccson');
 INSERT INTO equipo values ('474578569885475','C3','Nokia');
+
+INSERT INTO equipo VALUES ('85698569','CK 15 txt pro','Sony ericson');
+INSERT INTO equipo VALUES ('145678903256458','GT-C3310','Samsung Beat Deluxe');
+INSERT INTO equipo VALUES ('336790125689045','GT-P7300','Samsung Galaxy Tab 8.9');
+INSERT INTO equipo VALUES ('244490456876267','EX108','Motorola Motokey tm Mini');
+INSERT INTO equipo VALUES ('982929498575610','XT300','Motorola spice');
+INSERT INTO equipo VALUES ('458677019284752','P970','LG Optimus Black');
+INSERT INTO equipo VALUES ('598273451978345','T300','LG Cookie Music');
+INSERT INTO equipo VALUES ('183409278456256','Xperia TM mini pro','Sony Ericson');
+INSERT INTO equipo VALUES ('250927465731734','Xperia TM Play','Sony Ericson');
+INSERT INTO equipo VALUES ('360254398231761','Lumia 710','Nokia');
+INSERT INTO equipo VALUES ('800012345443532','C3','Nokia');
+INSERT INTO equipo VALUES ('262002452422103','Cuerve 9360','Blackberry');
+INSERT INTO equipo VALUES ('201444431030594','Cuerve 9380','Blackberry');
+INSERT INTO equipo VALUES ('313578234521349','One Touch 990A','Alcatel');
+INSERT INTO equipo VALUES ('679283746510923','One Touch 901A','Alcatel');
+
+
 
 INSERT INTO abonado VALUES ('100','Cedula','Juan David','Pati�o Pati�o','Cra 50#32-20',
 			    'Masculino','Casado','1989-11-11','5','La Base','Cali', 'Individual',
