@@ -56,7 +56,7 @@ public class ControladorEmpresa {
         LinkedList empresaConsultar = new LinkedList();
         if(cod_plan.equals("Cargar Planes Postpago")){
             empresaConsultar = daoEmpresa.consultar(nombre,telefono,direccion,
-                "");
+                " ");
         }
         else{
         empresaConsultar = daoEmpresa.consultar(nombre,telefono,direccion,
