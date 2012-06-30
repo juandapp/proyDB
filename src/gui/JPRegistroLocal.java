@@ -104,6 +104,8 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jBConsultarMensajes = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         jCBCompaniaLocalConsultarMensajeEnviado = new javax.swing.JComboBox();
+        jLabel50 = new javax.swing.JLabel();
+        jDCFechaConsultarEnviarMensaje = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setLayout(null);
 
@@ -418,11 +420,11 @@ public class JPRegistroLocal extends javax.swing.JPanel {
 
             },
             new String [] {
-                "SimCard", "Cia.Local", "Msm enviados"
+                "SimCard", "Cia.Local", "Msm enviados", "Fecha", "Hora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -449,6 +451,14 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jCBCompaniaLocalConsultarMensajeEnviado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Local" }));
         jPanel5.add(jCBCompaniaLocalConsultarMensajeEnviado);
         jCBCompaniaLocalConsultarMensajeEnviado.setBounds(110, 40, 190, 20);
+
+        jLabel50.setText("Fecha");
+        jPanel5.add(jLabel50);
+        jLabel50.setBounds(10, 70, 60, 14);
+
+        jDCFechaConsultarEnviarMensaje.setDateFormatString("dd MMM yyyy");
+        jPanel5.add(jDCFechaConsultarEnviarMensaje);
+        jDCFechaConsultarEnviarMensaje.setBounds(110, 70, 170, 20);
 
         jTabbedPaneMensajes.addTab("Consultar Mensajes Enviados", jPanel5);
 
@@ -565,6 +575,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private javax.swing.JComboBox jCBactivacion_correo1;
     private javax.swing.JComboBox jCBautorizacion_roaming1;
     private javax.swing.JComboBox jCBbloqueado_por_robo1;
+    private com.toedter.calendar.JDateChooser jDCFechaConsultarEnviarMensaje;
     private com.toedter.calendar.JDateChooser jDCFechaConsultarRealizarLlamada;
     private com.toedter.calendar.JDateChooser jDCFechaEnviarMensaje;
     private com.toedter.calendar.JDateChooser jDCFechaRealizarLlamada;
@@ -590,6 +601,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel5;
