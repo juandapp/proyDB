@@ -60,20 +60,20 @@ public class DaoEmpresa {
             || !telefono.equals("")
             || !direccion.equals("")
             || !cod_plan.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += "WHERE";
         }
       
         if(!nombre.equals("")){
-            sql_select += "nombre LIKE '%"+nombre+"%'"+" AND ";
+            sql_select += " nombre LIKE '%"+nombre+"%'"+" AND ";
         }
         if(!telefono.equals("")){
-            sql_select += "telefono LIKE '%"+telefono+"%'"+" AND ";
+            sql_select += " telefono LIKE '%"+telefono+"%'"+" AND ";
         }
         if(!direccion.equals("")){
-            sql_select += "direccion LIKE '%"+direccion+"%'"+" AND ";
+            sql_select += " direccion LIKE '%"+direccion+"%'"+" AND ";
         }
-        if(!cod_plan.equals("")){
-            sql_select += "cod_plan LIKE '%"+cod_plan+"%'"+" AND ";
+        if(!cod_plan.equals(" ")){
+            sql_select += " cod_plan LIKE '%"+cod_plan+"%'"+" AND ";
         }
                      
         sql_select = sql_select.substring(0, sql_select.length() - 5);

@@ -331,6 +331,8 @@ private void limpiarCamposModificar() {
        
         LinkedList consulta = new LinkedList();
         try {
+            
+            System.err.println(jCBCod_plan2.getSelectedItem());
              String codigo_plan[]= new String[2];
         codigo_plan=jCBCod_plan2.getSelectedItem().toString().split(" - ");
             consulta = ce.consultar( 
