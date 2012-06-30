@@ -4,13 +4,14 @@
  */
 package gui;
 
-import controlador.ControladorEquipo;
+import controlador.ControladorRecarga;
+import controlador.ControladorSimcard;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import logica.Equipo;
+import logica.Recarga;
 
 /**
  *
@@ -21,11 +22,13 @@ public class JPRecarga extends javax.swing.JPanel {
     /**
      * Creates new form JPEquipo
      */
-    ControladorEquipo ce;
+    ControladorRecarga cr;
+    ControladorSimcard controladorSimcard;
 
     public JPRecarga() {
         initComponents();
-        ce = new ControladorEquipo();
+        cr = new ControladorRecarga();
+        controladorSimcard= new ControladorSimcard();
     }
 
     /**
@@ -63,16 +66,6 @@ public class JPRecarga extends javax.swing.JPanel {
         jCBMedioRecarga2 = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
         jCBSimCard2 = new javax.swing.JComboBox();
-        jPanel2 = new javax.swing.JPanel();
-        jBModificar3 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jTFValor3 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jDCFecha3 = new com.toedter.calendar.JDateChooser();
-        jLabel19 = new javax.swing.JLabel();
-        jCBMedioRecarga3 = new javax.swing.JComboBox();
-        jLabel20 = new javax.swing.JLabel();
-        jCBSimCard3 = new javax.swing.JComboBox();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Recarga"));
         jPanel3.setLayout(null);
@@ -94,6 +87,11 @@ public class JPRecarga extends javax.swing.JPanel {
         jLabel8.setBounds(10, 100, 90, 14);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(110, 150, 72, 23);
 
@@ -117,6 +115,15 @@ public class JPRecarga extends javax.swing.JPanel {
 
         jCBSimCard1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Simcard", " " }));
         jCBSimCard1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCBSimCard1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBSimCard1PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel4.add(jCBSimCard1);
         jCBSimCard1.setBounds(90, 100, 150, 20);
 
@@ -201,55 +208,19 @@ public class JPRecarga extends javax.swing.JPanel {
 
         jCBSimCard2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Simcard", " " }));
         jCBSimCard2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCBSimCard2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBSimCard2PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel1.add(jCBSimCard2);
         jCBSimCard2.setBounds(90, 100, 150, 20);
 
         jTabbedPane1.addTab("Consultar", jPanel1);
-
-        jPanel2.setLayout(null);
-
-        jBModificar3.setText("Modificar");
-        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBModificar3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(150, 140, 90, 23);
-
-        jLabel17.setText("Valor");
-        jPanel2.add(jLabel17);
-        jLabel17.setBounds(10, 10, 40, 14);
-        jPanel2.add(jTFValor3);
-        jTFValor3.setBounds(90, 10, 110, 20);
-
-        jLabel18.setText("Fecha");
-        jPanel2.add(jLabel18);
-        jLabel18.setBounds(10, 40, 70, 14);
-
-        jDCFecha3.setDateFormatString("yyyy-MMM-dd");
-        jPanel2.add(jDCFecha3);
-        jDCFecha3.setBounds(90, 40, 150, 20);
-
-        jLabel19.setText("Medio Recarga");
-        jPanel2.add(jLabel19);
-        jLabel19.setBounds(10, 70, 90, 14);
-
-        jCBMedioRecarga3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Internet", "Baloto", "Tarjeta" }));
-        jCBMedioRecarga3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(jCBMedioRecarga3);
-        jCBMedioRecarga3.setBounds(90, 70, 150, 20);
-
-        jLabel20.setText("Simcard");
-        jPanel2.add(jLabel20);
-        jLabel20.setBounds(10, 100, 90, 14);
-
-        jCBSimCard3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Simcard", " " }));
-        jCBSimCard3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(jCBSimCard3);
-        jCBSimCard3.setBounds(90, 100, 150, 20);
-
-        jTabbedPane1.addTab("Editar", jPanel2);
 
         jPanel3.add(jTabbedPane1);
         jTabbedPane1.setBounds(10, 20, 420, 290);
@@ -267,60 +238,138 @@ public class JPRecarga extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
+int guardar = -1;
+        try {
+            java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha1.getDate().getTime());
+            System.out.println(fecha_recarga);
+            System.out.println(jCBMedioRecarga1.getSelectedItem().toString());
+            System.out.println(jCBSimCard1.getSelectedItem().toString());
+            guardar = cr.guardar(
+                    Integer.parseInt(jTFValor1.getText()),
+                    fecha_recarga,
+                    jCBMedioRecarga1.getSelectedItem().toString(),
+                    jCBSimCard1.getSelectedItem().toString());
+        } catch (Exception e) {
+        }
 
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo crear la Recarga", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Recarga Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFValor2.setText(jTFValor1.getText());
+            jDCFecha2.setDate(jDCFecha1.getDate());
+            jCBMedioRecarga2.setSelectedItem(jCBMedioRecarga1.getSelectedItem());
+            jCBSimCard2.setSelectedItem(jCBSimCard1.getSelectedItem());
+            jBConsultar2.doClick();
+            jBLimpiar1.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+
+        }
    }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
+LinkedList consulta = new LinkedList();
+        try {
+            consulta = cr.consultar(
+                    jTFValor2.getText(),
+                    jDCFecha2.getDate().toString(),
+                    jCBMedioRecarga2.getSelectedItem().toString(),
+                    jCBSimCard2.getSelectedItem().toString());
 
+            Object[][] s = new Object[consulta.size()][4];
+            for (int i = 0; i < consulta.size(); i++) {
+                Recarga recarga = (Recarga) consulta.get(i);
+                if (recarga.getFecha() != null) {
+                    s[i][0] = recarga.getValor();
+                    s[i][1] = recarga.getFecha();
+                    s[i][2] = recarga.getMedio_recarga();
+                    s[i][3] = recarga.getSimcard();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Valor", "Fecha", "Medio de Recarga", "Simcard"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-
+limpiarCamposConsultar();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
-
-    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
-      
-    }//GEN-LAST:event_jBModificar3ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
        
     }//GEN-LAST:event_jTResultadosMouseClicked
 
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+limpiarCamposCrear();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+
+    private void jCBSimCard2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSimCard2PopupMenuWillBecomeVisible
+ jCBSimCard2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
+          // TODO add your handling code here:
+    }//GEN-LAST:event_jCBSimCard2PopupMenuWillBecomeVisible
+
+    private void jCBSimCard1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSimCard1PopupMenuWillBecomeVisible
+     jCBSimCard1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
+     // TODO add your handling code here:
+    }//GEN-LAST:event_jCBSimCard1PopupMenuWillBecomeVisible
+    
+
+    private void limpiarCamposCrear() {
+        jTFValor1.setText("");
+        jDCFecha1.setDate(null);
+        jCBMedioRecarga1.setSelectedIndex(0);
+        jCBSimCard1.setSelectedIndex(0);
+    }
+
+    private void limpiarCamposConsultar() {
+        jTFValor2.setText("");
+        jDCFecha2.setDate(null);
+        jCBMedioRecarga2.setSelectedIndex(0);
+        jCBSimCard2.setSelectedIndex(0);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiar2;
-    private javax.swing.JButton jBModificar3;
     private javax.swing.JComboBox jCBMedioRecarga1;
     private javax.swing.JComboBox jCBMedioRecarga2;
-    private javax.swing.JComboBox jCBMedioRecarga3;
     private javax.swing.JComboBox jCBSimCard1;
     private javax.swing.JComboBox jCBSimCard2;
-    private javax.swing.JComboBox jCBSimCard3;
     private com.toedter.calendar.JDateChooser jDCFecha1;
     private com.toedter.calendar.JDateChooser jDCFecha2;
-    private com.toedter.calendar.JDateChooser jDCFecha3;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFValor1;
     private javax.swing.JTextField jTFValor2;
-    private javax.swing.JTextField jTFValor3;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables

@@ -57,4 +57,14 @@ public class ControladorSimcard {
             return -1;
         }
     }
+    
+     public String[] listar() {
+        LinkedList SimcardConsultar = daoSimcard.consultar("", "", " ", " ", " ", " ");
+        String[] simcards = new String[SimcardConsultar.size()+1];
+        simcards[0] = " ";
+        for (int i = 0; i < SimcardConsultar.size(); i++) {
+            simcards[i+1] = ((Simcard) SimcardConsultar.get(i)).getCodigo();
+        }
+        return simcards;
+    }
 }

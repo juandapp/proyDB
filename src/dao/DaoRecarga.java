@@ -30,6 +30,7 @@ public class DaoRecarga {
         sql_guardar = "INSERT INTO recarga VALUES ("
                 + recarga.getValor() + ", '"
                 + recarga.getFecha() + "', '"
+                + recarga.getMedio_recarga() + "', '"
                 + recarga.getSimcard().getCodigo()+ "')";
         try {
             Connection conn = fachada.conectar();

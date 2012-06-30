@@ -25,8 +25,8 @@ public class ControladorRecarga {
     public int guardar(int valor , Date fecha, String medio_recarga, String simcard) {
         int retorno = 0;
         try {
-            if (valor>0 && fecha!=null && !medio_recarga.equals("") && !simcard.equals("")) {
-                Recarga r = new Recarga(valor, fecha, medio_recarga, new DaoSimcard().consultar(medio_recarga));
+            if (valor>0 && fecha!=null && !medio_recarga.equals(" ") && !simcard.equals(" ")) {
+                Recarga r = new Recarga(valor, fecha, medio_recarga, new DaoSimcard().consultar(simcard));
                 retorno = daoRecarga.guardar(r);
             }
         } catch (Exception e) {
