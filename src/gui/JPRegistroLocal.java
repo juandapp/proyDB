@@ -91,6 +91,10 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jTFMensajesAEnviar_EnviarMensaje = new javax.swing.JTextField();
         jBLimpiarEnviarMensaje = new javax.swing.JButton();
         jBEnviarMensaje = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
+        jDCFechaEnviarMensaje = new com.toedter.calendar.JDateChooser();
+        jLabel49 = new javax.swing.JLabel();
+        jTFHoraInicioEnviarMensaje = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jTFSimdCardConsultarMensajeEnviado = new javax.swing.JTextField();
@@ -155,7 +159,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jPanel1.add(jLabel11);
         jLabel11.setBounds(10, 40, 70, 14);
 
-        jCBautorizacion_roaming1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Autorizado", "Desautorizado" }));
+        jCBautorizacion_roaming1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
         jPanel1.add(jCBautorizacion_roaming1);
         jCBautorizacion_roaming1.setBounds(390, 70, 100, 20);
 
@@ -360,7 +364,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
             }
         });
         jPanel6.add(jBLimpiarEnviarMensaje);
-        jBLimpiarEnviarMensaje.setBounds(180, 110, 120, 23);
+        jBLimpiarEnviarMensaje.setBounds(170, 140, 120, 23);
 
         jBEnviarMensaje.setText("Enviar Mensaje");
         jBEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +373,29 @@ public class JPRegistroLocal extends javax.swing.JPanel {
             }
         });
         jPanel6.add(jBEnviarMensaje);
-        jBEnviarMensaje.setBounds(40, 110, 120, 23);
+        jBEnviarMensaje.setBounds(40, 140, 120, 23);
+
+        jLabel45.setText("Fecha");
+        jPanel6.add(jLabel45);
+        jLabel45.setBounds(10, 100, 60, 14);
+
+        jDCFechaEnviarMensaje.setDateFormatString("dd MMM yyyy");
+        jPanel6.add(jDCFechaEnviarMensaje);
+        jDCFechaEnviarMensaje.setBounds(110, 100, 160, 20);
+
+        jLabel49.setText("Hora");
+        jPanel6.add(jLabel49);
+        jLabel49.setBounds(320, 100, 70, 14);
+
+        jTFHoraInicioEnviarMensaje.setEditable(false);
+        jTFHoraInicioEnviarMensaje.setEnabled(false);
+        jTFHoraInicioEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFHoraInicioEnviarMensajeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jTFHoraInicioEnviarMensaje);
+        jTFHoraInicioEnviarMensaje.setBounds(370, 100, 100, 20);
 
         jTabbedPaneMensajes.addTab("Enviar Mensaje", jPanel6);
 
@@ -516,6 +542,10 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFSimdCardConsultarMensajeEnviadoActionPerformed
 
+    private void jTFHoraInicioEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFHoraInicioEnviarMensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFHoraInicioEnviarMensajeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBConsultarLlamadasRealizadas;
@@ -536,6 +566,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private javax.swing.JComboBox jCBautorizacion_roaming1;
     private javax.swing.JComboBox jCBbloqueado_por_robo1;
     private com.toedter.calendar.JDateChooser jDCFechaConsultarRealizarLlamada;
+    private com.toedter.calendar.JDateChooser jDCFechaEnviarMensaje;
     private com.toedter.calendar.JDateChooser jDCFechaRealizarLlamada;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -554,9 +585,11 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel5;
@@ -568,6 +601,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTFCodigo1;
     private javax.swing.JTextField jTFHoraFinRealizarLlamada;
+    private javax.swing.JTextField jTFHoraInicioEnviarMensaje;
     private javax.swing.JTextField jTFHoraInicioRealizarLlamada;
     private javax.swing.JTextField jTFMensajesAEnviar_EnviarMensaje;
     private javax.swing.JTextField jTFSimdCardConsultarMensajeEnviado;

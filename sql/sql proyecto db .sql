@@ -1,6 +1,6 @@
 -----ENTREGA 2 DEL PROYECTO
 -----Juan David Rengifo 0939879
------Juan David Patiño 0932180
+-----Juan David Patiï¿½o 0932180
 -----Cristian Dario Loaiza 0933174
 
 -----CREACION DE TABLAS
@@ -188,7 +188,9 @@ CREATE TABLE consumo_mensaje (
 simcard varchar(15),
 cia_local varchar(10),
 msjs_enviados int,
-PRIMARY KEY(simcard, cia_local),
+fecha Date,
+hora Time,
+PRIMARY KEY(simcard, cia_local, fecha, hora),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_local) REFERENCES cia_local(id));
 
@@ -272,7 +274,7 @@ INSERT INTO equipo VALUES ('569874147587745','GalaxyAce','Samsung');
 INSERT INTO equipo values ('545478569852136','Xperia','SonyEriccson');
 INSERT INTO equipo values ('474578569885475','C3','Nokia');
 
-INSERT INTO abonado VALUES ('100','cedula','Juan David','Patiño Patiño','Cra 50#32-20',
+INSERT INTO abonado VALUES ('100','cedula','Juan David','Patiï¿½o Patiï¿½o','Cra 50#32-20',
 			    'Masculino','Casado','1989-11-11','5','La Base','Cali', 'individual',
 			    '245879652114523');
 INSERT INTO abonado VALUES ('101','cedula','Juan David','Rengifo Diaz','Cra 30#54-21',
