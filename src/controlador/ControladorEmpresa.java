@@ -54,7 +54,7 @@ public class ControladorEmpresa {
     public LinkedList consultar(String nombre, String telefono,String direccion,
             String cod_plan) {
         LinkedList empresaConsultar = new LinkedList();
-        if(cod_plan.equals("Cargar Planes Postpago")){
+        if(cod_plan.equals(" ")){
             empresaConsultar = daoEmpresa.consultar(nombre,telefono,direccion,
                 " ");
         }

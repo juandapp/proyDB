@@ -7,24 +7,24 @@
 
 DROP TABLE sucursal CASCADE;
 CREATE TABLE sucursal (
-cod_sucursal varchar(10) PRIMARY KEY,
-nombre varchar(20),
-ciudad varchar(15),
-direccion varchar(50),
-telefono varchar(10));
+cod_sucursal varchar(100) PRIMARY KEY,
+nombre varchar(100),
+ciudad varchar(100),
+direccion varchar(100),
+telefono varchar(100));
 
 
 DROP TABLE empleado CASCADE;
 CREATE TABLE empleado (
-id_empleado varchar(10) PRIMARY KEY,
-nombre varchar(20),
-genero varchar(10),
-estado_civil varchar(12),
+id_empleado varchar(100) PRIMARY KEY,
+nombre varchar(100),
+genero varchar(100),
+estado_civil varchar(100),
 fecha_nacimiento Date,
 fecha_ingreso Date,
-tipo_contrato varchar(15),
-cargo varchar(15),
-cod_sucursal varchar(10),
+tipo_contrato varchar(100),
+cargo varchar(100),
+cod_sucursal varchar(100),
 FOREIGN KEY(cod_sucursal) REFERENCES sucursal(cod_sucursal));
 
 
@@ -37,25 +37,25 @@ marca varchar(100));
 
 DROP TABLE abonado CASCADE;
 CREATE TABLE abonado (
-id varchar(10) PRIMARY KEY,
+id varchar(100) PRIMARY KEY,
 tipo_documento varchar(100),
-nombres varchar(20),
-apellidos varchar(20),
-direccion varchar(50),
-genero varchar(10),
-estado_civil varchar(10),
+nombres varchar(100),
+apellidos varchar(100),
+direccion varchar(100),
+genero varchar(100),
+estado_civil varchar(100),
 fecha_nacimiento Date,
-comuna varchar(5),
-barrio varchar(10),
-ciudad varchar(15),
-tipo varchar(20),
-imei varchar(20),
+comuna varchar(100),
+barrio varchar(100),
+ciudad varchar(100),
+tipo varchar(100),
+imei varchar(100),
 FOREIGN KEY(imei) REFERENCES equipo(imei));
 
 
 DROP TABLE plan CASCADE;
 CREATE TABLE plan (
-cod_plan varchar(30) PRIMARY KEY,
+cod_plan varchar(100) PRIMARY KEY,
 tarifa_otro_operador int,
 tarifa_msj_multimedia int,
 tarifa_msj_texto int);
@@ -63,7 +63,7 @@ tarifa_msj_texto int);
 
 DROP TABLE postpago CASCADE;
 CREATE TABLE postpago (
-cod_plan varchar(30) PRIMARY KEY,
+cod_plan varchar(100) PRIMARY KEY,
 total_minutos int,
 costo_min_adicional int,
 FOREIGN KEY(cod_plan) REFERENCES plan(cod_plan));
@@ -71,18 +71,18 @@ FOREIGN KEY(cod_plan) REFERENCES plan(cod_plan));
 
 DROP TABLE empresa CASCADE;
 CREATE TABLE empresa (
-nombre varchar(15) PRIMARY KEY,
-telefono varchar(10),
-direccion varchar(50),
-cod_plan varchar(10),
+nombre varchar(100) PRIMARY KEY,
+telefono varchar(100),
+direccion varchar(100),
+cod_plan varchar(100),
 FOREIGN KEY(cod_plan) REFERENCES postpago(cod_plan));
 
 
 DROP TABLE cia_internacional CASCADE;
 CREATE TABLE cia_internacional (
-id varchar(10) PRIMARY KEY,
-nombre varchar(15),
-pais varchar(15),
+id varchar(100) PRIMARY KEY,
+nombre varchar(100),
+pais varchar(100),
 tarifa_mensajes int,
 tar_llamada_entra_inter int,
 tar_llamada_sale_inter int,
@@ -94,39 +94,39 @@ tar_datos_enviados int);
 
 DROP TABLE correos CASCADE;
 CREATE TABLE correos (
-email varchar(20) PRIMARY KEY,
-id_abonado varchar(10),
+email varchar(100) PRIMARY KEY,
+id_abonado varchar(100),
 FOREIGN KEY(id_abonado) REFERENCES abonado(id));
 
 
 DROP TABLE cia_local CASCADE;
 CREATE TABLE cia_local (
-id varchar(10) PRIMARY KEY,
-nombre varchar(10));
+id varchar(100) PRIMARY KEY,
+nombre varchar(100));
 
 
 DROP TABLE prepago CASCADE;
 CREATE TABLE prepago (
-cod_plan varchar(10) PRIMARY KEY,
+cod_plan varchar(100) PRIMARY KEY,
 FOREIGN KEY(cod_plan) REFERENCES plan(cod_plan));
 
 
 DROP TABLE promocion CASCADE;
 CREATE TABLE promocion (
-nombre varchar(10) PRIMARY KEY,
-descripcion varchar(70),
-cod_plan varchar(10),
+nombre varchar(100) PRIMARY KEY,
+descripcion varchar(100),
+cod_plan varchar(100),
 FOREIGN KEY(cod_plan) REFERENCES prepago(cod_plan));
 
 
 DROP TABLE simcard CASCADE;
 CREATE TABLE simcard (
-codigo varchar(15) PRIMARY KEY,
-num_telefono varchar(15),
-activacion_internet varchar(15),
-bloqueado_por_robo varchar(15),
-activacion_correo varchar(15),
-autorizacion_roaming varchar(15));
+codigo varchar(100) PRIMARY KEY,
+num_telefono varchar(100),
+activacion_internet varchar(100),
+bloqueado_por_robo varchar(100),
+activacion_correo varchar(100),
+autorizacion_roaming varchar(100));
 
 DROP SEQUENCE recarga_seq CASCADE;
 CREATE SEQUENCE recarga_seq
@@ -140,18 +140,18 @@ CREATE TABLE recarga (
 num_recarga integer DEFAULT nextval('recarga_seq'::regclass) NOT NULL,
 valor int,
 fecha Date,
-medio_recarga varchar(15),
-simcard varchar(15),
+medio_recarga varchar(100),
+simcard varchar(100),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo));
 
 
 DROP TABLE mensaje_entrante_roaming CASCADE;
 CREATE TABLE mensaje_entrante_roaming (
-simcard varchar(15),
+simcard varchar(100),
 fecha Date,
 hora time,
-cia_internacional varchar(10),
-tel_origen varchar(10),
+cia_internacional varchar(100),
+tel_origen varchar(100),
 PRIMARY KEY(simcard, hora, fecha, cia_internacional),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
@@ -159,11 +159,11 @@ FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 
 DROP TABLE mensaje_saliente_roaming CASCADE;
 CREATE TABLE mensaje_saliente_roaming (
-simcard varchar(15),
+simcard varchar(100),
 fecha Date,
 hora time,
-cia_internacional varchar(10),
-tel_destino varchar(10),
+cia_internacional varchar(100),
+tel_destino varchar(100),
 PRIMARY KEY(simcard, hora, fecha, cia_internacional),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
@@ -171,12 +171,12 @@ FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 
 DROP TABLE llamada_entrante_roaming CASCADE;
 CREATE TABLE llamada_entrante_roaming (
-simcard varchar(15),
+simcard varchar(100),
 hora_inicio time, -----time (hh:mm:ss)
 fecha Date,
-cia_internacional varchar(10),
-pais_origen varchar(15),
-tel_origen varchar(15),
+cia_internacional varchar(100),
+pais_origen varchar(100),
+tel_origen varchar(100),
 hora_fin time,
 PRIMARY KEY(simcard, hora_inicio, fecha, cia_internacional),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
@@ -185,8 +185,8 @@ FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 
 DROP TABLE consumo_mensaje CASCADE;
 CREATE TABLE consumo_mensaje (
-simcard varchar(15),
-cia_local varchar(10),
+simcard varchar(100),
+cia_local varchar(100),
 msjs_enviados int,
 fecha Date,
 hora Time,
@@ -197,12 +197,12 @@ FOREIGN KEY(cia_local) REFERENCES cia_local(id));
 
 DROP TABLE llamada CASCADE;
 CREATE TABLE llamada (
-simcard varchar(15),
+simcard varchar(100),
 hora_inicio time,
 fecha Date,
-tel_destino varchar(10),
+tel_destino varchar(100),
 hora_fin time,
-cia_local varchar(10),
+cia_local varchar(100),
 PRIMARY KEY(simcard, hora_inicio, fecha),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_local) REFERENCES cia_local(id));
@@ -210,18 +210,18 @@ FOREIGN KEY(cia_local) REFERENCES cia_local(id));
 
 DROP TABLE plan_datos CASCADE;
 CREATE TABLE plan_datos (
-cod_plan_datos varchar(10) PRIMARY KEY,
+cod_plan_datos varchar(100) PRIMARY KEY,
 costo_internet int,
 costo_correo int);
 
 
 DROP TABLE plan_datos_simcard CASCADE;
 CREATE TABLE plan_datos_simcard (
-simcard varchar(15),
-cod_plan_datos varchar(10),
-tipo_pago varchar(10),
-vol_datos_correo varchar(10),
-vol_datos_internet varchar(10),
+simcard varchar(100),
+cod_plan_datos varchar(100),
+tipo_pago varchar(100),
+vol_datos_correo varchar(100),
+vol_datos_internet varchar(100),
 PRIMARY KEY(simcard, cod_plan_datos),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cod_plan_datos) REFERENCES plan_datos(cod_plan_datos));
@@ -229,10 +229,10 @@ FOREIGN KEY(cod_plan_datos) REFERENCES plan_datos(cod_plan_datos));
 
 DROP TABLE contrato CASCADE;
 CREATE TABLE contrato (
-id_abonado varchar(10),
-id_empleado varchar(10),
-cod_plan varchar(10),
-simcard varchar(15),
+id_abonado varchar(100),
+id_empleado varchar(100),
+cod_plan varchar(100),
+simcard varchar(100),
 fecha_ingreso Date,
 PRIMARY KEY(id_abonado, id_empleado, cod_plan, simcard),
 FOREIGN KEY(id_abonado) REFERENCES abonado(id),
@@ -243,13 +243,13 @@ FOREIGN KEY(cod_plan) REFERENCES plan(cod_plan));
 
 DROP TABLE llamada_saliente_roaming CASCADE;
 CREATE TABLE llamada_saliente_roaming (
-simcard varchar(15),
+simcard varchar(100),
 fecha Date,
 hora_inicio time,
 hora_fin time,
-pais_destino varchar(15),
-tel_destino varchar(15),
-cia_internacional varchar(10),
+pais_destino varchar(100),
+tel_destino varchar(100),
+cia_internacional varchar(100),
 PRIMARY KEY(simcard, hora_inicio, fecha, cia_internacional),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));

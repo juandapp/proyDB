@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import logica.Empresa;
+
 /**
  *
  * @author JUANPAULO
@@ -21,12 +22,12 @@ public class JPEmpresa extends javax.swing.JPanel {
     /**
      * Creates new form JPEmpresa
      */
-    
     ControladorEmpresa ce;
     ControladorPostPago controladorPostpago;
+
     public JPEmpresa() {
         initComponents();
-        ce=new ControladorEmpresa();
+        ce = new ControladorEmpresa();
         controladorPostpago = new ControladorPostPago();
     }
 
@@ -171,7 +172,7 @@ public class JPEmpresa extends javax.swing.JPanel {
         jPanel2.add(jTFNombre2);
         jTFNombre2.setBounds(130, 10, 200, 20);
 
-        jCBCod_plan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Planes Postpago" }));
+        jCBCod_plan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         jCBCod_plan2.setName(""); // NOI18N
         jCBCod_plan2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
@@ -288,103 +289,103 @@ public class JPEmpresa extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBCod_plan1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBCod_plan1PopupMenuWillBecomeVisible
-jCBCod_plan1.setModel(
+        jCBCod_plan1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
     }//GEN-LAST:event_jCBCod_plan1PopupMenuWillBecomeVisible
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-limpiarCamposCrear();        // TODO add your handling code here:
+        limpiarCamposCrear();        // TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
-private void limpiarCamposModificar() {
+    private void limpiarCamposModificar() {
         jCBCod_plan3.setSelectedIndex(0);
-        jTFNombre3.setText("");       
+        jTFNombre3.setText("");
         jTFDireccion3.setText("");
         jTFTelefono3.setText("");
     }
 
     private void limpiarCamposCrear() {
         jCBCod_plan1.setSelectedIndex(0);
-        jTFNombre1.setText("");       
+        jTFNombre1.setText("");
         jTFDireccion1.setText("");
         jTFTelefono1.setText("");
     }
 
     private void limpiarCamposConsultar() {
         jCBCod_plan2.setSelectedIndex(0);
-        jTFNombre2.setText("");       
+        jTFNombre2.setText("");
         jTFDireccion2.setText("");
         jTFTelefono2.setText("");
     }
     private void jCBCod_plan2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBCod_plan2PopupMenuWillBecomeVisible
-  jCBCod_plan2.setModel(
+        jCBCod_plan2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBCod_plan2PopupMenuWillBecomeVisible
 
     private void jCBCod_plan3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBCod_plan3PopupMenuWillBecomeVisible
-    jCBCod_plan3.setModel(
+        jCBCod_plan3.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
-      // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jCBCod_plan3PopupMenuWillBecomeVisible
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
-       
+
         LinkedList consulta = new LinkedList();
         try {
-            
-            System.err.println(jCBCod_plan2.getSelectedItem());
-             String codigo_plan[]= new String[2];
-        codigo_plan=jCBCod_plan2.getSelectedItem().toString().split(" - ");
-            consulta = ce.consultar( 
-                    jTFNombre2.getText(),
-                jTFTelefono2.getText(), jTFDireccion2.getText(),
-                codigo_plan[0]
-                    );
-            
-                Object[][] s = new Object[consulta.size()][4];
-                for (int i = 0; i < consulta.size(); i++) {
-                   Empresa emp = (Empresa) consulta.get(i);
-                    if (emp.getNombre() != null) {
-                        s[i][0] = emp.getNombre();
-                        s[i][1] = emp.getTelefono();
-                        s[i][2] = emp.getDireccion();
-                        s[i][3] = emp.getCod_plan().getCod_plan().getCod_plan();
-                       
-                    } else {
-                        s = null;
-                    }
-                }
-                TableModel myModel = new DefaultTableModel(s, new String[]{"Nombre", "Telefono", "Direccion", "Plan"}) {
-                    boolean[] canEdit = new boolean[]{false, false,  false, false
-                    };
 
-                    @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit[columnIndex];
-                    }
+            System.err.println(jCBCod_plan2.getSelectedItem());
+            String codigo_plan[] = new String[2];
+            codigo_plan = jCBCod_plan2.getSelectedItem().toString().split(" - ");
+            consulta = ce.consultar(
+                    jTFNombre2.getText(),
+                    jTFTelefono2.getText(), jTFDireccion2.getText(),
+                    codigo_plan[0]);
+
+            Object[][] s = new Object[consulta.size()][4];
+            for (int i = 0; i < consulta.size(); i++) {
+                Empresa emp = (Empresa) consulta.get(i);
+                if (emp.getNombre() != null) {
+                    s[i][0] = emp.getNombre();
+                    s[i][1] = emp.getTelefono();
+                    s[i][2] = emp.getDireccion();
+                    s[i][3] = emp.getCod_plan().getCod_plan().getCod_plan();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Nombre", "Telefono", "Direccion", "Plan"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false
                 };
-                ///remover filas
-                jTResultados.setModel(myModel);
-                jTResultados.setRowSorter(new TableRowSorter(myModel));
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
-        }   
+        }
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
         // TODO add your handling code here:
-         int guardar = -1;
+        int guardar = -1;
         try {
-                
-        String codigo_plan[]= new String[2];
-        codigo_plan=jCBCod_plan1.getSelectedItem().toString().split(" - ");
-        System.out.println(codigo_plan[0]);
-        
-        guardar=ce.guardar(jTFNombre1.getText(),
-                jTFTelefono1.getText(), jTFDireccion1.getText(),
-                codigo_plan[0]);
-        
-        }catch (Exception e) {
+
+            String codigo_plan[] = new String[2];
+            codigo_plan = jCBCod_plan1.getSelectedItem().toString().split(" - ");
+            System.out.println(codigo_plan[0]);
+
+            guardar = ce.guardar(jTFNombre1.getText(),
+                    jTFTelefono1.getText(), jTFDireccion1.getText(),
+                    codigo_plan[0]);
+
+        } catch (Exception e) {
         }
 
         if (guardar == -1) {
@@ -396,20 +397,20 @@ private void limpiarCamposModificar() {
             jBConsultar2.doClick();
             jBLimpiar1.doClick();
             jTabbedPane1.setSelectedIndex(1);
-          
+
         }
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
-int editar = -1;
+        int editar = -1;
         try {
-            String codigo_plan[]= new String[2];
-        codigo_plan=jCBCod_plan3.getSelectedItem().toString().split(" - ");
-        System.out.println(codigo_plan[0]);
+            String codigo_plan[] = new String[2];
+            codigo_plan = jCBCod_plan3.getSelectedItem().toString().split(" - ");
+            System.out.println(codigo_plan[0]);
             editar = ce.editar(
                     jTFNombre3.getText(),
-                jTFTelefono3.getText(), jTFDireccion3.getText(),
-                codigo_plan[0]);
+                    jTFTelefono3.getText(), jTFDireccion3.getText(),
+                    codigo_plan[0]);
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -426,7 +427,7 @@ int editar = -1;
     }//GEN-LAST:event_jBModificar3ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-limpiarCamposConsultar();        // TODO add your handling code here:
+        limpiarCamposConsultar();        // TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
@@ -438,7 +439,6 @@ limpiarCamposConsultar();        // TODO add your handling code here:
         jCBCod_plan3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;
