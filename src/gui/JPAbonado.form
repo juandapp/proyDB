@@ -166,11 +166,10 @@
                 <Component class="javax.swing.JComboBox" name="jCBTipoAbonado1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="3">
                         <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Prepago"/>
-                        <StringItem index="2" value="Postpago"/>
-                        <StringItem index="3" value="Empresarial"/>
+                        <StringItem index="1" value="Individual"/>
+                        <StringItem index="2" value="Corporativo"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -185,6 +184,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLimpiar1ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="510" y="220" width="80" height="-1"/>
@@ -351,7 +353,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="Cargar Imei"/>
+                        <StringItem index="0" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -384,6 +386,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLimpiar2ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="540" y="200" width="90" height="-1"/>
@@ -478,7 +483,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="6">
-                        <StringItem index="0" value=""/>
+                        <StringItem index="0" value=" "/>
                         <StringItem index="1" value="Casado"/>
                         <StringItem index="2" value="Soltero"/>
                         <StringItem index="3" value="Viudo"/>
@@ -507,11 +512,10 @@
                 <Component class="javax.swing.JComboBox" name="jCBTipoAbonado2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="3">
                         <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Prepago"/>
-                        <StringItem index="2" value="Postpago"/>
-                        <StringItem index="3" value="Empresarial"/>
+                        <StringItem index="1" value="Individual"/>
+                        <StringItem index="2" value="Corporativo"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -669,11 +673,14 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="Cargar Imei"/>
+                        <StringItem index="0" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="popupMenuWillBecomeVisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="jCBImei2PopupMenuWillBecomeVisible"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="430" y="160" width="200" height="-1"/>
@@ -784,6 +791,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTResultadosMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -806,6 +816,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBModificar3ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="440" y="200" width="90" height="-1"/>
@@ -916,11 +929,10 @@
                 <Component class="javax.swing.JComboBox" name="jCBTipoAbonado3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="3">
                         <StringItem index="0" value=" "/>
-                        <StringItem index="1" value="Prepago"/>
-                        <StringItem index="2" value="Postpago"/>
-                        <StringItem index="3" value="Empresarial"/>
+                        <StringItem index="1" value="Individual"/>
+                        <StringItem index="2" value="Corporativo"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -1083,6 +1095,9 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="popupMenuWillBecomeVisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="jCBImei3PopupMenuWillBecomeVisible"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="430" y="160" width="200" height="-1"/>

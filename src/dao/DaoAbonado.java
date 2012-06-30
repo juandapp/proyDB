@@ -100,27 +100,27 @@ public class DaoAbonado {
             String tipo,String imei)
     {
     
-         LinkedList abonadoConsulta = new LinkedList();
+        LinkedList abonadoConsulta = new LinkedList();
         String sql_select = "SELECT * FROM abonado      ";
         if (!id.equals("") 
-            || !tipo_documento.equals("")
+            || !tipo_documento.equals(" ")
             || !apellidos.equals("")
             || !direccion.equals("")
-            || !genero.equals("")
-            || !estado_civil.equals("")
+            || !genero.equals(" ")
+            || !estado_civil.equals(" ")
             || !fecha_nacimiento.equals("")
             || !comuna.equals("")
             || !barrio.equals("")
             || !ciudad.equals("")
-            || !tipo.equals("")
-            || !imei.equals("")) {
+            || !tipo.equals(" ")
+            || !imei.equals(" ")) {
             sql_select += "WHERE";
         }
       
         if(!id.equals("")){
             sql_select += " id = '"+id+"'"+" AND ";
         }
-        if(!tipo_documento.equals("")){
+        if(!tipo_documento.equals(" ")){
             sql_select += " tipo_documento LIKE '%"+tipo_documento+"%'"+" AND ";
         }
         if(!apellidos.equals("")){
@@ -129,14 +129,14 @@ public class DaoAbonado {
         if(!direccion.equals("")){
             sql_select += " direccion LIKE '%"+direccion+"%'"+" AND ";
         }
-        if(!genero.equals("")){
+        if(!genero.equals(" ")){
             sql_select += " genero LIKE '%"+genero+"%'"+" AND ";
         }
-        if(!estado_civil.equals("")){
+        if(!estado_civil.equals(" ")){
             sql_select += " estado_civil LIKE '%"+estado_civil+"%'"+" AND ";
         }
         if(!fecha_nacimiento.equals("")){
-            sql_select += " fecha_nacimiento LIKE '%"+fecha_nacimiento+"%'"+" AND ";
+            sql_select += " fecha_nacimiento = '"+fecha_nacimiento+"'"+" AND ";
         }
         if(!comuna.equals("")){
             sql_select += " comuna LIKE '%"+comuna+"%'"+" AND ";
@@ -147,10 +147,10 @@ public class DaoAbonado {
         if(!ciudad.equals("")){
             sql_select += " ciudad LIKE '%"+ciudad+"%'"+" AND ";
         }
-        if(!tipo.equals("")){
+        if(!tipo.equals(" ")){
             sql_select += " tipo LIKE '%"+tipo+"%'"+" AND ";
         }
-        if(!imei.equals("")){
+        if(!imei.equals(" ")){
             sql_select += " imei = '"+imei+"' AND ";
         }
                      
@@ -175,7 +175,7 @@ public class DaoAbonado {
                 a.setCiudad(tabla.getString("ciudad"));
                 a.setTipo(tabla.getString("tipo"));
                 a.setImei(new DaoEquipo().consultar(tabla.getString("imei")));
-                
+                abonadoConsulta.add(a);
                 
             }
             conn.close();
@@ -197,21 +197,21 @@ public class DaoAbonado {
     public int editar(Abonado abonado) {
 
         String sql_update;
-        sql_update = "UPDATE abonado SET ('"
-                + abonado.getTipo_documento() + "', '"
-                + abonado.getNombres() + "', '"
-                + abonado.getApellidos() + "','"
-                + abonado.getDireccion() + "','"
-                + abonado.getGenero() + "','"
-                + abonado.getEstado_civil() + "','"
-                + abonado.getFecha_nacimiento() + "','"
-                + abonado.getComuna() + "','"
-                + abonado.getBarrio() + "','"
-                + abonado.getCiudad() + "','"
-                + abonado.getTipo() + "','"
-                + abonado.getImei().getImei() + "' "
-                + "WHERE id='"
-                + abonado.getId()+"' ";
+        sql_update = "UPDATE abonado SET "
+                + "tipo_documento='" + abonado.getTipo_documento() + "', "
+                + "nombres='"+ abonado.getNombres() + "', "
+                + "apellidos='"+ abonado.getApellidos() + "',"
+                + "direccion='"+ abonado.getDireccion() + "',"
+                + "genero='"+ abonado.getGenero() + "',"
+                + "estado_civil='"+ abonado.getEstado_civil() + "',"
+                + "fecha_nacimiento='"+ abonado.getFecha_nacimiento() + "',"
+                + "comuna='"+ abonado.getComuna() + "',"
+                + "barrio='"+ abonado.getBarrio() + "',"
+                + "ciudad='"+ abonado.getCiudad() + "',"
+                + "tipo='"+ abonado.getTipo() + "',"
+                + "imei='"+ abonado.getImei().getImei() + "' "
+                + "WHERE "
+                + "id='"+ abonado.getId()+"' ";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();

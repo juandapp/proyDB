@@ -533,7 +533,7 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
             jBConsultar2.doClick();
             jTabbedPane1.setSelectedIndex(1);
             limpiarCamposModificar();
-        }        // TODO ad        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_jBModificar3ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked

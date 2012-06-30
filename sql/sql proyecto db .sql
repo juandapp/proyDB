@@ -274,17 +274,17 @@ INSERT INTO equipo VALUES ('569874147587745','GalaxyAce','Samsung');
 INSERT INTO equipo values ('545478569852136','Xperia','SonyEriccson');
 INSERT INTO equipo values ('474578569885475','C3','Nokia');
 
-INSERT INTO abonado VALUES ('100','cedula','Juan David','Pati�o Pati�o','Cra 50#32-20',
-			    'Masculino','Casado','1989-11-11','5','La Base','Cali', 'individual',
+INSERT INTO abonado VALUES ('100','Cedula','Juan David','Pati�o Pati�o','Cra 50#32-20',
+			    'Masculino','Casado','1989-11-11','5','La Base','Cali', 'Individual',
 			    '245879652114523');
-INSERT INTO abonado VALUES ('101','cedula','Juan David','Rengifo Diaz','Cra 30#54-21',
-			    'Masculino','Soltero','1991-01-05','6', 'Floresta', 'Cali', 'individual',
+INSERT INTO abonado VALUES ('101','Cedula','Juan David','Rengifo Diaz','Cra 30#54-21',
+			    'Masculino','Soltero','1991-01-05','6', 'Floresta', 'Cali', 'Individual',
 			    '569874147587745');
-INSERT INTO abonado values ('102','cedula','Cristian Dario', 'Loaiza Orduz','Calle 12 # 13-41',
-                            'Masculino','Soltero','1992-12-06','7', 'Buitrera','Cali','corporativo',
+INSERT INTO abonado values ('102','Cedula','Cristian Dario', 'Loaiza Orduz','Calle 12 # 13-41',
+                            'Masculino','Soltero','1992-12-06','7', 'Buitrera','Cali','Corporativo',
                             '474578569885475');
-INSERT INTO abonado values ('103','cedula','Camila','Perez Gonzales','Calle 32 # 24-11',
-			    'Femenino','Casado','1990-05-28','8','Caney','Cali','corporativo',
+INSERT INTO abonado values ('103','Cedula','Camila','Perez Gonzales','Calle 32 # 24-11',
+			    'Femenino','Casado','1990-05-28','8','Caney','Cali','Corporativo',
 			    '545478569852136');
 
 INSERT INTO sucursal values ('01','Principal','Cali','Cra 5 # 13-20','3801542');

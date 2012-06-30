@@ -5,10 +5,14 @@
 package gui;
 
 import controlador.ControladorAbonado;
-
 import controlador.ControladorEquipo;
-
+import java.sql.Date;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import logica.Abonado;
 
 /**
  *
@@ -20,17 +24,16 @@ public class JPAbonado extends javax.swing.JPanel {
      * Creates new form JPEmpleado
      */
     ControladorEquipo controladorEquipo;
-
     ControladorAbonado controladorAbonado;
+
     public JPAbonado() {
         initComponents();
         controladorEquipo = new ControladorEquipo();
 
-        controladorAbonado= new ControladorAbonado();
-       
+        controladorAbonado = new ControladorAbonado();
+
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -170,12 +173,17 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel1.add(jLabel28);
         jLabel28.setBounds(10, 190, 130, 14);
 
-        jCBTipoAbonado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Prepago", "Postpago", "Empresarial" }));
+        jCBTipoAbonado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Individual", "Corporativo" }));
         jCBTipoAbonado1.setName(""); // NOI18N
         jPanel1.add(jCBTipoAbonado1);
         jCBTipoAbonado1.setBounds(130, 190, 200, 20);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBLimpiar1);
         jBLimpiar1.setBounds(510, 220, 80, 23);
 
@@ -239,7 +247,7 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel1.add(jLabel29);
         jLabel29.setBounds(360, 160, 100, 14);
 
-        jCBImei1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Imei" }));
+        jCBImei1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         jCBImei1.setName(""); // NOI18N
         jCBImei1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
@@ -258,6 +266,11 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jBLimpiar2.setText("Limpiar");
+        jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBLimpiar2);
         jBLimpiar2.setBounds(540, 200, 90, 23);
 
@@ -295,7 +308,7 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel2.add(jLabel40);
         jLabel40.setBounds(360, 130, 100, 14);
 
-        jCBEstadoCivil2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Casado", "Soltero", "Viudo", "Divorciado", "Union Libre" }));
+        jCBEstadoCivil2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Casado", "Soltero", "Viudo", "Divorciado", "Union Libre" }));
         jCBEstadoCivil2.setName(""); // NOI18N
         jPanel2.add(jCBEstadoCivil2);
         jCBEstadoCivil2.setBounds(430, 130, 200, 20);
@@ -304,7 +317,7 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel2.add(jLabel41);
         jLabel41.setBounds(10, 190, 130, 14);
 
-        jCBTipoAbonado2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Prepago", "Postpago", "Empresarial" }));
+        jCBTipoAbonado2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Individual", "Corporativo" }));
         jCBTipoAbonado2.setName(""); // NOI18N
         jPanel2.add(jCBTipoAbonado2);
         jCBTipoAbonado2.setBounds(130, 190, 200, 20);
@@ -360,8 +373,17 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel2.add(jLabel49);
         jLabel49.setBounds(360, 160, 100, 14);
 
-        jCBImei2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Imei" }));
+        jCBImei2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         jCBImei2.setName(""); // NOI18N
+        jCBImei2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBImei2PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel2.add(jCBImei2);
         jCBImei2.setBounds(430, 160, 200, 20);
 
@@ -381,6 +403,11 @@ public class JPAbonado extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTResultados);
 
         jPanel2.add(jScrollPane1);
@@ -391,6 +418,11 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel4.setLayout(null);
 
         jBModificar3.setText("Modificar");
+        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBModificar3);
         jBModificar3.setBounds(440, 200, 90, 23);
 
@@ -428,7 +460,7 @@ public class JPAbonado extends javax.swing.JPanel {
         jPanel4.add(jLabel67);
         jLabel67.setBounds(10, 190, 130, 14);
 
-        jCBTipoAbonado3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Prepago", "Postpago", "Empresarial" }));
+        jCBTipoAbonado3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Individual", "Corporativo" }));
         jCBTipoAbonado3.setName(""); // NOI18N
         jPanel4.add(jCBTipoAbonado3);
         jCBTipoAbonado3.setBounds(130, 190, 200, 20);
@@ -486,6 +518,15 @@ public class JPAbonado extends javax.swing.JPanel {
 
         jCBImei3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Imei" }));
         jCBImei3.setName(""); // NOI18N
+        jCBImei3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBImei3PopupMenuWillBecomeVisible(evt);
+            }
+        });
         jPanel4.add(jCBImei3);
         jCBImei3.setBounds(430, 160, 200, 20);
 
@@ -507,22 +548,17 @@ public class JPAbonado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
-      int guardar = -1;
+        int guardar = -1;
         try {
             java.sql.Date fecha_nacimiento = new java.sql.Date(jDCFechaNacimiento1.getDate().getTime());
-
-           
-
-            
-
             guardar = controladorAbonado.guardar(jTFCodigo1.getText(),
                     jCBTipoDocumento1.getSelectedItem().toString(),
-                    jTFNombre1.getText(),jTFApellidos1.getText(),jTFDireccion1.getText(),
+                    jTFNombre1.getText(), jTFApellidos1.getText(), jTFDireccion1.getText(),
                     jCBGenero1.getSelectedItem().toString(),
                     jCBEstadoCivil1.getSelectedItem().toString(),
                     fecha_nacimiento, jTFComuna1.getText(), jTFBarrio1.getText(),
-                    jTFCiudad1.getText(),jCBTipoAbonado1.getSelectedItem().toString(),
-                    jCBImei1.getSelectedItem().toString() );
+                    jTFCiudad1.getText(), jCBTipoAbonado1.getSelectedItem().toString(),
+                    jCBImei1.getSelectedItem().toString());
 
         } catch (Exception e) {
         }
@@ -541,26 +577,169 @@ public class JPAbonado extends javax.swing.JPanel {
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jCBImei1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBImei1PopupMenuWillBecomeVisible
-        // TODO add your handling code here:
         jCBImei1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorEquipo.listar()));
     }//GEN-LAST:event_jCBImei1PopupMenuWillBecomeVisible
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
-        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+        String nacimiento;
+        try {
+            java.sql.Date fecha_nacimiento = new java.sql.Date(jDCFechaNacimiento2.getDate().getTime());
+            nacimiento = fecha_nacimiento.toString();
+        } catch (Exception e) {
+            nacimiento = "";
+        }
+        try {
+            consulta = controladorAbonado.consultar(
+                    jTFCodigo2.getText(),
+                    jCBTipoDocumento2.getSelectedItem().toString(),
+                    jTFNombre2.getText(),
+                    jTFApellidos2.getText(),
+                    jTFDireccion2.getText(),
+                    jCBGenero2.getSelectedItem().toString(),
+                    jCBEstadoCivil2.getSelectedItem().toString(),
+                    nacimiento,
+                    jTFComuna2.getText(),
+                    jTFBarrio2.getText(),
+                    jTFCiudad2.getText(),
+                    jCBTipoAbonado2.getSelectedItem().toString(),
+                    jCBImei2.getSelectedItem().toString());
+
+            Object[][] s = new Object[consulta.size()][13];
+            for (int i = 0; i < consulta.size(); i++) {
+                Abonado abonado = (Abonado) consulta.get(i);
+                if (abonado.getNombres() != null) {
+                    s[i][0] = abonado.getId();
+                    s[i][1] = abonado.getTipo_documento();
+                    s[i][2] = abonado.getNombres();
+                    s[i][3] = abonado.getApellidos();
+                    s[i][4] = abonado.getDireccion();
+                    s[i][5] = abonado.getGenero();
+                    s[i][6] = abonado.getEstado_civil();
+                    s[i][7] = abonado.getFecha_nacimiento();
+                    s[i][8] = abonado.getComuna();
+                    s[i][9] = abonado.getBarrio();
+                    s[i][10] = abonado.getCiudad();
+                    s[i][11] = abonado.getTipo();
+                    s[i][12] = abonado.getImei().getImei();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id", "Tipo Documento", "Nombres", "Apellidos",
+                        "Direccion", "Genero", "Estado Civil", "F. Nac.", "Comuna", "Barrio", "Ciudad", "Tipo", "Imei"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false, false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados.setModel(myModel);
+            jTResultados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
-    
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+        limpiarCamposCrear();
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+
+    private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
+        limpiarCamposConsultar();
+        jBConsultar2.doClick();
+    }//GEN-LAST:event_jBLimpiar2ActionPerformed
+
+    private void jCBImei2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBImei2PopupMenuWillBecomeVisible
+        jCBImei2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEquipo.listar()));
+    }//GEN-LAST:event_jCBImei2PopupMenuWillBecomeVisible
+
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+        jCBImei3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorEquipo.listar()));
+
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFCodigo3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jCBTipoDocumento3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 1));
+        jTFNombre3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
+        jTFApellidos3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 3));
+        jTFDireccion3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 4));
+        jCBGenero3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jCBEstadoCivil3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 6));
+        String fecha[] = new String[3];
+            fecha = jTResultados.getModel().getValueAt(selectedRow, 7).toString().split("-");
+            System.out.println(Integer.parseInt(fecha[0])+""+Integer.parseInt(fecha[1])+""+Integer.parseInt(fecha[2]));
+        jDCFechaNacimiento3.setDate(new Date(Integer.parseInt(fecha[0])-1900,Integer.parseInt(fecha[1])-1,Integer.parseInt(fecha[2])));
+        jTFComuna3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 8));
+        jTFBarrio3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 9));
+        jTFCiudad3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 10));
+        jCBTipoAbonado3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 11));
+        jCBImei3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 12));
+
+
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_jTResultadosMouseClicked
+
+    private void jCBImei3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBImei3PopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBImei3PopupMenuWillBecomeVisible
+
+    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
+        int editar = -1;
+        String nacimiento ="";
+        try {
+            java.sql.Date fecha_nacimiento = new java.sql.Date(jDCFechaNacimiento2.getDate().getTime());
+            nacimiento = fecha_nacimiento.toString();
+        } catch (Exception e) {
+            nacimiento = "";
+        }
+        try {
+            editar = controladorAbonado.editar(
+                    jTFCodigo3.getText(),
+                    jCBTipoDocumento3.getSelectedItem().toString(),
+                    jTFNombre3.getText(),
+                    jTFApellidos3.getText(),
+                    jTFDireccion3.getText(),
+                    jCBGenero3.getSelectedItem().toString(),
+                    jCBEstadoCivil3.getSelectedItem().toString(),
+                    new java.sql.Date(jDCFechaNacimiento3.getDate().getTime()),
+                    jTFComuna3.getText(),
+                    jTFBarrio3.getText(),
+                    jTFCiudad3.getText(),
+                    jCBTipoAbonado3.getSelectedItem().toString(),
+                    jCBImei3.getSelectedItem().toString());
+            
+            
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        if (editar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo modificar la Cia Internacional", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cia Internacional modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultar();
+            jTFCodigo2.setText(jTFCodigo3.getText());
+            jBConsultar2.doClick();
+            jTabbedPane1.setSelectedIndex(1);
+            limpiarCamposModificar();
+        }
+    }//GEN-LAST:event_jBModificar3ActionPerformed
+
     private void limpiarCamposModificar() {
         jTFCodigo3.setText("");
         jTFNombre3.setText("");
-        jTFDireccion3.setText("");        
-        jTFBarrio3.setText("");        
+        jTFDireccion3.setText("");
+        jTFBarrio3.setText("");
         jCBGenero3.setSelectedIndex(0);
         jDCFechaNacimiento3.setDate(null);
-        jCBTipoAbonado3.setSelectedIndex(0); 
+        jCBTipoAbonado3.setSelectedIndex(0);
         jCBTipoDocumento3.setSelectedIndex(0);
-        jTFApellidos3.setText("");        
+        jTFApellidos3.setText("");
         jTFComuna3.setText("");
         jTFCiudad3.setText("");
         jCBEstadoCivil3.setSelectedIndex(0);
@@ -570,13 +749,13 @@ public class JPAbonado extends javax.swing.JPanel {
     private void limpiarCamposCrear() {
         jTFCodigo1.setText("");
         jTFNombre1.setText("");
-        jTFDireccion1.setText("");        
-        jTFBarrio1.setText("");        
+        jTFDireccion1.setText("");
+        jTFBarrio1.setText("");
         jCBGenero1.setSelectedIndex(0);
         jDCFechaNacimiento1.setDate(null);
-        jCBTipoAbonado1.setSelectedIndex(0); 
+        jCBTipoAbonado1.setSelectedIndex(0);
         jCBTipoDocumento1.setSelectedIndex(0);
-        jTFApellidos1.setText("");        
+        jTFApellidos1.setText("");
         jTFComuna1.setText("");
         jTFCiudad1.setText("");
         jCBEstadoCivil1.setSelectedIndex(0);
@@ -584,10 +763,20 @@ public class JPAbonado extends javax.swing.JPanel {
     }
 
     private void limpiarCamposConsultar() {
-
+        jTFCodigo2.setText("");
+        jTFNombre2.setText("");
+        jTFDireccion2.setText("");
+        jTFBarrio2.setText("");
+        jCBGenero2.setSelectedIndex(0);
+        jDCFechaNacimiento2.setDate(null);
+        jCBTipoAbonado2.setSelectedIndex(0);
+        jCBTipoDocumento2.setSelectedIndex(0);
+        jTFApellidos2.setText("");
+        jTFComuna2.setText("");
+        jTFCiudad2.setText("");
+        jCBEstadoCivil2.setSelectedIndex(0);
+        jCBImei2.setSelectedIndex(0);
     }
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBCrear1;

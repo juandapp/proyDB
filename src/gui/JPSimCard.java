@@ -329,7 +329,7 @@ int selectedRow = jTResultados.getSelectedRow();
         jCBActivacion_Internet3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 2));
         jCBbloqueado_por_robo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 3));
         jCBactivacion_correo3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 4));
-         jCBautorizacion_roaming3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
+        jCBautorizacion_roaming3.setSelectedItem("" + jTResultados.getModel().getValueAt(selectedRow, 5));
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
