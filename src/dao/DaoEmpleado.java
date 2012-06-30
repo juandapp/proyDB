@@ -89,13 +89,13 @@ public class DaoEmpleado {
             String codigo_sucursal) {
         LinkedList consulta = new LinkedList();
         String sql_select = "SELECT * FROM empleado      ";
-        if (!id_empleado.equals("") || !nombre.equals("") || !genero.equals("")
-                || !estado_civil.equals("")
+        if (!id_empleado.equals("") || !nombre.equals("") || !genero.equals(" ")
+                || !estado_civil.equals(" ")
                 || !fecha_nacimiento.equals("")
                 || !fecha_ingreso.equals("")
-                || !tipo_contrato.equals("")
-                || !cargo.equals("")
-                || !codigo_sucursal.equals("")) {
+                || !tipo_contrato.equals(" ")
+                || !cargo.equals(" ")
+                || !codigo_sucursal.equals(" ")) {
             sql_select += "WHERE";
         }
         if (!id_empleado.equals("")) {
@@ -104,26 +104,26 @@ public class DaoEmpleado {
         if (!nombre.equals("")) {
             sql_select += " nombre LIKE '%" + nombre + "%'" + " AND ";
         }
-        if (!genero.equals("Seleccionar")) {
+        if (!genero.equals(" ")) {
             sql_select += " genero ='" + genero +  "' AND ";
         }
-        if (!estado_civil.equals("Seleccionar")) {
+        if (!estado_civil.equals(" ")) {
             sql_select += " estado_civil = '" + estado_civil + "' AND ";
         }
         if (!fecha_nacimiento.equals("")) {
-            sql_select += " fecha_nacimiento LIKE '%" + fecha_nacimiento + "%'" + " AND ";
+            sql_select += " fecha_nacimiento = '" + fecha_nacimiento + "'" + " AND ";
         }
         if (!fecha_ingreso.equals("")) {
-            sql_select += " fecha_ingreso LIKE '%" + fecha_ingreso + "%'" + " AND ";
+            sql_select += " fecha_ingreso ='" + fecha_ingreso + "'" + " AND ";
         }
-        if (!tipo_contrato.equals("Seleccionar")) {
+        if (!tipo_contrato.equals(" ")) {
             sql_select += " tipo_contrato = '" + tipo_contrato  + "' AND ";
         }
         if (!cargo.equals(" ")) {
             sql_select += " cargo ='" + cargo + "' AND ";
         }
-        if (!codigo_sucursal.equals("Seleccionar")) {
-            sql_select += " codigo_sucursal = '" + codigo_sucursal + "'" + " AND ";
+        if (!codigo_sucursal.equals(" ")) {
+            sql_select += " cod_sucursal = '" + codigo_sucursal + "'" + " AND ";
         }
        
         
@@ -165,15 +165,15 @@ public class DaoEmpleado {
 
         String sql_update;
         sql_update = "UPDATE empleado  SET "
-                + "nombre='" + e.getNombre() + "' "
-                + "genero='" + e.getGenero() + "' "
-                + "estado_civil='" + e.getEstado_civil() + "' "
-                + "fecha_nacimiento='" + e.getFecha_nacimiento() + "' "
-                + "fecha_ingreso='" + e.getFecha_ingreso() + "' "
-                + "tipo_contrato='" + e.getTipo_contrato() + "' "
-                + "cargo='" + e.getCargo() + "' "
+                + "nombre='" + e.getNombre() + "' ,"
+                + "genero='" + e.getGenero() + "' ,"
+                + "estado_civil='" + e.getEstado_civil() + "' ,"
+                + "fecha_nacimiento='" + e.getFecha_nacimiento() + "' ,"
+                + "fecha_ingreso='" + e.getFecha_ingreso() + "' ,"
+                + "tipo_contrato='" + e.getTipo_contrato() + "' ,"
+                + "cargo='" + e.getCargo() + "' ,"
                 + "cod_sucursal='" + e.getCod_sucursal().getCod_sucursal() + "' "
-                + "WHERE cod_sucursal='" + e.getId_empleado() + "'";
+                + "WHERE id_empleado='" + e.getId_empleado() + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();

@@ -719,9 +719,9 @@ public class JPAbonado extends javax.swing.JPanel {
             System.out.print(e);
         }
         if (editar == -1) {
-            JOptionPane.showMessageDialog(this, "No su pudo modificar la Cia Internacional", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No su pudo modificar El abonado", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Cia Internacional modificada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Abonado modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTFCodigo2.setText(jTFCodigo3.getText());
             jBConsultar2.doClick();

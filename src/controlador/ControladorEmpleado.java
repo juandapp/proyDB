@@ -31,7 +31,9 @@ public class ControladorEmpleado {
         if (!id_empleado.isEmpty() && !nombre.isEmpty() && !genero.isEmpty()
                 && !estado_civil.isEmpty() && fecha_nacimiento != null
                 && fecha_ingreso != null && !tipo_contrato.isEmpty()
-                && !cargo.isEmpty() && !codigo_sucursal.isEmpty()) {
+                && !cargo.isEmpty() && !codigo_sucursal.isEmpty()
+                && !genero.equals(" ") && !tipo_contrato.equals(" ") && !estado_civil.equals(" ")
+                && !cargo.equals(" ")) {
 
             Sucursal suc = (Sucursal) new DaoSucursal().consultar(codigo_sucursal);
 
@@ -73,7 +75,9 @@ public class ControladorEmpleado {
         if (!id_empleado.isEmpty() && !nombre.isEmpty() && !genero.isEmpty()
                 && !estado_civil.isEmpty() && fecha_nacimiento != null
                 && fecha_ingreso != null && !tipo_contrato.isEmpty()
-                && !cargo.isEmpty() && !codigo_sucursal.isEmpty()) {
+                && !cargo.isEmpty() && !codigo_sucursal.isEmpty()
+                && !genero.equals(" ") && !tipo_contrato.equals(" ") && !estado_civil.equals(" ")
+                && !cargo.equals(" ")) {
 
             Sucursal suc = (Sucursal) new DaoSucursal().consultar(codigo_sucursal);
 
