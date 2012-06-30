@@ -38,7 +38,7 @@ marca varchar(15));
 DROP TABLE abonado CASCADE;
 CREATE TABLE abonado (
 id varchar(10) PRIMARY KEY,
-tipo_documento varchar(10),
+tipo_documento varchar(100),
 nombres varchar(20),
 apellidos varchar(20),
 direccion varchar(50),
