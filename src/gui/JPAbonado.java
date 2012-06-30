@@ -552,11 +552,19 @@ public class JPAbonado extends javax.swing.JPanel {
 
     
     private void limpiarCamposModificar() {
-        jTFCodigo2.setText("");
-        jTFNombre2.setText("");
-        jTFCiudad2.setText("");
-        jTFDireccion2.setText("");
-        jTFTelefono2.setText("");
+        jTFCodigo3.setText("");
+        jTFNombre3.setText("");
+        jTFDireccion3.setText("");        
+        jTFBarrio3.setText("");        
+        jCBGenero3.setSelectedIndex(0);
+        jDCFechaNacimiento3.setDate(null);
+        jCBTipoAbonado3.setSelectedIndex(0); 
+        jCBTipoDocumento3.setSelectedIndex(0);
+        jTFApellidos3.setText("");        
+        jTFComuna3.setText("");
+        jTFCiudad3.setText("");
+        jCBEstadoCivil3.setSelectedIndex(0);
+        jCBImei3.setSelectedIndex(0);
     }
 
     private void limpiarCamposCrear() {
@@ -571,15 +579,12 @@ public class JPAbonado extends javax.swing.JPanel {
         jTFApellidos1.setText("");        
         jTFComuna1.setText("");
         jTFCiudad1.setText("");
-        jTFTelefono1.setText("");
+        jCBEstadoCivil1.setSelectedIndex(0);
+        jCBImei1.setSelectedIndex(0);
     }
 
     private void limpiarCamposConsultar() {
-        jTFCodigo.setText("");
-        jTFNombre.setText("");
-        jTFCiudad.setText("");
-        jTFDireccion.setText("");
-        jTFTelefono.setText("");
+
     }
     
     
