@@ -112,7 +112,7 @@ public class DaoLlamada {
                 Llamada llamada = new Llamada();
                 llamada.setSim(new DaoSimcard().consultar(tabla.getString("simcard")));
                 llamada.setHora_inicio(tabla.getTime("hora_inicio"));
-                llamada.setFecha(tabla.getDate("simcard"));
+                llamada.setFecha(tabla.getDate("fecha"));
                 llamada.setTelefono_destino(tabla.getString("tel_destino"));
                 llamada.setHora_fin(tabla.getTime("hora_fin"));
                 llamada.setcLocal(new DaoCia_local().consultar(tabla.getString("cia_local")));
