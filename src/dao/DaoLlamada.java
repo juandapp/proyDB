@@ -32,6 +32,8 @@ public class DaoLlamada {
                 + llamada.getTelefono_destino() + "', '"
                 + llamada.getHora_fin() + "','"
                 + llamada.getcLocal().getId() + "')";
+        
+        System.out.println(sql_guardar);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -80,35 +82,28 @@ public class DaoLlamada {
         return null;
     }
 
-    public LinkedList consultar(String sim,String hora_inicio,String fecha,
-            String telefono_destino,String hora_fin,String cLocal) {
+    public LinkedList consultar(String sim,String fecha,
+            String cLocal) {
         LinkedList llamadaConsulta = new LinkedList();
         String sql_select = "SELECT * FROM llamada      ";
-        if (!sim.equals("") || !hora_inicio.equals("") || !fecha.equals("")
-                || !telefono_destino.equals("") || !hora_fin.equals("") || !cLocal.equals("")) {
-            sql_select += "WHERE ";
+        if (!sim.equals("") ||  !fecha.equals("")
+                 ||  !cLocal.equals("")) {
+            sql_select += " WHERE";
         }
         if (!sim.equals("")) {
-            sql_select += "simcard ='" + sim + "' AND ";
+            sql_select += " simcard ='" + sim + "' AND ";
         }
-        if (!hora_inicio.equals("")) {
-            sql_select += "hora_inicio LIKE '%" + hora_inicio + "%'" + " AND ";
-        }
+       
         if (!fecha.equals("")) {
-            sql_select += "fecha LIKE '%" + fecha + "%'" + " AND ";
-        }
-        if (!telefono_destino.equals("")) {
-            sql_select += "tel_destino LIKE '%" + telefono_destino + "%'" + " AND ";
-        }
-        if (!hora_fin.equals("")) {
-            sql_select += "hora_fin LIKE '%" + hora_fin + "%'" + " AND ";
-        }
-        
+            sql_select += " fecha = '" + fecha + "'" + " AND ";
+        }        
+              
         if (!cLocal.equals("")) {
-            sql_select += "cia_local LIKE '%" + cLocal + "%'" + " AND ";
+            sql_select += " cia_local LIKE '%" + cLocal + "%'" + " AND ";
         }
 
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -117,7 +112,7 @@ public class DaoLlamada {
                 Llamada llamada = new Llamada();
                 llamada.setSim(new DaoSimcard().consultar(tabla.getString("simcard")));
                 llamada.setHora_inicio(tabla.getTime("hora_inicio"));
-                llamada.setFecha(tabla.getDate("simcard"));
+                llamada.setFecha(tabla.getDate("fecha"));
                 llamada.setTelefono_destino(tabla.getString("tel_destino"));
                 llamada.setHora_fin(tabla.getTime("hora_fin"));
                 llamada.setcLocal(new DaoCia_local().consultar(tabla.getString("cia_local")));
