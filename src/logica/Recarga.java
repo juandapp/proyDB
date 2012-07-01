@@ -11,20 +11,31 @@ import java.sql.Date;
  * @author juandapp
  */
 public class Recarga {
-    int valor;
+    int valor, num_recarga;
     Date fecha;
     String medio_recarga;
     Simcard simcard;
+    
 
     public Recarga(){
         
     }
     
-    public Recarga(int valor, Date fecha, String medio_recarga, Simcard simcard){
+    public Recarga(int num_recarga, int valor, Date fecha, String medio_recarga, Simcard simcard){
+       this.num_recarga=num_recarga;
+               
         this.valor=valor;
         this.fecha=fecha;
         this.medio_recarga=medio_recarga;
         this.simcard=simcard;
+    }
+
+    public int getNum_recarga() {
+        return num_recarga;
+    }
+
+    public void setNum_recarga(int num_recarga) {
+        this.num_recarga = num_recarga;
     }
     
     public Date getFecha() {

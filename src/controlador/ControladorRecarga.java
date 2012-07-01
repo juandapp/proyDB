@@ -22,11 +22,11 @@ public class ControladorRecarga {
         daoRecarga = new DaoRecarga();
     }
 
-    public int guardar(int valor , Date fecha, String medio_recarga, String simcard) {
+    public int guardar(int num, int valor , Date fecha, String medio_recarga, String simcard) {
         int retorno = 0;
         try {
-            if (valor>0 && fecha!=null && !medio_recarga.equals(" ") && !simcard.equals(" ")) {
-                Recarga r = new Recarga(valor, fecha, medio_recarga, new DaoSimcard().consultar(simcard));
+            if (num>0 && valor>0 && fecha!=null && !medio_recarga.equals(" ") && !simcard.equals(" ")) {
+                Recarga r = new Recarga(num, valor, fecha, medio_recarga, new DaoSimcard().consultar(simcard));
                 retorno = daoRecarga.guardar(r);
             }
         } catch (Exception e) {
@@ -43,9 +43,9 @@ public class ControladorRecarga {
                 simcard);
         return recargaConsulta;
     }
-    public int editar(int valor , Date fecha, String medio_recarga, String simcard) {
-        if (valor>0 && fecha!=null && !medio_recarga.equals("") && !simcard.equals("")) {
-            Recarga r = new Recarga(valor,  fecha, medio_recarga, new DaoSimcard().consultar(simcard));
+    public int editar(int num, int valor , Date fecha, String medio_recarga, String simcard) {
+        if (num>0 &&valor>0 && fecha!=null && !medio_recarga.equals("") && !simcard.equals("")) {
+            Recarga r = new Recarga(num, valor,  fecha, medio_recarga, new DaoSimcard().consultar(simcard));
             int retorno = daoRecarga.editar(r);
             return retorno;
         } else {
