@@ -103,17 +103,17 @@ public class DaoAbonado {
         LinkedList abonadoConsulta = new LinkedList();
         String sql_select = "SELECT * FROM abonado      ";
         if (!id.equals("") 
-            || !tipo_documento.equals(" ")
+            || !tipo_documento.equals("")
             || !apellidos.equals("")
             || !direccion.equals("")
-            || !genero.equals(" ")
-            || !estado_civil.equals(" ")
+            || !genero.equals("")
+            || !estado_civil.equals("")
             || !fecha_nacimiento.equals("")
             || !comuna.equals("")
             || !barrio.equals("")
             || !ciudad.equals("")
-            || !tipo.equals(" ")
-            || !imei.equals(" ")) {
+            || !tipo.equals("")
+            || !imei.equals("")) {
             sql_select += "WHERE";
         }
       
