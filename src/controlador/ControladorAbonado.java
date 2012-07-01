@@ -83,7 +83,7 @@ public class ControladorAbonado {
     }
 
     public String[] listar() {
-        LinkedList abonadosConsultar = daoAbonado.consultar("", "", "", "", "", "", "", "", "", "", "", "", "");
+        LinkedList abonadosConsultar = daoAbonado.consultar("", " ", "", "", "", " ", " ", "", "", "", "", " ", " ");
         String[] abonados = new String[abonadosConsultar.size() + 1];
         abonados[0] = " ";
         for (int i = 0; i < abonadosConsultar.size(); i++) {

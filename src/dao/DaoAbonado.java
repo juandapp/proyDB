@@ -56,7 +56,7 @@ public class DaoAbonado {
     public Abonado consultar(String id) {
         Abonado a = new Abonado();
         String sql_select;
-        sql_select = "SELECT * FROM abonado WHERE id='" + id + "'";
+        sql_select = "SELECT * FROM abonado WHERE id = '" + id + "' ";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
