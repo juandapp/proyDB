@@ -5,6 +5,7 @@
 package gui;
 
 import controlador.ControladorCiaInternacional;
+import controlador.ControladorMensajeEntRoamming;
 import controlador.ControladorMensajeSalRoamming;
 import controlador.ControladorSimcard;
 import java.sql.Time;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import logica.MensajeEntRoamming;
 import logica.MensajeSalRoamming;
 import logica.Simcard;
 
@@ -30,11 +32,13 @@ public class JPRoaming extends javax.swing.JPanel {
     ControladorSimcard controladorSimCard;
     ControladorCiaInternacional controladorCiaInter;
     ControladorMensajeSalRoamming controladorSmsSaliente;
+    ControladorMensajeEntRoamming controladorSmsEntrante;
 
     public JPRoaming() {
         controladorCiaInter = new ControladorCiaInternacional();
         controladorSimCard = new ControladorSimcard();
         controladorSmsSaliente = new ControladorMensajeSalRoamming();
+        controladorSmsEntrante = new ControladorMensajeEntRoamming();
         initComponents();
         llenarJComboBoxCiaInternacional();
     }
@@ -943,13 +947,35 @@ public class JPRoaming extends javax.swing.JPanel {
             jTabbedPaneMensajes.setSelectedIndex(3);
 
         }
-
-
-
     }//GEN-LAST:event_jBEnviarMensaje1ActionPerformed
 
     private void jBRecibirMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRecibirMensajeActionPerformed
-        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+            java.sql.Date fecha = new java.sql.Date(jDCFechaRecibirMensaje.getDate().getTime());
+            String codigo_CiaInter[] = new String[2];
+            codigo_CiaInter = jCBCompaniaInternacionalRecibirMensaje.getSelectedItem().toString().split(" - ");
+            String[] hora = jTFHoraRecibirMensaje.getText().split(":");
+            guardar = controladorSmsEntrante.guardar(
+                    jTFSimdCardRecibirMensaje.getText(),
+                    fecha,
+                    new Time(Integer.parseInt(hora[0]), Integer.parseInt(hora[1]), Integer.parseInt(hora[2])),
+                    codigo_CiaInter[0],
+                    jTFTelOrigenRecibirMensaje.getText());
+
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo Recibir el mensaje", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Mensaje Recibido correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultarMensajesRecibidos();
+            jTFSimdCardConsultarSmsRecibidos.setText(jTFSimdCardRecibirMensaje.getText());
+            jBConsultarMensajes_Recibidos.doClick();
+            jBLimpiarRecibirMensaje.doClick();
+            jTabbedPaneMensajes.setSelectedIndex(2);
+        }
     }//GEN-LAST:event_jBRecibirMensajeActionPerformed
 
     private void jBFecha_Hora_ActualEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecha_Hora_ActualEnviarMensajeActionPerformed
@@ -973,6 +999,57 @@ public class JPRoaming extends javax.swing.JPanel {
     }//GEN-LAST:event_jBFecha_Hora_ActualRecibirMensajeActionPerformed
 
     private void jBConsultarMensajes_RecibidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarMensajes_RecibidosActionPerformed
+        LinkedList consulta = new LinkedList();
+        try {
+            String fecha;
+            try {
+                fecha = new java.sql.Date(jDCFechaConsultarSmsRecibidos.getDate().getTime()).toString();
+
+            } catch (Exception e) {
+                fecha = "";
+            }
+            String cia_Inte = "";
+            if (!jCBCompaniaInternacionalConsultarSmsRecibidos.getSelectedItem().toString().equals(" ")) {
+                String codigo_CiaInter[] = new String[2];
+                codigo_CiaInter = jCBCompaniaInternacionalConsultarSmsRecibidos.getSelectedItem().toString().split(" - ");
+                cia_Inte = codigo_CiaInter[0];
+            }
+
+            consulta = controladorSmsEntrante.consultar(jTFSimdCardConsultarSmsRecibidos.getText(),
+                    fecha,
+                    cia_Inte,
+                    "");
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                MensajeEntRoamming msr = (MensajeEntRoamming) consulta.get(i);
+                if (msr.getSim() != null) {
+                    s[i][0] = msr.getSim().getCodigo();
+                    s[i][1] = msr.getFecha();
+                    s[i][2] = msr.getHora();
+                    s[i][3] = msr.getcInter().getId();
+                    s[i][4] = msr.getTel_Origen();
+                    s[i][5] = controladorCiaInter.consultar(msr.getcInter().getId()).getNombre();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"SimCard", "Fecha", "Hora", "Cia. Inter.", "Tel. Origen", "Nom. Cia. Inter."}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false
+                };
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultadosConsultarMsmRecibidos.setModel(myModel);
+            jTResultadosConsultarMsmRecibidos.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jBConsultarMensajes_RecibidosActionPerformed
 
     private void jBConsultarMensajes_EnviadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarMensajes_EnviadosActionPerformed
