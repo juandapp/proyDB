@@ -51,4 +51,14 @@ public class ControladorCiaLocal {
             return -1;
         }
     }
+    
+          public String[] listar() {
+        LinkedList consultaCompaniaLocal = daoCiaLocal.consultar("", "");
+        String[] companiaL = new String[consultaCompaniaLocal.size()+1];
+        companiaL[0] = " ";
+        for (int i = 0; i < consultaCompaniaLocal.size(); i++) {
+            companiaL[i+1] = ((Cia_local) consultaCompaniaLocal.get(i)).getId() + " - " + ((Cia_local) consultaCompaniaLocal.get(i)).getNombre();
+        }
+        return companiaL;
+    }
 }

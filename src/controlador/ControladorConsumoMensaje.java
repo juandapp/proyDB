@@ -7,6 +7,8 @@ package controlador;
 import dao.DaoCia_local;
 import dao.DaoConsumoMensaje;
 import dao.DaoSimcard;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.LinkedList;
 import logica.Cia_local;
 import logica.ConsumoMensaje;
@@ -24,15 +26,15 @@ public class ControladorConsumoMensaje {
     }
 
     public int guardar(String simcard,
-     String compania_local,String msjs_enviados) {
+     String compania_local,int msjs_enviados, Date fecha, Time hora) {
         if (!simcard.isEmpty() && !compania_local.isEmpty()  && 
-                !msjs_enviados.isEmpty() )
+             msjs_enviados>0 && !fecha.equals(null) && !hora.equals(null))
            {
             Simcard sim=new DaoSimcard().consultar(simcard);
             Cia_local cLocal=new DaoCia_local().consultar(compania_local);
                
             ConsumoMensaje consumoMsjs = new ConsumoMensaje(sim,cLocal,
-                    Integer.parseInt(msjs_enviados));
+                    msjs_enviados, fecha, hora);
             
             int retorno = daoConsumoMsjs.guardar(consumoMsjs);
             return retorno;
@@ -48,23 +50,23 @@ public class ControladorConsumoMensaje {
     }
 
     public LinkedList consultar(String simcard,
-     String compania_local,String msjs_enviados) {
+     String compania_local,String fecha) {
         LinkedList consulta = new LinkedList();
         consulta = daoConsumoMsjs.consultar(simcard,compania_local,
-                    msjs_enviados);
+                    fecha);
         return consulta;
     }
 
     public int editar(String simcard,
-     String compania_local,String msjs_enviados) {
+     String compania_local,int msjs_enviados, Date fecha, Time hora) {
         if (!simcard.isEmpty() && !compania_local.isEmpty()  && 
-                !msjs_enviados.isEmpty() )
+                msjs_enviados>0 && !fecha.equals(null) && !hora.equals(null) )
            {
             Simcard sim=new DaoSimcard().consultar(simcard);
             Cia_local cLocal=new DaoCia_local().consultar(compania_local);
                
             ConsumoMensaje consumoMsjs = new ConsumoMensaje(sim,cLocal,
-                    Integer.parseInt(msjs_enviados));
+                    msjs_enviados, fecha, hora);
             
             
             int retorno = daoConsumoMsjs.editar(consumoMsjs);
