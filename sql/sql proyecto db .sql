@@ -255,6 +255,14 @@ FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 
 
+DROP TABLE simcard_robo CASCADE;
+CREATE TABLE simcard_robo (
+simcard varchar(100),
+ciudad varchar(100),
+fecha Date,
+PRIMARY KEY (simcard, fecha),
+FOREIGN KEY (simcard) REFERENCES simcard(codigo));
+
 
 
 
