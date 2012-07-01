@@ -163,6 +163,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jTFTPaisOrigenRecibirLlamada = new javax.swing.JTextField();
         jBLimpiarRecibirLLamada = new javax.swing.JButton();
         jBRecibirLLamada1 = new javax.swing.JButton();
+        jBFechaHoraRecibirLlamada = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jTFSimdCardConsultarLlamadasRealizadas = new javax.swing.JTextField();
@@ -636,9 +637,6 @@ public class JPRoaming extends javax.swing.JPanel {
         jLabel40.setText("Hora Inicio");
         jPanel9.add(jLabel40);
         jLabel40.setBounds(320, 40, 70, 14);
-
-        jTFHoraInicioRecibirLlamada.setEditable(false);
-        jTFHoraInicioRecibirLlamada.setEnabled(false);
         jPanel9.add(jTFHoraInicioRecibirLlamada);
         jTFHoraInicioRecibirLlamada.setBounds(390, 40, 100, 20);
 
@@ -676,9 +674,6 @@ public class JPRoaming extends javax.swing.JPanel {
         jLabel43.setText("Hora Fin");
         jPanel9.add(jLabel43);
         jLabel43.setBounds(320, 70, 70, 14);
-
-        jTFHoraFinRecibirLlamada.setEditable(false);
-        jTFHoraFinRecibirLlamada.setEnabled(false);
         jPanel9.add(jTFHoraFinRecibirLlamada);
         jTFHoraFinRecibirLlamada.setBounds(390, 70, 100, 20);
 
@@ -700,6 +695,15 @@ public class JPRoaming extends javax.swing.JPanel {
         jBRecibirLLamada1.setText("Recibir Llamada");
         jPanel9.add(jBRecibirLLamada1);
         jBRecibirLLamada1.setBounds(150, 160, 130, 23);
+
+        jBFechaHoraRecibirLlamada.setText("Fecha y Hora Actual");
+        jBFechaHoraRecibirLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFechaHoraRecibirLlamadaActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jBFechaHoraRecibirLlamada);
+        jBFechaHoraRecibirLlamada.setBounds(310, 130, 180, 23);
 
         jTabbedPaneLlamada.addTab("Recibir Llamada", jPanel9);
 
@@ -1208,6 +1212,11 @@ public class JPRoaming extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jBConsultarLlamadasRealizadasActionPerformed
 
+    private void jBFechaHoraRecibirLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFechaHoraRecibirLlamadaActionPerformed
+        jDCFechaRecibirLlamada.setDate(fechaActual());
+        jTFHoraInicioRecibirLlamada.setText(horaActual());
+    }//GEN-LAST:event_jBFechaHoraRecibirLlamadaActionPerformed
+
     private Date fechaActual() {
         return new Date();
     }
@@ -1310,6 +1319,7 @@ public class JPRoaming extends javax.swing.JPanel {
     private javax.swing.JButton jBConsultarMensajes_Recibidos;
     private javax.swing.JButton jBEnviarMensaje1;
     private javax.swing.JButton jBFechaHoraRealizarLlamada;
+    private javax.swing.JButton jBFechaHoraRecibirLlamada;
     private javax.swing.JButton jBFecha_Hora_ActualEnviarMensaje;
     private javax.swing.JButton jBFecha_Hora_ActualRecibirMensaje;
     private javax.swing.JButton jBLimpiar1;

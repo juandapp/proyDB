@@ -172,12 +172,12 @@ FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 DROP TABLE llamada_entrante_roaming CASCADE;
 CREATE TABLE llamada_entrante_roaming (
 simcard varchar(100),
-hora_inicio time, -----time (hh:mm:ss)
 fecha Date,
-cia_internacional varchar(100),
+hora_inicio time, -----time (hh:mm:ss)
+hora_fin time,
 pais_origen varchar(100),
 tel_origen varchar(100),
-hora_fin time,
+cia_internacional varchar(100),
 PRIMARY KEY(simcard, hora_inicio, fecha, cia_internacional),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));

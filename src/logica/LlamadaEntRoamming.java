@@ -9,7 +9,7 @@ import java.sql.Time;
 
 /**
  *
- * @author chokuno
+ * @author Juandapp
  */
 public class LlamadaEntRoamming {
     private Simcard sim;
@@ -17,21 +17,21 @@ public class LlamadaEntRoamming {
     private Time hora_inicio;
     private Time hora_fin;
     private String pais_destino;
-    private String tel_destino;
+    private String tel_Origen;
     private Cia_internacional cInter;
 
     public LlamadaEntRoamming() {
     }
 
     public LlamadaEntRoamming(Simcard sim, Date fecha, Time hora_inicio,
-            Time hora_fin, String pais_destino, String tel_destino, 
+            Time hora_fin, String pais_destino, String tel_Origen, 
             Cia_internacional cInter) {
         this.sim = sim;
         this.fecha = fecha;
         this.hora_inicio = hora_inicio;
         this.hora_fin = hora_fin;
         this.pais_destino = pais_destino;
-        this.tel_destino = tel_destino;
+        this.tel_Origen = tel_Origen;
         this.cInter = cInter;
     }
 
@@ -106,17 +106,17 @@ public class LlamadaEntRoamming {
     }
 
     /**
-     * @return the tel_destino
+     * @return the tel_Origen
      */
-    public String getTel_destino() {
-        return tel_destino;
+    public String getTel_Origen() {
+        return tel_Origen;
     }
 
     /**
-     * @param tel_destino the tel_destino to set
+     * @param tel_Origen the tel_Origen to set
      */
-    public void setTel_destino(String tel_destino) {
-        this.tel_destino = tel_destino;
+    public void setTel_Origen(String tel_Origen) {
+        this.tel_Origen = tel_Origen;
     }
 
     /**
