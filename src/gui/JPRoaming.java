@@ -1310,7 +1310,7 @@ public class JPRoaming extends javax.swing.JPanel {
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No su pudo Recibir la llamada", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Llamada Recibir correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Llamada Recibida correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultarLlamadasRecibidas();
             jTFSimdCardConsultarLlamadasRecibidas.setText(jTFSimdCardRecibirLlamada.getText());
             jBConsultarLlamadasRecibidas.doClick();
