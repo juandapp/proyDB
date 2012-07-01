@@ -137,7 +137,7 @@ CREATE SEQUENCE recarga_seq
 
 DROP TABLE recarga CASCADE;
 CREATE TABLE recarga (
-num_recarga integer DEFAULT nextval('recarga_seq'::regclass) NOT NULL,
+num_recarga int PRIMARY KEY,
 valor int,
 fecha Date,
 medio_recarga varchar(100),
@@ -172,12 +172,12 @@ FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));
 DROP TABLE llamada_entrante_roaming CASCADE;
 CREATE TABLE llamada_entrante_roaming (
 simcard varchar(100),
-fecha Date,
 hora_inicio time, -----time (hh:mm:ss)
-hora_fin time,
+fecha Date,
+cia_internacional varchar(100),
 pais_origen varchar(100),
 tel_origen varchar(100),
-cia_internacional varchar(100),
+hora_fin time,
 PRIMARY KEY(simcard, hora_inicio, fecha, cia_internacional),
 FOREIGN KEY(simcard) REFERENCES simcard(codigo),
 FOREIGN KEY(cia_internacional) REFERENCES cia_internacional(id));

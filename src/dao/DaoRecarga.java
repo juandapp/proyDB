@@ -26,17 +26,21 @@ public class DaoRecarga {
     }
 
     public int guardar(Recarga recarga) {
+        
         String sql_guardar;
+        int numFilas;
         sql_guardar = "INSERT INTO recarga VALUES ("
+                + recarga.getNum_recarga()+ ","
                 + recarga.getValor() + ", '"
                 + recarga.getFecha() + "', '"
                 + recarga.getMedio_recarga() + "', '"
                 + recarga.getSimcard().getCodigo()+ "')";
-        try {
+      try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
-            int numFilas = sentencia.executeUpdate(sql_guardar);
+            numFilas = sentencia.executeUpdate(sql_guardar);
             conn.close();
+
             return numFilas;
         } catch (SQLException e) {
             System.out.println(e);
@@ -50,24 +54,25 @@ public class DaoRecarga {
 public LinkedList consultar(String valor, String fecha, String medio_recarga, String simcard) {
         
         LinkedList recargaConsulta = new LinkedList();
-        String sql_select = "SELECT * FROM recarga  JOIN simcard  ON simcard=codigo     ";
+        String sql_select = "SELECT * FROM recarga  JOIN simcard  ON simcard=codigo      ";
         if (!valor.equals("") || !fecha.equals("") || !medio_recarga.equals("") || !simcard.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += " WHERE";
         }
         if (!valor.equals("")) {
-            sql_select += "valor = " + valor + " AND ";
+            sql_select += " valor = " + valor + " AND ";
         }
         if (!fecha.equals("")) {
-            sql_select += "fecha LIKE '%" + fecha + "%'" + " AND ";
+            sql_select += " fecha = '" + fecha + "%" + " AND ";
         }
         if (!medio_recarga.equals("")) {
-            sql_select += "medio_recarga LIKE '%" + medio_recarga + "%'" + " AND ";
+            sql_select += " medio_recarga LIKE '%" + medio_recarga + "%'" + " AND ";
         }
-        if (!simcard.equals("")) {
-            sql_select += "simcard = '" + simcard + "'" + " AND ";
+        if (!simcard.equals("") && !simcard.equals("Cargar Simcard") ) {
+            sql_select += " simcard = '" + simcard + "'" + " AND ";
         }
         
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();

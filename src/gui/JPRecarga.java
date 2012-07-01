@@ -53,6 +53,8 @@ public class JPRecarga extends javax.swing.JPanel {
         jCBMedioRecarga1 = new javax.swing.JComboBox();
         jCBSimCard1 = new javax.swing.JComboBox();
         jDCFecha1 = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
+        jTFNumRecarga1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
@@ -74,17 +76,17 @@ public class JPRecarga extends javax.swing.JPanel {
 
         jLabel9.setText("Valor");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(10, 10, 40, 14);
+        jLabel9.setBounds(10, 40, 40, 14);
         jPanel4.add(jTFValor1);
-        jTFValor1.setBounds(90, 10, 110, 20);
+        jTFValor1.setBounds(90, 40, 110, 20);
 
         jLabel6.setText("Fecha");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(10, 40, 70, 14);
+        jLabel6.setBounds(10, 70, 70, 14);
 
         jLabel8.setText("Simcard");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(10, 100, 90, 14);
+        jLabel8.setBounds(10, 130, 90, 14);
 
         jBLimpiar1.setText("Limpiar");
         jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +95,7 @@ public class JPRecarga extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBLimpiar1);
-        jBLimpiar1.setBounds(110, 150, 72, 23);
+        jBLimpiar1.setBounds(100, 180, 72, 23);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -102,16 +104,16 @@ public class JPRecarga extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBCrear1);
-        jBCrear1.setBounds(200, 150, 70, 23);
+        jBCrear1.setBounds(180, 180, 70, 23);
 
         jLabel13.setText("Medio Recarga");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(10, 70, 90, 14);
+        jLabel13.setBounds(10, 100, 90, 14);
 
         jCBMedioRecarga1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Internet", "Baloto", "Tarjeta" }));
         jCBMedioRecarga1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.add(jCBMedioRecarga1);
-        jCBMedioRecarga1.setBounds(90, 70, 150, 20);
+        jCBMedioRecarga1.setBounds(90, 100, 150, 20);
 
         jCBSimCard1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Simcard", " " }));
         jCBSimCard1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,11 +127,17 @@ public class JPRecarga extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jCBSimCard1);
-        jCBSimCard1.setBounds(90, 100, 150, 20);
+        jCBSimCard1.setBounds(90, 130, 150, 20);
 
         jDCFecha1.setDateFormatString("yyyy-MMM-dd");
         jPanel4.add(jDCFecha1);
-        jDCFecha1.setBounds(90, 40, 150, 20);
+        jDCFecha1.setBounds(90, 70, 150, 20);
+
+        jLabel10.setText("Num. Recarga");
+        jPanel4.add(jLabel10);
+        jLabel10.setBounds(10, 10, 70, 14);
+        jPanel4.add(jTFNumRecarga1);
+        jTFNumRecarga1.setBounds(90, 10, 110, 20);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -245,6 +253,7 @@ int guardar = -1;
             System.out.println(jCBMedioRecarga1.getSelectedItem().toString());
             System.out.println(jCBSimCard1.getSelectedItem().toString());
             guardar = cr.guardar(
+                    Integer.parseInt(jTFNumRecarga1.getText()),
                     Integer.parseInt(jTFValor1.getText()),
                     fecha_recarga,
                     jCBMedioRecarga1.getSelectedItem().toString(),
@@ -337,6 +346,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
         jDCFecha1.setDate(null);
         jCBMedioRecarga1.setSelectedIndex(0);
         jCBSimCard1.setSelectedIndex(0);
+        jTFNumRecarga1.setText("");
     }
 
     private void limpiarCamposConsultar() {
@@ -344,6 +354,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
         jDCFecha2.setDate(null);
         jCBMedioRecarga2.setSelectedIndex(0);
         jCBSimCard2.setSelectedIndex(0);
+       
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
@@ -356,6 +367,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
     private javax.swing.JComboBox jCBSimCard2;
     private com.toedter.calendar.JDateChooser jDCFecha1;
     private com.toedter.calendar.JDateChooser jDCFecha2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -368,6 +380,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTFNumRecarga1;
     private javax.swing.JTextField jTFValor1;
     private javax.swing.JTextField jTFValor2;
     private javax.swing.JTable jTResultados;
