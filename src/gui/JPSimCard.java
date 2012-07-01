@@ -433,7 +433,8 @@ int selectedRow = jTResultados.getSelectedRow();
     }//GEN-LAST:event_jBModificar3ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-        limpiarCamposConsultar();        // TODO add your handling code here:
+        limpiarCamposConsultar();
+        jBConsultar2.doClick();
     }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
