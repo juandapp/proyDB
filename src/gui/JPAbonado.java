@@ -429,6 +429,9 @@ public class JPAbonado extends javax.swing.JPanel {
         jLabel63.setText("Id");
         jPanel4.add(jLabel63);
         jLabel63.setBounds(10, 10, 30, 14);
+
+        jTFCodigo3.setEditable(false);
+        jTFCodigo3.setEnabled(false);
         jPanel4.add(jTFCodigo3);
         jTFCodigo3.setBounds(130, 10, 130, 20);
 
