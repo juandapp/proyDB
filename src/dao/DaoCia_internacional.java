@@ -61,7 +61,7 @@ public class DaoCia_internacional {
             ResultSet tabla = sentencia.executeQuery(sql_consulta);
             if (tabla.next()) {
                 ci.setId(tabla.getString("id"));
-                ci.setNombre(tabla.getNString("nombre"));
+                ci.setNombre(tabla.getString("nombre"));
                 ci.setPais(tabla.getString("pais"));
                 ci.setTarifa_mensajes(tabla.getInt("tarifa_mensajes"));
                 ci.setTar_llamada_entra_inter(tabla.getInt("tar_llamada_entra_inter"));

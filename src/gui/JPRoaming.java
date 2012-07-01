@@ -4,13 +4,18 @@
  */
 package gui;
 
+import controlador.ControladorCiaInternacional;
+import controlador.ControladorMensajeSalRoamming;
 import controlador.ControladorSimcard;
+import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import logica.MensajeSalRoamming;
 import logica.Simcard;
 
 /**
@@ -22,10 +27,16 @@ public class JPRoaming extends javax.swing.JPanel {
     /**
      * Creates new form JPRoaming
      */
-    ControladorSimcard cs;
+    ControladorSimcard controladorSimCard;
+    ControladorCiaInternacional controladorCiaInter;
+    ControladorMensajeSalRoamming controladorSmsSaliente;
+
     public JPRoaming() {
-        cs = new ControladorSimcard();
+        controladorCiaInter = new ControladorCiaInternacional();
+        controladorSimCard = new ControladorSimcard();
+        controladorSmsSaliente = new ControladorMensajeSalRoamming();
         initComponents();
+        llenarJComboBoxCiaInternacional();
     }
 
     /**
@@ -70,6 +81,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jBLimpiarEnviarMensaje = new javax.swing.JButton();
         jTFHoraEnviarMensaje = new javax.swing.JTextField();
         jBEnviarMensaje1 = new javax.swing.JButton();
+        jBFecha_Hora_ActualEnviarMensaje = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jTFSimdCardRecibirMensaje = new javax.swing.JTextField();
@@ -83,6 +95,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jBLimpiarRecibirMensaje = new javax.swing.JButton();
         jTFHoraRecibirMensaje = new javax.swing.JTextField();
         jBRecibirMensaje = new javax.swing.JButton();
+        jBFecha_Hora_ActualRecibirMensaje = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jTFSimdCardConsultarSmsRecibidos = new javax.swing.JTextField();
@@ -106,14 +119,14 @@ public class JPRoaming extends javax.swing.JPanel {
         jBLimpiarConsultar_Mensajes_Enviados = new javax.swing.JButton();
         jBConsultarMensajes_Enviados = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPaneLlamada = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jTFSimdCardRealizarLlamada = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         jDCFechaRealizarLlamada = new com.toedter.calendar.JDateChooser();
         jLabel45 = new javax.swing.JLabel();
-        jCBCompaniaInternacionaRealizarLlamada = new javax.swing.JComboBox();
+        jCBCompaniaInternacionalRealizarLlamada = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         jTFTelDestinoRealizarLlamada = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
@@ -132,7 +145,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jTFSimdCardRecibirLlamada = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        jCBCompaniaInternacionaRecibirLlamada = new javax.swing.JComboBox();
+        jCBCompaniaInternacionalRecibirLlamada = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
         jTFTelOrigenRecibirLlamada = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
@@ -147,7 +160,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jLabel48 = new javax.swing.JLabel();
         jDCFechaConsultarLlamadasRealizadas = new com.toedter.calendar.JDateChooser();
         jLabel49 = new javax.swing.JLabel();
-        jCBCompaniaInternacionaConsultarLlamadasRealizadas = new javax.swing.JComboBox();
+        jCBCompaniaInternacionalConsultarLlamadasRealizadas = new javax.swing.JComboBox();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTResultadosLlamadasRealizadas = new javax.swing.JTable();
         jBLimpiarConsultarLlamadasRealizadas = new javax.swing.JButton();
@@ -158,7 +171,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jDCFechaConsultarLlamadasRecibidas = new com.toedter.calendar.JDateChooser();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jCBCompaniaInternaciona_ConsultarLlamadasRecibidas = new javax.swing.JComboBox();
+        jCBCompaniaInternacionalConsultarLlamadasRecibidas = new javax.swing.JComboBox();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTResultadosLlamadasRealizadas1 = new javax.swing.JTable();
         jBLimpiarConsultarLlamadasRecibidas = new javax.swing.JButton();
@@ -304,9 +317,6 @@ public class JPRoaming extends javax.swing.JPanel {
         });
         jPanel6.add(jBLimpiarEnviarMensaje);
         jBLimpiarEnviarMensaje.setBounds(370, 140, 120, 23);
-
-        jTFHoraEnviarMensaje.setEditable(false);
-        jTFHoraEnviarMensaje.setEnabled(false);
         jPanel6.add(jTFHoraEnviarMensaje);
         jTFHoraEnviarMensaje.setBounds(340, 40, 100, 20);
 
@@ -318,6 +328,15 @@ public class JPRoaming extends javax.swing.JPanel {
         });
         jPanel6.add(jBEnviarMensaje1);
         jBEnviarMensaje1.setBounds(240, 140, 120, 23);
+
+        jBFecha_Hora_ActualEnviarMensaje.setText("Fecha y hora Actual");
+        jBFecha_Hora_ActualEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFecha_Hora_ActualEnviarMensajeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jBFecha_Hora_ActualEnviarMensaje);
+        jBFecha_Hora_ActualEnviarMensaje.setBounds(320, 70, 150, 23);
 
         jTabbedPaneMensajes.addTab("Enviar Mensaje", jPanel6);
 
@@ -366,9 +385,6 @@ public class JPRoaming extends javax.swing.JPanel {
         });
         jPanel2.add(jBLimpiarRecibirMensaje);
         jBLimpiarRecibirMensaje.setBounds(370, 140, 120, 23);
-
-        jTFHoraRecibirMensaje.setEditable(false);
-        jTFHoraRecibirMensaje.setEnabled(false);
         jPanel2.add(jTFHoraRecibirMensaje);
         jTFHoraRecibirMensaje.setBounds(340, 40, 100, 20);
 
@@ -380,6 +396,15 @@ public class JPRoaming extends javax.swing.JPanel {
         });
         jPanel2.add(jBRecibirMensaje);
         jBRecibirMensaje.setBounds(240, 140, 120, 23);
+
+        jBFecha_Hora_ActualRecibirMensaje.setText("Fecha y hora Actual");
+        jBFecha_Hora_ActualRecibirMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFecha_Hora_ActualRecibirMensajeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBFecha_Hora_ActualRecibirMensaje);
+        jBFecha_Hora_ActualRecibirMensaje.setBounds(320, 70, 150, 23);
 
         jTabbedPaneMensajes.addTab("Recibir Mensaje", jPanel2);
 
@@ -429,10 +454,20 @@ public class JPRoaming extends javax.swing.JPanel {
         jScrollPane2.setBounds(10, 110, 490, 125);
 
         jBLimpiarConsultar_Mensajes_Recibidos.setText("Limpiar");
+        jBLimpiarConsultar_Mensajes_Recibidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarConsultar_Mensajes_RecibidosActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiarConsultar_Mensajes_Recibidos);
         jBLimpiarConsultar_Mensajes_Recibidos.setBounds(320, 40, 110, 23);
 
         jBConsultarMensajes_Recibidos.setText("Consultar");
+        jBConsultarMensajes_Recibidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarMensajes_RecibidosActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBConsultarMensajes_Recibidos);
         jBConsultarMensajes_Recibidos.setBounds(320, 10, 110, 23);
 
@@ -484,10 +519,20 @@ public class JPRoaming extends javax.swing.JPanel {
         jScrollPane3.setBounds(10, 110, 490, 125);
 
         jBLimpiarConsultar_Mensajes_Enviados.setText("Limpiar");
+        jBLimpiarConsultar_Mensajes_Enviados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarConsultar_Mensajes_EnviadosActionPerformed(evt);
+            }
+        });
         jPanel5.add(jBLimpiarConsultar_Mensajes_Enviados);
         jBLimpiarConsultar_Mensajes_Enviados.setBounds(330, 40, 110, 23);
 
         jBConsultarMensajes_Enviados.setText("Consultar");
+        jBConsultarMensajes_Enviados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarMensajes_EnviadosActionPerformed(evt);
+            }
+        });
         jPanel5.add(jBConsultarMensajes_Enviados);
         jBConsultarMensajes_Enviados.setBounds(330, 10, 110, 23);
 
@@ -520,9 +565,9 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel8.add(jLabel45);
         jLabel45.setBounds(10, 70, 100, 14);
 
-        jCBCompaniaInternacionaRealizarLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
-        jPanel8.add(jCBCompaniaInternacionaRealizarLlamada);
-        jCBCompaniaInternacionaRealizarLlamada.setBounds(110, 70, 190, 20);
+        jCBCompaniaInternacionalRealizarLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
+        jPanel8.add(jCBCompaniaInternacionalRealizarLlamada);
+        jCBCompaniaInternacionalRealizarLlamada.setBounds(110, 70, 190, 20);
 
         jLabel23.setText("Telefono Destino");
         jPanel8.add(jLabel23);
@@ -572,7 +617,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel8.add(jBRealizarLLamada1);
         jBRealizarLLamada1.setBounds(140, 150, 130, 23);
 
-        jTabbedPane2.addTab("Realizar LLamada", jPanel8);
+        jTabbedPaneLlamada.addTab("Realizar LLamada", jPanel8);
 
         jPanel9.setLayout(null);
 
@@ -611,9 +656,9 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel9.add(jLabel42);
         jLabel42.setBounds(10, 70, 100, 14);
 
-        jCBCompaniaInternacionaRecibirLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
-        jPanel9.add(jCBCompaniaInternacionaRecibirLlamada);
-        jCBCompaniaInternacionaRecibirLlamada.setBounds(110, 70, 190, 20);
+        jCBCompaniaInternacionalRecibirLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
+        jPanel9.add(jCBCompaniaInternacionalRecibirLlamada);
+        jCBCompaniaInternacionalRecibirLlamada.setBounds(110, 70, 190, 20);
 
         jLabel20.setText("Telefono Origen");
         jPanel9.add(jLabel20);
@@ -649,7 +694,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel9.add(jBRecibirLLamada1);
         jBRecibirLLamada1.setBounds(150, 160, 130, 23);
 
-        jTabbedPane2.addTab("Recibir Llamada", jPanel9);
+        jTabbedPaneLlamada.addTab("Recibir Llamada", jPanel9);
 
         jPanel10.setLayout(null);
 
@@ -674,9 +719,9 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel10.add(jLabel49);
         jLabel49.setBounds(10, 70, 100, 14);
 
-        jCBCompaniaInternacionaConsultarLlamadasRealizadas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
-        jPanel10.add(jCBCompaniaInternacionaConsultarLlamadasRealizadas);
-        jCBCompaniaInternacionaConsultarLlamadasRealizadas.setBounds(110, 70, 190, 20);
+        jCBCompaniaInternacionalConsultarLlamadasRealizadas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
+        jPanel10.add(jCBCompaniaInternacionalConsultarLlamadasRealizadas);
+        jCBCompaniaInternacionalConsultarLlamadasRealizadas.setBounds(110, 70, 190, 20);
 
         jTResultadosLlamadasRealizadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -707,7 +752,7 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel10.add(jBConsultarLlamadasRealizadas);
         jBConsultarLlamadasRealizadas.setBounds(330, 10, 120, 23);
 
-        jTabbedPane2.addTab("Consultar Llamadas Realizadas", jPanel10);
+        jTabbedPaneLlamada.addTab("Consultar Llamadas Realizadas", jPanel10);
 
         jPanel11.setLayout(null);
 
@@ -732,9 +777,9 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel11.add(jLabel51);
         jLabel51.setBounds(10, 70, 100, 14);
 
-        jCBCompaniaInternaciona_ConsultarLlamadasRecibidas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
-        jPanel11.add(jCBCompaniaInternaciona_ConsultarLlamadasRecibidas);
-        jCBCompaniaInternaciona_ConsultarLlamadasRecibidas.setBounds(110, 70, 190, 20);
+        jCBCompaniaInternacionalConsultarLlamadasRecibidas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Internacional" }));
+        jPanel11.add(jCBCompaniaInternacionalConsultarLlamadasRecibidas);
+        jCBCompaniaInternacionalConsultarLlamadasRecibidas.setBounds(110, 70, 190, 20);
 
         jTResultadosLlamadasRealizadas1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -765,10 +810,10 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel11.add(jBConsultarLlamadasRecibidas);
         jBConsultarLlamadasRecibidas.setBounds(330, 10, 120, 23);
 
-        jTabbedPane2.addTab("Consultar Llamadas Recibidas", jPanel11);
+        jTabbedPaneLlamada.addTab("Consultar Llamadas Recibidas", jPanel11);
 
-        jPanel7.add(jTabbedPane2);
-        jTabbedPane2.setBounds(0, 0, 510, 270);
+        jPanel7.add(jTabbedPaneLlamada);
+        jTabbedPaneLlamada.setBounds(0, 0, 510, 270);
 
         jTabbedPane1.addTab("Llamada", jPanel7);
 
@@ -789,18 +834,11 @@ public class JPRoaming extends javax.swing.JPanel {
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
         int selectedRow = jTResultados.getSelectedRow();
+        jTFSimdCardEnviarMensaje.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTFSimdCardRecibirMensaje.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFSimdCardRealizarLlamada.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFSimdCardRecibirLlamada.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
         jTabbedPane1.setSelectedIndex(1);
-        jDCFechaRecibirMensaje.setDate(new Date());
-
-        // Agregar hora actual
-        Calendar c = Calendar.getInstance();
-        String hora = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
-        jTFHoraRecibirMensaje.setText(hora);
-        //System.out.println(hora);
-
-
-
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
@@ -808,7 +846,7 @@ public class JPRoaming extends javax.swing.JPanel {
         LinkedList consulta = new LinkedList();
         try {
 
-            consulta = cs.consultar(
+            consulta = controladorSimCard.consultar(
                     jTFCodigo1.getText(),
                     jTFnum_telefono1.getText(),
                     jCBActivacion_Internet1.getSelectedItem().toString(),
@@ -849,17 +887,16 @@ public class JPRoaming extends javax.swing.JPanel {
     }//GEN-LAST:event_jBConsultar1ActionPerformed
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-
+        limpiarCamposSimCard();
+        jBConsultar1.doClick();
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jBLimpiarRecibirMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarRecibirMensajeActionPerformed
-        Calendar c = Calendar.getInstance();
-        String hora = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
-        System.out.println(hora);
+        limpiarCamposRecibirMensaje();
     }//GEN-LAST:event_jBLimpiarRecibirMensajeActionPerformed
 
     private void jBLimpiarEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarEnviarMensajeActionPerformed
-
+        limpiarCamposEnviarMensaje();
     }//GEN-LAST:event_jBLimpiarEnviarMensajeActionPerformed
 
     private void jTFHoraInicioRecibirLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFHoraInicioRecibirLlamadaActionPerformed
@@ -879,13 +916,182 @@ public class JPRoaming extends javax.swing.JPanel {
     }//GEN-LAST:event_jTFHoraFinRealizarLlamadaActionPerformed
 
     private void jBEnviarMensaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnviarMensaje1ActionPerformed
-        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+            java.sql.Date fecha = new java.sql.Date(jDCFechaEnviarMensaje.getDate().getTime());
+            String codigo_CiaInter[] = new String[2];
+            codigo_CiaInter = jCBCompaniaInternacionalEnviarMensaje.getSelectedItem().toString().split(" - ");
+            String[] hora = jTFHoraEnviarMensaje.getText().split(":");
+            guardar = controladorSmsSaliente.guardar(
+                    jTFSimdCardEnviarMensaje.getText(),
+                    fecha,
+                    new Time(Integer.parseInt(hora[0]), Integer.parseInt(hora[1]), Integer.parseInt(hora[2])),
+                    codigo_CiaInter[0],
+                    jTFTelDestinoEnviarMensaje.getText());
+
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo Enviar el mensaje", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Mensaje Enviado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultarMensajesEnviados();
+            jTFSimdCardConsultarSmsEnviados.setText(jTFSimdCardEnviarMensaje.getText());
+            jBConsultarMensajes_Enviados.doClick();
+            jBLimpiarEnviarMensaje.doClick();
+            jTabbedPaneMensajes.setSelectedIndex(3);
+
+        }
+
+
+
     }//GEN-LAST:event_jBEnviarMensaje1ActionPerformed
 
     private void jBRecibirMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRecibirMensajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBRecibirMensajeActionPerformed
 
+    private void jBFecha_Hora_ActualEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecha_Hora_ActualEnviarMensajeActionPerformed
+        jDCFechaEnviarMensaje.setDate(fechaActual());
+        jTFHoraEnviarMensaje.setText(horaActual());
+    }//GEN-LAST:event_jBFecha_Hora_ActualEnviarMensajeActionPerformed
+
+    private void jBLimpiarConsultar_Mensajes_RecibidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultar_Mensajes_RecibidosActionPerformed
+        limpiarCamposConsultarMensajesRecibidos();
+        jBConsultarMensajes_Recibidos.doClick();
+    }//GEN-LAST:event_jBLimpiarConsultar_Mensajes_RecibidosActionPerformed
+
+    private void jBLimpiarConsultar_Mensajes_EnviadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultar_Mensajes_EnviadosActionPerformed
+        limpiarCamposConsultarMensajesEnviados();
+        jBConsultarMensajes_Enviados.doClick();
+    }//GEN-LAST:event_jBLimpiarConsultar_Mensajes_EnviadosActionPerformed
+
+    private void jBFecha_Hora_ActualRecibirMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecha_Hora_ActualRecibirMensajeActionPerformed
+        jDCFechaRecibirMensaje.setDate(fechaActual());
+        jTFHoraRecibirMensaje.setText(horaActual());
+    }//GEN-LAST:event_jBFecha_Hora_ActualRecibirMensajeActionPerformed
+
+    private void jBConsultarMensajes_RecibidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarMensajes_RecibidosActionPerformed
+    }//GEN-LAST:event_jBConsultarMensajes_RecibidosActionPerformed
+
+    private void jBConsultarMensajes_EnviadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarMensajes_EnviadosActionPerformed
+        LinkedList consulta = new LinkedList();
+        try {
+            String fecha;
+            try {
+                fecha = new java.sql.Date(jDCFechaConsultarSmsEnviados.getDate().getTime()).toString();
+
+            } catch (Exception e) {
+                fecha = "";
+            }
+            String cia_Inte = "";
+            if (!jCBCompaniaInternacionalConsultarSmsEnviados.getSelectedItem().toString().equals(" ")) {
+                String codigo_CiaInter[] = new String[2];
+                codigo_CiaInter = jCBCompaniaInternacionalConsultarSmsEnviados.getSelectedItem().toString().split(" - ");
+                cia_Inte = codigo_CiaInter[0];
+            }
+
+            consulta = controladorSmsSaliente.consultar(jTFSimdCardConsultarSmsEnviados.getText(),
+                    fecha,
+                    cia_Inte,
+                    "");
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                MensajeSalRoamming msr = (MensajeSalRoamming) consulta.get(i);
+                if (msr.getSim() != null) {
+                    s[i][0] = msr.getSim().getCodigo();
+                    s[i][1] = msr.getFecha();
+                    s[i][2] = msr.getHora();
+                    s[i][3] = msr.getcInter().getId();
+                    s[i][4] = msr.getTel_destino();
+                    s[i][5] = controladorCiaInter.consultar(msr.getcInter().getId()).getNombre();
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"SimCard", "Fecha", "Hora", "Cia. Inter.", "Tel. Destino", "Nom. Cia. Inter."}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false
+                };
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultadosMensajesEnviados.setModel(myModel);
+            jTResultadosMensajesEnviados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jBConsultarMensajes_EnviadosActionPerformed
+    private Date fechaActual() {
+        return new Date();
+    }
+
+    private String horaActual() {
+        String hora = "";
+        Calendar c = Calendar.getInstance();
+        hora = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
+        return hora;
+    }
+
+    private void limpiarCamposSimCard() {
+        jTFCodigo1.setText("");
+        jTFnum_telefono1.setText("");
+        jCBActivacion_Internet1.setSelectedIndex(0);
+        jCBbloqueado_por_robo1.setSelectedIndex(0);
+        jCBactivacion_correo1.setSelectedIndex(0);
+        jCBautorizacion_roaming1.setSelectedIndex(0);
+    }
+
+    private void limpiarCamposEnviarMensaje() {
+        jDCFechaEnviarMensaje.setDate(null);
+        jTFHoraEnviarMensaje.setText("");
+        jCBCompaniaInternacionalEnviarMensaje.setSelectedIndex(0);
+        jTFTelDestinoEnviarMensaje.setText("");
+    }
+
+    private void limpiarCamposRecibirMensaje() {
+        jDCFechaRecibirMensaje.setDate(null);
+        jTFHoraRecibirMensaje.setText("");
+        jCBCompaniaInternacionalRecibirMensaje.setSelectedIndex(0);
+        jTFTelOrigenRecibirMensaje.setText("");
+    }
+
+    private void limpiarCamposConsultarMensajesRecibidos() {
+        jTFSimdCardConsultarSmsRecibidos.setText("");
+        jDCFechaConsultarSmsRecibidos.setDate(null);
+        jCBCompaniaInternacionalConsultarSmsRecibidos.setSelectedIndex(0);
+    }
+
+    private void limpiarCamposConsultarMensajesEnviados() {
+        jTFSimdCardConsultarSmsEnviados.setText("");
+        jDCFechaConsultarSmsEnviados.setDate(null);
+        jCBCompaniaInternacionalConsultarSmsEnviados.setSelectedIndex(0);
+    }
+
+    private void llenarJComboBoxCiaInternacional() {  //llenar JComboBox
+        jCBCompaniaInternacionalConsultarLlamadasRealizadas.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalRecibirMensaje.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalEnviarMensaje.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalConsultarSmsRecibidos.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalConsultarSmsEnviados.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalConsultarLlamadasRecibidas.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalRecibirLlamada.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+        jCBCompaniaInternacionalRealizarLlamada.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaInter.listar()));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBConsultarLlamadasRealizadas;
@@ -893,6 +1099,8 @@ public class JPRoaming extends javax.swing.JPanel {
     private javax.swing.JButton jBConsultarMensajes_Enviados;
     private javax.swing.JButton jBConsultarMensajes_Recibidos;
     private javax.swing.JButton jBEnviarMensaje1;
+    private javax.swing.JButton jBFecha_Hora_ActualEnviarMensaje;
+    private javax.swing.JButton jBFecha_Hora_ActualRecibirMensaje;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiarConsultarLlamadasRealizadas;
     private javax.swing.JButton jBLimpiarConsultarLlamadasRecibidas;
@@ -906,13 +1114,13 @@ public class JPRoaming extends javax.swing.JPanel {
     private javax.swing.JButton jBRecibirLLamada1;
     private javax.swing.JButton jBRecibirMensaje;
     private javax.swing.JComboBox jCBActivacion_Internet1;
-    private javax.swing.JComboBox jCBCompaniaInternacionaConsultarLlamadasRealizadas;
-    private javax.swing.JComboBox jCBCompaniaInternacionaRealizarLlamada;
-    private javax.swing.JComboBox jCBCompaniaInternacionaRecibirLlamada;
-    private javax.swing.JComboBox jCBCompaniaInternaciona_ConsultarLlamadasRecibidas;
+    private javax.swing.JComboBox jCBCompaniaInternacionalConsultarLlamadasRealizadas;
+    private javax.swing.JComboBox jCBCompaniaInternacionalConsultarLlamadasRecibidas;
     private javax.swing.JComboBox jCBCompaniaInternacionalConsultarSmsEnviados;
     private javax.swing.JComboBox jCBCompaniaInternacionalConsultarSmsRecibidos;
     private javax.swing.JComboBox jCBCompaniaInternacionalEnviarMensaje;
+    private javax.swing.JComboBox jCBCompaniaInternacionalRealizarLlamada;
+    private javax.swing.JComboBox jCBCompaniaInternacionalRecibirLlamada;
     private javax.swing.JComboBox jCBCompaniaInternacionalRecibirMensaje;
     private javax.swing.JComboBox jCBactivacion_correo1;
     private javax.swing.JComboBox jCBautorizacion_roaming1;
@@ -1011,7 +1219,7 @@ public class JPRoaming extends javax.swing.JPanel {
     private javax.swing.JTable jTResultadosLlamadasRealizadas1;
     private javax.swing.JTable jTResultadosMensajesEnviados;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPaneLlamada;
     private javax.swing.JTabbedPane jTabbedPaneMensajes;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,8 +17,7 @@ import logica.MensajeSalRoamming;
  * @author chokuno
  */
 public class DaoMensajeSalRoamming {
-    
-    
+
     FachadaBD fachada;
 
     public DaoMensajeSalRoamming() {
@@ -27,9 +26,9 @@ public class DaoMensajeSalRoamming {
 
     public int guardar(MensajeSalRoamming msjRoam) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO mensaje_saliente_roamming VALUES ('"
+        sql_guardar = "INSERT INTO mensaje_saliente_roaming VALUES ('"
                 + msjRoam.getSim().getCodigo() + "', '"
-                + msjRoam.getFecha()+ "', '"
+                + msjRoam.getFecha() + "', '"
                 + msjRoam.getHora() + "', '"
                 + msjRoam.getcInter().getId() + "','"
                 + msjRoam.getTel_destino() + "')";
@@ -50,22 +49,18 @@ public class DaoMensajeSalRoamming {
     public MensajeSalRoamming consultar(String simcard) {
         MensajeSalRoamming msjRoam = new MensajeSalRoamming();
         String sql_select;
-        sql_select = "SELECT * FROM mensaje_saliente_roamming WHERE simcard='" + simcard + "'";
+        sql_select = "SELECT * FROM mensaje_saliente_roaming WHERE simcard='" + simcard + "'";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
-
-            //
             if (tabla.next()) {
-
                 msjRoam.setSim(new DaoSimcard().consultar(tabla.getString("simcard")));
                 msjRoam.setFecha(tabla.getDate("fecha"));
                 msjRoam.setHora(tabla.getTime("hora"));
                 msjRoam.setcInter(new DaoCia_internacional().consultar(tabla.getString("cia_internacional")));
                 msjRoam.setTel_destino(tabla.getString("tel_destino"));
             }
-
             conn.close();
             System.out.println("Conexion cerrada");
             return msjRoam;
@@ -78,32 +73,28 @@ public class DaoMensajeSalRoamming {
 
         return null;
     }
-    
-    
-    public LinkedList consultar(String sim, String fecha, String hora,
+
+    public LinkedList consultar(String sim, String fecha,
             String cInter, String tel_destino) {
         LinkedList msjRoamConsulta = new LinkedList();
-        String sql_select = "SELECT * FROM mensaje_saliente_roamming  ";
-        if (!sim.equals("") || !fecha.equals("") || !hora.equals("")
-            || !cInter.equals("") || !tel_destino.equals("")) {
+        String sql_select = "SELECT * FROM mensaje_saliente_roaming      ";
+        if (!sim.equals("") || !fecha.equals("")
+                || !cInter.equals("") || !tel_destino.equals("")) {
             sql_select += "WHERE ";
         }
         if (!sim.equals("")) {
             sql_select += "simcard ='" + sim + "' AND ";
         }
-        if(!fecha.equals("")){
-            sql_select += "fecha LIKE '%"+fecha+"%'"+" AND ";
+        if (!fecha.equals("")) {
+            sql_select += "fecha = '" + fecha + "'" + " AND ";
         }
-        if(!hora.equals("")){
-            sql_select += "hora LIKE '%"+hora+"%'"+" AND ";
+        if (!cInter.equals("")) {
+            sql_select += "cia_internacional = '" + cInter + "'" + " AND ";
         }
-        if(!cInter.equals("")){
-            sql_select += "cia_internacional LIKE '%"+cInter+"%'"+" AND ";
+        if (!tel_destino.equals("")) {
+            sql_select += "tel_destino = '" + tel_destino + "'" + " AND ";
         }
-        if(!tel_destino.equals("")){
-            sql_select += "tel_destino LIKE '%"+tel_destino+"%'"+" AND ";
-        }
-        
+        System.out.println(sql_select);
         sql_select = sql_select.substring(0, sql_select.length() - 5);
         try {
             Connection conn = fachada.conectar();
@@ -116,6 +107,7 @@ public class DaoMensajeSalRoamming {
                 msjRoam.setHora(tabla.getTime("hora"));
                 msjRoam.setcInter(new DaoCia_internacional().consultar(tabla.getString("cia_internacional")));
                 msjRoam.setTel_destino(tabla.getString("tel_destino"));
+                
                 msjRoamConsulta.add(msjRoam);
             }
             conn.close();
@@ -134,11 +126,11 @@ public class DaoMensajeSalRoamming {
     public int editar(MensajeSalRoamming msjRoam) {
 
         String sql_update;
-        sql_update = "UPDATE mensaje_saliente_roamming SET "
-                + msjRoam.getFecha()+ "', '"
-                + msjRoam.getHora() + "', '"
-                + msjRoam.getcInter().getId() + "','"
-                + msjRoam.getTel_destino() + "'"
+        sql_update = "UPDATE mensaje_saliente_roaming SET "
+                + "fecha=" + msjRoam.getFecha() + ", "
+                + "hora=" + msjRoam.getHora() + ", "
+                + "cia_internacional='" + msjRoam.getcInter().getId() + "',"
+                + "tel_destino='" + msjRoam.getTel_destino() + "'"
                 + " WHERE simcard='" + msjRoam.getSim().getCodigo() + "'";
         try {
             Connection conn = fachada.conectar();

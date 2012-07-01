@@ -69,5 +69,14 @@ public class ControladorCiaInternacional {
             return -1;
         }
     }
-    /// metodo para llenar los JComboBox con las sucursales
+    /// metodo para llenar los JComboBox con las Compañias
+        public String[] listar() {
+        LinkedList consultaCompaniaInt = daoCiaInternacional.consultar("", "", "", "", "", "", "", "", "", "");
+        String[] companiaInt = new String[consultaCompaniaInt.size()+1];
+        companiaInt[0] = " ";
+        for (int i = 0; i < consultaCompaniaInt.size(); i++) {
+            companiaInt[i+1] = ((Cia_internacional) consultaCompaniaInt.get(i)).getId() + " - " + ((Cia_internacional) consultaCompaniaInt.get(i)).getNombre();
+        }
+        return companiaInt;
+    }
 }

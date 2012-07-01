@@ -347,5 +347,8 @@ INSERT INTO contrato VALUES ('101','1000','pre123','154786985414754','2012-02-15
 INSERT INTO contrato VALUES ('102','1000','pre123','123541254876523','2012-02-22');
 INSERT INTO contrato VALUES ('103','1000','12354','112547445233469','2012-03-10');	
 
+INSERT INTO cia_internacional VALUES ('1020','London Roaming','England',100,500,400,400,300,150,200);
+INSERT INTO cia_internacional VALUES ('1030','Movistar Roaming','Espania',500,400,600,500,200,100,500);
+INSERT INTO cia_internacional VALUES ('1040','Claro Roaming','Chile',200,300,400,500,600,700,500);
 
   
