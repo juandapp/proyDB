@@ -5,12 +5,14 @@
 package controlador;
 
 import dao.DaoCia_internacional;
+import dao.DaoLlamadaEntRoamming;
 import dao.DaoLlamadaSalRoamming;
 import dao.DaoSimcard;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.LinkedList;
 import logica.Cia_internacional;
+import logica.LlamadaEntRoamming;
 import logica.LlamadaSalRoamming;
 import logica.Simcard;
 
@@ -18,27 +20,27 @@ import logica.Simcard;
  *
  * @author chokuno
  */
-public class ControladorLlamadaSalRoamming {
+public class ControladorLlamadaEntRoamming {
 
-    DaoLlamadaSalRoamming daollamaRoam;
+    DaoLlamadaEntRoamming daollamaRoam;
 
-    public ControladorLlamadaSalRoamming() {
-        daollamaRoam = new DaoLlamadaSalRoamming();
+    public ControladorLlamadaEntRoamming() {
+        daollamaRoam = new DaoLlamadaEntRoamming();
 
     }
 
     public int guardar(String sim, Date fecha, Time hora_inicio,
-            Time hora_fin, String pais_destino, String tel_destino,
+            Time hora_fin, String pais_destino, String tel_Origen,
             String cInter) {
         if (!sim.isEmpty() && fecha != null && hora_inicio != null
                 && hora_fin != null && !pais_destino.isEmpty()
-                && !tel_destino.isEmpty() && !cInter.isEmpty() && !cInter.equals(" ")) {
+                && !tel_Origen.isEmpty() && !cInter.isEmpty() && !cInter.equals(" ")) {
             
             Simcard simcard = new DaoSimcard().consultar(sim);
             Cia_internacional ciaInter = new DaoCia_internacional().consultar(cInter);
 
-            LlamadaSalRoamming llamaRoam = new LlamadaSalRoamming(simcard,
-                    fecha, hora_inicio, hora_fin, pais_destino, tel_destino, ciaInter);
+            LlamadaEntRoamming llamaRoam = new LlamadaEntRoamming(simcard,
+                    fecha, hora_inicio, hora_fin, pais_destino, tel_Origen, ciaInter);
 
             int retorno = daollamaRoam.guardar(llamaRoam);
             
@@ -49,32 +51,32 @@ public class ControladorLlamadaSalRoamming {
         }
     }
 
-    public LlamadaSalRoamming consultar(String simcard) {
-        LlamadaSalRoamming llamaRoam = new LlamadaSalRoamming();
+    public LlamadaEntRoamming consultar(String simcard) {
+        LlamadaEntRoamming llamaRoam = new LlamadaEntRoamming();
         llamaRoam = daollamaRoam.consultar(simcard);
         return llamaRoam;
     }
 
     public LinkedList consultar(String sim, String fecha, String hora_inicio,
-            String hora_fin, String pais_destino, String tel_destino,
+            String hora_fin, String pais_destino, String tel_Origen,
             String cInter) {
         LinkedList llamaRoamConsultar = new LinkedList();
         llamaRoamConsultar = daollamaRoam.consultar(sim, fecha, hora_inicio,
-                hora_fin, pais_destino, tel_destino, cInter);
+                hora_fin, pais_destino, tel_Origen, cInter);
         return llamaRoamConsultar;
     }
 
 //    public int editar(String sim, Date fecha, Time hora_inicio,
-//            Time hora_fin, String pais_destino, String tel_destino,
+//            Time hora_fin, String pais_destino, String tel_Origen,
 //            String cInter) {
 //        if (!sim.isEmpty() && sim != null && hora_inicio != null
 //                && hora_fin != null && !pais_destino.isEmpty()
-//                && !tel_destino.isEmpty() && !cInter.isEmpty()) {
+//                && !tel_Origen.isEmpty() && !cInter.isEmpty()) {
 //            Simcard simcard = new DaoSimcard().consultar(sim);
 //            Cia_internacional ciaInter = new DaoCia_internacional().consultar(cInter);
 //
 //            LlamadaSalRoamming llamaRoam = new LlamadaSalRoamming(simcard,
-//                    fecha, hora_inicio, hora_fin, pais_destino, tel_destino, ciaInter);
+//                    fecha, hora_inicio, hora_fin, pais_destino, tel_Origen, ciaInter);
 //            int retorno = daollamaRoam.editar(llamaRoam);
 //            return retorno;
 //        } else {
