@@ -237,6 +237,7 @@ public class JPCorreos extends javax.swing.JPanel {
         try {
             String codigo_abonado[] = new String[2];
             codigo_abonado = jCBAbonado1.getSelectedItem().toString().split(" - ");
+            System.out.println(codigo_abonado[0]);
             guardar = cc.guardar(
                     jTEmail1.getText(),
                     codigo_abonado[0]
