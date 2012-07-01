@@ -92,6 +92,11 @@ public class JPEquipo extends javax.swing.JPanel {
         jTFMarca1.setBounds(90, 70, 190, 20);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(90, 100, 72, 23);
 
@@ -317,6 +322,10 @@ public class JPEquipo extends javax.swing.JPanel {
         jTFMarca3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 2));
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
+
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+limpiarCamposCrear();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
     private void limpiarCamposModificar() {
         jTFCodigo3.setText("");
         jTFModelo3.setText("");

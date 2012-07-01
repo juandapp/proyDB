@@ -793,6 +793,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private void jBLimpiarRealizarLLamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarRealizarLLamadaActionPerformed
 
         jTFMensajesAEnviar_EnviarMensaje.setText("");
+        jTFTelDestinoRealizarLlamada.setText("");
         jCBCompaniaLocalRealizarLlamada.setSelectedIndex(0);
         jDCFechaRealizarLlamada.setDate(null);
         jTFHoraInicioRealizarLlamada.setText("");
