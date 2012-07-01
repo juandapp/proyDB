@@ -24,7 +24,7 @@ public class ControladorCorreos {
     }
 
     public int guardar(String email, String id_abonado) {
-        if (!email.isEmpty() && !email.isEmpty() ) {
+        if (!email.isEmpty() && !id_abonado.isEmpty() ) {
             Abonado abonado=new DaoAbonado().consultar(id_abonado);
             Correos correo=new Correos(email, abonado);
             int retorno = daoCorreos.guardar(correo);

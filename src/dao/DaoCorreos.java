@@ -30,6 +30,7 @@ public class DaoCorreos {
         sql_guardar = "INSERT INTO correos VALUES ('"
                 + c.getEmail() + "', '"
                 + c.getId_abonado().getId() + "')";
+        System.out.println(sql_guardar);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -77,15 +78,15 @@ public class DaoCorreos {
     
      public LinkedList consultar(String email, String id_abonado) {
         LinkedList correosConsulta = new LinkedList();
-        String sql_select = "SELECT * FROM correos";
+        String sql_select = "SELECT * FROM correos       ";
         if (!email.equals("") || !id_abonado.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += " WHERE";
         }
         if (!email.equals("")) {
-            sql_select += "email ='" + email + "' AND ";
+            sql_select += " email ='" + email + "' AND ";
         }
         if(!id_abonado.equals("")){
-            sql_select += "id_abonado LIKE '%"+id_abonado+"%'"+" AND ";
+            sql_select += " id_abonado = '"+id_abonado+"'"+" AND ";
         }
       
                 
