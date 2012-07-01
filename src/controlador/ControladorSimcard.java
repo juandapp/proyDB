@@ -57,6 +57,15 @@ public class ControladorSimcard {
             return -1;
         }
     }
+        public int editar(Simcard sc) {
+        if (!sc.getCodigo().isEmpty() && !sc.getNum_telefono().isEmpty() && !sc.getActivacion_internet().isEmpty()
+                && !sc.getBloqueado_por_robo().isEmpty() && !sc.getActivacion_correo().isEmpty()) {
+            int retorno = daoSimcard.editar(sc);
+            return retorno;
+        } else {
+            return -1;
+        }
+    }
     
      public String[] listar() {
         LinkedList SimcardConsultar = daoSimcard.consultar("", "", " ", " ", " ", " ");
