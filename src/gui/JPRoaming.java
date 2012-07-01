@@ -30,6 +30,7 @@ public class JPRoaming extends javax.swing.JPanel {
     ControladorMensajeEntRoamming controladorSmsEntrante;
     ControladorLlamadaSalRoamming controladorLlamadaSaliente;
     ControladorLlamadaEntRoamming controladorLlamadEntrante;
+
     public JPRoaming() {
         controladorCiaInter = new ControladorCiaInternacional();
         controladorSimCard = new ControladorSimcard();
@@ -1162,7 +1163,7 @@ public class JPRoaming extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiarConsultarLlamadasRealizadasActionPerformed
 
     private void jBConsultarLlamadasRealizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarLlamadasRealizadasActionPerformed
-         LinkedList consulta = new LinkedList();
+        LinkedList consulta = new LinkedList();
         try {
             String fecha;
             try {
@@ -1227,7 +1228,7 @@ public class JPRoaming extends javax.swing.JPanel {
     }//GEN-LAST:event_jBFechaHoraRecibirLlamadaActionPerformed
 
     private void jBConsultarLlamadasRecibidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarLlamadasRecibidasActionPerformed
-                 LinkedList consulta = new LinkedList();
+        LinkedList consulta = new LinkedList();
         try {
             String fecha;
             try {
@@ -1260,7 +1261,7 @@ public class JPRoaming extends javax.swing.JPanel {
                     s[i][1] = lsr.getFecha();
                     s[i][2] = lsr.getHora_inicio();
                     s[i][3] = lsr.getHora_fin();
-                    s[i][4] = lsr.getPais_destino();
+                    s[i][4] = lsr.getpais_origen();
                     s[i][5] = lsr.getTel_Origen();
                     s[i][6] = lsr.getcInter().getId();
                     s[i][7] = controladorCiaInter.consultar(lsr.getcInter().getId()).getNombre();
@@ -1287,14 +1288,14 @@ public class JPRoaming extends javax.swing.JPanel {
     }//GEN-LAST:event_jBConsultarLlamadasRecibidasActionPerformed
 
     private void jBRecibirLLamada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRecibirLLamada1ActionPerformed
-             int guardar = -1;
+        int guardar = -1;
         try {
             java.sql.Date fecha = new java.sql.Date(jDCFechaRecibirLlamada.getDate().getTime());
             String codigo_CiaInter[] = new String[2];
             codigo_CiaInter = jCBCompaniaInternacionalRecibirLlamada.getSelectedItem().toString().split(" - ");
             String[] horainicio = jTFHoraInicioRecibirLlamada.getText().split(":");
             String[] horafin = jTFHoraInicioRecibirLlamada.getText().split(":");
-            guardar = controladorLlamadaSaliente.guardar(
+            guardar = controladorLlamadEntrante.guardar(
                     jTFSimdCardRecibirLlamada.getText(),
                     fecha,
                     new Time(Integer.parseInt(horainicio[0]), Integer.parseInt(horainicio[1]), Integer.parseInt(horainicio[2])),

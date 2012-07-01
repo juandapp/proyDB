@@ -16,7 +16,7 @@ public class LlamadaEntRoamming {
     private Date fecha;
     private Time hora_inicio;
     private Time hora_fin;
-    private String pais_destino;
+    private String pais_origen;
     private String tel_Origen;
     private Cia_internacional cInter;
 
@@ -24,13 +24,13 @@ public class LlamadaEntRoamming {
     }
 
     public LlamadaEntRoamming(Simcard sim, Date fecha, Time hora_inicio,
-            Time hora_fin, String pais_destino, String tel_Origen, 
+            Time hora_fin, String pais_origen, String tel_Origen, 
             Cia_internacional cInter) {
         this.sim = sim;
         this.fecha = fecha;
         this.hora_inicio = hora_inicio;
         this.hora_fin = hora_fin;
-        this.pais_destino = pais_destino;
+        this.pais_origen = pais_origen;
         this.tel_Origen = tel_Origen;
         this.cInter = cInter;
     }
@@ -91,18 +91,20 @@ public class LlamadaEntRoamming {
         this.hora_fin = hora_fin;
     }
 
-    /**
-     * @return the pais_destino
-     */
-    public String getPais_destino() {
-        return pais_destino;
+    public String getpais_origen() {
+        return pais_origen;
     }
 
     /**
-     * @param pais_destino the pais_destino to set
+     * @return the pais_origen
      */
-    public void setPais_destino(String pais_destino) {
-        this.pais_destino = pais_destino;
+
+
+    /**
+     * @param pais_origen the pais_origen to set
+     */
+    public void setpais_origen(String pais_origen) {
+        this.pais_origen = pais_origen;
     }
 
     /**
