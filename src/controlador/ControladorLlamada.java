@@ -53,7 +53,7 @@ public class ControladorLlamada {
         return ll;
     }
 
-   public LinkedList consultar(String sim,String cLocal,String fecha) {
+   public LinkedList consultar(String sim,String fecha,String cLocal) {
         LinkedList llamadaConsultados = new LinkedList();
         llamadaConsultados = daoLlamada.consultar(sim, fecha, 
                   cLocal);
