@@ -31,7 +31,7 @@ public class DaoLlamadaEntRoamming {
                 + llamaRoam.getFecha() + "', '"
                 + llamaRoam.getHora_inicio() + "', '"
                 + llamaRoam.getHora_fin() + "','"
-                + llamaRoam.getPais_destino() + "','"
+                + llamaRoam.getpais_origen() + "','"
                 + llamaRoam.getTel_Origen() + "','"
                 + llamaRoam.getcInter().getId() + "')";
         try {
@@ -62,7 +62,7 @@ public class DaoLlamadaEntRoamming {
                 llamaRoam.setFecha(tabla.getDate("fecha"));
                 llamaRoam.setHora_inicio(tabla.getTime("hora_inicio"));
                 llamaRoam.setHora_fin(tabla.getTime("hora_fin"));
-                llamaRoam.setPais_destino(tabla.getString("pais_destino"));
+                llamaRoam.setpais_origen(tabla.getString("pais_origen"));
                 llamaRoam.setTel_Origen(tabla.getString("tel_origen"));
                 llamaRoam.setcInter(new DaoCia_internacional().consultar(tabla.getString("cia_internacional")));
             }
@@ -80,12 +80,12 @@ public class DaoLlamadaEntRoamming {
     }
 
     public LinkedList consultar(String sim, String fecha, String hora_inicio,
-            String hora_fin, String pais_destino, String tel_origen,
+            String hora_fin, String pais_origen, String tel_origen,
             String cInter) {
         LinkedList llamaRoamConsulta = new LinkedList();
         String sql_select = "SELECT * FROM llamada_entrante_roaming      ";
         if (!sim.equals("") || !fecha.equals("") || !hora_inicio.equals("")
-                || !hora_fin.equals("") || !pais_destino.equals("") || !tel_origen.equals("")
+                || !hora_fin.equals("") || !pais_origen.equals("") || !tel_origen.equals("")
                 || !cInter.equals("")) {
             sql_select += "WHERE ";
         }
@@ -101,8 +101,8 @@ public class DaoLlamadaEntRoamming {
         if (!hora_fin.equals("")) {
             sql_select += "hora_fin = '" + hora_fin + "'" + " AND ";
         }
-        if (!pais_destino.equals("")) {
-            sql_select += "pais_destino LIKE '%" + pais_destino + "%'" + " AND ";
+        if (!pais_origen.equals("")) {
+            sql_select += "pais_origen LIKE '%" + pais_origen + "%'" + " AND ";
         }
         if (!tel_origen.equals("")) {
             sql_select += "tel_destino  ='" + tel_origen + "'" + " AND ";
@@ -111,6 +111,7 @@ public class DaoLlamadaEntRoamming {
             sql_select += "cia_internacional = '" + cInter + "'" + " AND ";
         }
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.print(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -121,7 +122,7 @@ public class DaoLlamadaEntRoamming {
                 llamaRoam.setFecha(tabla.getDate("fecha"));
                 llamaRoam.setHora_inicio(tabla.getTime("hora_inicio"));
                 llamaRoam.setHora_fin(tabla.getTime("hora_fin"));
-                llamaRoam.setPais_destino(tabla.getString("pais_destino"));
+                llamaRoam.setpais_origen(tabla.getString("pais_origen"));
                 llamaRoam.setTel_Origen(tabla.getString("tel_origen"));
                 llamaRoam.setcInter(new DaoCia_internacional().consultar(tabla.getString("cia_internacional")));
                 llamaRoamConsulta.add(llamaRoam);
@@ -145,7 +146,7 @@ public class DaoLlamadaEntRoamming {
 //                + llamaRoam.getFecha() + "', '"
 //                + llamaRoam.getHora_inicio() + "', '"
 //                + llamaRoam.getHora_fin() + "','"
-//                + llamaRoam.getPais_destino() + "','"
+//                + llamaRoam.getpais_origen() + "','"
 //                + llamaRoam.getTel_destino() + "','"
 //                + llamaRoam.getcInter().getId() + "' "
 //                + " WHERE simcard='" + llamaRoam.getSim().getCodigo() + "'";

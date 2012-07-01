@@ -5,8 +5,6 @@
 package gui;
 
 import controlador.ControladorEmpleado;
-import controlador.ControladorPlan;
-import controlador.ControladorPostPago;
 import controlador.ControladorSimcard;
 import controlador.ControladorSucursal;
 import java.util.LinkedList;
@@ -14,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import logica.Empleado;
-import logica.Postpago;
 import logica.Simcard;
 
 /**
@@ -166,6 +163,11 @@ public class JPContrato extends javax.swing.JPanel {
         jBLimpiarAbonado.setBounds(540, 200, 90, 23);
 
         jBConsultarAbonado.setText("Consultar");
+        jBConsultarAbonado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarAbonadoActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBConsultarAbonado);
         jBConsultarAbonado.setBounds(390, 200, 110, 23);
 
@@ -805,6 +807,10 @@ public class JPContrato extends javax.swing.JPanel {
     private void jTtarifa_msj_textoPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTtarifa_msj_textoPlanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTtarifa_msj_textoPlanActionPerformed
+
+    private void jBConsultarAbonadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarAbonadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultarAbonadoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultarAbonado;
