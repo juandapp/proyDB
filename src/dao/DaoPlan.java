@@ -89,13 +89,13 @@ public class DaoPlan {
             sql_select += "cod_plan = '" + cod_plan + "' AND ";
         }
         if (!tarifa_otro_operador.equals("")) {
-            sql_select += "tarifa_otro_operador =  " + tarifa_otro_operador + "" + " AND ";
+            sql_select += "tarifa_otro_operador <  " + tarifa_otro_operador + "" + " AND ";
         }
         if (!tarifa_msj_multimedia.equals("")) {
-            sql_select += "tarifa_msj_multimedia =  " + tarifa_msj_multimedia + "" + " AND ";
+            sql_select += "tarifa_msj_multimedia <  " + tarifa_msj_multimedia + "" + " AND ";
         }
         if (!tarifa_msj_texto.equals("")) {
-            sql_select += "tarifa_msj_texto = " + tarifa_msj_texto + "" + " AND ";
+            sql_select += "tarifa_msj_texto < " + tarifa_msj_texto + "" + " AND ";
         }
         sql_select = sql_select.substring(0, sql_select.length() - 5);
         try {
