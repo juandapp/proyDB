@@ -230,16 +230,17 @@ public class DaoConsultas {
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
             while (tabla.next()) {
-                String[] resultado=new String[9];
+                String[] resultado=new String[10];
                 resultado[0]=tabla.getString("id");
                 resultado[1]=tabla.getString("nombre");
                 resultado[2]=tabla.getString("pais");
                 resultado[3]=tabla.getString("tarifa_mensajes");
                 resultado[4]=tabla.getString("tar_llamada_entra_inter");
-                resultado[5]=tabla.getString("tar_llamada_sal_inter");
+                resultado[5]=tabla.getString("tar_llamada_sale_inter");
                 resultado[6]=tabla.getString("tar_llamada_entra_nal");
-                resultado[7]=tabla.getString("tar_llamada_sal_nal");
+                resultado[7]=tabla.getString("tar_llamada_sale_nal");
                 resultado[8]=tabla.getString("tar_datos_enviados");
+                resultado[9]=tabla.getString("tar_datos_recibidos");
                 consulta.add(resultado);
             }
             conn.close();

@@ -39,7 +39,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jTPCPlanDatos = new javax.swing.JTabbedPane();
+        jTPConsultas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
@@ -68,6 +68,11 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jBCPlanDatos = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTResultados3 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jBOperExtran = new javax.swing.JButton();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
         jPanel3.setLayout(null);
@@ -158,7 +163,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jPanel1.add(jButton1);
         jButton1.setBounds(300, 90, 90, 33);
 
-        jTPCPlanDatos.addTab("Clientes", jPanel1);
+        jTPConsultas.addTab("Clientes", jPanel1);
 
         jTResultados1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,8 +187,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(jTResultados1);
-        jTResultados1.getColumnModel().getColumn(3).setHeaderValue("Direccion");
-        jTResultados1.getColumnModel().getColumn(4).setHeaderValue("Ciudad");
 
         jBCPrepago.setText("Prepago");
         jBCPrepago.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +254,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTPCPlanDatos.addTab("Planes", jPanel2);
+        jTPConsultas.addTab("Planes", jPanel2);
 
         jTResultados2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -327,10 +330,71 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addGap(19, 19, 19))
         );
 
-        jTPCPlanDatos.addTab("Plan Datos", jPanel4);
+        jTPConsultas.addTab("Plan Datos", jPanel4);
 
-        jPanel3.add(jTPCPlanDatos);
-        jTPCPlanDatos.setBounds(10, 20, 460, 310);
+        jTResultados3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Operador", "Nombre", "Pais", "Tarifa Msjs", "Tar Llamada Entra Inter", "Tar Llamada Sal Inter", "Tar Llamada Entra", "Tar Llamada Sal", "Tar Datos Enviados", "Tar Datos Recibidos"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTResultados3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultados3MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTResultados3);
+
+        jLabel6.setText("Listado Operadores Extranjeros con tarifas de roamming");
+
+        jBOperExtran.setText("Generar");
+        jBOperExtran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOperExtranActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBOperExtran))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBOperExtran)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
+
+        jTPConsultas.addTab("Operadores Extranjeros", jPanel5);
+
+        jPanel3.add(jTPConsultas);
+        jTPConsultas.setBounds(10, 20, 460, 310);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -608,6 +672,58 @@ jCBMedioRecarga2.setSelectedIndex(0);
         } 
     }//GEN-LAST:event_jBCPlanDatosActionPerformed
 
+    private void jTResultados3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTResultados3MouseClicked
+
+    private void jBOperExtranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOperExtranActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+       
+
+       try {
+
+            consulta = cc.operadoresExtranjeros();
+
+            Object[][] s = new Object[consulta.size()][10];
+            for (int i = 0; i < consulta.size(); i++) {
+                String [] retorno = (String []) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+                    s[i][6] = retorno[6];
+                    s[i][7] = retorno[7];
+                    s[i][8] = retorno[8];
+                    s[i][9] = retorno[9];
+                    
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Operador", "Nombre", "Pais", 
+                "Tarifa Mensaje", "Tar Llamada Entra Inter"
+            , "Tar Llamada Sal Inter", "Tar Llamada Entra","Tar Llamada Sal","Tar Datos Enviados","Tar Datos Recibidos"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false,false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados3.setModel(myModel);
+            jTResultados3.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        
+    }//GEN-LAST:event_jBOperExtranActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCPlanEscogido;
     private javax.swing.JButton jBCPlanDatos;
@@ -615,6 +731,7 @@ jCBMedioRecarga2.setSelectedIndex(0);
     private javax.swing.JButton jBCPrepago;
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBLimpiar2;
+    private javax.swing.JButton jBOperExtran;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jCBMedioRecarga2;
@@ -626,18 +743,22 @@ jCBMedioRecarga2.setSelectedIndex(0);
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTPCPlanDatos;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTabbedPane jTPConsultas;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTable jTResultados1;
     private javax.swing.JTable jTResultados2;
+    private javax.swing.JTable jTResultados3;
     // End of variables declaration//GEN-END:variables
 }
