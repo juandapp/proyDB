@@ -149,6 +149,8 @@ public class JPContrato extends javax.swing.JPanel {
         jDCFechaIngresoContrato = new com.toedter.calendar.JDateChooser();
         jBLimpiarContrato = new javax.swing.JButton();
         jBGenerarContrato = new javax.swing.JButton();
+        jTFValor = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Contrato"));
         jPanel1.setLayout(null);
@@ -162,7 +164,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jBLimpiarAbonado);
-        jBLimpiarAbonado.setBounds(540, 200, 90, 23);
+        jBLimpiarAbonado.setBounds(540, 200, 90, 33);
 
         jBConsultarAbonado.setText("Consultar");
         jBConsultarAbonado.addActionListener(new java.awt.event.ActionListener() {
@@ -171,102 +173,102 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jBConsultarAbonado);
-        jBConsultarAbonado.setBounds(390, 200, 110, 23);
+        jBConsultarAbonado.setBounds(390, 200, 110, 33);
 
         jLabel30.setText("Id");
         jPanel2.add(jLabel30);
-        jLabel30.setBounds(10, 10, 30, 14);
+        jLabel30.setBounds(10, 10, 30, 17);
         jPanel2.add(jTFCodigoAbonado);
-        jTFCodigoAbonado.setBounds(130, 10, 130, 20);
+        jTFCodigoAbonado.setBounds(130, 10, 130, 27);
 
         jLabel31.setText("Apellidos");
         jPanel2.add(jLabel31);
-        jLabel31.setBounds(360, 40, 80, 14);
+        jLabel31.setBounds(360, 40, 80, 17);
         jPanel2.add(jTFApellidosAbonado);
-        jTFApellidosAbonado.setBounds(430, 40, 200, 20);
+        jTFApellidosAbonado.setBounds(430, 40, 200, 27);
 
         jLabel32.setText("Genero");
         jPanel2.add(jLabel32);
-        jLabel32.setBounds(10, 130, 70, 14);
+        jLabel32.setBounds(10, 130, 70, 17);
 
         jCBGeneroAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Femenino", "Masculino" }));
         jCBGeneroAbonado.setName(""); // NOI18N
         jPanel2.add(jCBGeneroAbonado);
-        jCBGeneroAbonado.setBounds(130, 130, 200, 20);
+        jCBGeneroAbonado.setBounds(130, 130, 200, 27);
 
         jLabel40.setText("Estado Civil");
         jPanel2.add(jLabel40);
-        jLabel40.setBounds(360, 130, 100, 14);
+        jLabel40.setBounds(360, 130, 100, 17);
 
         jCBEstadoCivilAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Casado", "Soltero", "Viudo", "Divorciado", "Union Libre" }));
         jCBEstadoCivilAbonado.setName(""); // NOI18N
         jPanel2.add(jCBEstadoCivilAbonado);
-        jCBEstadoCivilAbonado.setBounds(430, 130, 200, 20);
+        jCBEstadoCivilAbonado.setBounds(430, 130, 200, 27);
 
         jLabel41.setText("Tipo Abonado");
         jPanel2.add(jLabel41);
-        jLabel41.setBounds(10, 190, 130, 14);
+        jLabel41.setBounds(10, 190, 130, 17);
 
         jCBTipoAbonadoAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Individual", "Corporativo" }));
         jCBTipoAbonadoAbonado.setName(""); // NOI18N
         jPanel2.add(jCBTipoAbonadoAbonado);
-        jCBTipoAbonadoAbonado.setBounds(130, 190, 200, 20);
+        jCBTipoAbonadoAbonado.setBounds(130, 190, 200, 27);
 
         jDCFechaNacimientoAbonado.setDateFormatString("dd MMM yyyy");
         jPanel2.add(jDCFechaNacimientoAbonado);
-        jDCFechaNacimientoAbonado.setBounds(130, 160, 200, 20);
+        jDCFechaNacimientoAbonado.setBounds(130, 160, 200, 29);
 
         jLabel42.setText("Barrio");
         jPanel2.add(jLabel42);
-        jLabel42.setBounds(10, 100, 80, 14);
+        jLabel42.setBounds(10, 100, 80, 17);
         jPanel2.add(jTFComunaAbonado);
-        jTFComunaAbonado.setBounds(430, 70, 200, 20);
+        jTFComunaAbonado.setBounds(430, 70, 200, 27);
 
         jLabel43.setText("Nombres");
         jPanel2.add(jLabel43);
-        jLabel43.setBounds(10, 40, 80, 14);
+        jLabel43.setBounds(10, 40, 80, 17);
         jPanel2.add(jTFNombresAbonado);
-        jTFNombresAbonado.setBounds(130, 40, 200, 20);
+        jTFNombresAbonado.setBounds(130, 40, 200, 27);
 
         jLabel44.setText("Direccion");
         jPanel2.add(jLabel44);
-        jLabel44.setBounds(10, 70, 80, 14);
+        jLabel44.setBounds(10, 70, 80, 17);
         jPanel2.add(jTFBarrioAbonado);
-        jTFBarrioAbonado.setBounds(130, 100, 200, 20);
+        jTFBarrioAbonado.setBounds(130, 100, 200, 27);
 
         jLabel45.setText("Comuna");
         jPanel2.add(jLabel45);
-        jLabel45.setBounds(360, 70, 80, 14);
+        jLabel45.setBounds(360, 70, 80, 17);
         jPanel2.add(jTFDireccionAbonado);
-        jTFDireccionAbonado.setBounds(130, 70, 200, 20);
+        jTFDireccionAbonado.setBounds(130, 70, 200, 27);
 
         jLabel46.setText("Ciudad");
         jPanel2.add(jLabel46);
-        jLabel46.setBounds(360, 100, 80, 14);
+        jLabel46.setBounds(360, 100, 80, 17);
         jPanel2.add(jTFCiudadAbonado);
-        jTFCiudadAbonado.setBounds(430, 100, 200, 20);
+        jTFCiudadAbonado.setBounds(430, 100, 200, 27);
 
         jLabel47.setText("Tipo Documento");
         jPanel2.add(jLabel47);
-        jLabel47.setBounds(340, 10, 100, 14);
+        jLabel47.setBounds(340, 10, 100, 17);
 
         jCBTipoDocumentoAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Cedula", "Tarjeta de Identidad", "Pasaporte" }));
         jCBTipoDocumentoAbonado.setName(""); // NOI18N
         jPanel2.add(jCBTipoDocumentoAbonado);
-        jCBTipoDocumentoAbonado.setBounds(430, 10, 200, 20);
+        jCBTipoDocumentoAbonado.setBounds(430, 10, 200, 27);
 
         jLabel48.setText("F. de Nacimiento");
         jPanel2.add(jLabel48);
-        jLabel48.setBounds(10, 160, 130, 14);
+        jLabel48.setBounds(10, 160, 130, 17);
 
         jLabel49.setText("Imei");
         jPanel2.add(jLabel49);
-        jLabel49.setBounds(360, 160, 100, 14);
+        jLabel49.setBounds(360, 160, 100, 17);
 
         jCBImeiAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Imei" }));
         jCBImeiAbonado.setName(""); // NOI18N
         jPanel2.add(jCBImeiAbonado);
-        jCBImeiAbonado.setBounds(430, 160, 200, 20);
+        jCBImeiAbonado.setBounds(430, 160, 200, 27);
 
         jTResultadosAbonado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -298,17 +300,17 @@ public class JPContrato extends javax.swing.JPanel {
 
         jPanel3.setLayout(null);
         jPanel3.add(jTFCodigoEmpleado);
-        jTFCodigoEmpleado.setBounds(140, 10, 100, 20);
+        jTFCodigoEmpleado.setBounds(140, 10, 100, 27);
 
         jLabel33.setText("Id");
         jPanel3.add(jLabel33);
-        jLabel33.setBounds(10, 10, 10, 14);
+        jLabel33.setBounds(10, 10, 11, 17);
 
         jLabel34.setText("Nombre");
         jPanel3.add(jLabel34);
-        jLabel34.setBounds(10, 40, 80, 14);
+        jLabel34.setBounds(10, 40, 80, 17);
         jPanel3.add(jTFNombreEmpleado);
-        jTFNombreEmpleado.setBounds(140, 40, 200, 20);
+        jTFNombreEmpleado.setBounds(140, 40, 200, 27);
 
         jLabel38.setText("F. de Ingreso");
         jPanel3.add(jLabel38);
@@ -316,25 +318,25 @@ public class JPContrato extends javax.swing.JPanel {
 
         jLabel37.setText("F. de Nacimiento");
         jPanel3.add(jLabel37);
-        jLabel37.setBounds(10, 100, 80, 14);
+        jLabel37.setBounds(10, 100, 108, 17);
 
         jLabel35.setText("Genero");
         jPanel3.add(jLabel35);
-        jLabel35.setBounds(390, 10, 70, 14);
+        jLabel35.setBounds(390, 10, 70, 17);
 
         jCBGeneroEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Femenino", "Masculino" }));
         jCBGeneroEmpleado.setName(""); // NOI18N
         jPanel3.add(jCBGeneroEmpleado);
-        jCBGeneroEmpleado.setBounds(470, 10, 170, 20);
+        jCBGeneroEmpleado.setBounds(470, 10, 170, 27);
 
         jLabel36.setText("Estado Civil");
         jPanel3.add(jLabel36);
-        jLabel36.setBounds(390, 40, 100, 14);
+        jLabel36.setBounds(390, 40, 100, 17);
 
         jCBEstadoCivilEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Casado", "Soltero", "Viudo", "Divorsiado", "Union Libre" }));
         jCBEstadoCivilEmpleado.setName(""); // NOI18N
         jPanel3.add(jCBEstadoCivilEmpleado);
-        jCBEstadoCivilEmpleado.setBounds(470, 40, 170, 20);
+        jCBEstadoCivilEmpleado.setBounds(470, 40, 170, 27);
 
         jLabel50.setText("Cargo");
         jPanel3.add(jLabel50);
@@ -343,7 +345,7 @@ public class JPContrato extends javax.swing.JPanel {
         jCBCargoEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Vendedor", "Gerente" }));
         jCBCargoEmpleado.setName(""); // NOI18N
         jPanel3.add(jCBCargoEmpleado);
-        jCBCargoEmpleado.setBounds(470, 70, 170, 20);
+        jCBCargoEmpleado.setBounds(470, 70, 170, 27);
 
         jLabel39.setText("Tipo de Contrato");
         jPanel3.add(jLabel39);
@@ -352,7 +354,7 @@ public class JPContrato extends javax.swing.JPanel {
         jCBTipoContratoEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Tiempo Completo", "Medio Tiempo", "Contratista" }));
         jCBTipoContratoEmpleado.setName(""); // NOI18N
         jPanel3.add(jCBTipoContratoEmpleado);
-        jCBTipoContratoEmpleado.setBounds(140, 130, 200, 20);
+        jCBTipoContratoEmpleado.setBounds(140, 130, 200, 27);
 
         jLabel51.setText("Sucursal");
         jPanel3.add(jLabel51);
@@ -361,16 +363,16 @@ public class JPContrato extends javax.swing.JPanel {
         jCBSucursalEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Sucursales" }));
         jCBSucursalEmpleado.setName(""); // NOI18N
         jCBSucursalEmpleado.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-            }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
                 jCBSucursalEmpleadoPopupMenuWillBecomeVisible(evt);
             }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
         });
         jPanel3.add(jCBSucursalEmpleado);
-        jCBSucursalEmpleado.setBounds(470, 100, 170, 20);
+        jCBSucursalEmpleado.setBounds(470, 100, 170, 27);
 
         jBLimpiarEmpleado.setText("Limpiar");
         jBLimpiarEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -379,7 +381,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel3.add(jBLimpiarEmpleado);
-        jBLimpiarEmpleado.setBounds(550, 140, 90, 23);
+        jBLimpiarEmpleado.setBounds(550, 140, 90, 33);
 
         jTResultadosEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -409,11 +411,11 @@ public class JPContrato extends javax.swing.JPanel {
 
         jDCFechaNacimientoEmpleado.setDateFormatString("dd MMM yyyy");
         jPanel3.add(jDCFechaNacimientoEmpleado);
-        jDCFechaNacimientoEmpleado.setBounds(140, 100, 200, 20);
+        jDCFechaNacimientoEmpleado.setBounds(140, 100, 200, 29);
 
         jDCFechaIngresoEmpleado.setDateFormatString("dd MMM yyyy");
         jPanel3.add(jDCFechaIngresoEmpleado);
-        jDCFechaIngresoEmpleado.setBounds(140, 70, 200, 20);
+        jDCFechaIngresoEmpleado.setBounds(140, 70, 200, 29);
 
         jBConsultarEmpleado.setText("Consultar");
         jBConsultarEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +424,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel3.add(jBConsultarEmpleado);
-        jBConsultarEmpleado.setBounds(400, 140, 120, 23);
+        jBConsultarEmpleado.setBounds(400, 140, 120, 33);
 
         jTabbedPane1.addTab("Empleado", jPanel3);
 
@@ -461,7 +463,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBConsultarPlan);
-        jBConsultarPlan.setBounds(390, 120, 90, 23);
+        jBConsultarPlan.setBounds(390, 120, 90, 33);
 
         jBLimpiarPlan.setText("Limpiar");
         jBLimpiarPlan.addActionListener(new java.awt.event.ActionListener() {
@@ -470,29 +472,29 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBLimpiarPlan);
-        jBLimpiarPlan.setBounds(510, 120, 90, 23);
+        jBLimpiarPlan.setBounds(510, 120, 90, 33);
 
         jLabel16.setText("Codigo");
         jPanel4.add(jLabel16);
-        jLabel16.setBounds(10, 10, 60, 14);
+        jLabel16.setBounds(10, 10, 60, 17);
         jPanel4.add(jTFCodigoPlan);
         jTFCodigoPlan.setBounds(120, 10, 180, 20);
 
         jLabel7.setText("Tarifa otro op.");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(10, 40, 70, 14);
+        jLabel7.setBounds(10, 40, 70, 17);
         jPanel4.add(jTFtarifa_otro_operadorPlan);
         jTFtarifa_otro_operadorPlan.setBounds(120, 40, 190, 20);
 
         jLabel17.setText("Tarifa msj multimedia");
         jPanel4.add(jLabel17);
-        jLabel17.setBounds(10, 70, 120, 14);
+        jLabel17.setBounds(10, 70, 120, 17);
         jPanel4.add(jTFtarifa_msj_multimediaPlan);
         jTFtarifa_msj_multimediaPlan.setBounds(120, 70, 190, 20);
 
         jLabel18.setText("Tarifa msj texto");
         jPanel4.add(jLabel18);
-        jLabel18.setBounds(390, 10, 100, 14);
+        jLabel18.setBounds(390, 10, 100, 17);
 
         jTtarifa_msj_textoPlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,7 +502,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jTtarifa_msj_textoPlan);
-        jTtarifa_msj_textoPlan.setBounds(500, 10, 160, 20);
+        jTtarifa_msj_textoPlan.setBounds(500, 10, 160, 27);
 
         jTabbedPane1.addTab("Plan", jPanel4);
 
@@ -539,7 +541,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel5.add(jBConsultarSimCard);
-        jBConsultarSimCard.setBounds(260, 100, 100, 23);
+        jBConsultarSimCard.setBounds(260, 100, 100, 33);
 
         jBLimpiarSimCard.setText("Limpiar");
         jBLimpiarSimCard.addActionListener(new java.awt.event.ActionListener() {
@@ -548,27 +550,27 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel5.add(jBLimpiarSimCard);
-        jBLimpiarSimCard.setBounds(390, 100, 100, 23);
+        jBLimpiarSimCard.setBounds(390, 100, 100, 33);
 
         jLabel10.setText("Autorizacion Roaming");
         jPanel5.add(jLabel10);
-        jLabel10.setBounds(270, 70, 110, 14);
+        jLabel10.setBounds(270, 70, 110, 17);
 
         jLabel11.setText("Numero Tel");
         jPanel5.add(jLabel11);
-        jLabel11.setBounds(10, 40, 70, 14);
+        jLabel11.setBounds(10, 40, 70, 17);
 
         jCBautorizacion_roamingSimCard.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
         jPanel5.add(jCBautorizacion_roamingSimCard);
-        jCBautorizacion_roamingSimCard.setBounds(390, 70, 100, 20);
+        jCBautorizacion_roamingSimCard.setBounds(390, 70, 100, 27);
 
         jCBActivacion_InternetSimCard.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
         jPanel5.add(jCBActivacion_InternetSimCard);
-        jCBActivacion_InternetSimCard.setBounds(130, 70, 100, 20);
+        jCBActivacion_InternetSimCard.setBounds(130, 70, 100, 27);
 
         jLabel27.setText("Activacion de Internet");
         jPanel5.add(jLabel27);
-        jLabel27.setBounds(10, 70, 140, 14);
+        jLabel27.setBounds(10, 70, 140, 17);
         jPanel5.add(jTFnum_telefonoSimCard);
         jTFnum_telefonoSimCard.setBounds(130, 40, 110, 20);
         jPanel5.add(jTFCodigoSimCard);
@@ -576,23 +578,23 @@ public class JPContrato extends javax.swing.JPanel {
 
         jLabel28.setText("Activacion Correo");
         jPanel5.add(jLabel28);
-        jLabel28.setBounds(270, 40, 100, 14);
+        jLabel28.setBounds(270, 40, 100, 17);
 
         jLabel29.setText("Bloqueado por robo");
         jPanel5.add(jLabel29);
-        jLabel29.setBounds(270, 10, 100, 14);
+        jLabel29.setBounds(270, 10, 100, 17);
 
         jCBactivacion_correoSimCard.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
         jPanel5.add(jCBactivacion_correoSimCard);
-        jCBactivacion_correoSimCard.setBounds(390, 40, 100, 20);
+        jCBactivacion_correoSimCard.setBounds(390, 40, 100, 27);
 
         jLabel12.setText("Codigo");
         jPanel5.add(jLabel12);
-        jLabel12.setBounds(10, 10, 60, 14);
+        jLabel12.setBounds(10, 10, 60, 17);
 
         jCBbloqueado_por_roboSimCard.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
         jPanel5.add(jCBbloqueado_por_roboSimCard);
-        jCBbloqueado_por_roboSimCard.setBounds(390, 10, 100, 20);
+        jCBbloqueado_por_roboSimCard.setBounds(390, 10, 100, 27);
 
         jTabbedPane1.addTab("SimCard", jPanel5);
 
@@ -600,49 +602,49 @@ public class JPContrato extends javax.swing.JPanel {
 
         jLabel1.setText("Id Abonado");
         jPanel6.add(jLabel1);
-        jLabel1.setBounds(10, 14, 80, 14);
+        jLabel1.setBounds(10, 14, 80, 17);
 
         jTFIdAbonadoContrato.setEditable(false);
         jTFIdAbonadoContrato.setEnabled(false);
         jPanel6.add(jTFIdAbonadoContrato);
-        jTFIdAbonadoContrato.setBounds(89, 11, 120, 20);
+        jTFIdAbonadoContrato.setBounds(89, 11, 120, 27);
 
         jLabel2.setText("Id Empleado");
         jPanel6.add(jLabel2);
-        jLabel2.setBounds(250, 10, 80, 14);
+        jLabel2.setBounds(250, 10, 80, 17);
 
         jTFIdEmpleadoContrato.setEditable(false);
         jTFIdEmpleadoContrato.setEnabled(false);
         jPanel6.add(jTFIdEmpleadoContrato);
-        jTFIdEmpleadoContrato.setBounds(330, 10, 120, 20);
+        jTFIdEmpleadoContrato.setBounds(330, 10, 120, 27);
 
         jLabel3.setText("Id Plan");
         jPanel6.add(jLabel3);
-        jLabel3.setBounds(500, 10, 80, 14);
+        jLabel3.setBounds(500, 10, 80, 17);
 
         jTFIdPlanContrato.setEditable(false);
         jTFIdPlanContrato.setEnabled(false);
         jPanel6.add(jTFIdPlanContrato);
-        jTFIdPlanContrato.setBounds(560, 10, 120, 20);
+        jTFIdPlanContrato.setBounds(560, 10, 120, 27);
 
         jLabel4.setText("Id SimCard");
         jPanel6.add(jLabel4);
-        jLabel4.setBounds(10, 50, 80, 14);
+        jLabel4.setBounds(10, 50, 80, 17);
 
         jTFIdSimdCardContrato.setEditable(false);
         jTFIdSimdCardContrato.setEnabled(false);
         jPanel6.add(jTFIdSimdCardContrato);
-        jTFIdSimdCardContrato.setBounds(90, 50, 120, 20);
+        jTFIdSimdCardContrato.setBounds(90, 50, 120, 27);
         jPanel6.add(jSeparator1);
         jSeparator1.setBounds(0, 80, 720, 10);
 
         jLabel52.setText("Fecha Contrato");
         jPanel6.add(jLabel52);
-        jLabel52.setBounds(10, 90, 130, 14);
+        jLabel52.setBounds(10, 90, 130, 17);
 
         jDCFechaIngresoContrato.setDateFormatString("dd MMM yyyy");
         jPanel6.add(jDCFechaIngresoContrato);
-        jDCFechaIngresoContrato.setBounds(100, 90, 200, 20);
+        jDCFechaIngresoContrato.setBounds(100, 90, 200, 29);
 
         jBLimpiarContrato.setText("Limpiar");
         jBLimpiarContrato.addActionListener(new java.awt.event.ActionListener() {
@@ -651,7 +653,7 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel6.add(jBLimpiarContrato);
-        jBLimpiarContrato.setBounds(500, 120, 110, 23);
+        jBLimpiarContrato.setBounds(500, 120, 110, 33);
 
         jBGenerarContrato.setText("Generar Contrato");
         jBGenerarContrato.addActionListener(new java.awt.event.ActionListener() {
@@ -660,7 +662,19 @@ public class JPContrato extends javax.swing.JPanel {
             }
         });
         jPanel6.add(jBGenerarContrato);
-        jBGenerarContrato.setBounds(310, 120, 150, 23);
+        jBGenerarContrato.setBounds(310, 120, 150, 33);
+
+        jTFValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFValorActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jTFValor);
+        jTFValor.setBounds(330, 50, 79, 27);
+
+        jLabel5.setText("Valor");
+        jPanel6.add(jLabel5);
+        jLabel5.setBounds(260, 50, 45, 17);
 
         jTabbedPane1.addTab("Contrato", jPanel6);
 
@@ -959,7 +973,8 @@ int guardar = -1;
                     jTFIdEmpleadoContrato.getText(),
                     jTFIdPlanContrato.getText(),
                     jTFIdSimdCardContrato.getText(),
-                    fecha);
+                    fecha,
+                    Integer.parseInt(jTFValor.getText()));
 
         } catch (Exception e) {
         }
@@ -980,6 +995,10 @@ int guardar = -1;
         jTFIdPlanContrato.setText("");
         jDCFechaIngresoContrato.setDate(new Date());
     }//GEN-LAST:event_jBLimpiarContratoActionPerformed
+
+    private void jTFValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFValorActionPerformed
 
     public void cargarJComboBox() {
         jCBImeiAbonado.setModel(
@@ -1094,6 +1113,7 @@ int guardar = -1;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -1124,6 +1144,7 @@ int guardar = -1;
     private javax.swing.JTextField jTFIdSimdCardContrato;
     private javax.swing.JTextField jTFNombreEmpleado;
     private javax.swing.JTextField jTFNombresAbonado;
+    private javax.swing.JTextField jTFValor;
     private javax.swing.JTextField jTFnum_telefonoSimCard;
     private javax.swing.JTextField jTFtarifa_msj_multimediaPlan;
     private javax.swing.JTextField jTFtarifa_otro_operadorPlan;

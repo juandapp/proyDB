@@ -21,15 +21,16 @@ public class ControladorContrato {
     }
 
     public int guardar(String abonado, String empleado, String plan, 
-            String sim, Date fecha_ingreso) {
+            String sim, Date fecha_ingreso,int valor) {
         if (!abonado.isEmpty() && !empleado.isEmpty()  && 
-                !plan.isEmpty() && !sim.isEmpty() && fecha_ingreso!= null)
+                !plan.isEmpty() && !sim.isEmpty() && fecha_ingreso!= null &&
+                valor>0)
            {
             Abonado abon=new DaoAbonado().consultar(abonado);
             Empleado empl=new DaoEmpleado().consultar(empleado);
             Plan p=new DaoPlan().consultar(plan);
             Simcard simcard=new DaoSimcard().consultar(sim);  
-            Contrato contrato= new Contrato(abon, empl, p, simcard, fecha_ingreso);
+            Contrato contrato= new Contrato(abon, empl, p, simcard, fecha_ingreso,valor);
             
             
             int retorno = daoContrato.guardar(contrato);

@@ -16,17 +16,19 @@ public class Contrato {
     private Plan plan;
     private Simcard sim;
     private Date fecha_ingreso;
+    private int valor;
 
     public Contrato() {
     }
 
     public Contrato(Abonado abonado, Empleado empleado, Plan plan, 
-            Simcard sim, Date fecha_ingreso) {
+            Simcard sim, Date fecha_ingreso, int valor) {
         this.abonado = abonado;
         this.empleado = empleado;
         this.plan = plan;
         this.sim = sim;
         this.fecha_ingreso = fecha_ingreso;
+        this.valor=valor;
     }
 
     /**
@@ -97,6 +99,20 @@ public class Contrato {
      */
     public void setFecha_ingreso(Date fecha_ingreso) {
         this.fecha_ingreso = fecha_ingreso;
+    }
+
+    /**
+     * @return the valor
+     */
+    public int getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(int valor) {
+        this.valor = valor;
     }
     
     

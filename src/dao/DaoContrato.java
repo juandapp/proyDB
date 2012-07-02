@@ -31,7 +31,8 @@ public class DaoContrato {
                 + contrato.getEmpleado().getId_empleado() + "', '"
                 + contrato.getPlan().getCod_plan()+ "', '"
                 + contrato.getSim().getCodigo() + "', '"
-                + contrato.getFecha_ingreso() + "')";
+                + contrato.getFecha_ingreso() + "', "
+                + contrato.getValor() + ")";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
