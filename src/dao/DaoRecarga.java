@@ -62,7 +62,7 @@ public LinkedList consultar(String valor, String fecha, String medio_recarga, St
             sql_select += " valor = " + valor + " AND ";
         }
         if (!fecha.equals("")) {
-            sql_select += " fecha = '" + fecha + "%" + " AND ";
+            sql_select += " fecha = '" + fecha + "'" + " AND ";
         }
         if (!medio_recarga.equals("")) {
             sql_select += " medio_recarga LIKE '%" + medio_recarga + "%'" + " AND ";
