@@ -744,6 +744,7 @@ public class JPContrato extends javax.swing.JPanel {
     private void jTResultadosPlanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosPlanMouseClicked
         int selectedRow = jTResultadosPlan.getSelectedRow();
         jTFIdPlanContrato.setText("" + jTResultadosPlan.getModel().getValueAt(selectedRow, 0));
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jTResultadosPlanMouseClicked
 
     private void jBConsultarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarPlanActionPerformed
@@ -794,6 +795,7 @@ public class JPContrato extends javax.swing.JPanel {
     private void jTResultadosSimCardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosSimCardMouseClicked
         int selectedRow = jTResultadosSimCard.getSelectedRow();
         jTFIdSimdCardContrato.setText("" + jTResultadosSimCard.getModel().getValueAt(selectedRow, 0));
+        jTabbedPane1.setSelectedIndex(4);
    }//GEN-LAST:event_jTResultadosSimCardMouseClicked
 
     private void jBConsultarSimCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarSimCardActionPerformed
@@ -917,6 +919,7 @@ public class JPContrato extends javax.swing.JPanel {
     private void jTResultadosAbonadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosAbonadoMouseClicked
         int selectedRow = jTResultadosAbonado.getSelectedRow();
         jTFIdAbonadoContrato.setText("" + jTResultadosAbonado.getModel().getValueAt(selectedRow, 0));
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jTResultadosAbonadoMouseClicked
 
     private void jBLimpiarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarEmpleadoActionPerformed
@@ -927,6 +930,7 @@ public class JPContrato extends javax.swing.JPanel {
     private void jTResultadosEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosEmpleadoMouseClicked
         int selectedRow = jTResultadosEmpleado.getSelectedRow();
         jTFIdEmpleadoContrato.setText("" + jTResultadosEmpleado.getModel().getValueAt(selectedRow, 0));
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosEmpleadoMouseClicked
 
     public void cargarJComboBox() {

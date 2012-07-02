@@ -83,10 +83,10 @@ public class DaoPlan {
         if (!String.valueOf(cod_plan).equals("") || !tarifa_otro_operador.equals("")
                 || !tarifa_msj_multimedia.equals("")
                 || !tarifa_msj_texto.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += "WHERE  ";
         }
         if (!String.valueOf(cod_plan).equals("")) {
-            sql_select += "cod_plan = " + cod_plan + " AND ";
+            sql_select += "cod_plan = '" + cod_plan + "' AND ";
         }
         if (!tarifa_otro_operador.equals("")) {
             sql_select += "tarifa_otro_operador =  " + tarifa_otro_operador + "" + " AND ";
