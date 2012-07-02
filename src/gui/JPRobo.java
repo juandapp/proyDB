@@ -180,9 +180,6 @@ public class JPRobo extends javax.swing.JPanel {
         jLabel3.setBounds(10, 40, 90, 14);
         jPanel2.add(jTFCiudadReporte);
         jTFCiudadReporte.setBounds(70, 40, 120, 20);
-
-        jTFSimcardReporte1.setEditable(false);
-        jTFSimcardReporte1.setEnabled(false);
         jPanel2.add(jTFSimcardReporte1);
         jTFSimcardReporte1.setBounds(70, 10, 120, 20);
 
