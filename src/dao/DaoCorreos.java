@@ -85,12 +85,13 @@ public class DaoCorreos {
         if (!email.equals("")) {
             sql_select += " email ='" + email + "' AND ";
         }
-        if(!id_abonado.equals("")){
+        if(!id_abonado.equals("") && !id_abonado.equals("Cargar Abonado")){
             sql_select += " id_abonado = '"+id_abonado+"'"+" AND ";
         }
       
                 
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
