@@ -533,6 +533,45 @@ public class DaoConsultas {
         return null;
     }
     
+    public LinkedList franjaRedUso() {
+        String sql_view;
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        sql_view="CREATE OR REPLACE VIEW vista_franja AS "+
+                "SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
+                "UNION ALL "+
+                "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada ";
+
+        sql_select = "SELECT franja_horaria,count(*) AS veces_usada  "+
+                     "FROM vista_franja "+
+                     "GROUP BY franja_horaria "+
+                     "GORDER BY veces_usada  DESC;";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeQuery(sql_view);
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[2];
+                resultado[0]=tabla.getString("franja_horaria");
+                resultado[1]=tabla.getString("veces_usada");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
     
     
 }
