@@ -289,6 +289,7 @@ public class JPEquipo extends javax.swing.JPanel {
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
         limpiarCamposConsultar();
+        jBConsultar2.doClick();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
