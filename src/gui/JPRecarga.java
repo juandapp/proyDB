@@ -280,10 +280,15 @@ int guardar = -1;
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
 LinkedList consulta = new LinkedList();
-        try {
+      try {
+            
+java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha2.getDate().getTime());
+  
+System.err.println(jTFValor2.getText()+","+fecha_recarga.toString()+","+jCBMedioRecarga2.getSelectedItem().toString()
+        +","+jCBSimCard2.getSelectedItem().toString());
             consulta = cr.consultar(
                     jTFValor2.getText(),
-                    jDCFecha2.getDate().toString(),
+                    fecha_recarga.toString(),
                     jCBMedioRecarga2.getSelectedItem().toString(),
                     jCBSimCard2.getSelectedItem().toString());
 
@@ -294,7 +299,7 @@ LinkedList consulta = new LinkedList();
                     s[i][0] = recarga.getValor();
                     s[i][1] = recarga.getFecha();
                     s[i][2] = recarga.getMedio_recarga();
-                    s[i][3] = recarga.getSimcard();
+                    s[i][3] = recarga.getSimcard().getCodigo();
                 } else {
                     s = null;
                 }
