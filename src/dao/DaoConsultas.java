@@ -134,5 +134,44 @@ public class DaoConsultas {
         return null;
     }
     
+    public LinkedList usuariosPlan(String tipo_plan) {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+
+        sql_select = "SELECT "+
+                    "id,nombres,apellidos,direccion,ciudad,"
+                +   " cod_plan,simcard,fecha_ingreso"+
+                    "FROM abonado join contrato "+
+                    "where id=id_abonado and cod_plan IN "
+                  + " (SELECT cod_plan from "+tipo_plan+"); ";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[8];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("nombres");
+                resultado[2]=tabla.getString("apellidos");
+                resultado[3]=tabla.getString("direccion");
+                resultado[4]=tabla.getString("ciudad");
+                resultado[5]=tabla.getString("cod_plan");
+                resultado[6]=tabla.getString("simcard");
+                resultado[7]=tabla.getString("fecha_ingreso");
+                consulta.add(resultado);
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     
 }

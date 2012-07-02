@@ -43,4 +43,12 @@ LinkedList consultar = new LinkedList();
         return consultar;
   
     }
+   
+   public LinkedList usuariosPlan(String tipo_plan){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.usuariosPlan(tipo_plan);
+        return consultar;
+  
+    }
 }
