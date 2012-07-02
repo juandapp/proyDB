@@ -51,4 +51,12 @@ LinkedList consultar = new LinkedList();
         return consultar;
   
     }
+   
+   public LinkedList listadoPlanDatos(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.listadoPlanDatos();
+        return consultar;
+  
+    }
 }

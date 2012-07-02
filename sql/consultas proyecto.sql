@@ -5,9 +5,9 @@ FROM contrato JOIN abonado ON id=id_abonado ORDER BY MONTH(fecha_ingreso);
 
 --Franjas mayor uso de la red
 CREATE OR REPLACE VIEW vista_franja AS
-SELECT HOUR(hora_inicio)AS franja_horaria FROM llamada
+SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada
 UNION ALL
-SELECT HOUR(hora_fin)AS franja_horaria FROM llamada 
+SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada 
 ;
 
 SELECT franja_horaria,count(*) AS veces_usada 
