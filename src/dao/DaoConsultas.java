@@ -534,6 +534,8 @@ public class DaoConsultas {
         return null;
     }
     
+  
+    
     public LinkedList franjaRedUso() {
         String sql_view;
         String sql_select;

@@ -141,6 +141,13 @@ LinkedList consultar = new LinkedList();
   
     }
    
+   public LinkedList planCorp(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.planPreferCorp();
+        return consultar;
+  
+    }
    
    
    
