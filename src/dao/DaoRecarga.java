@@ -67,7 +67,7 @@ public LinkedList consultar(String valor, String fecha, String medio_recarga, St
         if (!medio_recarga.equals(" ")) {
             sql_select += " medio_recarga LIKE '%" + medio_recarga + "%'" + " AND ";
         }
-        if (!simcard.equals("") && !simcard.equals("Cargar Simcard") ) {
+        if (!simcard.equals("") && !simcard.equals(" ") ) {
             sql_select += " simcard = '" + simcard + "'" + " AND ";
         }
         
