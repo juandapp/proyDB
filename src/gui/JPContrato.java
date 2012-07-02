@@ -9,9 +9,7 @@ import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import logica.Abonado;
-import logica.Empleado;
-import logica.Simcard;
+import logica.*;
 
 /**
  *
@@ -26,12 +24,14 @@ public class JPContrato extends javax.swing.JPanel {
     ControladorEmpleado controladorEmpleado;
     ControladorSimcard controladorSimCard;
     ControladorAbonado controladorAbonado;
+    ControladorPlan controladorPlan;
 
     public JPContrato() {
         controladorSimCard = new ControladorSimcard();
         controladorSucursal = new ControladorSucursal();
         controladorEmpleado = new ControladorEmpleado();
         controladorAbonado = new ControladorAbonado();
+        controladorPlan = new ControladorPlan();
         initComponents();
         cargarJComboBox();
     }
@@ -114,10 +114,6 @@ public class JPContrato extends javax.swing.JPanel {
         jTFtarifa_msj_multimediaPlan = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jTtarifa_msj_textoPlan = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jTtotal_minutosPlan = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jTcosto_min_adicionalPlan = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTResultadosSimCard = new javax.swing.JTable();
@@ -143,7 +139,7 @@ public class JPContrato extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jTFIdPlanContrato = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTFIdPlanContrato1 = new javax.swing.JTextField();
+        jTFIdSimdCardContrato = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel52 = new javax.swing.JLabel();
         jDCFechaIngresoContrato = new com.toedter.calendar.JDateChooser();
@@ -207,7 +203,7 @@ public class JPContrato extends javax.swing.JPanel {
         jPanel2.add(jLabel41);
         jLabel41.setBounds(10, 190, 130, 14);
 
-        jCBTipoAbonadoAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Prepago", "Postpago", "Empresarial" }));
+        jCBTipoAbonadoAbonado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Individual", "Corporativo" }));
         jCBTipoAbonadoAbonado.setName(""); // NOI18N
         jPanel2.add(jCBTipoAbonadoAbonado);
         jCBTipoAbonadoAbonado.setBounds(130, 190, 200, 20);
@@ -373,6 +369,11 @@ public class JPContrato extends javax.swing.JPanel {
         jCBSucursalEmpleado.setBounds(470, 100, 170, 20);
 
         jBLimpiarEmpleado.setText("Limpiar");
+        jBLimpiarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarEmpleadoActionPerformed(evt);
+            }
+        });
         jPanel3.add(jBLimpiarEmpleado);
         jBLimpiarEmpleado.setBounds(550, 140, 90, 23);
 
@@ -390,6 +391,11 @@ public class JPContrato extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTResultadosEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultadosEmpleadoMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTResultadosEmpleado);
@@ -491,18 +497,6 @@ public class JPContrato extends javax.swing.JPanel {
         });
         jPanel4.add(jTtarifa_msj_textoPlan);
         jTtarifa_msj_textoPlan.setBounds(500, 10, 160, 20);
-
-        jLabel19.setText("Total minutos");
-        jPanel4.add(jLabel19);
-        jLabel19.setBounds(390, 40, 100, 14);
-        jPanel4.add(jTtotal_minutosPlan);
-        jTtotal_minutosPlan.setBounds(500, 40, 160, 20);
-
-        jLabel20.setText("Costo min adicional");
-        jPanel4.add(jLabel20);
-        jLabel20.setBounds(390, 70, 110, 14);
-        jPanel4.add(jTcosto_min_adicionalPlan);
-        jTcosto_min_adicionalPlan.setBounds(500, 70, 160, 20);
 
         jTabbedPane1.addTab("Plan", jPanel4);
 
@@ -631,10 +625,10 @@ public class JPContrato extends javax.swing.JPanel {
         jPanel6.add(jLabel4);
         jLabel4.setBounds(10, 50, 80, 14);
 
-        jTFIdPlanContrato1.setEditable(false);
-        jTFIdPlanContrato1.setEnabled(false);
-        jPanel6.add(jTFIdPlanContrato1);
-        jTFIdPlanContrato1.setBounds(90, 50, 120, 20);
+        jTFIdSimdCardContrato.setEditable(false);
+        jTFIdSimdCardContrato.setEnabled(false);
+        jPanel6.add(jTFIdSimdCardContrato);
+        jTFIdSimdCardContrato.setBounds(90, 50, 120, 20);
         jPanel6.add(jSeparator1);
         jSeparator1.setBounds(0, 80, 720, 10);
 
@@ -743,20 +737,63 @@ public class JPContrato extends javax.swing.JPanel {
     }//GEN-LAST:event_jBConsultarEmpleadoActionPerformed
 
     private void jBLimpiarAbonadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarAbonadoActionPerformed
-        limpiarCamposConsultar();
+        limpiarCamposConsultarAbonado();
         jBConsultarAbonado.doClick();
     }//GEN-LAST:event_jBLimpiarAbonadoActionPerformed
 
     private void jTResultadosPlanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosPlanMouseClicked
+        int selectedRow = jTResultadosPlan.getSelectedRow();
+        jTFIdPlanContrato.setText("" + jTResultadosPlan.getModel().getValueAt(selectedRow, 0));
     }//GEN-LAST:event_jTResultadosPlanMouseClicked
 
     private void jBConsultarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarPlanActionPerformed
+        LinkedList consulta = new LinkedList();
+        try {
+            consulta = controladorPlan.consultar(
+                    jTFCodigoPlan.getText(),
+                    jTFtarifa_otro_operadorPlan.getText(),
+                    jTFtarifa_msj_multimediaPlan.getText(),
+                    jTtarifa_msj_textoPlan.getText());
+
+            Object[][] s = new Object[consulta.size()][4];
+            for (int i = 0; i < consulta.size(); i++) {
+                Plan plan = (Plan) consulta.get(i);
+                if (plan.getCod_plan() != null) {
+                    s[i][0] = plan.getCod_plan();
+                    s[i][1] = plan.getTarifa_otro_operador();
+                    s[i][2] = plan.getTarifa_msj_multimedia();
+                    s[i][3] = plan.getTarifa_msj_texto();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo", "Tarifa_otros_operadores",
+                        "Tarifa_msj_multimedia", "Tarifa_msj_texto"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultadosPlan.setModel(myModel);
+            jTResultadosPlan.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jBConsultarPlanActionPerformed
 
     private void jBLimpiarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarPlanActionPerformed
+        limpiarCamposConsultarPlan();
+        jBConsultarPlan.doClick();
     }//GEN-LAST:event_jBLimpiarPlanActionPerformed
 
     private void jTResultadosSimCardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosSimCardMouseClicked
+        int selectedRow = jTResultadosSimCard.getSelectedRow();
+        jTFIdSimdCardContrato.setText("" + jTResultadosSimCard.getModel().getValueAt(selectedRow, 0));
    }//GEN-LAST:event_jTResultadosSimCardMouseClicked
 
     private void jBConsultarSimCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarSimCardActionPerformed
@@ -805,6 +842,8 @@ public class JPContrato extends javax.swing.JPanel {
     }//GEN-LAST:event_jBConsultarSimCardActionPerformed
 
     private void jBLimpiarSimCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarSimCardActionPerformed
+        limpiarCamposConsultarSimCard();
+        jBConsultarSimCard.doClick();
    }//GEN-LAST:event_jBLimpiarSimCardActionPerformed
 
     private void jTtarifa_msj_textoPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTtarifa_msj_textoPlanActionPerformed
@@ -876,9 +915,19 @@ public class JPContrato extends javax.swing.JPanel {
     }//GEN-LAST:event_jBConsultarAbonadoActionPerformed
 
     private void jTResultadosAbonadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosAbonadoMouseClicked
-        int selectedRow = jTResultadosPlan.getSelectedRow();
-        jTFIdAbonadoContrato.setText("" + jTResultadosPlan.getModel().getValueAt(selectedRow, 0));
+        int selectedRow = jTResultadosAbonado.getSelectedRow();
+        jTFIdAbonadoContrato.setText("" + jTResultadosAbonado.getModel().getValueAt(selectedRow, 0));
     }//GEN-LAST:event_jTResultadosAbonadoMouseClicked
+
+    private void jBLimpiarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarEmpleadoActionPerformed
+        limpiarCamposConsultarEmpleado();
+        jBConsultarEmpleado.doClick();
+    }//GEN-LAST:event_jBLimpiarEmpleadoActionPerformed
+
+    private void jTResultadosEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosEmpleadoMouseClicked
+        int selectedRow = jTResultadosEmpleado.getSelectedRow();
+        jTFIdEmpleadoContrato.setText("" + jTResultadosEmpleado.getModel().getValueAt(selectedRow, 0));
+    }//GEN-LAST:event_jTResultadosEmpleadoMouseClicked
 
     public void cargarJComboBox() {
         jCBImeiAbonado.setModel(
@@ -887,7 +936,27 @@ public class JPContrato extends javax.swing.JPanel {
                 new javax.swing.DefaultComboBoxModel(controladorSucursal.listar()));
     }
 
-    private void limpiarCamposConsultar() {
+    private void limpiarCamposConsultarPlan() {
+        jTFCodigoPlan.setText("");
+        jTFtarifa_msj_multimediaPlan.setText("");
+        jTFtarifa_otro_operadorPlan.setText("");
+        jTtarifa_msj_textoPlan.setText("");
+
+    }
+
+    private void limpiarCamposConsultarEmpleado() {
+        jTFCodigoEmpleado.setText("");
+        jTFNombreEmpleado.setText("");
+        jCBCargoEmpleado.setSelectedIndex(0);
+        jCBEstadoCivilEmpleado.setSelectedIndex(0);
+        jCBGeneroEmpleado.setSelectedIndex(0);
+        jCBSucursalEmpleado.setSelectedIndex(0);
+        jCBTipoContratoEmpleado.setSelectedIndex(0);
+        jDCFechaIngresoEmpleado.setDate(null);
+        jDCFechaNacimientoEmpleado.setDate(null);
+    }
+
+    private void limpiarCamposConsultarAbonado() {
         jTFCodigoAbonado.setText("");
         jTFNombresAbonado.setText("");
         jTFDireccionAbonado.setText("");
@@ -901,6 +970,15 @@ public class JPContrato extends javax.swing.JPanel {
         jTFCiudadAbonado.setText("");
         jCBEstadoCivilAbonado.setSelectedIndex(0);
         jCBImeiAbonado.setSelectedIndex(0);
+    }
+
+    private void limpiarCamposConsultarSimCard() {
+        jTFCodigoSimCard.setText("");
+        jTFnum_telefonoSimCard.setText("");
+        jCBActivacion_InternetSimCard.setSelectedIndex(0);
+        jCBbloqueado_por_roboSimCard.setSelectedIndex(0);
+        jCBactivacion_correoSimCard.setSelectedIndex(0);
+        jCBautorizacion_roamingSimCard.setSelectedIndex(0);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultarAbonado;
@@ -938,9 +1016,7 @@ public class JPContrato extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -993,7 +1069,7 @@ public class JPContrato extends javax.swing.JPanel {
     private javax.swing.JTextField jTFIdAbonadoContrato;
     private javax.swing.JTextField jTFIdEmpleadoContrato;
     private javax.swing.JTextField jTFIdPlanContrato;
-    private javax.swing.JTextField jTFIdPlanContrato1;
+    private javax.swing.JTextField jTFIdSimdCardContrato;
     private javax.swing.JTextField jTFNombreEmpleado;
     private javax.swing.JTextField jTFNombresAbonado;
     private javax.swing.JTextField jTFnum_telefonoSimCard;
@@ -1004,8 +1080,6 @@ public class JPContrato extends javax.swing.JPanel {
     private javax.swing.JTable jTResultadosPlan;
     private javax.swing.JTable jTResultadosSimCard;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTcosto_min_adicionalPlan;
     private javax.swing.JTextField jTtarifa_msj_textoPlan;
-    private javax.swing.JTextField jTtotal_minutosPlan;
     // End of variables declaration//GEN-END:variables
 }
