@@ -62,6 +62,8 @@ public class DaoConsultas {
         return null;
     }
 
+    
+    
     public LinkedList clientesPorTipo(String tipo) {
         String sql_select;
         LinkedList consulta = new LinkedList();
@@ -98,4 +100,39 @@ public class DaoConsultas {
         }
         return null;
     }
+    
+    
+    
+    public LinkedList planesMasEscogidos() {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+
+        sql_select = "SELECT "+
+                    "COUNT(cod_plan) AS suscriptores,cod_plan"+
+                    "FROM contrato NATURAL JOIN plan"+
+                    "GROUP BY cod_plan ORDER BY suscriptores DESC; ";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[2];
+                resultado[0]=tabla.getString("suscriptores");
+                resultado[1]=tabla.getString("cod_plan");
+                consulta.add(resultado);
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
 }

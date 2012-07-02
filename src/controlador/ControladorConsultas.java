@@ -35,4 +35,12 @@ LinkedList consultar = new LinkedList();
         return consultar;
   
     }
+   
+   public LinkedList planesMasEscogidos(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.planesMasEscogidos();
+        return consultar;
+  
+    }
 }
