@@ -68,7 +68,6 @@ public class JPRobo extends javax.swing.JPanel {
         jDCFechaEnviarMensaje = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Reporte por robo"));
         jPanel1.setLayout(null);
@@ -202,9 +201,6 @@ public class JPRobo extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Reporte", jPanel2);
 
-        jPanel3.setLayout(null);
-        jTabbedPane1.addTab("Consultar Reporte", jPanel3);
-
         jPanel1.add(jTabbedPane1);
         jTabbedPane1.setBounds(10, 20, 520, 300);
 
@@ -220,11 +216,32 @@ public class JPRobo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-        int selectedRow = jTResultados.getSelectedRow();
-        jTFSimcardReporte1.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTabbedPane1.setSelectedIndex(1);
-    }//GEN-LAST:event_jTResultadosMouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int guardar = -1;
+        try {
+            java.sql.Date fecha = new java.sql.Date(jDCFechaEnviarMensaje.getDate().getTime());
+            guardar = controladorSimCardRobo.guardar(jTFSimcardReporte1.getText(), jTFCiudadReporte.getText(), fecha);
+
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo Enviar el mensaje", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Mensaje Enviado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            // limpiarCamposConsultarMensajesEnviados();
+//            jTFSimdCardConsultarSmsEnviados.setText(jTFSimdCardEnviarMensaje.getText());
+//            jBConsultarMensajes_Enviados.doClick();
+//            jBLimpiarEnviarMensaje.doClick();
+//            jTabbedPaneMensajes.setSelectedIndex(3);
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+        limpiarCamposSimCard();
+        jBConsultar1.doClick();
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
         // TODO add your handling code here:
@@ -271,32 +288,11 @@ public class JPRobo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jBConsultar1ActionPerformed
 
-    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-        limpiarCamposSimCard();
-        jBConsultar1.doClick();
-    }//GEN-LAST:event_jBLimpiar1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int guardar = -1;
-        try {
-            java.sql.Date fecha = new java.sql.Date(jDCFechaEnviarMensaje.getDate().getTime());
-            guardar = controladorSimCardRobo.guardar(jTFSimcardReporte1.getText(),jTFCiudadReporte.getText(),fecha);
-
-        } catch (Exception e) {
-        }
-
-        if (guardar == -1) {
-            JOptionPane.showMessageDialog(this, "No su pudo Enviar el mensaje", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Mensaje Enviado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
-           // limpiarCamposConsultarMensajesEnviados();
-//            jTFSimdCardConsultarSmsEnviados.setText(jTFSimdCardEnviarMensaje.getText());
-//            jBConsultarMensajes_Enviados.doClick();
-//            jBLimpiarEnviarMensaje.doClick();
-//            jTabbedPaneMensajes.setSelectedIndex(3);
-
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFSimcardReporte1.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void limpiarCamposSimCard() {
         jTFCodigo1.setText("");
@@ -327,7 +323,6 @@ public class JPRobo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFCiudadReporte;
