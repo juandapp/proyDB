@@ -59,4 +59,12 @@ LinkedList consultar = new LinkedList();
         return consultar;
   
     }
+   
+   public LinkedList operadoresExtranjeros(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.operadoresExtranjeros();
+        return consultar;
+  
+    }
 }

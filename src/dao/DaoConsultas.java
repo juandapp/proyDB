@@ -214,4 +214,42 @@ public class DaoConsultas {
         return null;
     }
     
+    
+    public LinkedList operadoresExtranjeros() {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+
+        sql_select = "SELECT "+
+                     "* "+
+                     "FROM cia_internacional; ";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[9];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("nombre");
+                resultado[2]=tabla.getString("pais");
+                resultado[3]=tabla.getString("tarifa_mensajes");
+                resultado[4]=tabla.getString("tar_llamada_entra_inter");
+                resultado[5]=tabla.getString("tar_llamada_sal_inter");
+                resultado[6]=tabla.getString("tar_llamada_entra_nal");
+                resultado[7]=tabla.getString("tar_llamada_sal_nal");
+                resultado[8]=tabla.getString("tar_datos_enviados");
+                consulta.add(resultado);
+            }
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
 }
