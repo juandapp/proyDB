@@ -56,12 +56,12 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTResultados1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jBCPrepago = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jBCPostpago = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        JBCPlanEscogido = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTResultados2 = new javax.swing.JTable();
@@ -108,7 +108,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBConsultar2);
-        jBConsultar2.setBounds(50, 90, 90, 23);
+        jBConsultar2.setBounds(50, 90, 90, 33);
 
         jBLimpiar2.setText("Limpiar");
         jBLimpiar2.addActionListener(new java.awt.event.ActionListener() {
@@ -117,36 +117,36 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jBLimpiar2);
-        jBLimpiar2.setBounds(180, 90, 90, 23);
+        jBLimpiar2.setBounds(180, 90, 90, 33);
 
         jLabel7.setText("Fecha 1");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 30, 70, 14);
+        jLabel7.setBounds(10, 30, 70, 17);
 
         jDCFecha2.setDateFormatString("yyyy-MMM-dd");
         jPanel1.add(jDCFecha2);
-        jDCFecha2.setBounds(90, 30, 110, 20);
+        jDCFecha2.setBounds(90, 30, 110, 29);
 
         jLabel15.setText("Tipo");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(280, 30, 60, 14);
+        jLabel15.setBounds(280, 30, 60, 17);
 
         jCBMedioRecarga2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Individual", "Corporativo" }));
         jCBMedioRecarga2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jCBMedioRecarga2);
-        jCBMedioRecarga2.setBounds(280, 50, 150, 20);
+        jCBMedioRecarga2.setBounds(280, 50, 150, 27);
 
         jDCFecha3.setDateFormatString("yyyy-MMM-dd");
         jPanel1.add(jDCFecha3);
-        jDCFecha3.setBounds(90, 60, 110, 20);
+        jDCFecha3.setBounds(90, 60, 110, 29);
 
         jLabel8.setText("Fecha 2");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(10, 60, 70, 14);
+        jLabel8.setBounds(10, 60, 70, 17);
 
         jLabel1.setText("Rango de Tiempo");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(50, 10, 130, 14);
+        jLabel1.setBounds(50, 10, 130, 17);
 
         jButton1.setText("Por Tipo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +155,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(300, 90, 90, 23);
+        jButton1.setBounds(300, 90, 90, 33);
 
         jTabbedPane1.addTab("Clientes", jPanel1);
 
@@ -184,10 +184,10 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jTResultados1.getColumnModel().getColumn(3).setHeaderValue("Direccion");
         jTResultados1.getColumnModel().getColumn(4).setHeaderValue("Ciudad");
 
-        jButton2.setText("Prepago");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBCPrepago.setText("Prepago");
+        jBCPrepago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBCPrepagoActionPerformed(evt);
             }
         });
 
@@ -195,16 +195,16 @@ public class JPConsultarCliente extends javax.swing.JPanel {
 
         jLabel3.setText("usuarios de planes postpago");
 
-        jButton3.setText("Postpago");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBCPostpago.setText("Postpago");
+        jBCPostpago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBCPostpagoActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Planes mas escogidos");
 
-        jButton4.setText("Consultar");
+        JBCPlanEscogido.setText("Consultar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -224,10 +224,10 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton4))
-                        .addGap(0, 121, Short.MAX_VALUE)))
+                                .addComponent(jBCPostpago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBCPrepago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(JBCPlanEscogido))
+                        .addGap(0, 110, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -236,15 +236,15 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jBCPrepago))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jButton3))
+                    .addComponent(jBCPostpago))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton4))
+                    .addComponent(JBCPlanEscogido))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -291,7 +291,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(30, 30, 30)
@@ -306,7 +306,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -446,13 +446,97 @@ jCBMedioRecarga2.setSelectedIndex(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTResultados1MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBCPrepagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCPrepagoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         LinkedList consulta = new LinkedList();
+       
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       try {
+
+            consulta = cc.usuariosPlan("prepago");
+
+            Object[][] s = new Object[consulta.size()][8];
+            for (int i = 0; i < consulta.size(); i++) {
+                String [] retorno = (String []) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+                    s[i][6] = retorno[6];
+                    s[i][7] = retorno[6];
+                    
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Nombres", "Apellidos", 
+                "Direccion", "Ciudad"
+            , "Plan", "Simcard","Fecha"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false,false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados1.setModel(myModel);
+            jTResultados1.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        
+    }//GEN-LAST:event_jBCPrepagoActionPerformed
+
+    private void jBCPostpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCPostpagoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        LinkedList consulta = new LinkedList();
+       
+
+       try {
+
+            consulta = cc.usuariosPlan("postpago");
+
+            Object[][] s = new Object[consulta.size()][8];
+            for (int i = 0; i < consulta.size(); i++) {
+                String [] retorno = (String []) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+                    s[i][6] = retorno[6];
+                    s[i][7] = retorno[6];
+                    
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Nombres", "Apellidos", 
+                "Direccion", "Ciudad"
+            , "Plan", "Simcard","Fecha"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false,false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados1.setModel(myModel);
+            jTResultados1.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        
+    }//GEN-LAST:event_jBCPostpagoActionPerformed
 
     private void jTResultados2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados2MouseClicked
         // TODO add your handling code here:
@@ -460,15 +544,16 @@ jCBMedioRecarga2.setSelectedIndex(0);
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBCPlanEscogido;
+    private javax.swing.JButton jBCPostpago;
+    private javax.swing.JButton jBCPrepago;
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBLimpiar2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jCBMedioRecarga2;
     private com.toedter.calendar.JDateChooser jDCFecha2;

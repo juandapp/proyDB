@@ -144,7 +144,7 @@ public class DaoConsultas {
                     "id,nombres,apellidos,direccion,ciudad,"
                 +   " cod_plan,simcard,fecha_ingreso"+
                     "FROM abonado join contrato "+
-                    "where id=id_abonado and cod_plan IN "
+                    "ON id=id_abonado and cod_plan IN "
                   + " (SELECT cod_plan from "+tipo_plan+"); ";
                 
              try {
