@@ -309,6 +309,7 @@ public class DaoConsultas {
                 consulta.add(resultado);
             }
             
+            
             conn.close();
             System.out.println("Conexion cerrada");
             return consulta;

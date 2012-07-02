@@ -688,7 +688,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
 
         try {
 
-            //consulta = cc.
+            consulta = cc.planCorp();
 
             Object[][] s = new Object[consulta.size()][2];
             for (int i = 0; i < consulta.size(); i++) {
@@ -702,9 +702,9 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                     s = null;
                 }
             }
-            TableModel myModel = new DefaultTableModel(s, new String[]{"Nombres", "Apellidos", "Direccion", "Ciudad", "Cod_Plan", "fecha_ingreso", "Tipo"}) {
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo Plan Corporativo", "Suscriptores"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -712,8 +712,8 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 }
             };
             ///remover filas
-            jTResultados.setModel(myModel);
-            jTResultados.setRowSorter(new TableRowSorter(myModel));
+            jTResultados3.setModel(myModel);
+            jTResultados3.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
         }
