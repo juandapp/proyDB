@@ -883,9 +883,10 @@ public class JPContrato extends javax.swing.JPanel {
     public void cargarJComboBox() {
         jCBImeiAbonado.setModel(
                 new javax.swing.DefaultComboBoxModel(new ControladorEquipo().listar()));
-
+        jCBSucursalEmpleado.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSucursal.listar()));
     }
-    
+
     private void limpiarCamposConsultar() {
         jTFCodigoAbonado.setText("");
         jTFNombresAbonado.setText("");
@@ -901,8 +902,6 @@ public class JPContrato extends javax.swing.JPanel {
         jCBEstadoCivilAbonado.setSelectedIndex(0);
         jCBImeiAbonado.setSelectedIndex(0);
     }
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultarAbonado;
     private javax.swing.JButton jBConsultarEmpleado;
