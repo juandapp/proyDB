@@ -34,12 +34,16 @@ GROUP BY cod_plan ORDER BY suscriptores DESC;
 
 
 ---Clientes Postpago
-SELECT id,nombres,apellidos,direccion,ciudad,cod_plan,simcard,fecha_ingreso FROM abonado join contrato where id=id_abonado and cod_plan IN (SELECT cod_plan from postpago);
+SELECT id,nombres,apellidos,direccion,ciudad,cod_plan,simcard,fecha_ingreso 
+FROM abonado join contrato 
+where id=id_abonado and cod_plan IN (SELECT cod_plan from postpago);
 
 
 
 ---Clientes Prepago
-SELECT id,nombres,apellidos,direccion,ciudad,cod_plan,simcard,fecha_ingreso FROM abonado join contrato where id=id_abonado and cod_plan IN (SELECT cod_plan from postpago);
+SELECT id,nombres,apellidos,direccion,ciudad,cod_plan,simcard,fecha_ingreso 
+FROM abonado join contrato 
+where id=id_abonado and cod_plan IN (SELECT cod_plan from prepago);
 
 
 
