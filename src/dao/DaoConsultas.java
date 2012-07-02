@@ -186,7 +186,7 @@ public class DaoConsultas {
                 +   "vol_datos_correo,vol_datos_internet"+
                     "FROM abonado JOIN contrato NATURAL JOIN plan_datos_simcard "
                   + "NATURAL JOIN plan_datos "+
-                    "WHERE id=id_abonado ORDER BY id; ";
+                    "ON id=id_abonado ORDER BY id; ";
                 
              try {
             Connection conn = fachada.conectar();

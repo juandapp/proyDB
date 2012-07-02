@@ -39,7 +39,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTPCPlanDatos = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
@@ -67,6 +67,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jTResultados2 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jBCPlanDatos = new javax.swing.JButton();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
         jPanel3.setLayout(null);
@@ -157,7 +158,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jPanel1.add(jButton1);
         jButton1.setBounds(300, 90, 90, 33);
 
-        jTabbedPane1.addTab("Clientes", jPanel1);
+        jTPCPlanDatos.addTab("Clientes", jPanel1);
 
         jTResultados1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,14 +251,14 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Planes", jPanel2);
+        jTPCPlanDatos.addTab("Planes", jPanel2);
 
         jTResultados2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id Abonado", "Nombre", "Apellido", "Plan de Datos", "Costo Correo", "Cos. Internet", "Vol Datos Correo", "Vol Datos Internet"
+                "Id Abonado", "Nombre", "Apellido", "Plan de Datos", "Costo Correo", "Costo Internet", "Vol Datos Correo", "Vol Datos Internet"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -284,6 +285,13 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
 
+        jBCPlanDatos.setText("Generar");
+        jBCPlanDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCPlanDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -293,28 +301,36 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton5)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jBCPlanDatos)
+                                .addGap(382, 382, 382)
+                                .addComponent(jButton5))
+                            .addComponent(jLabel5))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCPlanDatos)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
 
-        jTabbedPane1.addTab("Plan Datos", jPanel4);
+        jTPCPlanDatos.addTab("Plan Datos", jPanel4);
 
-        jPanel3.add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 20, 460, 310);
+        jPanel3.add(jTPCPlanDatos);
+        jTPCPlanDatos.setBounds(10, 20, 460, 310);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -547,8 +563,54 @@ jCBMedioRecarga2.setSelectedIndex(0);
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jBCPlanDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCPlanDatosActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+       
+
+       try {
+
+            consulta = cc.listadoPlanDatos();
+
+            Object[][] s = new Object[consulta.size()][8];
+            for (int i = 0; i < consulta.size(); i++) {
+                String [] retorno = (String []) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+                    s[i][6] = retorno[6];
+                    s[i][7] = retorno[6];
+                    
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Nombres", "Apellidos", 
+                "Plan de Datos", "Costo Correo"
+            , "Costo Internet", "Vol Datos Correo","Vol Datos Internet"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false,false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados2.setModel(myModel);
+            jTResultados2.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }//GEN-LAST:event_jBCPlanDatosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCPlanEscogido;
+    private javax.swing.JButton jBCPlanDatos;
     private javax.swing.JButton jBCPostpago;
     private javax.swing.JButton jBCPrepago;
     private javax.swing.JButton jBConsultar2;
@@ -573,9 +635,9 @@ jCBMedioRecarga2.setSelectedIndex(0);
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTPCPlanDatos;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTable jTResultados1;
     private javax.swing.JTable jTResultados2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
