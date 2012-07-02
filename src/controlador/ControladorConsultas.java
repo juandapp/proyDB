@@ -67,4 +67,14 @@ LinkedList consultar = new LinkedList();
         return consultar;
   
     }
+   
+   public LinkedList operNacionalUtil(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.operNacionalUtil();
+        return consultar;
+  
+    }
+   
+   
 }

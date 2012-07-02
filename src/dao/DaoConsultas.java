@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import logica.Empleado;
 import logica.Abonado;
@@ -251,5 +252,221 @@ public class DaoConsultas {
         }
         return null;
     }
+    
+    
+    public LinkedList operNacionalUtil() {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT cia_local,COUNT(cia_local) AS veces_utilizado "+
+                     "FROM llamada GROUP BY cia_local;";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[2];
+                resultado[0]=tabla.getString("cia_local");
+                resultado[1]=tabla.getString("veces_utilizado");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
+    public LinkedList planPreferCorp() {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT cod_plan AS codigo_plan_corporativo,COUNT(cod_plan) "+
+                    "AS suscriptores FROM abonado JOIN contrato WHERE "+
+                    "id=id_abonado AND tipo='corporativo'  "+
+                     "GROUP BY cod_plan ORDER BY suscriptores DESC;";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[2];
+                resultado[0]=tabla.getString("codigo_plan_corporativo");
+                resultado[1]=tabla.getString("suscriptores");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
+    public LinkedList ConsumoInternetCorreoGenero(String genero) {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT id,genero,ciudad,cod_plan_datos,vol_datos_correo,vol_datos_internet "+
+                    "FROM abonado JOIN contrato NATURAL JOIN plan_datos_simcard "+
+                     "WHERE id=id_abonado AND genero='"+genero+"';";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[6];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("genero");
+                resultado[2]=tabla.getString("ciudad");
+                resultado[3]=tabla.getString("cod_plan_datos");
+                resultado[4]=tabla.getString("vol_datos_correo");
+                resultado[5]=tabla.getString("vol_datos_internet");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public LinkedList ConsumoInternetCorreoCiudad(String ciudad) {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT id,genero,ciudad,cod_plan_datos,vol_datos_correo,vol_datos_internet "+
+                    "FROM abonado JOIN contrato NATURAL JOIN plan_datos_simcard "+
+                     "WHERE id=id_abonado AND ciudad='"+ciudad+"';";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[6];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("genero");
+                resultado[2]=tabla.getString("ciudad");
+                resultado[3]=tabla.getString("cod_plan_datos");
+                resultado[4]=tabla.getString("vol_datos_correo");
+                resultado[5]=tabla.getString("vol_datos_internet");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public LinkedList ConsumoMensajesGen(String genero) {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT id,genero,ciudad,cia_local,fecha,hora,msjs_enviados "+
+                    "FROM abonado JOIN contrato NATURAL JOIN consumo_mensaje "+
+                     "WHERE id=id_abonado AND genero='"+genero+"';";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[7];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("genero");
+                resultado[2]=tabla.getString("ciudad");
+                resultado[3]=tabla.getString("cia_local");
+                resultado[4]=tabla.getString("fecha");
+                resultado[5]=tabla.getString("hora");
+                resultado[6]=tabla.getString("msjs_enviados");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
+    public LinkedList ConsumoMensajesCiudad(String ciudad) {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT id,genero,ciudad,cia_local,fecha,hora,msjs_enviados "+
+                    "FROM abonado JOIN contrato NATURAL JOIN consumo_mensaje "+
+                     "WHERE id=id_abonado AND ciudad='"+ciudad+"';";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[7];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("genero");
+                resultado[2]=tabla.getString("ciudad");
+                resultado[3]=tabla.getString("cia_local");
+                resultado[4]=tabla.getString("fecha");
+                resultado[5]=tabla.getString("hora");
+                resultado[6]=tabla.getString("msjs_enviados");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
     
 }
