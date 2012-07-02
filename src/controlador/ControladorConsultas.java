@@ -76,5 +76,37 @@ LinkedList consultar = new LinkedList();
   
     }
    
+   public LinkedList ConsumoInternetCorreoGen(String genero){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.ConsumoInternetCorreoGenero(genero);
+        return consultar;
+  
+    }
+   
+   public LinkedList ConsumoInternetCorreoCiudad(String ciudad){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.ConsumoInternetCorreoCiudad(ciudad);
+        return consultar;
+  
+    }
+   
+   public LinkedList ConsumoMensajeCiudad(String ciudad){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.ConsumoMensajesCiudad(ciudad);
+        return consultar;
+  
+    }
+   
+   public LinkedList ConsumoMensajeGenero(String genero){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.ConsumoMensajesGen(genero);
+        return consultar;
+  
+    }
+   
    
 }
