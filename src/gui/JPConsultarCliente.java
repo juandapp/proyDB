@@ -62,6 +62,11 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTResultados2 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
         jPanel3.setLayout(null);
@@ -90,6 +95,8 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTResultados);
+        jTResultados.getColumnModel().getColumn(2).setHeaderValue("Direccion");
+        jTResultados.getColumnModel().getColumn(3).setHeaderValue("Ciudad");
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 130, 440, 140);
@@ -174,6 +181,8 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(jTResultados1);
+        jTResultados1.getColumnModel().getColumn(3).setHeaderValue("Direccion");
+        jTResultados1.getColumnModel().getColumn(4).setHeaderValue("Ciudad");
 
         jButton2.setText("Prepago");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -242,6 +251,67 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Planes", jPanel2);
+
+        jTResultados2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Abonado", "Nombre", "Apellido", "Plan de Datos", "Costo Correo", "Cos. Internet", "Vol Datos Correo", "Vol Datos Internet"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTResultados2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultados2MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTResultados2);
+
+        jLabel5.setText("Listado usuarios que contratan plan de datos y consumo mensual");
+
+        jButton5.setText("Consultar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton5)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        jTabbedPane1.addTab("Plan Datos", jPanel4);
 
         jPanel3.add(jTabbedPane1);
         jTabbedPane1.setBounds(10, 20, 460, 310);
@@ -384,6 +454,14 @@ jCBMedioRecarga2.setSelectedIndex(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTResultados2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTResultados2MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
     private javax.swing.JButton jBLimpiar2;
@@ -391,6 +469,7 @@ jCBMedioRecarga2.setSelectedIndex(0);
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jCBMedioRecarga2;
     private com.toedter.calendar.JDateChooser jDCFecha2;
     private com.toedter.calendar.JDateChooser jDCFecha3;
@@ -399,15 +478,19 @@ jCBMedioRecarga2.setSelectedIndex(0);
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTable jTResultados1;
+    private javax.swing.JTable jTResultados2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
