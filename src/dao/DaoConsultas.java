@@ -468,5 +468,71 @@ public class DaoConsultas {
     }
     
     
+    public LinkedList roboConsulta() {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT fecha,ciudad  "+
+                     "FROM simcard_robo;";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[2];
+                resultado[0]=tabla.getString("fecha");
+                resultado[1]=tabla.getString("ciudad");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
+    public LinkedList equiposDemandados() {
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        
+
+        sql_select = "SELECT modelo,marca,COUNT(modelo) AS cantidad  "+
+                     "FROM equipo NATURAL JOIN abonado "+
+                     "GROUP BY modelo ORDER BY cantidad DESC;";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[3];
+                resultado[0]=tabla.getString("modelo");
+                resultado[1]=tabla.getString("marca");
+                resultado[2]=tabla.getString("cantidad");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
     
 }

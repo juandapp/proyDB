@@ -108,5 +108,21 @@ LinkedList consultar = new LinkedList();
   
     }
    
+   public LinkedList roboConsulta(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.roboConsulta();
+        return consultar;
+  
+    }
+   
+   public LinkedList equiposDemandados(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.equiposDemandados();
+        return consultar;
+  
+    }
+   
    
 }
