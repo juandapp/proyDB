@@ -21,17 +21,15 @@ public class ControladorContrato {
     }
 
     public int guardar(String abonado, String empleado, String plan, 
-            String sim, String fecha_ingreso) {
+            String sim, Date fecha_ingreso) {
         if (!abonado.isEmpty() && !empleado.isEmpty()  && 
-                !plan.isEmpty() && !sim.isEmpty() && !fecha_ingreso.isEmpty())
+                !plan.isEmpty() && !sim.isEmpty() && fecha_ingreso!= null)
            {
             Abonado abon=new DaoAbonado().consultar(abonado);
             Empleado empl=new DaoEmpleado().consultar(empleado);
             Plan p=new DaoPlan().consultar(plan);
-            Simcard simcard=new DaoSimcard().consultar(sim);
-            Date fecha=java.sql.Date.valueOf(fecha_ingreso);
-            
-            Contrato contrato= new Contrato(abon, empl, p, simcard, fecha);
+            Simcard simcard=new DaoSimcard().consultar(sim);  
+            Contrato contrato= new Contrato(abon, empl, p, simcard, fecha_ingreso);
             
             
             int retorno = daoContrato.guardar(contrato);
@@ -55,24 +53,24 @@ public class ControladorContrato {
         return consulta;
     }
 
-    public int editar(String abonado, String empleado, String plan, 
-            String sim, String fecha_ingreso) {
-        if (!abonado.isEmpty() && !empleado.isEmpty()  && 
-                !plan.isEmpty() && !sim.isEmpty() && !fecha_ingreso.isEmpty())
-           {
-            Abonado abon=new DaoAbonado().consultar(abonado);
-            Empleado empl=new DaoEmpleado().consultar(empleado);
-            Plan p=new DaoPlan().consultar(plan);
-            Simcard simcard=new DaoSimcard().consultar(sim);
-            Date fecha=java.sql.Date.valueOf(fecha_ingreso);
-            
-            Contrato contrato= new Contrato(abon, empl, p, simcard, fecha);
-            
-            
-            int retorno = daoContrato.editar(contrato);
-            return retorno;
-        } else {
-            return -1;
-        }
-    }
+//    public int editar(String abonado, String empleado, String plan, 
+//            String sim, String fecha_ingreso) {
+//        if (!abonado.isEmpty() && !empleado.isEmpty()  && 
+//                !plan.isEmpty() && !sim.isEmpty() && !fecha_ingreso.isEmpty())
+//           {
+//            Abonado abon=new DaoAbonado().consultar(abonado);
+//            Empleado empl=new DaoEmpleado().consultar(empleado);
+//            Plan p=new DaoPlan().consultar(plan);
+//            Simcard simcard=new DaoSimcard().consultar(sim);
+//            Date fecha=java.sql.Date.valueOf(fecha_ingreso);
+//            
+//            Contrato contrato= new Contrato(abon, empl, p, simcard, fecha);
+//            
+//            
+//            int retorno = daoContrato.editar(contrato);
+//            return retorno;
+//        } else {
+//            return -1;
+//        }
+//    }
 }

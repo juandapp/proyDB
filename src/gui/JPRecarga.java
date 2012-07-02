@@ -29,6 +29,10 @@ public class JPRecarga extends javax.swing.JPanel {
         initComponents();
         cr = new ControladorRecarga();
         controladorSimcard = new ControladorSimcard();
+        jCBSimCard1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
+        jCBSimCard2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
     }
 
     /**
@@ -327,6 +331,7 @@ public class JPRecarga extends javax.swing.JPanel {
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
         limpiarCamposConsultar();
+        jBConsultar2.doClick();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked

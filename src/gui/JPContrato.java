@@ -5,7 +5,9 @@
 package gui;
 
 import controlador.*;
+import java.util.Date;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -25,6 +27,7 @@ public class JPContrato extends javax.swing.JPanel {
     ControladorSimcard controladorSimCard;
     ControladorAbonado controladorAbonado;
     ControladorPlan controladorPlan;
+    ControladorContrato controladorContrato;
 
     public JPContrato() {
         controladorSimCard = new ControladorSimcard();
@@ -32,6 +35,7 @@ public class JPContrato extends javax.swing.JPanel {
         controladorEmpleado = new ControladorEmpleado();
         controladorAbonado = new ControladorAbonado();
         controladorPlan = new ControladorPlan();
+        controladorContrato = new ControladorContrato();
         initComponents();
         cargarJComboBox();
     }
@@ -641,10 +645,20 @@ public class JPContrato extends javax.swing.JPanel {
         jDCFechaIngresoContrato.setBounds(100, 90, 200, 20);
 
         jBLimpiarContrato.setText("Limpiar");
+        jBLimpiarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarContratoActionPerformed(evt);
+            }
+        });
         jPanel6.add(jBLimpiarContrato);
         jBLimpiarContrato.setBounds(500, 120, 110, 23);
 
         jBGenerarContrato.setText("Generar Contrato");
+        jBGenerarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGenerarContratoActionPerformed(evt);
+            }
+        });
         jPanel6.add(jBGenerarContrato);
         jBGenerarContrato.setBounds(310, 120, 150, 23);
 
@@ -745,6 +759,7 @@ public class JPContrato extends javax.swing.JPanel {
         int selectedRow = jTResultadosPlan.getSelectedRow();
         jTFIdPlanContrato.setText("" + jTResultadosPlan.getModel().getValueAt(selectedRow, 0));
         jTabbedPane1.setSelectedIndex(3);
+        jBConsultarSimCard.doClick();
     }//GEN-LAST:event_jTResultadosPlanMouseClicked
 
     private void jBConsultarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarPlanActionPerformed
@@ -795,6 +810,7 @@ public class JPContrato extends javax.swing.JPanel {
     private void jTResultadosSimCardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosSimCardMouseClicked
         int selectedRow = jTResultadosSimCard.getSelectedRow();
         jTFIdSimdCardContrato.setText("" + jTResultadosSimCard.getModel().getValueAt(selectedRow, 0));
+        jDCFechaIngresoContrato.setDate(new Date());
         jTabbedPane1.setSelectedIndex(4);
    }//GEN-LAST:event_jTResultadosSimCardMouseClicked
 
@@ -920,6 +936,7 @@ public class JPContrato extends javax.swing.JPanel {
         int selectedRow = jTResultadosAbonado.getSelectedRow();
         jTFIdAbonadoContrato.setText("" + jTResultadosAbonado.getModel().getValueAt(selectedRow, 0));
         jTabbedPane1.setSelectedIndex(1);
+        jBConsultarEmpleado.doClick();
     }//GEN-LAST:event_jTResultadosAbonadoMouseClicked
 
     private void jBLimpiarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarEmpleadoActionPerformed
@@ -931,7 +948,38 @@ public class JPContrato extends javax.swing.JPanel {
         int selectedRow = jTResultadosEmpleado.getSelectedRow();
         jTFIdEmpleadoContrato.setText("" + jTResultadosEmpleado.getModel().getValueAt(selectedRow, 0));
         jTabbedPane1.setSelectedIndex(2);
+        jBConsultarPlan.doClick();
     }//GEN-LAST:event_jTResultadosEmpleadoMouseClicked
+
+    private void jBGenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenerarContratoActionPerformed
+int guardar = -1;
+        try {
+            java.sql.Date fecha = new java.sql.Date(jDCFechaIngresoContrato.getDate().getTime());
+            guardar = controladorContrato.guardar(jTFIdAbonadoContrato.getText(),
+                    jTFIdEmpleadoContrato.getText(),
+                    jTFIdPlanContrato.getText(),
+                    jTFIdSimdCardContrato.getText(),
+                    fecha);
+
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo hacer el contrato", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Contrato Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            jBLimpiarContrato.doClick();
+            jTabbedPane1.setSelectedIndex(0);
+
+        }    }//GEN-LAST:event_jBGenerarContratoActionPerformed
+
+    private void jBLimpiarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarContratoActionPerformed
+        jTFIdAbonadoContrato.setText("");
+        jTFIdSimdCardContrato.setText("");
+        jTFIdEmpleadoContrato.setText("");
+        jTFIdPlanContrato.setText("");
+        jDCFechaIngresoContrato.setDate(new Date());
+    }//GEN-LAST:event_jBLimpiarContratoActionPerformed
 
     public void cargarJComboBox() {
         jCBImeiAbonado.setModel(
