@@ -125,4 +125,24 @@ LinkedList consultar = new LinkedList();
     }
    
    
+   public LinkedList oficinasGanancias(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.oficinaGanancias();
+        return consultar;
+  
+    }
+   
+   public LinkedList consumoTipoAbonado(String tipo,String consumo){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.ConsumoTipoAbonado(tipo, consumo);
+        return consultar;
+  
+    }
+   
+   
+   
+   
+   
 }

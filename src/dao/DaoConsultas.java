@@ -294,7 +294,7 @@ public class DaoConsultas {
         
 
         sql_select = "SELECT cod_plan AS codigo_plan_corporativo,COUNT(cod_plan) "+
-                    "AS suscriptores FROM abonado JOIN contrato WHERE "+
+                    "AS suscriptores FROM abonado JOIN contrato ON "+
                     "id=id_abonado AND tipo='corporativo'  "+
                      "GROUP BY cod_plan ORDER BY suscriptores DESC;";
                 
@@ -329,7 +329,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT id,genero,ciudad,cod_plan_datos,vol_datos_correo,vol_datos_internet "+
                     "FROM abonado JOIN contrato NATURAL JOIN plan_datos_simcard "+
-                     "WHERE id=id_abonado AND genero='"+genero+"';";
+                     "ON id=id_abonado AND genero='"+genero+"';";
                 
              try {
             Connection conn = fachada.conectar();
@@ -365,7 +365,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT id,genero,ciudad,cod_plan_datos,vol_datos_correo,vol_datos_internet "+
                     "FROM abonado JOIN contrato NATURAL JOIN plan_datos_simcard "+
-                     "WHERE id=id_abonado AND ciudad='"+ciudad+"';";
+                     "ON id=id_abonado AND ciudad='"+ciudad+"';";
                 
              try {
             Connection conn = fachada.conectar();
@@ -401,7 +401,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT id,genero,ciudad,cia_local,fecha,hora,msjs_enviados "+
                     "FROM abonado JOIN contrato NATURAL JOIN consumo_mensaje "+
-                     "WHERE id=id_abonado AND genero='"+genero+"';";
+                     "ON id=id_abonado AND genero='"+genero+"';";
                 
              try {
             Connection conn = fachada.conectar();
@@ -439,7 +439,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT id,genero,ciudad,cia_local,fecha,hora,msjs_enviados "+
                     "FROM abonado JOIN contrato NATURAL JOIN consumo_mensaje "+
-                     "WHERE id=id_abonado AND ciudad='"+ciudad+"';";
+                     "ON id=id_abonado AND ciudad='"+ciudad+"';";
                 
              try {
             Connection conn = fachada.conectar();
@@ -542,12 +542,12 @@ public class DaoConsultas {
         sql_view="CREATE OR REPLACE VIEW vista_franja AS "+
                 "SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
                 "UNION ALL "+
-                "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada ";
+                "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada; ";
 
         sql_select = "SELECT franja_horaria,count(*) AS veces_usada  "+
                      "FROM vista_franja "+
                      "GROUP BY franja_horaria "+
-                     "GORDER BY veces_usada  DESC;";
+                     "ORDER BY veces_usada  DESC;";
                 
              try {
             Connection conn = fachada.conectar();
@@ -572,7 +572,111 @@ public class DaoConsultas {
         return null;
     }
     
+    public LinkedList oficinaGanancias() {
+        String sql_view;
+        String sql_select;
+        LinkedList consulta = new LinkedList();
+        
+        sql_view="CREATE OR REPLACE VIEW sucursal_empleado AS "+
+                "SELECT id_empleado ,s.nombre AS nombre_sucursal,s.cod_sucursal "+
+                "from (empleado e JOIN sucursal s)  "+
+                "ON e.cod_sucursal=s.cod_sucursal; ";
+
+        sql_select = "SELECT cod_sucursal,nombre_sucursal,SUM(valor) AS Facturacion "+
+                     "FROM (sucursal_empleado NATURAL JOIN contrato)  "+
+                     "GROUP BY cod_sucursal;";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeQuery(sql_view);
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            while (tabla.next()) {
+                String[] resultado=new String[3];
+                resultado[0]=tabla.getString("cod_sucursal");
+                resultado[1]=tabla.getString("nombre_sucursal");
+                resultado[2]=tabla.getString("Facturacion");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
     
+    
+    public LinkedList ConsumoTipoAbonado(String tipo,String consumo) {
+        String sql_select="";
+        String sql_vista;
+        LinkedList consulta = new LinkedList();
+        
+        
+        
+        sql_vista="CREATE OR REPLACE VIEW datos_consumo AS "+
+                "SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
+                "FROM abonado JOIN contrato "+
+                "ON id=id_abonado; ";
+        
+        
+       if(consumo.equals("mensaje"))
+        sql_select = "SELECT id,tipo,nombres,apellidos,simcard,msjs_enviados,cia_local,fecha,hora "+
+                    "FROM datos_consumo NATURAL JOIN consumo_mensaje "+
+                     "where tipo='"+tipo+"';";
+       
+       if(consumo.equals("llamada"))
+           sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin"+
+                    "FROM datos_consumo NATURAL JOIN llamada "+
+                     "where tipo='"+tipo+"';";
+                
+             try {
+            Connection conn = fachada.conectar();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            if(consumo.equals("llamada"))
+            while (tabla.next()) {
+                String[] resultado=new String[8];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("tipo");
+                resultado[2]=tabla.getString("nombres");
+                resultado[3]=tabla.getString("apellidos");
+                resultado[4]=tabla.getString("simcard");
+                resultado[5]=tabla.getString("cia_local");
+                resultado[6]=tabla.getString("hora_inicio");
+                resultado[7]=tabla.getString("hora_fin");
+                consulta.add(resultado);
+            }
+            
+            if(consumo.equals("mensaje"))
+                while (tabla.next()) {
+                String[] resultado=new String[8];
+                resultado[0]=tabla.getString("id");
+                resultado[1]=tabla.getString("tipo");
+                resultado[2]=tabla.getString("nombres");
+                resultado[3]=tabla.getString("apellidos");
+                resultado[4]=tabla.getString("simcard");
+                resultado[5]=tabla.getString("msjs_enviados");
+                resultado[6]=tabla.getString("cia_local");
+                resultado[7]=tabla.getString("fecha");
+                resultado[8]=tabla.getString("hora");
+                consulta.add(resultado);
+            }
+            
+            conn.close();
+            System.out.println("Conexion cerrada");
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
     
     
 }
