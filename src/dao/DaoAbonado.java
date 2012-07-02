@@ -56,15 +56,17 @@ public class DaoAbonado {
     public Abonado consultar(String id) {
         Abonado a = new Abonado();
         String sql_select;
-        sql_select = "SELECT * FROM abonado WHERE id='" + id + "'";
+        sql_select = "SELECT * FROM abonado WHERE id = '" + id + "' ";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
 
+           // System.err.println("aqui "+sql_select);
             //
             if (tabla.next()) {
-
+//System.err.println("SIIII");
+                a.setId(tabla.getString("id"));
                 a.setNombres(tabla.getString("nombres"));
                 a.setApellidos(tabla.getString("apellidos"));
                 a.setDireccion(tabla.getString("direccion"));

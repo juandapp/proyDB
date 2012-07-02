@@ -53,11 +53,10 @@ public class ControladorLlamada {
         return ll;
     }
 
-   public LinkedList consultar(String sim,String hora_inicio,String fecha,
-            String telefono_destino,String hora_fin,String cLocal) {
+   public LinkedList consultar(String sim,String fecha,String cLocal) {
         LinkedList llamadaConsultados = new LinkedList();
-        llamadaConsultados = daoLlamada.consultar(sim, hora_inicio, fecha, 
-                telefono_destino, hora_fin, cLocal);
+        llamadaConsultados = daoLlamada.consultar(sim, fecha, 
+                  cLocal);
         return llamadaConsultados;
     }
     public int editar(String sim,Time hora_inicio,Date fecha,

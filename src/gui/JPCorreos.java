@@ -58,12 +58,6 @@ public class JPCorreos extends javax.swing.JPanel {
         jCBAbonado2 = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
         jTEmail2 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jBModificar3 = new javax.swing.JButton();
-        jTEmail3 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jCBAbonado3 = new javax.swing.JComboBox();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Correo"));
         jPanel3.setLayout(null);
@@ -81,6 +75,11 @@ public class JPCorreos extends javax.swing.JPanel {
         jLabel6.setBounds(10, 40, 70, 14);
 
         jBLimpiar1.setText("Limpiar");
+        jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBLimpiar1);
         jBLimpiar1.setBounds(40, 90, 72, 23);
 
@@ -179,44 +178,6 @@ public class JPCorreos extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Consultar", jPanel1);
 
-        jPanel2.setLayout(null);
-
-        jBModificar3.setText("Modificar");
-        jBModificar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBModificar3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jBModificar3);
-        jBModificar3.setBounds(80, 80, 90, 23);
-
-        jTEmail3.setEditable(false);
-        jPanel2.add(jTEmail3);
-        jTEmail3.setBounds(80, 10, 100, 20);
-
-        jLabel14.setText("Email");
-        jPanel2.add(jLabel14);
-        jLabel14.setBounds(10, 10, 40, 14);
-
-        jLabel2.setText("Abonado");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 40, 60, 14);
-
-        jCBAbonado3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Abonado", " " }));
-        jCBAbonado3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jCBAbonado3PopupMenuWillBecomeVisible(evt);
-            }
-        });
-        jPanel2.add(jCBAbonado3);
-        jCBAbonado3.setBounds(80, 40, 100, 20);
-
-        jTabbedPane1.addTab("Editar", jPanel2);
-
         jPanel3.add(jTabbedPane1);
         jTabbedPane1.setBounds(10, 20, 410, 270);
 
@@ -237,6 +198,7 @@ public class JPCorreos extends javax.swing.JPanel {
         try {
             String codigo_abonado[] = new String[2];
             codigo_abonado = jCBAbonado1.getSelectedItem().toString().split(" - ");
+            System.out.println(codigo_abonado[0]);
             guardar = cc.guardar(
                     jTEmail1.getText(),
                     codigo_abonado[0]
@@ -302,36 +264,11 @@ public class JPCorreos extends javax.swing.JPanel {
         limpiarCamposConsultar();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
-    private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
-        // TODO add your handling code here:
-        int editar = -1;
-        try {
-            String codigo_abonado[] = new String[2];
-            codigo_abonado = jCBAbonado3.getSelectedItem().toString().split(" - ");
-            
-            editar = cc.editar(
-                    jTEmail3.getText(),
-                    codigo_abonado[0]);
-        } catch (Exception e) {
-            System.out.print(e);
-        }
-        if (editar == -1) {
-            JOptionPane.showMessageDialog(this, "No su pudo modificar el Correo", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Correo modificado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCamposConsultar();
-            jTEmail2.setText(jTEmail3.getText());
-            jBConsultar2.doClick();
-            jTabbedPane1.setSelectedIndex(1);
-            limpiarCamposModificar();
-        }
-    }//GEN-LAST:event_jBModificar3ActionPerformed
-
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTResultados.getSelectedRow();
-        jTEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
-        jTabbedPane1.setSelectedIndex(2);
+//        int selectedRow = jTResultados.getSelectedRow();
+//        jTEmail3.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+//        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jCBAbonado1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBAbonado1PopupMenuWillBecomeVisible
@@ -347,15 +284,10 @@ public class JPCorreos extends javax.swing.JPanel {
     
     }//GEN-LAST:event_jCBAbonado2PopupMenuWillBecomeVisible
 
-    private void jCBAbonado3PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBAbonado3PopupMenuWillBecomeVisible
- jCBAbonado3.setModel(
-                new javax.swing.DefaultComboBoxModel(controladorAbonado.listar()));
-            // TODO add your handling code here:
-    }//GEN-LAST:event_jCBAbonado3PopupMenuWillBecomeVisible
-    private void limpiarCamposModificar() {
-        jTEmail3.setText("");
-        jCBAbonado3.setSelectedIndex(0);
-    }
+    private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
+limpiarCamposCrear();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiar1ActionPerformed
+   
 
     private void limpiarCamposCrear() {
         jTEmail1.setText("");
@@ -371,24 +303,18 @@ public class JPCorreos extends javax.swing.JPanel {
     private javax.swing.JButton jBCrear1;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiar2;
-    private javax.swing.JButton jBModificar3;
     private javax.swing.JComboBox jCBAbonado1;
     private javax.swing.JComboBox jCBAbonado2;
-    private javax.swing.JComboBox jCBAbonado3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTEmail1;
     private javax.swing.JTextField jTEmail2;
-    private javax.swing.JTextField jTEmail3;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables

@@ -28,7 +28,7 @@ public class JPRecarga extends javax.swing.JPanel {
     public JPRecarga() {
         initComponents();
         cr = new ControladorRecarga();
-        controladorSimcard= new ControladorSimcard();
+        controladorSimcard = new ControladorSimcard();
     }
 
     /**
@@ -53,6 +53,8 @@ public class JPRecarga extends javax.swing.JPanel {
         jCBMedioRecarga1 = new javax.swing.JComboBox();
         jCBSimCard1 = new javax.swing.JComboBox();
         jDCFecha1 = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
+        jTFNumRecarga1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTResultados = new javax.swing.JTable();
@@ -74,17 +76,17 @@ public class JPRecarga extends javax.swing.JPanel {
 
         jLabel9.setText("Valor");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(10, 10, 40, 14);
+        jLabel9.setBounds(10, 40, 40, 14);
         jPanel4.add(jTFValor1);
-        jTFValor1.setBounds(90, 10, 110, 20);
+        jTFValor1.setBounds(90, 40, 110, 20);
 
         jLabel6.setText("Fecha");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(10, 40, 70, 14);
+        jLabel6.setBounds(10, 70, 70, 14);
 
         jLabel8.setText("Simcard");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(10, 100, 90, 14);
+        jLabel8.setBounds(10, 130, 90, 14);
 
         jBLimpiar1.setText("Limpiar");
         jBLimpiar1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +95,7 @@ public class JPRecarga extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBLimpiar1);
-        jBLimpiar1.setBounds(110, 150, 72, 23);
+        jBLimpiar1.setBounds(100, 180, 72, 23);
 
         jBCrear1.setText("Crear");
         jBCrear1.addActionListener(new java.awt.event.ActionListener() {
@@ -102,16 +104,16 @@ public class JPRecarga extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jBCrear1);
-        jBCrear1.setBounds(200, 150, 70, 23);
+        jBCrear1.setBounds(180, 180, 70, 23);
 
         jLabel13.setText("Medio Recarga");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(10, 70, 90, 14);
+        jLabel13.setBounds(10, 100, 90, 14);
 
         jCBMedioRecarga1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Internet", "Baloto", "Tarjeta" }));
         jCBMedioRecarga1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.add(jCBMedioRecarga1);
-        jCBMedioRecarga1.setBounds(90, 70, 150, 20);
+        jCBMedioRecarga1.setBounds(90, 100, 150, 20);
 
         jCBSimCard1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Simcard", " " }));
         jCBSimCard1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,11 +127,17 @@ public class JPRecarga extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jCBSimCard1);
-        jCBSimCard1.setBounds(90, 100, 150, 20);
+        jCBSimCard1.setBounds(90, 130, 150, 20);
 
         jDCFecha1.setDateFormatString("yyyy-MMM-dd");
         jPanel4.add(jDCFecha1);
-        jDCFecha1.setBounds(90, 40, 150, 20);
+        jDCFecha1.setBounds(90, 70, 150, 20);
+
+        jLabel10.setText("Num. Recarga");
+        jPanel4.add(jLabel10);
+        jLabel10.setBounds(10, 10, 70, 14);
+        jPanel4.add(jTFNumRecarga1);
+        jTFNumRecarga1.setBounds(90, 10, 110, 20);
 
         jTabbedPane1.addTab("Crear", jPanel4);
 
@@ -238,13 +246,14 @@ public class JPRecarga extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
-int guardar = -1;
+        int guardar = -1;
         try {
             java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha1.getDate().getTime());
             System.out.println(fecha_recarga);
             System.out.println(jCBMedioRecarga1.getSelectedItem().toString());
             System.out.println(jCBSimCard1.getSelectedItem().toString());
             guardar = cr.guardar(
+                    Integer.parseInt(jTFNumRecarga1.getText()),
                     Integer.parseInt(jTFValor1.getText()),
                     fecha_recarga,
                     jCBMedioRecarga1.getSelectedItem().toString(),
@@ -254,8 +263,7 @@ int guardar = -1;
 
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No su pudo crear la Recarga", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Recarga Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTFValor2.setText(jTFValor1.getText());
@@ -270,11 +278,21 @@ int guardar = -1;
    }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
-LinkedList consulta = new LinkedList();
+        LinkedList consulta = new LinkedList();
+        String fecha;
         try {
+
+            java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha2.getDate().getTime());
+            fecha = fecha_recarga.toString();
+        } catch (Exception e) {
+            fecha = "";
+        }
+        try {
+            System.err.println(jTFValor2.getText() + "," + fecha + "," + jCBMedioRecarga2.getSelectedItem().toString()
+                    + "," + jCBSimCard2.getSelectedItem().toString());
             consulta = cr.consultar(
                     jTFValor2.getText(),
-                    jDCFecha2.getDate().toString(),
+                    fecha,
                     jCBMedioRecarga2.getSelectedItem().toString(),
                     jCBSimCard2.getSelectedItem().toString());
 
@@ -285,7 +303,7 @@ LinkedList consulta = new LinkedList();
                     s[i][0] = recarga.getValor();
                     s[i][1] = recarga.getFecha();
                     s[i][2] = recarga.getMedio_recarga();
-                    s[i][3] = recarga.getSimcard();
+                    s[i][3] = recarga.getSimcard().getCodigo();
                 } else {
                     s = null;
                 }
@@ -308,35 +326,34 @@ LinkedList consulta = new LinkedList();
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-limpiarCamposConsultar();
+        limpiarCamposConsultar();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-       
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-limpiarCamposCrear();        // TODO add your handling code here:
+        limpiarCamposCrear();        // TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jCBSimCard2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSimCard2PopupMenuWillBecomeVisible
- jCBSimCard2.setModel(
+        jCBSimCard2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
-          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jCBSimCard2PopupMenuWillBecomeVisible
 
     private void jCBSimCard1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSimCard1PopupMenuWillBecomeVisible
-     jCBSimCard1.setModel(
+        jCBSimCard1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
-     // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jCBSimCard1PopupMenuWillBecomeVisible
-    
 
     private void limpiarCamposCrear() {
         jTFValor1.setText("");
         jDCFecha1.setDate(null);
         jCBMedioRecarga1.setSelectedIndex(0);
         jCBSimCard1.setSelectedIndex(0);
+        jTFNumRecarga1.setText("");
     }
 
     private void limpiarCamposConsultar() {
@@ -344,6 +361,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
         jDCFecha2.setDate(null);
         jCBMedioRecarga2.setSelectedIndex(0);
         jCBSimCard2.setSelectedIndex(0);
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
@@ -356,6 +374,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
     private javax.swing.JComboBox jCBSimCard2;
     private com.toedter.calendar.JDateChooser jDCFecha1;
     private com.toedter.calendar.JDateChooser jDCFecha2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -368,6 +387,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTFNumRecarga1;
     private javax.swing.JTextField jTFValor1;
     private javax.swing.JTextField jTFValor2;
     private javax.swing.JTable jTResultados;

@@ -4,6 +4,9 @@
  */
 package logica;
 
+import java.sql.Time;
+import java.sql.Date;
+
 /**
  *
  * @author chokuno
@@ -12,6 +15,8 @@ public class ConsumoMensaje {
      private Simcard simcard;
      private Cia_local compania_local;
      private int msjs_enviados;
+     private Date fecha;
+     private Time hora;
     
     
     public ConsumoMensaje()
@@ -19,11 +24,13 @@ public class ConsumoMensaje {
     
     
     public ConsumoMensaje(Simcard simcard,
-     Cia_local compania_local,int msjs_enviados)
+     Cia_local compania_local,int msjs_enviados, Date fecha, Time hora)
     {
     this.simcard=simcard;
     this.compania_local=compania_local;
     this.msjs_enviados=msjs_enviados;
+    this.fecha=fecha;
+    this.hora=hora;
     
     }
 
@@ -34,6 +41,23 @@ public class ConsumoMensaje {
         return simcard;
     }
 
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setHora(Time hora) {
+        this.hora = hora;
+    }
+
+    public Time getHora() {
+        return hora;
+    }
+
+   
     /**
      * @param simcard the simcard to set
      */

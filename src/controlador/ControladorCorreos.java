@@ -16,16 +16,19 @@ import logica.Correos;
  */
 public class ControladorCorreos {
       DaoCorreos daoCorreos;
+   
  
 
     public ControladorCorreos() {
         daoCorreos = new DaoCorreos();
+       
         
     }
 
     public int guardar(String email, String id_abonado) {
-        if (!email.isEmpty() && !email.isEmpty() ) {
+        if (!email.isEmpty() && !id_abonado.isEmpty() ) {
             Abonado abonado=new DaoAbonado().consultar(id_abonado);
+             System.err.println(abonado.getId());
             Correos correo=new Correos(email, abonado);
             int retorno = daoCorreos.guardar(correo);
             return retorno;

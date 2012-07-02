@@ -30,7 +30,9 @@ public class DaoConsumoMensaje {
         sql_guardar = "INSERT INTO consumo_mensaje VALUES ('"
                 + consumoMsj.getSimcard().getCodigo() + "', '"
                 + consumoMsj.getCompania_local().getId()+ "', "
-                + consumoMsj.getMsjs_enviados() + ")";
+                + consumoMsj.getMsjs_enviados() + ", '"
+                + consumoMsj.getFecha() + "', '"
+                + consumoMsj.getHora() + "')";
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -74,25 +76,26 @@ public class DaoConsumoMensaje {
         return null;
     }
 public LinkedList consultar(String simcard,
-     String compania_local,String msjs_enviados) {
+     String compania_local, String fecha) {
         
         LinkedList consumoMsjsConsulta = new LinkedList();
-        String sql_select = "SELECT * FROM consumo_mensaje ";
-        if (!simcard.equals("") || !compania_local.equals("") || !msjs_enviados.equals("")
+        String sql_select = "SELECT * FROM consumo_mensaje      ";
+        if (!simcard.equals("") || !compania_local.equals("") || !fecha.equals("")
                ) {
-            sql_select += "WHERE ";
+            sql_select += " WHERE";
         }
         if (!simcard.equals("")) {
-            sql_select += "simcard = '" + simcard + "' AND ";
+            sql_select += " simcard = '" + simcard + "' AND ";
         }
         if (!compania_local.equals("")) {
-            sql_select += "cia_local LIKE '%" + compania_local + "%'" + " AND ";
+            sql_select += " cia_local LIKE '%" + compania_local + "%'" + " AND ";
         }
-        if (!msjs_enviados.equals("")) {
-            sql_select += "msjs_enviados LIKE '%" + msjs_enviados + "%'" + " AND ";
+        if (!fecha.equals("")) {
+            sql_select += " fecha LIKE '%" + fecha + "%'" + " AND ";
         }
         
         sql_select = sql_select.substring(0, sql_select.length() - 5);
+        System.out.println(sql_select);
         try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
@@ -103,6 +106,8 @@ public LinkedList consultar(String simcard,
                consumoMsj.setSimcard(new DaoSimcard().consultar(tabla.getString("simcard")));
                consumoMsj.setCompania_local(new DaoCia_local().consultar(tabla.getString("cia_local")));
                consumoMsj.setMsjs_enviados(tabla.getInt("msjs_enviados"));
+               consumoMsj.setFecha(tabla.getDate("fecha"));
+               consumoMsj.setHora(tabla.getTime("hora"));
                
                 consumoMsjsConsulta.add(consumoMsj);
             }

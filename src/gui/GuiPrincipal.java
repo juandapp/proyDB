@@ -49,6 +49,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jMIPlanDatos = new javax.swing.JMenuItem();
         jMIRegistroLocal = new javax.swing.JMenuItem();
         jMIContrato = new javax.swing.JMenuItem();
+        jMIRobo = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMIMensaje_entrante_roaming = new javax.swing.JMenuItem();
 
@@ -177,6 +178,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMIContrato);
+
+        jMIRobo.setText("Reporte Robo");
+        jMIRobo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRoboActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIRobo);
 
         jMenuBar1.add(jMenu3);
 
@@ -369,6 +378,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
         }    }//GEN-LAST:event_jMIContratoActionPerformed
 
+    private void jMIRoboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRoboActionPerformed
+        try {
+            jPPrincipal.removeAll();
+            jPPrincipal.add(new JPRobo(), BorderLayout.CENTER);
+            jPPrincipal.updateUI();
+            this.pack();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMIRoboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +441,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIPlanPrepago;
     private javax.swing.JMenuItem jMIRecarga;
     private javax.swing.JMenuItem jMIRegistroLocal;
+    private javax.swing.JMenuItem jMIRobo;
     private javax.swing.JMenuItem jMISimCard;
     private javax.swing.JMenuItem jMISucursal;
     private javax.swing.JMenu jMenu1;

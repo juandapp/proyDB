@@ -4,12 +4,21 @@
  */
 package gui;
 
+import controlador.ControladorCiaLocal;
+import controlador.ControladorConsumoMensaje;
+import controlador.ControladorLlamada;
 import controlador.ControladorSimcard;
+import java.sql.Time;
+import java.util.Date;
+import java.util.Calendar;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import logica.ConsumoMensaje;
 import logica.Simcard;
+import logica.Llamada;
 
 /**
  *
@@ -21,9 +30,17 @@ public class JPRegistroLocal extends javax.swing.JPanel {
      * Creates new form JPRegistroLocal
      */
     ControladorSimcard cs;
+    ControladorCiaLocal controladorCiaL;
+    ControladorConsumoMensaje controladorConsumoMsj;
+    ControladorLlamada controladorLlamada;
+
     public JPRegistroLocal() {
         initComponents();
         cs = new ControladorSimcard();
+        controladorConsumoMsj = new ControladorConsumoMensaje();
+        controladorCiaL = new ControladorCiaLocal();
+        controladorLlamada = new ControladorLlamada();
+        llenarJComboBoxCiaLocal();
     }
 
     /**
@@ -70,6 +87,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jBRealizarLLamada1 = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
         jCBCompaniaLocalRealizarLlamada = new javax.swing.JComboBox();
+        jBFecha_Hora_ActualEnviarMensaje1 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jTFSimdCardConsultarRealizarLlamada = new javax.swing.JTextField();
@@ -95,6 +113,7 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jDCFechaEnviarMensaje = new com.toedter.calendar.JDateChooser();
         jLabel49 = new javax.swing.JLabel();
         jTFHoraInicioEnviarMensaje = new javax.swing.JTextField();
+        jBFecha_Hora_ActualEnviarMensaje = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jTFSimdCardConsultarMensajeEnviado = new javax.swing.JTextField();
@@ -230,8 +249,6 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jPanel8.add(jLabel46);
         jLabel46.setBounds(320, 40, 70, 14);
 
-        jTFHoraInicioRealizarLlamada.setEditable(false);
-        jTFHoraInicioRealizarLlamada.setEnabled(false);
         jTFHoraInicioRealizarLlamada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFHoraInicioRealizarLlamadaActionPerformed(evt);
@@ -242,23 +259,31 @@ public class JPRegistroLocal extends javax.swing.JPanel {
 
         jLabel47.setText("Hora Fin");
         jPanel8.add(jLabel47);
-        jLabel47.setBounds(320, 70, 70, 14);
+        jLabel47.setBounds(320, 110, 70, 14);
 
-        jTFHoraFinRealizarLlamada.setEditable(false);
-        jTFHoraFinRealizarLlamada.setEnabled(false);
         jTFHoraFinRealizarLlamada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFHoraFinRealizarLlamadaActionPerformed(evt);
             }
         });
         jPanel8.add(jTFHoraFinRealizarLlamada);
-        jTFHoraFinRealizarLlamada.setBounds(390, 70, 100, 20);
+        jTFHoraFinRealizarLlamada.setBounds(390, 110, 100, 20);
 
         jBLimpiarRealizarLLamada.setText("Limpiar");
+        jBLimpiarRealizarLLamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarRealizarLLamadaActionPerformed(evt);
+            }
+        });
         jPanel8.add(jBLimpiarRealizarLLamada);
         jBLimpiarRealizarLLamada.setBounds(290, 140, 130, 23);
 
         jBRealizarLLamada1.setText("Realizar Llamada");
+        jBRealizarLLamada1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRealizarLLamada1ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jBRealizarLLamada1);
         jBRealizarLLamada1.setBounds(110, 140, 130, 23);
 
@@ -269,6 +294,15 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jCBCompaniaLocalRealizarLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar Compania Local" }));
         jPanel8.add(jCBCompaniaLocalRealizarLlamada);
         jCBCompaniaLocalRealizarLlamada.setBounds(110, 70, 180, 20);
+
+        jBFecha_Hora_ActualEnviarMensaje1.setText("Fecha y hora Actual");
+        jBFecha_Hora_ActualEnviarMensaje1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFecha_Hora_ActualEnviarMensaje1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jBFecha_Hora_ActualEnviarMensaje1);
+        jBFecha_Hora_ActualEnviarMensaje1.setBounds(320, 70, 150, 23);
 
         jTabbedPane2.addTab("Realizar LLamada", jPanel8);
 
@@ -310,10 +344,20 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jScrollPane4.setBounds(10, 110, 490, 125);
 
         jBLimpiarConsultarLlamadasRealizadas.setText("Limpiar");
+        jBLimpiarConsultarLlamadasRealizadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarConsultarLlamadasRealizadasActionPerformed(evt);
+            }
+        });
         jPanel10.add(jBLimpiarConsultarLlamadasRealizadas);
         jBLimpiarConsultarLlamadasRealizadas.setBounds(330, 40, 120, 23);
 
         jBConsultarLlamadasRealizadas.setText("Consultar");
+        jBConsultarLlamadasRealizadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarLlamadasRealizadasActionPerformed(evt);
+            }
+        });
         jPanel10.add(jBConsultarLlamadasRealizadas);
         jBConsultarLlamadasRealizadas.setBounds(330, 10, 120, 23);
 
@@ -389,8 +433,6 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jPanel6.add(jLabel49);
         jLabel49.setBounds(320, 100, 70, 14);
 
-        jTFHoraInicioEnviarMensaje.setEditable(false);
-        jTFHoraInicioEnviarMensaje.setEnabled(false);
         jTFHoraInicioEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFHoraInicioEnviarMensajeActionPerformed(evt);
@@ -398,6 +440,15 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         });
         jPanel6.add(jTFHoraInicioEnviarMensaje);
         jTFHoraInicioEnviarMensaje.setBounds(370, 100, 100, 20);
+
+        jBFecha_Hora_ActualEnviarMensaje.setText("Fecha y hora Actual");
+        jBFecha_Hora_ActualEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFecha_Hora_ActualEnviarMensajeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jBFecha_Hora_ActualEnviarMensaje);
+        jBFecha_Hora_ActualEnviarMensaje.setBounds(320, 70, 150, 23);
 
         jTabbedPaneMensajes.addTab("Enviar Mensaje", jPanel6);
 
@@ -437,10 +488,20 @@ public class JPRegistroLocal extends javax.swing.JPanel {
         jScrollPane3.setBounds(10, 110, 490, 125);
 
         jBLimpiarConsultar_Mensajes.setText("Limpiar");
+        jBLimpiarConsultar_Mensajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarConsultar_MensajesActionPerformed(evt);
+            }
+        });
         jPanel5.add(jBLimpiarConsultar_Mensajes);
         jBLimpiarConsultar_Mensajes.setBounds(330, 40, 110, 23);
 
         jBConsultarMensajes.setText("Consultar");
+        jBConsultarMensajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarMensajesActionPerformed(evt);
+            }
+        });
         jPanel5.add(jBConsultarMensajes);
         jBConsultarMensajes.setBounds(330, 10, 110, 23);
 
@@ -481,7 +542,10 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-    }//GEN-LAST:event_jTResultadosMouseClicked
+        int selectedRow = jTResultados.getSelectedRow();
+        jTFSimdCardEnviarMensaje.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTFSimdCardRealizarLlamada.setText("" + jTResultados.getModel().getValueAt(selectedRow, 0));
+        jTabbedPane1.setSelectedIndex(1);    }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar1ActionPerformed
         // TODO add your handling code here:
@@ -529,17 +593,60 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     }//GEN-LAST:event_jBConsultar1ActionPerformed
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-
+        jTFCodigo1.setText("");
+        jTFnum_telefono1.setText("");
+        jCBActivacion_Internet1.setSelectedIndex(0);
+        jCBbloqueado_por_robo1.setSelectedIndex(0);
+        jCBactivacion_correo1.setSelectedIndex(0);
+        jCBautorizacion_roaming1.setSelectedIndex(0);
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
-    private void jBLimpiarEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarEnviarMensajeActionPerformed
-
-    }//GEN-LAST:event_jBLimpiarEnviarMensajeActionPerformed
-
     private void jBEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnviarMensajeActionPerformed
-        // TODO add your handling code here:
+        int guardar = -1;
+        try {
+            java.sql.Date fecha = new java.sql.Date(jDCFechaEnviarMensaje.getDate().getTime());
+            String codigo_CiaLocal[] = new String[2];
+            codigo_CiaLocal = jCBCompaniaLocallEnviarMensaje.getSelectedItem().toString().split(" - ");
+            String[] hora = jTFHoraInicioEnviarMensaje.getText().split(":");
+            guardar = controladorConsumoMsj.guardar(
+                    jTFSimdCardEnviarMensaje.getText(),
+                    codigo_CiaLocal[0],
+                    Integer.parseInt(jTFMensajesAEnviar_EnviarMensaje.getText()),
+                    fecha,
+                    new Time(Integer.parseInt(hora[0]), Integer.parseInt(hora[1]), Integer.parseInt(hora[2])));
+
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo Enviar el mensaje", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Mensaje Enviado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultarMensajesEnviados();
+            jTFSimdCardConsultarMensajeEnviado.setText(jTFSimdCardEnviarMensaje.getText());
+            jBConsultarMensajes.doClick();
+            jBLimpiarEnviarMensaje.doClick();
+            jTabbedPaneMensajes.setSelectedIndex(1);
+
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jBEnviarMensajeActionPerformed
 
+    private void limpiarCamposConsultarMensajesEnviados() {
+        jTFSimdCardConsultarMensajeEnviado.setText("");
+        jDCFechaConsultarEnviarMensaje.setDate(null);
+        jCBCompaniaLocalConsultarMensajeEnviado.setSelectedIndex(0);
+    }
+
+    private void llenarJComboBoxCiaLocal() {  //llenar JComboBox
+        jCBCompaniaLocalConsultarMensajeEnviado.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaL.listar()));
+        jCBCompaniaLocalConsultarRealizarLlamada.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaL.listar()));
+        jCBCompaniaLocallEnviarMensaje.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaL.listar()));
+        jCBCompaniaLocalRealizarLlamada.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorCiaL.listar()));
+    }
     private void jTFHoraInicioRealizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFHoraInicioRealizarLlamadaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFHoraInicioRealizarLlamadaActionPerformed
@@ -555,12 +662,210 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private void jTFHoraInicioEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFHoraInicioEnviarMensajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFHoraInicioEnviarMensajeActionPerformed
+    private Date fechaActual() {
+        return new Date();
+    }
 
+    private String horaActual() {
+        String hora = "";
+        Calendar c = Calendar.getInstance();
+        hora = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
+        return hora;
+    }
+    private void jBFecha_Hora_ActualEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecha_Hora_ActualEnviarMensajeActionPerformed
+        jDCFechaEnviarMensaje.setDate(fechaActual());
+        jTFHoraInicioEnviarMensaje.setText(horaActual());
+    }//GEN-LAST:event_jBFecha_Hora_ActualEnviarMensajeActionPerformed
+
+    private void jBConsultarMensajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarMensajesActionPerformed
+        LinkedList consulta = new LinkedList();
+        try {
+            String fecha;
+            try {
+                fecha = new java.sql.Date(jDCFechaConsultarEnviarMensaje.getDate().getTime()).toString();
+
+            } catch (Exception e) {
+                fecha = "";
+            }
+            String cia_local = "";
+            if (!jCBCompaniaLocalConsultarMensajeEnviado.getSelectedItem().toString().equals(" ")) {
+                String codigo_CiaLocal[] = new String[2];
+                codigo_CiaLocal = jCBCompaniaLocalConsultarMensajeEnviado.getSelectedItem().toString().split(" - ");
+                cia_local = codigo_CiaLocal[0];
+            }
+
+            consulta = controladorConsumoMsj.consultar(jTFSimdCardConsultarMensajeEnviado.getText(),
+                    cia_local,
+                    fecha);
+
+            Object[][] s = new Object[consulta.size()][5];
+            for (int i = 0; i < consulta.size(); i++) {
+                ConsumoMensaje msr = (ConsumoMensaje) consulta.get(i);
+                if (msr.getSimcard() != null) {
+                    s[i][0] = msr.getSimcard().getCodigo();
+                    s[i][1] = msr.getCompania_local().getNombre();
+                    s[i][2] = msr.getMsjs_enviados();
+                    s[i][3] = msr.getFecha();
+                    s[i][4] = msr.getHora();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"SimCard", "Cia. Local", "Msjs enviados", "Fecha", "Hora",}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false
+                };
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultadosMensajesEnviados.setModel(myModel);
+            jTResultadosMensajesEnviados.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultarMensajesActionPerformed
+
+    private void jBLimpiarConsultar_MensajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultar_MensajesActionPerformed
+
+        jTFSimdCardConsultarMensajeEnviado.setText("");
+        jCBCompaniaLocalConsultarMensajeEnviado.setSelectedIndex(0);
+        jDCFechaConsultarEnviarMensaje.setDate(null);
+    }//GEN-LAST:event_jBLimpiarConsultar_MensajesActionPerformed
+
+    private void jBLimpiarEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarEnviarMensajeActionPerformed
+
+        jTFMensajesAEnviar_EnviarMensaje.setText("");
+        jCBCompaniaLocallEnviarMensaje.setSelectedIndex(0);
+        jDCFechaEnviarMensaje.setDate(null);
+        jTFHoraInicioEnviarMensaje.setText("");
+    }//GEN-LAST:event_jBLimpiarEnviarMensajeActionPerformed
+
+    private void jBFecha_Hora_ActualEnviarMensaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecha_Hora_ActualEnviarMensaje1ActionPerformed
+        jDCFechaRealizarLlamada.setDate(fechaActual());
+        jTFHoraInicioRealizarLlamada.setText(horaActual());   // TODO add your handling code here:
+    }//GEN-LAST:event_jBFecha_Hora_ActualEnviarMensaje1ActionPerformed
+
+    private void jBRealizarLLamada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealizarLLamada1ActionPerformed
+        int guardar = -1;
+        try {
+            java.sql.Date fecha = new java.sql.Date(jDCFechaRealizarLlamada.getDate().getTime());
+            String codigo_CiaLocal[] = new String[2];
+            codigo_CiaLocal = jCBCompaniaLocalRealizarLlamada.getSelectedItem().toString().split(" - ");
+            String[] hora_i = jTFHoraInicioRealizarLlamada.getText().split(":");
+            String[] hora_f = jTFHoraFinRealizarLlamada.getText().split(":");
+            
+           System.err.println(jTFSimdCardEnviarMensaje.getText()+","+
+                    new Time(Integer.parseInt(hora_i[0]), Integer.parseInt(hora_i[1]), Integer.parseInt(hora_i[2]))
+                   +","+ fecha +","+
+                    jTFTelDestinoRealizarLlamada.getText()+","+
+                    new Time(Integer.parseInt(hora_f[0]), Integer.parseInt(hora_f[1]), Integer.parseInt(hora_f[2]))
+                   +","+ codigo_CiaLocal[0]);
+           
+            guardar = controladorLlamada.guardar(
+                    jTFSimdCardEnviarMensaje.getText(),
+                    new Time(Integer.parseInt(hora_i[0]), Integer.parseInt(hora_i[1]), Integer.parseInt(hora_i[2])),
+                    fecha,
+                    jTFTelDestinoRealizarLlamada.getText(),
+                    new Time(Integer.parseInt(hora_f[0]), Integer.parseInt(hora_f[1]), Integer.parseInt(hora_f[2])),
+                    codigo_CiaLocal[0]);
+
+        } catch (Exception e) {
+        }
+
+        if (guardar == -1) {
+            JOptionPane.showMessageDialog(this, "No su pudo Realizar la llamada", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Llamada Realizada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposConsultarLlamada();
+            jTFSimdCardConsultarRealizarLlamada.setText(jTFSimdCardRealizarLlamada.getText());
+            jBConsultarLlamadasRealizadas.doClick();
+            jBLimpiarRealizarLLamada.doClick();
+            jTabbedPane2.setSelectedIndex(1);
+
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_jBRealizarLLamada1ActionPerformed
+
+    private void jBLimpiarRealizarLLamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarRealizarLLamadaActionPerformed
+
+        jTFMensajesAEnviar_EnviarMensaje.setText("");
+        jTFTelDestinoRealizarLlamada.setText("");
+        jCBCompaniaLocalRealizarLlamada.setSelectedIndex(0);
+        jDCFechaRealizarLlamada.setDate(null);
+        jTFHoraInicioRealizarLlamada.setText("");
+        jTFHoraFinRealizarLlamada.setText(""); // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiarRealizarLLamadaActionPerformed
+
+    private void jBLimpiarConsultarLlamadasRealizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarConsultarLlamadasRealizadasActionPerformed
+        jTFSimdCardConsultarRealizarLlamada.setText("");
+        jCBCompaniaLocalConsultarRealizarLlamada.setSelectedIndex(0);
+        jDCFechaConsultarRealizarLlamada.setDate(null);   // TODO add your handling code here:
+    }//GEN-LAST:event_jBLimpiarConsultarLlamadasRealizadasActionPerformed
+
+    private void jBConsultarLlamadasRealizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarLlamadasRealizadasActionPerformed
+        LinkedList consulta = new LinkedList();
+        try {
+            String fecha;
+            try {
+                fecha = new java.sql.Date(jDCFechaConsultarRealizarLlamada.getDate().getTime()).toString();
+
+            } catch (Exception e) {
+                fecha = "";
+            }
+            String cia_local = "";
+            if (!jCBCompaniaLocalConsultarRealizarLlamada.getSelectedItem().toString().equals(" ")) {
+                String codigo_CiaLocal[] = new String[2];
+                codigo_CiaLocal = jCBCompaniaLocalConsultarRealizarLlamada.getSelectedItem().toString().split(" - ");
+                cia_local = codigo_CiaLocal[0];
+            }
+
+            consulta = controladorLlamada.consultar(jTFSimdCardConsultarRealizarLlamada.getText(),
+                    fecha,
+                    cia_local);
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                Llamada llam = (Llamada) consulta.get(i);
+                if (llam.getHora_inicio() != null) {
+                    s[i][0] = llam.getSim().getCodigo();
+                    s[i][1] = llam.getHora_inicio();
+                    s[i][2] = llam.getFecha();
+                    s[i][3] = llam.getTelefono_destino();
+                    s[i][4] = llam.getHora_fin();
+                    s[i][5] = llam.getcLocal().getNombre();
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"SimCard", "Hora Inicio", "Fecha","Tel Destino", "Hora Fin","Cia. Local"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false
+                };
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultadosLlamadasRealizadas.setModel(myModel);
+            jTResultadosLlamadasRealizadas.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }           // TODO add your handling code here:
+    }//GEN-LAST:event_jBConsultarLlamadasRealizadasActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar1;
     private javax.swing.JButton jBConsultarLlamadasRealizadas;
     private javax.swing.JButton jBConsultarMensajes;
     private javax.swing.JButton jBEnviarMensaje;
+    private javax.swing.JButton jBFecha_Hora_ActualEnviarMensaje;
+    private javax.swing.JButton jBFecha_Hora_ActualEnviarMensaje1;
     private javax.swing.JButton jBLimpiar1;
     private javax.swing.JButton jBLimpiarConsultarLlamadasRealizadas;
     private javax.swing.JButton jBLimpiarConsultar_Mensajes;
@@ -629,4 +934,10 @@ public class JPRegistroLocal extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPaneMensajes;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCamposConsultarLlamada() {
+        jTFSimdCardConsultarRealizarLlamada.setText("");
+        jCBCompaniaLocalConsultarRealizarLlamada.setSelectedIndex(0);
+        jDCFechaConsultarRealizarLlamada.setDate(null);
+    }
 }
