@@ -29,6 +29,12 @@ public class JPEmpresa extends javax.swing.JPanel {
         initComponents();
         ce = new ControladorEmpresa();
         controladorPostpago = new ControladorPostPago();
+        jCBCod_plan1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
+        jCBCod_plan3.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
+        jCBCod_plan2.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPostpago.listar()));
     }
 
     /**

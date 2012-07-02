@@ -22,13 +22,12 @@ public class JPPlanPostpago extends javax.swing.JPanel {
     /**
      * Creates new form JPPlanPostpago
      */
-    
     ControladorPostPago cp;
     ControladorPlan cplan;
-    
+
     public JPPlanPostpago() {
         initComponents();
-        cp=new ControladorPostPago();
+        cp = new ControladorPostPago();
     }
 
     /**
@@ -337,17 +336,15 @@ public class JPPlanPostpago extends javax.swing.JPanel {
                     Integer.parseInt(jTFtarifa_msj_multimedia1.getText()),
                     Integer.parseInt(jTtarifa_msj_texto1.getText()),
                     Integer.parseInt(jTtotal_minutos1.getText()),
-                    Integer.parseInt(jTcosto_min_adicional1.getText())
-                    );
+                    Integer.parseInt(jTcosto_min_adicional1.getText()));
         } catch (Exception e) {
-            
+
             e.printStackTrace();
         }
 
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No su pudo crear el plan", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Plan Creado correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             jTFCodigo2.setText(jTFCodigo1.getText());
             jBConsultar2.doClick();
@@ -360,7 +357,7 @@ public class JPPlanPostpago extends javax.swing.JPanel {
     }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
- LinkedList consulta = new LinkedList();
+        LinkedList consulta = new LinkedList();
         try {
             consulta = cp.consultar(
                     jTFCodigo2.getText(),
@@ -368,13 +365,12 @@ public class JPPlanPostpago extends javax.swing.JPanel {
                     jTFtarifa_msj_multimedia2.getText(),
                     jTtarifa_msj_texto2.getText(),
                     jTtotal_minutos2.getText(),
-                    jTcosto_min_adicional2.getText()
-                    );
+                    jTcosto_min_adicional2.getText());
 
             Object[][] s = new Object[consulta.size()][6];
             for (int i = 0; i < consulta.size(); i++) {
                 Postpago post = (Postpago) consulta.get(i);
-                if (post.getCod_plan()!= null) {
+                if (post.getCod_plan() != null) {
                     s[i][0] = post.getCod_plan().getCod_plan();
                     s[i][1] = post.getCod_plan().getTarifa_otro_operador();
                     s[i][2] = post.getCod_plan().getTarifa_msj_multimedia();
@@ -386,7 +382,7 @@ public class JPPlanPostpago extends javax.swing.JPanel {
                 }
             }
             TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo", "Tarifa_otros_operadores",
-                "Tarifa_msj_multimedia", "Tarifa_msj_texto","Total_minutos", "Costo_min_adicional"}) {
+                        "Tarifa_msj_multimedia", "Tarifa_msj_texto", "Total_minutos", "Costo_min_adicional"}) {
 
                 boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
 
@@ -400,7 +396,7 @@ public class JPPlanPostpago extends javax.swing.JPanel {
             jTResultados.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
-        }       
+        }
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar3ActionPerformed
@@ -413,8 +409,7 @@ public class JPPlanPostpago extends javax.swing.JPanel {
                     Integer.parseInt(jTFtarifa_msj_multimedia3.getText()),
                     Integer.parseInt(jTtarifa_msj_texto3.getText()),
                     Integer.parseInt(jTtotal_minutos3.getText()),
-                    Integer.parseInt(jTcosto_min_adicional3.getText())
-                    );
+                    Integer.parseInt(jTcosto_min_adicional3.getText()));
         } catch (Exception e) {
             System.out.print(e);
         }

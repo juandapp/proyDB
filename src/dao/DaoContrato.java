@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import logica.Contrato;
-import logica.Llamada;
 
 /**
  *
@@ -92,16 +91,16 @@ public class DaoContrato {
             sql_select += "id_abonado ='" + abonado + "' AND ";
         }
         if (!empleado.equals("")) {
-            sql_select += "id_empleado LIKE '%" + empleado + "%'" + " AND ";
+            sql_select += "id_empleado = '" + empleado + "'" + " AND ";
         }
         if (!plan.equals("")) {
-            sql_select += "cod_plan LIKE '%" + plan + "%'" + " AND ";
+            sql_select += "cod_plan = '" + plan + "'" + " AND ";
         }
         if (!sim.equals("")) {
-            sql_select += "simcard LIKE '%" + sim + "%'" + " AND ";
+            sql_select += "simcard = '" + sim + "'" + " AND ";
         }
         if (!fecha_ingreso.equals("")) {
-            sql_select += "fecha_ingreso LIKE '%" + fecha_ingreso + "%'" + " AND ";
+            sql_select += "fecha_ingreso = '" + fecha_ingreso + "'" + " AND ";
         }
         
         
@@ -133,33 +132,33 @@ public class DaoContrato {
         return null;
     }
 
-    public int editar(Contrato contrato) {
-
-        String sql_update;
-        sql_update = "UPDATE contrato SET '"
-                + contrato.getEmpleado().getId_empleado() + "', '"
-                + contrato.getPlan().getCod_plan()+ "', '"
-                + contrato.getSim().getCodigo() + "', '"
-                + contrato.getFecha_ingreso() + "'"
-                + " WHERE id_abonado='" + contrato.getAbonado().getId() + "'";
-        try {
-            Connection conn = fachada.conectar();
-            Statement sentencia = conn.createStatement();
-            sentencia.executeUpdate(sql_update);
-
-
-            conn.close();
-
-            System.out.println("Conexion cerrada");
-            return 0;
-
-        } catch (SQLException e) {
-            System.out.println("Conexion aquii");
-            System.out.println(e);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return -1;
-    }  
+//    public int editar(Contrato contrato) {
+//
+//        String sql_update;
+//        sql_update = "UPDATE contrato SET '"
+//                + contrato.getEmpleado().getId_empleado() + "', '"
+//                + contrato.getPlan().getCod_plan()+ "', '"
+//                + contrato.getSim().getCodigo() + "', '"
+//                + contrato.getFecha_ingreso() + "'"
+//                + " WHERE id_abonado='" + contrato.getAbonado().getId() + "'";
+//        try {
+//            Connection conn = fachada.conectar();
+//            Statement sentencia = conn.createStatement();
+//            sentencia.executeUpdate(sql_update);
+//
+//
+//            conn.close();
+//
+//            System.out.println("Conexion cerrada");
+//            return 0;
+//
+//        } catch (SQLException e) {
+//            System.out.println("Conexion aquii");
+//            System.out.println(e);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        return -1;
+//    }  
     
 }

@@ -66,7 +66,7 @@ public class DaoPlan {
                 e.setTarifa_msj_texto(tabla.getInt("tarifa_msj_texto"));
             }
             conn.close();
-            System.out.println("Conexion cerrada"); 
+            System.out.println("Conexion cerrada");
             return e;
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -77,25 +77,25 @@ public class DaoPlan {
     }
 
     public LinkedList consultar(String cod_plan, String tarifa_otro_operador,
-           String tarifa_msj_multimedia, String tarifa_msj_texto) {
+            String tarifa_msj_multimedia, String tarifa_msj_texto) {
         LinkedList planConsulta = new LinkedList();
         String sql_select = "SELECT * FROM plan      ";
         if (!String.valueOf(cod_plan).equals("") || !tarifa_otro_operador.equals("")
                 || !tarifa_msj_multimedia.equals("")
                 || !tarifa_msj_texto.equals("")) {
-            sql_select += "WHERE ";
+            sql_select += "WHERE  ";
         }
         if (!String.valueOf(cod_plan).equals("")) {
-            sql_select += "cod_plan = " + cod_plan + " AND ";
+            sql_select += "cod_plan = '" + cod_plan + "' AND ";
         }
         if (!tarifa_otro_operador.equals("")) {
-            sql_select += "tarifa_otro_operador = LIKE '%" + tarifa_otro_operador + "%'" + " AND ";
+            sql_select += "tarifa_otro_operador <  " + tarifa_otro_operador + "" + " AND ";
         }
         if (!tarifa_msj_multimedia.equals("")) {
-            sql_select += "tarifa_msj_multimedia = LIKE '%" + tarifa_msj_multimedia + "%'" + " AND ";
+            sql_select += "tarifa_msj_multimedia <  " + tarifa_msj_multimedia + "" + " AND ";
         }
         if (!tarifa_msj_texto.equals("")) {
-            sql_select += "tarifa_msj_texto = LIKE '%" + tarifa_msj_texto + "%'" + " AND ";
+            sql_select += "tarifa_msj_texto < " + tarifa_msj_texto + "" + " AND ";
         }
         sql_select = sql_select.substring(0, sql_select.length() - 5);
         try {
@@ -108,7 +108,7 @@ public class DaoPlan {
                 plan.setTarifa_otro_operador(tabla.getInt("tarifa_otro_operador"));
                 plan.setTarifa_msj_multimedia(tabla.getInt("tarifa_msj_multimedia"));
                 plan.setTarifa_msj_texto(tabla.getInt("tarifa_msj_texto"));
-                
+
                 planConsulta.add(plan);
             }
             conn.close();
