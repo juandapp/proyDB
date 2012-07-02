@@ -28,7 +28,7 @@ public class JPRecarga extends javax.swing.JPanel {
     public JPRecarga() {
         initComponents();
         cr = new ControladorRecarga();
-        controladorSimcard= new ControladorSimcard();
+        controladorSimcard = new ControladorSimcard();
     }
 
     /**
@@ -246,7 +246,7 @@ public class JPRecarga extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrear1ActionPerformed
-int guardar = -1;
+        int guardar = -1;
         try {
             java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha1.getDate().getTime());
             System.out.println(fecha_recarga);
@@ -263,8 +263,7 @@ int guardar = -1;
 
         if (guardar == -1) {
             JOptionPane.showMessageDialog(this, "No su pudo crear la Recarga", "Error Base Datos", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Recarga Creada correctamente", "Base Datos", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposConsultar();
             jTFValor2.setText(jTFValor1.getText());
@@ -279,16 +278,21 @@ int guardar = -1;
    }//GEN-LAST:event_jBCrear1ActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
-LinkedList consulta = new LinkedList();
-      try {
-            
-java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha2.getDate().getTime());
-  
-System.err.println(jTFValor2.getText()+","+fecha_recarga.toString()+","+jCBMedioRecarga2.getSelectedItem().toString()
-        +","+jCBSimCard2.getSelectedItem().toString());
+        LinkedList consulta = new LinkedList();
+        String fecha;
+        try {
+
+            java.sql.Date fecha_recarga = new java.sql.Date(jDCFecha2.getDate().getTime());
+            fecha = fecha_recarga.toString();
+        } catch (Exception e) {
+            fecha = "";
+        }
+        try {
+            System.err.println(jTFValor2.getText() + "," + fecha + "," + jCBMedioRecarga2.getSelectedItem().toString()
+                    + "," + jCBSimCard2.getSelectedItem().toString());
             consulta = cr.consultar(
                     jTFValor2.getText(),
-                    fecha_recarga.toString(),
+                    fecha,
                     jCBMedioRecarga2.getSelectedItem().toString(),
                     jCBSimCard2.getSelectedItem().toString());
 
@@ -322,29 +326,27 @@ System.err.println(jTFValor2.getText()+","+fecha_recarga.toString()+","+jCBMedio
     }//GEN-LAST:event_jBConsultar2ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-limpiarCamposConsultar();
+        limpiarCamposConsultar();
    }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked
-       
     }//GEN-LAST:event_jTResultadosMouseClicked
 
     private void jBLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar1ActionPerformed
-limpiarCamposCrear();        // TODO add your handling code here:
+        limpiarCamposCrear();        // TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jCBSimCard2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSimCard2PopupMenuWillBecomeVisible
- jCBSimCard2.setModel(
+        jCBSimCard2.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
-          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jCBSimCard2PopupMenuWillBecomeVisible
 
     private void jCBSimCard1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBSimCard1PopupMenuWillBecomeVisible
-     jCBSimCard1.setModel(
+        jCBSimCard1.setModel(
                 new javax.swing.DefaultComboBoxModel(controladorSimcard.listar()));
-     // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jCBSimCard1PopupMenuWillBecomeVisible
-    
 
     private void limpiarCamposCrear() {
         jTFValor1.setText("");
@@ -359,7 +361,7 @@ limpiarCamposCrear();        // TODO add your handling code here:
         jDCFecha2.setDate(null);
         jCBMedioRecarga2.setSelectedIndex(0);
         jCBSimCard2.setSelectedIndex(0);
-       
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBConsultar2;
