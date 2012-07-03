@@ -439,3 +439,4 @@ INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, 
 INSERT INTO "public".simcard (codigo, num_telefono, activacion_internet, bloqueado_por_robo, activacion_correo, autorizacion_roaming) VALUES ('2365214', '3156986593', 'No', 'Si', 'Si', 'Si');
 
 INSERT INTO "public".simcard_robo (simcard, ciudad, fecha) VALUES ('2365214', 'Cali', '2012-07-02');
+
