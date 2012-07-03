@@ -435,3 +435,7 @@ INSERT INTO "public".llamada (simcard, hora_inicio, fecha, tel_destino, hora_fin
 
 INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, hora) VALUES ('112547854125469', '310', 2, '2012-07-02', '21:45:35');
 INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, hora) VALUES ('112547854125469', '300', 3, '2012-07-02', '21:45:49');
+
+INSERT INTO "public".simcard (codigo, num_telefono, activacion_internet, bloqueado_por_robo, activacion_correo, autorizacion_roaming) VALUES ('2365214', '3156986593', 'No', 'Si', 'Si', 'Si');
+
+INSERT INTO "public".simcard_robo (simcard, ciudad, fecha) VALUES ('2365214', 'Cali', '2012-07-02');
