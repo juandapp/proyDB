@@ -810,7 +810,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                     s[i][4] = retorno[4];
                     s[i][5] = retorno[5];
                     s[i][6] = retorno[6];
-                    s[i][7] = retorno[6];
+                    s[i][7] = retorno[7];
 
                 } else {
                     s = null;
