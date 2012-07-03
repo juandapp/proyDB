@@ -623,15 +623,15 @@ public class DaoConsultas {
         sql_select = "SELECT id,tipo,nombres,apellidos,simcard,msjs_enviados,cia_local,fecha,hora "+
                     "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
                     "FROM abonado JOIN contrato "+
-                    "ON id=id_abonado)R1 NATURAL JOIN consumo_mensaje "+
-                     "where tipo='"+tipo+"';";
+                    "ON id=id_abonado AND tipo='"+tipo+"' AND cod_plan IN(SELECT cod_plan from postpago))R1 NATURAL JOIN consumo_mensaje "+
+                     ";";
        
        if(consumo.equals("llamada"))
            sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin"+
                      "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
                      "FROM abonado JOIN contrato "+
-                     "ON id=id_abonado)R1 NATURAL JOIN llamada"+
-                     "where tipo='"+tipo+"';";
+                     "ON id=id_abonado AND cod_plan AND tipo='"+tipo+"' IN(SELECT cod_plan from postpago))R1 NATURAL JOIN llamada"+
+                     ";";
                 
              try {
             Connection conn = fachada.conectar();
