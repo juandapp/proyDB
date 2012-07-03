@@ -245,8 +245,8 @@ public class JPConsumo extends javax.swing.JPanel {
                 }
             };
             ///remover filas
-            jTResultados3.setModel(myModel);
-            jTResultados3.setRowSorter(new TableRowSorter(myModel));
+            jTResultados4.setModel(myModel);
+            jTResultados4.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -284,7 +284,7 @@ public class JPConsumo extends javax.swing.JPanel {
             TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Tipo", "Nombres",
                         "Apellidos", "Simcard", "Msj Enviados", "Compañia Local", "Fecha","Hora"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false,false};
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false,false,false,false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -292,8 +292,8 @@ public class JPConsumo extends javax.swing.JPanel {
                 }
             };
             ///remover filas
-            jTResultados4.setModel(myModel);
-            jTResultados4.setRowSorter(new TableRowSorter(myModel));
+            jTResultados3.setModel(myModel);
+            jTResultados3.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
         }

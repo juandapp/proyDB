@@ -654,7 +654,7 @@ public class DaoConsultas {
             
             if(consumo.equals("mensaje"))
                 while (tabla.next()) {
-                String[] resultado=new String[8];
+                String[] resultado=new String[9];
                 resultado[0]=tabla.getString("id");
                 resultado[1]=tabla.getString("tipo");
                 resultado[2]=tabla.getString("nombres");
