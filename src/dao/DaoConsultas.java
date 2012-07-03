@@ -542,20 +542,19 @@ public class DaoConsultas {
         String sql_select;
         LinkedList consulta = new LinkedList();
         
-        sql_view="CREATE OR REPLACE VIEW vista_franja AS "+
-                "SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
-                "UNION ALL "+
-                "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada; ";
+        
 
-        sql_select = "SELECT franja_horaria,count(*) AS veces_usada  "+
-                     "FROM vista_franja "+
+        sql_select = "SELECT franja_horaria,count(*) AS veces_usada FROM  "+
+                     "(SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
+                     "UNION ALL "+
+                     "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada) R1"+
                      "GROUP BY franja_horaria "+
                      "ORDER BY veces_usada  DESC;";
                 
              try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
-            sentencia.executeQuery(sql_view);
+         
             ResultSet tabla = sentencia.executeQuery(sql_select);
             while (tabla.next()) {
                 String[] resultado=new String[2];
