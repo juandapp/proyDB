@@ -342,7 +342,7 @@ INSERT INTO empleado values ('1000','Andres Martinez','Masculino','Viudo','1970-
 			    'Tiempo Completo','Vendedor','01');
 			 
 INSERT INTO simcard VALUES ('112547854125469','3154741365','Si','No','No',
-			    'No');
+			    'Si');
 INSERT INTO simcard VALUES ('154786985414754','3154568745','Si','No','No',
 			    'No');
 INSERT INTO simcard VALUES ('123541254876523','3154651645','Si','No','No',
@@ -391,4 +391,33 @@ INSERT INTO "public".empresa (nombre, telefono, direccion, cod_plan) VALUES ('Ru
 INSERT INTO "public".empresa (nombre, telefono, direccion, cod_plan) VALUES ('Aluminio', '5568456', 'Av 9 # 66-96', 'mas blackberry 210');
 
 INSERT INTO "public".cia_internacional (id, nombre, pais, tarifa_mensajes, tar_llamada_entra_inter, tar_llamada_sale_inter, tar_llamada_entra_nal, tar_llamada_sale_nal, tar_datos_recibidos, tar_datos_enviados) VALUES ('1050', 'Francia movil', 'Francia', 200, 200, 200, 200, 200, 200, 200);
-INSERT INTO "public".cia_internacional (id, nombre, pais, tarifa_mensajes, tar_llamada_entra_inter, tar_llamada_sale_inter, tar_llamada_entra_nal, tar_llamada_sale_nal, tar_datos_recibidos, tar_datos_enviados) VALUES ('1070', 'EEUU movil', 'EE UU', 150, 150, 150, 150, 150, 150, 150);
+INSERT INTO "public".cia_internacional (id, nombre, pais, tarifa_mensajes, tar_llamada_entra_inter, tar_llamada_sale_inter, tar_llamada_entra_nal, tar_llamada_sale_nal, tar_datos_recibidos, tar_datos_enviados) VALUES ('1070', 'EE UU movil', 'EE UU', 150, 150, 150, 150, 150, 150, 150);
+INSERT INTO "public".cia_internacional (id, nombre, pais, tarifa_mensajes, tar_llamada_entra_inter, tar_llamada_sale_inter, tar_llamada_entra_nal, tar_llamada_sale_nal, tar_datos_recibidos, tar_datos_enviados) VALUES ('1060', 'Argen Claro', 'Argentina', 200, 200, 200, 200, 200, 200, 200);
+
+
+INSERT INTO "public".correos (email, id_abonado) VALUES ('juan@gmail.com', '100');
+INSERT INTO "public".correos (email, id_abonado) VALUES ('Cristian@yahoo.com', '102');
+INSERT INTO "public".correos (email, id_abonado) VALUES ('cristian@hotmail.com', '102');
+INSERT INTO "public".correos (email, id_abonado) VALUES ('juandap@gmail.com', '100');
+
+
+INSERT INTO "public".cia_local (id, nombre) VALUES ('315', 'Movistar');
+INSERT INTO "public".cia_local (id, nombre) VALUES ('300', 'Tigo');
+INSERT INTO "public".cia_local (id, nombre) VALUES ('310', 'Claro');
+
+
+INSERT INTO "public".recarga (num_recarga, valor, fecha, medio_recarga, simcard) VALUES (10, 20000, '2012-07-01', 'Internet', '112547445233469');
+INSERT INTO "public".recarga (num_recarga, valor, fecha, medio_recarga, simcard) VALUES (12, 50000, '2012-07-01', 'Tarjeta', '112547445233469');
+
+INSERT INTO "public".llamada_entrante_roaming (simcard, fecha, hora_inicio, hora_fin, pais_origen, tel_origen, cia_internacional) VALUES ('112547854125469', '2012-07-02', '20:55:49', '20:55:49', 'Inglaterra', '12312312', '1020');
+INSERT INTO "public".llamada_entrante_roaming (simcard, fecha, hora_inicio, hora_fin, pais_origen, tel_origen, cia_internacional) VALUES ('123541254876523', '2012-07-02', '20:58:21', '20:58:21', 'Espana', '3123123', '1030');
+
+INSERT INTO "public".llamada_saliente_roaming (simcard, fecha, hora_inicio, hora_fin, pais_destino, tel_destino, cia_internacional) VALUES ('112547854125469', '2012-07-02', '20:55:21', '20:55:21', 'Inglaterra', '1313', '1020');
+INSERT INTO "public".llamada_saliente_roaming (simcard, fecha, hora_inicio, hora_fin, pais_destino, tel_destino, cia_internacional) VALUES ('123541254876523', '2012-07-02', '20:57:05', '20:57:05', 'España', '132123', '1030');
+
+INSERT INTO "public".mensaje_entrante_roaming (simcard, fecha, hora, cia_internacional, tel_origen) VALUES ('112547854125469', '2012-07-02', '20:55:11', '1020', '1313');
+INSERT INTO "public".mensaje_entrante_roaming (simcard, fecha, hora, cia_internacional, tel_origen) VALUES ('123541254876523', '2012-07-02', '20:56:58', '1030', '1323123');
+
+INSERT INTO "public".mensaje_saliente_roaming (simcard, fecha, hora, cia_internacional, tel_destino) VALUES ('112547854125469', '2012-07-02', '20:55:01', '1020', '123123');
+INSERT INTO "public".mensaje_saliente_roaming (simcard, fecha, hora, cia_internacional, tel_destino) VALUES ('123541254876523', '2012-07-02', '20:56:51', '1030', '412312');
+ 
