@@ -49,7 +49,7 @@ public class JPConsumo extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Consumo Postpago"));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "individual", "corporativo" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Individual", "Corporativo" }));
 
         jButton1.setText("Tipo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,14 +114,14 @@ public class JPConsumo extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mensajes", jPanel1);
 
         jLabel2.setText("Consumo llamadas de abonados");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "individual", "corporativo" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Individual", "Corporativo" }));
 
         jButton2.setText("Tipo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
