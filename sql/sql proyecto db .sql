@@ -351,10 +351,10 @@ INSERT INTO simcard VALUES ('112547445233469','3203654238','Si','No','Si',
 			    'No');
 
 
-INSERT INTO contrato VALUES ('100','1000','12345','112547854125469','2012-01-05');	
-INSERT INTO contrato VALUES ('101','1000','pre123','154786985414754','2012-02-15');
-INSERT INTO contrato VALUES ('102','1000','pre123','123541254876523','2012-02-22');
-INSERT INTO contrato VALUES ('103','1000','12354','112547445233469','2012-03-10');	
+--INSERT INTO contrato VALUES ('100','1000','12345','112547854125469','2012-01-05');	
+---INSERT INTO contrato VALUES ('101','1000','pre123','154786985414754','2012-02-15');
+--INSERT INTO contrato VALUES ('102','1000','pre123','123541254876523','2012-02-22');
+--INSERT INTO contrato VALUES ('103','1000','12354','112547445233469','2012-03-10');	
 
 INSERT INTO cia_internacional VALUES ('1020','London Roaming','England',100,500,400,400,300,150,200);
 INSERT INTO cia_internacional VALUES ('1030','Movistar Roaming','Espania',500,400,600,500,200,100,500);
@@ -421,3 +421,10 @@ INSERT INTO "public".mensaje_entrante_roaming (simcard, fecha, hora, cia_interna
 INSERT INTO "public".mensaje_saliente_roaming (simcard, fecha, hora, cia_internacional, tel_destino) VALUES ('112547854125469', '2012-07-02', '20:55:01', '1020', '123123');
 INSERT INTO "public".mensaje_saliente_roaming (simcard, fecha, hora, cia_internacional, tel_destino) VALUES ('123541254876523', '2012-07-02', '20:56:51', '1030', '412312');
  
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('100', '1000', '12345', '112547854125469', '2012-01-05', 60000);
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('101', '1000', 'pre123', '154786985414754', '2012-02-15', 69000);
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('102', '1000', 'pre123', '123541254876523', '2012-02-22', 50000);
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('103', '1000', '12354', '112547445233469', '2012-03-10', 25000);
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('100', '1000', 'sin fin ideal 2000', '112547854125469', '2012-07-02', 58000);
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('101', '6958695', 'mas blackberry 210', '154786985414754', '2012-07-02', 120000);
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('102', '6958695', 'mas blackberry 210', '123541254876523', '2012-07-02', 55000);
