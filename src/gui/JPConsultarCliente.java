@@ -60,8 +60,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jBCPostpago = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        JBCPlanEscogido = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTResultados2 = new javax.swing.JTable();
@@ -81,6 +79,10 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jCGenero = new javax.swing.JComboBox();
         jTCiudad = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTResultados5 = new javax.swing.JTable();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
         jPanel3.setLayout(null);
@@ -214,10 +216,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("Planes mas escogidos");
-
-        JBCPlanEscogido.setText("Consultar");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -231,15 +229,12 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jBCPostpago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBCPrepago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(JBCPlanEscogido))
-                        .addGap(0, 140, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBCPostpago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBCPrepago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 141, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -253,11 +248,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jBCPostpago))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JBCPlanEscogido))
-                .addGap(18, 18, 18)
+                .addGap(63, 63, 63)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -340,7 +331,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBCPlanDatos)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
 
@@ -401,7 +392,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,7 +470,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -493,6 +484,61 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         );
 
         jTPConsultas.addTab("Consumo Datos", jPanel6);
+
+        jButton6.setText("Generar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jTResultados5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Suscriptores", "Codigo de Plan"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTResultados5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultados5MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTResultados5);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jTPConsultas.addTab("Planes Mas Escogidos", jPanel7);
 
         jPanel3.add(jTPConsultas);
         jTPConsultas.setBounds(20, 30, 490, 330);
@@ -512,6 +558,141 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+
+
+        try {
+
+            consulta = cc.ConsumoInternetCorreoGen(jCGenero.getSelectedItem().toString());
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                String[] retorno = (String[]) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Genero", "Ciudad",
+                        "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados4.setModel(myModel);
+            jTResultados4.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+
+
+        try {
+
+            consulta = cc.ConsumoInternetCorreoCiudad(jTCiudad.getText());
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                String[] retorno = (String[]) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Genero", "Ciudad",
+                        "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados4.setModel(myModel);
+            jTResultados4.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTResultados4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTResultados4MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+
+
+        try {
+
+            consulta = cc.planCorp();
+
+            Object[][] s = new Object[consulta.size()][2];
+            for (int i = 0; i < consulta.size(); i++) {
+                String[] retorno = (String[]) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo Plan Corporativo", "Suscriptores"}) {
+
+                boolean[] canEdit = new boolean[]{false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados3.setModel(myModel);
+            jTResultados3.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTResultados3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTResultados3MouseClicked
 
     private void jBCPlanDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCPlanDatosActionPerformed
         // TODO add your handling code here:
@@ -559,8 +740,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-
-   }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTResultados2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados2MouseClicked
         // TODO add your handling code here:
@@ -608,7 +788,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }//GEN-LAST:event_jBCPostpagoActionPerformed
 
     private void jBCPrepagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCPrepagoActionPerformed
@@ -653,7 +832,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }//GEN-LAST:event_jBCPrepagoActionPerformed
 
     private void jTResultados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados1MouseClicked
@@ -769,18 +947,15 @@ public class JPConsultarCliente extends javax.swing.JPanel {
 
    }//GEN-LAST:event_jTResultadosMouseClicked
 
-    private void jTResultados3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados3MouseClicked
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTResultados3MouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
         LinkedList consulta = new LinkedList();
 
 
         try {
 
-            consulta = cc.planCorp();
+            consulta =cc.planesMasEscogidos();
 
             Object[][] s = new Object[consulta.size()][2];
             for (int i = 0; i < consulta.size(); i++) {
@@ -794,7 +969,8 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                     s = null;
                 }
             }
-            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo Plan Corporativo", "Suscriptores"}) {
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Suscriptores",
+                "Codigo de Plan"}) {
 
                 boolean[] canEdit = new boolean[]{false, false};
 
@@ -804,108 +980,18 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 }
             };
             ///remover filas
-            jTResultados3.setModel(myModel);
-            jTResultados3.setRowSorter(new TableRowSorter(myModel));
+            jTResultados5.setModel(myModel);
+            jTResultados5.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jTResultados4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados4MouseClicked
+    private void jTResultados5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados5MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTResultados4MouseClicked
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        LinkedList consulta = new LinkedList();
-
-
-        try {
-
-            consulta = cc.ConsumoInternetCorreoCiudad(jTCiudad.getText());
-
-            Object[][] s = new Object[consulta.size()][6];
-            for (int i = 0; i < consulta.size(); i++) {
-                String[] retorno = (String[]) consulta.get(i);
-                if (retorno[0] != null) {
-                    s[i][0] = retorno[0];
-                    s[i][1] = retorno[1];
-                    s[i][2] = retorno[2];
-                    s[i][3] = retorno[3];
-                    s[i][4] = retorno[4];
-                    s[i][5] = retorno[5];
-
-
-                } else {
-                    s = null;
-                }
-            }
-            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Genero", "Ciudad",
-                        "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"}) {
-
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
-
-                @Override
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
-                }
-            };
-            ///remover filas
-            jTResultados4.setModel(myModel);
-            jTResultados4.setRowSorter(new TableRowSorter(myModel));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-         LinkedList consulta = new LinkedList();
-
-
-        try {
-
-            consulta = cc.ConsumoInternetCorreoGen(jCGenero.getSelectedItem().toString());
-
-            Object[][] s = new Object[consulta.size()][6];
-            for (int i = 0; i < consulta.size(); i++) {
-                String[] retorno = (String[]) consulta.get(i);
-                if (retorno[0] != null) {
-                    s[i][0] = retorno[0];
-                    s[i][1] = retorno[1];
-                    s[i][2] = retorno[2];
-                    s[i][3] = retorno[3];
-                    s[i][4] = retorno[4];
-                    s[i][5] = retorno[5];
-
-
-                } else {
-                    s = null;
-                }
-            }
-            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Genero", "Ciudad",
-                        "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"}) {
-
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
-
-                @Override
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
-                }
-            };
-            ///remover filas
-            jTResultados4.setModel(myModel);
-            jTResultados4.setRowSorter(new TableRowSorter(myModel));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jTResultados5MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBCPlanEscogido;
     private javax.swing.JButton jBCPlanDatos;
     private javax.swing.JButton jBCPostpago;
     private javax.swing.JButton jBCPrepago;
@@ -916,6 +1002,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jCBMedioRecarga2;
     private javax.swing.JComboBox jCGenero;
     private com.toedter.calendar.JDateChooser jDCFecha2;
@@ -924,7 +1011,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -936,11 +1022,13 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextField jTCiudad;
     private javax.swing.JTabbedPane jTPConsultas;
     private javax.swing.JTable jTResultados;
@@ -948,5 +1036,6 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private javax.swing.JTable jTResultados2;
     private javax.swing.JTable jTResultados3;
     private javax.swing.JTable jTResultados4;
+    private javax.swing.JTable jTResultados5;
     // End of variables declaration//GEN-END:variables
 }

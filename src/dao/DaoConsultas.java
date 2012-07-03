@@ -111,7 +111,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT "+
                     "COUNT(cod_plan) AS suscriptores,cod_plan"+
-                    "FROM contrato NATURAL JOIN plan"+
+                    "FROM contrato NATURAL JOIN plan "+
                     "GROUP BY cod_plan ORDER BY suscriptores DESC; ";
                 
              try {
