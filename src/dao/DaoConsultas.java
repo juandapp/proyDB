@@ -510,7 +510,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT modelo,marca,COUNT(modelo) AS cantidad  "+
                      "FROM equipo NATURAL JOIN abonado "+
-                     "GROUP BY modelo ORDER BY cantidad DESC;";
+                     "GROUP BY modelo, marca ORDER BY cantidad DESC;";
                 
              try {
             Connection conn = fachada.conectar();
@@ -630,8 +630,9 @@ public class DaoConsultas {
            sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin "+
                      "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
                      "FROM abonado JOIN contrato "+
-                     "ON id=id_abonado AND cod_plan AND tipo='"+tipo+"' IN(SELECT cod_plan from postpago))R1 NATURAL JOIN llamada "+
+                     "ON id=id_abonado AND tipo='"+tipo+"' AND cod_plan IN(SELECT cod_plan from postpago))R1 NATURAL JOIN llamada "+
                      ";";
+       
                 
              try {
             Connection conn = fachada.conectar();
