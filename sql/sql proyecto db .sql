@@ -448,4 +448,3 @@ INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, 
 
 INSERT INTO "public".llamada (simcard, hora_inicio, fecha, tel_destino, hora_fin, cia_local) VALUES ('2365214', '00:25:21', '2012-07-03', '13123', '00:29:21', '300');
 
-DISTINCT 
