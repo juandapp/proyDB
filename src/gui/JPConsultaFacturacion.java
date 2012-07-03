@@ -139,7 +139,7 @@ public class JPConsultaFacturacion extends javax.swing.JPanel {
                 if (retorno[0] != null) {
                     s[i][0] = retorno[0];
                     s[i][1] = retorno[1];
-                    s[i][1] = retorno[2];
+                    s[i][2] = retorno[2];
                  
 
                 } else {

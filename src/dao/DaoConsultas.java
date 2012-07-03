@@ -585,7 +585,7 @@ public class DaoConsultas {
                      "(SELECT id_empleado ,s.nombre AS nombre_sucursal,s.cod_sucursal "+
                      "from empleado e INNER JOIN sucursal s   "+
                      "ON e.cod_sucursal=s.cod_sucursal ) R1 NATURAL JOIN contrato "+
-                     "GROUP BY cod_sucursal;";
+                     "GROUP BY cod_sucursal, nombre_sucursal";
                 
              try {
             Connection conn = fachada.conectar();
