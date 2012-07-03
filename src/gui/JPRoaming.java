@@ -239,7 +239,9 @@ public class JPRoaming extends javax.swing.JPanel {
         jPanel1.add(jLabel11);
         jLabel11.setBounds(10, 40, 70, 14);
 
-        jCBautorizacion_roaming1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Autorizado", "Desautorizado" }));
+        jCBautorizacion_roaming1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Si", "No" }));
+        jCBautorizacion_roaming1.setSelectedIndex(1);
+        jCBautorizacion_roaming1.setEnabled(false);
         jPanel1.add(jCBautorizacion_roaming1);
         jCBautorizacion_roaming1.setBounds(390, 70, 100, 20);
 
