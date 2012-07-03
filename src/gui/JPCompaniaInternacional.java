@@ -423,7 +423,8 @@ public class JPCompaniaInternacional extends javax.swing.JPanel {
     }//GEN-LAST:event_jBLimpiar1ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-        limpiarCamposConsultar();        // TODO add your handling code here:
+        limpiarCamposConsultar();
+        jBConsultar2.doClick();// TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jBConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultar2ActionPerformed
