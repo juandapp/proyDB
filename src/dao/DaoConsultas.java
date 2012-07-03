@@ -583,8 +583,8 @@ public class DaoConsultas {
 
         sql_select = "SELECT cod_sucursal,nombre_sucursal,SUM(valor) AS Facturacion FROM "+
                      "(SELECT id_empleado ,s.nombre AS nombre_sucursal,s.cod_sucursal "+
-                     "from (empleado e JOIN sucursal s)   "+
-                     "WHERE e.cod_sucursal=s.cod_sucursal ) R1 NATURAL JOIN contrato "+
+                     "from empleado e INNER JOIN sucursal s   "+
+                     "ON e.cod_sucursal=s.cod_sucursal ) R1 NATURAL JOIN contrato "+
                      "GROUP BY cod_sucursal;";
                 
              try {
