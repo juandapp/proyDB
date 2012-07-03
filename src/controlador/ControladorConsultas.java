@@ -149,6 +149,14 @@ LinkedList consultar = new LinkedList();
   
     }
    
+   public LinkedList consultaFranja(){
+      
+LinkedList consultar = new LinkedList();
+        consultar = daoConsultas.franjaRedUso();
+        return consultar;
+  
+    }
+   
    
    
    

@@ -309,6 +309,7 @@ public class DaoConsultas {
                 consulta.add(resultado);
             }
             
+            
             conn.close();
             System.out.println("Conexion cerrada");
             return consulta;
@@ -541,20 +542,19 @@ public class DaoConsultas {
         String sql_select;
         LinkedList consulta = new LinkedList();
         
-        sql_view="CREATE OR REPLACE VIEW vista_franja AS "+
-                "SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
-                "UNION ALL "+
-                "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada; ";
+        
 
-        sql_select = "SELECT franja_horaria,count(*) AS veces_usada  "+
-                     "FROM vista_franja "+
+        sql_select = "SELECT franja_horaria,count(*) AS veces_usada FROM  "+
+                     "(SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
+                     "UNION ALL "+
+                     "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada) R1"+
                      "GROUP BY franja_horaria "+
                      "ORDER BY veces_usada  DESC;";
                 
              try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
-            sentencia.executeQuery(sql_view);
+         
             ResultSet tabla = sentencia.executeQuery(sql_select);
             while (tabla.next()) {
                 String[] resultado=new String[2];
@@ -575,23 +575,22 @@ public class DaoConsultas {
     }
     
     public LinkedList oficinaGanancias() {
-        String sql_view;
+        
         String sql_select;
         LinkedList consulta = new LinkedList();
         
-        sql_view="CREATE OR REPLACE VIEW sucursal_empleado AS "+
-                "SELECT id_empleado ,s.nombre AS nombre_sucursal,s.cod_sucursal "+
-                "from (empleado e JOIN sucursal s)  "+
-                "ON e.cod_sucursal=s.cod_sucursal; ";
+ 
 
-        sql_select = "SELECT cod_sucursal,nombre_sucursal,SUM(valor) AS Facturacion "+
-                     "FROM (sucursal_empleado NATURAL JOIN contrato)  "+
+        sql_select = "SELECT cod_sucursal,nombre_sucursal,SUM(valor) AS Facturacion FROM "+
+                     "(SELECT id_empleado ,s.nombre AS nombre_sucursal,s.cod_sucursal "+
+                     "from (empleado e JOIN sucursal s)   "+
+                     "WHERE e.cod_sucursal=s.cod_sucursal ) R1 NATURAL JOIN contrato "+
                      "GROUP BY cod_sucursal;";
                 
              try {
             Connection conn = fachada.conectar();
             Statement sentencia = conn.createStatement();
-            sentencia.executeQuery(sql_view);
+           
             ResultSet tabla = sentencia.executeQuery(sql_select);
             while (tabla.next()) {
                 String[] resultado=new String[3];
@@ -615,25 +614,23 @@ public class DaoConsultas {
     
     public LinkedList ConsumoTipoAbonado(String tipo,String consumo) {
         String sql_select="";
-        String sql_vista;
-        LinkedList consulta = new LinkedList();
-        
-        
-        
-        sql_vista="CREATE OR REPLACE VIEW datos_consumo AS "+
-                "SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
-                "FROM abonado JOIN contrato "+
-                "ON id=id_abonado; ";
+
+        LinkedList consulta = new LinkedList();   
+  
         
         
        if(consumo.equals("mensaje"))
         sql_select = "SELECT id,tipo,nombres,apellidos,simcard,msjs_enviados,cia_local,fecha,hora "+
-                    "FROM datos_consumo NATURAL JOIN consumo_mensaje "+
+                    "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
+                    "FROM abonado JOIN contrato "+
+                    "ON id=id_abonado)R1 NATURAL JOIN consumo_mensaje "+
                      "where tipo='"+tipo+"';";
        
        if(consumo.equals("llamada"))
            sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin"+
-                    "FROM datos_consumo NATURAL JOIN llamada "+
+                     "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
+                     "FROM abonado JOIN contrato "+
+                     "ON id=id_abonado)R1 NATURAL JOIN llamada"+
                      "where tipo='"+tipo+"';";
                 
              try {

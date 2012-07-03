@@ -73,6 +73,14 @@ public class JPConsultarCliente extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTResultados3 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTResultados4 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jCGenero = new javax.swing.JComboBox();
+        jTCiudad = new javax.swing.JTextField();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
         jPanel3.setLayout(null);
@@ -231,7 +239,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                                 .addComponent(jBCPostpago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBCPrepago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(JBCPlanEscogido))
-                        .addGap(0, 110, Short.MAX_VALUE)))
+                        .addGap(0, 140, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -332,7 +340,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBCPlanDatos)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
 
@@ -381,7 +389,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 35, Short.MAX_VALUE)
+                        .addGap(0, 65, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -393,7 +401,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,21 +410,105 @@ public class JPConsultarCliente extends javax.swing.JPanel {
 
         jTPConsultas.addTab("Plan Corporativo", jPanel5);
 
+        jTResultados4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Abonado", "Genero", "Ciudad", "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTResultados4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTResultados4MouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jTResultados4);
+
+        jButton3.setText("Ciudad");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Consumo Internet y Correo");
+
+        jButton4.setText("Genero");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jCGenero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "masculino", "femenino" }));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jTCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jCGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
+                .addGap(73, 73, 73))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jCGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+        );
+
+        jTPConsultas.addTab("Consumo Datos", jPanel6);
+
         jPanel3.add(jTPConsultas);
-        jTPConsultas.setBounds(10, 20, 460, 310);
+        jTPConsultas.setBounds(20, 30, 490, 330);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -688,7 +780,7 @@ public class JPConsultarCliente extends javax.swing.JPanel {
 
         try {
 
-            //consulta = cc.
+            consulta = cc.planCorp();
 
             Object[][] s = new Object[consulta.size()][2];
             for (int i = 0; i < consulta.size(); i++) {
@@ -702,9 +794,9 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                     s = null;
                 }
             }
-            TableModel myModel = new DefaultTableModel(s, new String[]{"Nombres", "Apellidos", "Direccion", "Ciudad", "Cod_Plan", "fecha_ingreso", "Tipo"}) {
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Codigo Plan Corporativo", "Suscriptores"}) {
 
-                boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false};
+                boolean[] canEdit = new boolean[]{false, false};
 
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -712,13 +804,105 @@ public class JPConsultarCliente extends javax.swing.JPanel {
                 }
             };
             ///remover filas
-            jTResultados.setModel(myModel);
-            jTResultados.setRowSorter(new TableRowSorter(myModel));
+            jTResultados3.setModel(myModel);
+            jTResultados3.setRowSorter(new TableRowSorter(myModel));
         } catch (Exception e) {
             e.printStackTrace();
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTResultados4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultados4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTResultados4MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        LinkedList consulta = new LinkedList();
+
+
+        try {
+
+            consulta = cc.ConsumoInternetCorreoCiudad(jTCiudad.getText());
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                String[] retorno = (String[]) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Genero", "Ciudad",
+                        "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados4.setModel(myModel);
+            jTResultados4.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         LinkedList consulta = new LinkedList();
+
+
+        try {
+
+            consulta = cc.ConsumoInternetCorreoGen(jCGenero.getSelectedItem().toString());
+
+            Object[][] s = new Object[consulta.size()][6];
+            for (int i = 0; i < consulta.size(); i++) {
+                String[] retorno = (String[]) consulta.get(i);
+                if (retorno[0] != null) {
+                    s[i][0] = retorno[0];
+                    s[i][1] = retorno[1];
+                    s[i][2] = retorno[2];
+                    s[i][3] = retorno[3];
+                    s[i][4] = retorno[4];
+                    s[i][5] = retorno[5];
+
+
+                } else {
+                    s = null;
+                }
+            }
+            TableModel myModel = new DefaultTableModel(s, new String[]{"Id Abonado", "Genero", "Ciudad",
+                        "Codigo Plan Datos", "Vol Datos Correo", "Vol Datos Internet"}) {
+
+                boolean[] canEdit = new boolean[]{false, false, false, false, false, false};
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            };
+            ///remover filas
+            jTResultados4.setModel(myModel);
+            jTResultados4.setRowSorter(new TableRowSorter(myModel));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCPlanEscogido;
@@ -729,8 +913,11 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private javax.swing.JButton jBLimpiar2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jCBMedioRecarga2;
+    private javax.swing.JComboBox jCGenero;
     private com.toedter.calendar.JDateChooser jDCFecha2;
     private com.toedter.calendar.JDateChooser jDCFecha3;
     private javax.swing.JLabel jLabel1;
@@ -742,19 +929,24 @@ public class JPConsultarCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jTCiudad;
     private javax.swing.JTabbedPane jTPConsultas;
     private javax.swing.JTable jTResultados;
     private javax.swing.JTable jTResultados1;
     private javax.swing.JTable jTResultados2;
     private javax.swing.JTable jTResultados3;
+    private javax.swing.JTable jTResultados4;
     // End of variables declaration//GEN-END:variables
 }
