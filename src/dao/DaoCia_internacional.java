@@ -163,7 +163,7 @@ public class DaoCia_internacional {
     public int editar(Cia_internacional ci) {
         String sql_editar;
         sql_editar = "UPDATE cia_internacional SET "
-                + "nombre='" + ci.getId() + "', "
+                + "nombre='" + ci.getNombre() + "', "
                 + "pais='" + ci.getPais() + "', "
                 + "tarifa_mensajes=" + ci.getTarifa_mensajes() + ", "
                 + "tar_llamada_entra_inter=" + ci.getTar_llamada_entra_inter() + ", "

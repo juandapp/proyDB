@@ -433,7 +433,8 @@ public class JPEmpresa extends javax.swing.JPanel {
     }//GEN-LAST:event_jBModificar3ActionPerformed
 
     private void jBLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiar2ActionPerformed
-        limpiarCamposConsultar();        // TODO add your handling code here:
+        limpiarCamposConsultar();
+        jBConsultar2.doClick();// TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiar2ActionPerformed
 
     private void jTResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTResultadosMouseClicked

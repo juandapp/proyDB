@@ -323,7 +323,7 @@ INSERT INTO equipo VALUES ('679283746510923','One Touch 901A','Alcatel');
 
 
 
-INSERT INTO abonado VALUES ('100','Cedula','Juan David','Pati�o Pati�o','Cra 50#32-20',
+INSERT INTO abonado VALUES ('100','Cedula','Juan David','Patino Patino','Cra 50#32-20',
 			    'Masculino','Casado','1989-11-11','5','La Base','Cali', 'Individual',
 			    '245879652114523');
 INSERT INTO abonado VALUES ('101','Cedula','Juan David','Rengifo Diaz','Cra 30#54-21',
@@ -361,3 +361,34 @@ INSERT INTO cia_internacional VALUES ('1030','Movistar Roaming','Espania',500,40
 INSERT INTO cia_internacional VALUES ('1040','Claro Roaming','Chile',200,300,400,500,600,700,500);
 
   
+
+----NUEVOS INSERT
+
+INSERT INTO "public".sucursal (cod_sucursal, nombre, ciudad, direccion, telefono) VALUES ('02', 'Medillin movil', 'Medellin', 'Calle 65 #69-695', '6985695');
+INSERT INTO "public".sucursal (cod_sucursal, nombre, ciudad, direccion, telefono) VALUES ('03', 'Bogota movil', 'Bogota', 'Cra 100 #4AN-69', '6985695');
+INSERT INTO "public".sucursal (cod_sucursal, nombre, ciudad, direccion, telefono) VALUES ('04', 'CoorpoMovil', 'Cucuta', 'Av 1 # 36-96', '65489654');
+INSERT INTO "public".sucursal (cod_sucursal, nombre, ciudad, direccion, telefono) VALUES ('05', 'Telecomunicacion', 'Cali', 'Cr 56 # 11-25', '2759618');
+
+
+INSERT INTO "public".empleado (id_empleado, nombre, genero, estado_civil, fecha_nacimiento, fecha_ingreso, tipo_contrato, cargo, cod_sucursal) VALUES ('6958695', 'Camilo Hernandez', 'Masculino', 'Casado', '1970-10-21', '2002-10-31', 'Tiempo Completo', 'Gerente', '02');
+INSERT INTO "public".empleado (id_empleado, nombre, genero, estado_civil, fecha_nacimiento, fecha_ingreso, tipo_contrato, cargo, cod_sucursal) VALUES ('23023514', 'Gustavo Gutierrez', 'Masculino', 'Union Libre', '1986-03-19', '2009-07-02', 'Medio Tiempo', 'Vendedor', '03');
+INSERT INTO "public".empleado (id_empleado, nombre, genero, estado_civil, fecha_nacimiento, fecha_ingreso, tipo_contrato, cargo, cod_sucursal) VALUES ('8465486', 'Johana Urrutia', 'Femenino', 'Soltero', '1992-03-21', '2011-06-30', 'Tiempo Completo', 'Vendedor', '04');
+INSERT INTO "public".empleado (id_empleado, nombre, genero, estado_civil, fecha_nacimiento, fecha_ingreso, tipo_contrato, cargo, cod_sucursal) VALUES ('365268', 'Julian Pineda', 'Masculino', 'Casado', '1989-12-21', '2009-09-19', 'Contratista', 'Vendedor', '05');
+
+INSERT INTO "public".abonado (id, tipo_documento, nombres, apellidos, direccion, genero, estado_civil, fecha_nacimiento, comuna, barrio, ciudad, tipo, imei) VALUES ('104', 'Tarjeta de Identidad', 'Paulo', 'Jimenez', 'Carrera 65#-63-65', 'Masculino', 'Soltero', '1995-12-16', '9', 'Bellavista', 'Cali', 'Individual', '201444431030594');
+INSERT INTO "public".abonado (id, tipo_documento, nombres, apellidos, direccion, genero, estado_civil, fecha_nacimiento, comuna, barrio, ciudad, tipo, imei) VALUES ('105', 'Cedula', 'Maritza', 'Gomez', 'cr 32 # 643 34', 'Femenino', 'Casado', '1970-01-03', '3', 'Bolivar', 'Bogota', 'Individual', '800012345443532');
+
+INSERT INTO "public".plan (cod_plan, tarifa_otro_operador, tarifa_msj_multimedia, tarifa_msj_texto) VALUES ('prepago 2012', 600, 300, 150);
+INSERT INTO "public".plan (cod_plan, tarifa_otro_operador, tarifa_msj_multimedia, tarifa_msj_texto) VALUES ('pre sin fin', 750, 250, 19);
+
+INSERT INTO "public".prepago (cod_plan) VALUES ('prepago 2012');
+INSERT INTO "public".prepago (cod_plan) VALUES ('pre sin fin');
+
+
+INSERT INTO "public".empresa (nombre, telefono, direccion, cod_plan) VALUES ('Ilunimacions S.A.', '4456256', 'Calle 26 # 31-00', 'sin fin ideal 1460');
+INSERT INTO "public".empresa (nombre, telefono, direccion, cod_plan) VALUES ('Acarreos Luis ', '6969596', 'Cr 25 # 99-78', 'sin fin ideal 2000');
+INSERT INTO "public".empresa (nombre, telefono, direccion, cod_plan) VALUES ('Ruana Verde S.A.', '6693562', 'Calle 3 # 91-58', 'mas blackberry 210');
+INSERT INTO "public".empresa (nombre, telefono, direccion, cod_plan) VALUES ('Aluminio', '5568456', 'Av 9 # 66-96', 'mas blackberry 210');
+
+INSERT INTO "public".cia_internacional (id, nombre, pais, tarifa_mensajes, tar_llamada_entra_inter, tar_llamada_sale_inter, tar_llamada_entra_nal, tar_llamada_sale_nal, tar_datos_recibidos, tar_datos_enviados) VALUES ('1050', 'Francia movil', 'Francia', 200, 200, 200, 200, 200, 200, 200);
+INSERT INTO "public".cia_internacional (id, nombre, pais, tarifa_mensajes, tar_llamada_entra_inter, tar_llamada_sale_inter, tar_llamada_entra_nal, tar_llamada_sale_nal, tar_datos_recibidos, tar_datos_enviados) VALUES ('1070', 'EEUU movil', 'EE UU', 150, 150, 150, 150, 150, 150, 150);
