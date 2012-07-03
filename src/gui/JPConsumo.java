@@ -213,7 +213,7 @@ public class JPConsumo extends javax.swing.JPanel {
 
         try {
 
-            consulta = cc.consumoTipoAbonado(jComboBox1.getSelectedItem().toString(),
+            consulta = cc.consumoTipoAbonado(jComboBox2.getSelectedItem().toString(),
                     "llamada");
 
             Object[][] s = new Object[consulta.size()][8];
@@ -259,7 +259,7 @@ public class JPConsumo extends javax.swing.JPanel {
 
         try {
 
-            consulta = cc.consumoTipoAbonado(jComboBox2.getSelectedItem().toString(),
+            consulta = cc.consumoTipoAbonado(jComboBox1.getSelectedItem().toString(),
                     "mensaje");
 
             Object[][] s = new Object[consulta.size()][9];

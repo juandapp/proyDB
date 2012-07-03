@@ -440,3 +440,12 @@ INSERT INTO "public".simcard (codigo, num_telefono, activacion_internet, bloquea
 
 INSERT INTO "public".simcard_robo (simcard, ciudad, fecha) VALUES ('2365214', 'Cali', '2012-07-02');
 
+--INSERT INTO "public".simcard (codigo, num_telefono, activacion_internet, bloqueado_por_robo, activacion_correo, autorizacion_roaming) VALUES ('2365214', '3156986593', 'No', 'Si', 'Si', 'Si');
+
+INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('102', '23023514', 'mas blackberry 210', '2365214', '2012-07-03', 29000);
+
+INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, hora) VALUES ('2365214', '300', 2, '2012-07-03', '00:25:39');
+
+INSERT INTO "public".llamada (simcard, hora_inicio, fecha, tel_destino, hora_fin, cia_local) VALUES ('2365214', '00:25:21', '2012-07-03', '13123', '00:29:21', '300');
+
+DISTINCT 

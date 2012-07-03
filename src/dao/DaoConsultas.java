@@ -295,7 +295,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT cod_plan AS codigo_plan_corporativo,COUNT(cod_plan) "+
                     "AS suscriptores FROM abonado JOIN contrato ON "+
-                    "id=id_abonado AND tipo='corporativo'  "+
+                    "id=id_abonado AND tipo='Corporativo'  "+
                      "GROUP BY cod_plan ORDER BY suscriptores DESC;";
                 
              try {
@@ -620,14 +620,14 @@ public class DaoConsultas {
         
         
        if(consumo.equals("mensaje"))
-        sql_select = "SELECT id,tipo,nombres,apellidos,simcard,msjs_enviados,cia_local,fecha,hora "+
+        sql_select = "SELECT DISTINCT id,tipo,nombres,apellidos,simcard,msjs_enviados,cia_local,fecha,hora "+
                     "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
                     "FROM abonado JOIN contrato "+
                     "ON id=id_abonado AND tipo='"+tipo+"' AND cod_plan IN(SELECT cod_plan from postpago))R1 NATURAL JOIN consumo_mensaje "+
                      ";";
        
        if(consumo.equals("llamada"))
-           sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin "+
+           sql_select = "SELECT DISTINCT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin "+
                      "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
                      "FROM abonado JOIN contrato "+
                      "ON id=id_abonado AND tipo='"+tipo+"' AND cod_plan IN(SELECT cod_plan from postpago))R1 NATURAL JOIN llamada "+
