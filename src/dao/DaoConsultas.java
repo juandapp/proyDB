@@ -142,7 +142,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT "+
                     "id,nombres,apellidos,direccion,ciudad,"
-                +   " cod_plan,simcard,fecha_ingreso"+
+                +   " cod_plan,simcard,fecha_ingreso "+
                     "FROM abonado join contrato "+
                     "ON id=id_abonado and cod_plan IN "
                   + " (SELECT cod_plan from "+tipo_plan+"); ";
@@ -183,7 +183,7 @@ public class DaoConsultas {
 
         sql_select = "SELECT "+
                     "id,nombres,apellidos,cod_plan_datos,costo_correo,costo_internet,"
-                +   "vol_datos_correo,vol_datos_internet"+
+                +   "vol_datos_correo,vol_datos_internet "+
                     "FROM abonado JOIN contrato NATURAL JOIN plan_datos_simcard "
                   + "NATURAL JOIN plan_datos "+
                     "ON id=id_abonado ORDER BY id; ";
@@ -547,7 +547,7 @@ public class DaoConsultas {
         sql_select = "SELECT franja_horaria,count(*) AS veces_usada FROM  "+
                      "(SELECT extract(HOUR from hora_inicio)AS franja_horaria FROM llamada "+
                      "UNION ALL "+
-                     "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada) R1"+
+                     "SELECT extract(HOUR from hora_fin)AS franja_horaria FROM llamada) R1 "+
                      "GROUP BY franja_horaria "+
                      "ORDER BY veces_usada  DESC;";
                 
@@ -627,10 +627,10 @@ public class DaoConsultas {
                      ";";
        
        if(consumo.equals("llamada"))
-           sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin"+
+           sql_select = "SELECT id,tipo,nombres,apellidos,simcard,cia_local,hora_inicio,hora_fin "+
                      "FROM (SELECT id,nombres,apellidos,tipo,cod_plan,simcard "+
                      "FROM abonado JOIN contrato "+
-                     "ON id=id_abonado AND cod_plan AND tipo='"+tipo+"' IN(SELECT cod_plan from postpago))R1 NATURAL JOIN llamada"+
+                     "ON id=id_abonado AND cod_plan AND tipo='"+tipo+"' IN(SELECT cod_plan from postpago))R1 NATURAL JOIN llamada "+
                      ";";
                 
              try {

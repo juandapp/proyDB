@@ -428,3 +428,10 @@ INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha
 INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('100', '1000', 'sin fin ideal 2000', '112547854125469', '2012-07-02', 58000);
 INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('101', '6958695', 'mas blackberry 210', '154786985414754', '2012-07-02', 120000);
 INSERT INTO "public".contrato (id_abonado, id_empleado, cod_plan, simcard, fecha_ingreso, valor) VALUES ('102', '6958695', 'mas blackberry 210', '123541254876523', '2012-07-02', 55000);
+
+
+INSERT INTO "public".llamada (simcard, hora_inicio, fecha, tel_destino, hora_fin, cia_local) VALUES ('112547854125469', '21:44:49', '2012-07-02', '123123123', '21:55:49', '310');
+INSERT INTO "public".llamada (simcard, hora_inicio, fecha, tel_destino, hora_fin, cia_local) VALUES ('112547854125469', '21:58:11', '2012-07-02', '1312312', '21:59:11', '310');
+
+INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, hora) VALUES ('112547854125469', '310', 2, '2012-07-02', '21:45:35');
+INSERT INTO "public".consumo_mensaje (simcard, cia_local, msjs_enviados, fecha, hora) VALUES ('112547854125469', '300', 3, '2012-07-02', '21:45:49');
